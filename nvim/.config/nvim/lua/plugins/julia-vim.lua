@@ -1,0 +1,5 @@
+return {
+  {
+    "JuliaEditorSupport/julia-vim",
+  },
+}

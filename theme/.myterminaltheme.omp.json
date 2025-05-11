@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "home_enabled": true
+          },
+          "style": "plain",
+          "template": "({{ if .Venv }}{{ .Venv }}{{ end }}) ",
+          "foreground": "lightYellow",
+          "powerline_symbol": "\ue0b0",
+          "background": "",
+          "type": "python"
+        },
+        {
+          "properties": {
+            "macos": "\uf179"
+          },
+          "style": "plain",
+          "template": "{{.Icon}} ",
+          "foreground": "lightMagenta",
+          "background": "",
+          "type": "os"
+        },
+        {
+          "style": "plain",
+          "template": "{{ .UserName }} ",
+          "foreground": "lightMagenta",
+          "background": "",
+          "type": "session"
+        },
+        {
+          "properties": {
+            "style": "agnoster_short"
+          },
+          "style": "plain",
+          "template": "{{ .Path }} ",
+          "foreground": "lightGreen",
+          "background": "",
+          "type": "path"
+        },
+        {
+          "properties": {
+            "branch_icon": "<#d2573f><b>\ue725 </b></>",
+            "fetch_stash_count": true
+          },
+          "style": "plain",
+          "template": "{{ .HEAD }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "foreground": "#d2573f",
+          "background": "",
+          "type": "git"
+        },
+        {
+          "style": "plain",
+          "template": "❯ ",
+          "foreground": "lightYellow",
+          "background": "",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "version": 3
+}
