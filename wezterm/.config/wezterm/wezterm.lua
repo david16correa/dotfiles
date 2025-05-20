@@ -16,7 +16,7 @@ end)
 -- ======================================
 -- FONT SETTINGS
 -- ======================================
-config.font_size = 12
+config.font_size = 13
 config.line_height = 1.0
 config.font = wezterm.font("JetBrainsMonoNL Nerd Font", { weight = "ExtraLight" })
 
