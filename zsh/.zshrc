@@ -56,29 +56,30 @@ fi
 
 # set -o vi
 export EDITOR='nvim'
+alias leovim='NVIM_APPNAME="leovim" nvim'
+
+PATH="$HOME/.myScripts:$PATH"
+export PATH
 
 # cosas para que los colores funcionen
 # export TERM=xterm-256color
 
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-path=('/Users/davidcorrea/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<
 export JULIA_NUM_THREADS=$(nproc) # by default julia will use all threads
 
-# uncomment for automatic tmux login :D
-if [ -n "$PS1" ] && [ -z "$TMUX" ]; then
-  # tmux new-session -A -s main
+# landing shell
+if [[ -n "$PS1" && -z "$TMUX" ]]; then # if not in tmux
+  if [[ -n "$SSH_CONNECTION" ]]; then # if connected through ssh
+    # create "main" if it doesn't exist
+    if ! tmux has-session -t main 2>/dev/null; then
+      tmux new-session -d -s main
+    fi
 
-  # Create a new session named "main" and run a command inside the session
-  tmux new-session -d -s main
-  tmux send-keys -t main 'clear && fastfetch' Enter
-  # Attach to session named "main"
-  tmux attach -t main
+    # run clear && fastfetch, and attatch
+    tmux send-keys -t main 'clear && fastfetch' Enter
+    tmux attach -t main
+  else
+    clear && fastfetch
+  fi
 fi
 
 # to make yazi exit at cwd
