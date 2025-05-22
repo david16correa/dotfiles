@@ -54,15 +54,15 @@
             "keyColor": "blue"
         },
         {
-            "type": "media",
-            "key": "󰝚",
-            "format":"{3} - {2}",
-            "keyColor": "blue"
-        },
-        {
             "type": "terminal",
             "key": "",
             "format": "{5}",
+            "keyColor": "blue"
+        },
+        {
+            "type": "media",
+            "key": "󰝚",
+            "format":"{3} - {2}",
             "keyColor": "blue"
         },
         "break",

@@ -28,7 +28,7 @@ source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 alias reload='source ~/.zshrc'
 alias editrc='nvim ~/.zshrc && source ~/.zshrc'
 alias cd='z'
-alias tmux='tmux -u'
+alias tmux='genTmux'
 alias tns='tmux new-session -s'
 alias tls='tmux ls'
 alias tqa='tmux a'
@@ -69,14 +69,7 @@ export JULIA_NUM_THREADS=$(nproc) # by default julia will use all threads
 # landing shell
 if [[ -n "$PS1" && -z "$TMUX" ]]; then # if not in tmux
   if [[ -n "$SSH_CONNECTION" ]]; then # if connected through ssh
-    # create "main" if it doesn't exist
-    if ! tmux has-session -t main 2>/dev/null; then
-      tmux new-session -d -s main
-    fi
-
-    # run clear && fastfetch, and attatch
-    tmux send-keys -t main 'clear && fastfetch' Enter
-    tmux attach -t main
+    $HOME/.myScripts/genTmux
   else
     clear && fastfetch
   fi

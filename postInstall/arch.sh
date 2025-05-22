@@ -56,6 +56,7 @@ cli=(
   btop
   nvtop
   lsd
+  tree
   bat
   tmux
   vim

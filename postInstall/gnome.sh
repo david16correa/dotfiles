@@ -1,7 +1,7 @@
 # some aur packages
 echo -e "[\033[33mINFO\033[0m] Installing essential packages (AUR)..."
 aur_packages=(
-  extension-manager
+  # extension-manager
   gdm-settings
 )
 for package in ${aur_packages[@]}; do
@@ -23,3 +23,5 @@ extensions=(
 for extension in ${extensions[@]}; do
   yay -S --noconfirm gnome-shell-extension-${extension}
 done
+
+echo -e "[\033[33mNOTE\033[0m] Restart the Gnome shell for the extensions to appear!"
