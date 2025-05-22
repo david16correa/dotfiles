@@ -1,0 +1,38 @@
+#!/usr/bin/bash
+
+cd $HOME
+
+# main
+if ! tmux has-session -t ws 2>/dev/null; then
+  tmux new-session -d -s ws
+fi
+
+# aux
+if ! tmux has-session -t aux 2>/dev/null; then
+  tmux new-session -d -s aux
+fi
+
+# IT
+if ! tmux has-session -t IT 2>/dev/null; then
+  tmux new-session -d -s IT
+
+  tmux new-window -t IT -n cpu
+  tmux send-keys -t IT:cpu 'btop' Enter
+
+  tmux new-window -t IT -n jctl
+  tmux send-keys -t IT:jctl 'journalctl -b --priority=3' Enter
+
+  tmux new-window -t IT -n tlp
+  tmux send-keys -t IT:tlp 'tlp-stat -p' Enter
+
+  tmux new-window -t IT -n bat
+  tmux send-keys -t IT:bat 'nvim $HOME/.batterylog.txt' Enter
+fi
+
+# main
+if ! tmux has-session -t main 2>/dev/null; then
+  tmux new-session -d -s main
+fi
+
+tmux send-keys -t main 'clear && fastfetch' Enter
+tmux attach -t main
