@@ -14,6 +14,7 @@ extensions=(
   blur-my-shell
   caffeine
   clipboard-history
+  clipboard-indicator
   just-perfection-desktop
   logo-menu
   quick-settings-audio-panel

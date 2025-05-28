@@ -19,6 +19,7 @@ relevant_packages=(
   bluez-utils
   bluez-deprecated-tools
   pulseaudio-bluetooth
+  easyeffects
   fprintd
   tlp
   tlp-rdw
