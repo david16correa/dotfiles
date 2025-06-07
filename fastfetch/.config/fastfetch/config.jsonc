@@ -61,17 +61,11 @@
             "format": "{5}",
             "keyColor": "blue"
         },
-        {
-            "type": "media",
-            "key": "󰝚",
-            "format":"{3} - {2}",
-            "keyColor": "blue"
-        },
         "break",
         {
-            "type": "host",
-            "key": "󰌢",
-            "format": "{version}",
+            "type": "board",
+            "key": "",
+            "format": "{1}",
             "keyColor": "green"
         },
         {
