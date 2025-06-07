@@ -28,7 +28,6 @@ source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 alias reload='source ~/.zshrc'
 alias editrc='nvim ~/.zshrc && source ~/.zshrc'
 alias cd='z'
-alias tmux='genTmux'
 alias tns='tmux new-session -s'
 alias tls='tmux ls'
 alias tqa='tmux a'

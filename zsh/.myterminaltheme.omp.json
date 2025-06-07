@@ -30,7 +30,7 @@
         },
         {
           "style": "plain",
-          "template": "{{ .UserName }} ",
+          "template": "{{ .HostName }} ",
           "foreground": "lightMagenta",
           "background": "",
           "type": "session"
