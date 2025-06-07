@@ -13,7 +13,7 @@ echo -e "[\033[33mINFO\033[0m] Installing essential Gnome Extensions (AUR)..."
 extensions=(
   blur-my-shell
   caffeine
-  clipboard-history
+  gsconnect
   clipboard-indicator
   just-perfection-desktop
   logo-menu
