@@ -55,7 +55,6 @@ fi
 
 # set -o vi
 export EDITOR='nvim'
-alias leovim='NVIM_APPNAME="leovim" nvim'
 
 PATH="$HOME/.myScripts:$PATH"
 export PATH
