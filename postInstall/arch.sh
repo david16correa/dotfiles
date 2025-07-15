@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# echo -e "[\033[33mINFO\033[0m] Enabling bluetooth daemon"
-# sudo systemctl enable bluetooth.service
-# sudo systemctl start bluetooth.service
-
 echo -e "[\033[33mINFO\033[0m] Installing system packages..."
 relevant_packages=(
   git
@@ -21,36 +17,23 @@ relevant_packages=(
   pulseaudio-bluetooth
   easyeffects
   lsp-plugins
+  cups
+  cups-pdf
+  bluez-cups
   fprintd
+  fwupd
   tlp
   tlp-rdw
   dosfstools
   ntfsprogs
   ntfs-3g
   rsync
+  keyd
   # sshfs
 )
 for package in ${relevant_packages[@]}; do
     sudo pacman -S --noconfirm ${package}
 done
-
-# tlp config
-sudo systemctl enable --now tlp.service
-sudo systemctl enable --now NetworkManager-dispatcher.service
-sudo systemctl mask systemd-rfkill.service
-sudo systemctl mask systemd-rfkill.socket
-
-# echo -e "[\033[33mINFO\033[0m] Installing python build dependencies"
-# python_build=(
-#     base-devel
-#     openssl
-#     zlib
-#     xz
-#     tk
-#     )
-# for package in ${python_build[@]}; do
-#     sudo pacman -S --needed --noconfirm ${package}
-# done
 
 echo -e "[\033[33mINFO\033[0m] Installing command line utilities..."
 cli=(
@@ -97,12 +80,8 @@ desktop_soft=(
   signal-desktop
   torbrowser-launcher
   firefox
-  # noto-fonts-cjk
-  kcolorchooser
   gcolor3
   gimp
-  # spectacle
-  filelight
   flatpak
 )
 for package in ${desktop_soft[@]}; do
@@ -125,19 +104,11 @@ git clone https://aur.archlinux.org/yay.git /tmp/yay
 cd /tmp/yay
 makepkg -si
 
-# # install JetBrainsMono nerdfont
-# wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
-# cd ~/.local/share/fonts
-# unzip JetBrainsMono.zip
-# rm JetBrainsMono.zip
-# fc-cache -fv
-
-# zerotier
+echo -e "[\033[33mINFO\033[0m] Installing and enabling ZeroTier..."
 sudo pacman -S zerotier-one
 sudo systemctl enable zerotier-one.service
 sudo systemctl start zerotier-one.service
 
-# some aur packages
 echo -e "[\033[33mINFO\033[0m] Installing AUR packages..."
 aur_packages=(
   brave-bin
@@ -151,9 +122,37 @@ aur_packages=(
   dropbox-cli
   ookla-speedtest-bin
   oh-my-posh
-  # vesktop
-  whitesur-cursor-theme-git
+  apple_cursor
+  thinkfan
 )
 for package in ${aur_packages[@]}; do
     yay -S --noconfirm ${package}
 done
+
+configsPath="$(cd $(dirname $0) && pwd)/defaultConfigs"
+
+echo -e "[\033[33mINFO\033[0m] Enabling bluetooth daemon..."
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
+
+echo -e "[\033[33mINFO\033[0m] Configuring and enabling TLP..."
+sudo cp $configsPath/tlp.conf /etc/tlp.conf
+sudo systemctl enable --now tlp.service
+sudo systemctl enable --now NetworkManager-dispatcher.service
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket
+
+echo -e "[\033[33mINFO\033[0m] Configuring and enabling keyd..."
+sudo mkdir -p /etc/keyd
+sudo cp $configsPath/keyd.conf /etc/keyd/default.conf
+sudo systemctl enable --now keyd
+
+echo -e "[\033[33mINFO\033[0m] Configuring and enabling Thinkfan..."
+sudo cp $configsPath/thinkfan.conf /etc/thinkfan.conf
+echo "options thinkpad_acpi fan_control=1" | sudo tee /etc/modprobe.d/thinkfan.conf
+sudo modprobe -r thinkpad_acpi && sudo modprobe thinkpad_acpi
+sudo mkinitcpio -P
+sudo systemctl enable --now thinkfan
+# thinkfan sleep hook
+sudo cp $configsPath/thinkfan.hook /usr/lib/systemd/system-sleep/thinkfan
+sudo chmod +x /usr/lib/systemd/system-sleep/thinkfan

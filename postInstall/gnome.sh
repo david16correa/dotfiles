@@ -1,3 +1,11 @@
+echo -e "[\033[33mINFO\033[0m] Installing firmware management software..."
+relevant_packages=(
+  gnome-firmware
+)
+for package in ${relevant_packages[@]}; do
+    sudo pacman -S --noconfirm ${package}
+done
+
 # some aur packages
 echo -e "[\033[33mINFO\033[0m] Installing essential packages (AUR)..."
 aur_packages=(
@@ -20,6 +28,7 @@ extensions=(
   quick-settings-audio-panel
   tiling-assistant
   wiggle
+  appindicator
 )
 for extension in ${extensions[@]}; do
   yay -S --noconfirm gnome-shell-extension-${extension}
