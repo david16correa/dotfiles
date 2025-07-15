@@ -22,6 +22,12 @@
             "format": "{2}"
         },
         {
+            "type": "command",
+            "key": "󰔟",
+            "keyColor": "yellow",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+        },
+        {
             "type": "kernel",
             "key": "",
             "keyColor": "yellow"
