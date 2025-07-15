@@ -20,7 +20,7 @@ if ! tmux has-session -t IT 2>/dev/null; then
   tmux send-keys -t IT:tlp 'watch -n 60 "tlp-stat -t && tlp-stat -p"' Enter
 
   tmux new-window -t IT -n jctl
-  tmux send-keys -t IT:jctl 'clear && journalctl -b --priority=3' Enter
+  tmux send-keys -t IT:jctl 'clear && systemctl --failed && echo "" && journalctl -b --priority=3 --no-pager' Enter
 
   tmux new-window -t IT -n bat
   tmux send-keys -t IT:bat 'clear && nvim $HOME/.batterylog.txt' Enter
