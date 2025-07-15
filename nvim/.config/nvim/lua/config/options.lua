@@ -14,3 +14,12 @@ vim.cmd("let g:latex_to_unicode_auto = 1")
 
 vim.g.snacks_animate = false
 vim.g.autoformat = false
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "tex" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.wrap = true
+    vim.opt.spelllang = { "myEn", "miEs" }
+  end,
+})
