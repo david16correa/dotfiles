@@ -29,6 +29,7 @@ relevant_packages=(
   ntfs-3g
   rsync
   keyd
+  gum
   # sshfs
 )
 for package in ${relevant_packages[@]}; do
@@ -143,8 +144,10 @@ sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
 
 echo -e "[\033[33mINFO\033[0m] Configuring and enabling keyd..."
-sudo mkdir -p /etc/keyd
-sudo cp $configsPath/keyd.conf /etc/keyd/default.conf
+sudo mkdir -p /etc/keyd/profiles
+sudo cp -r $configsPath/keydProfiles/* /etc/keyd/profiles
+sudo ln -s profiles/keyboard/default /etc/keyd/keyboard.conf
+sudo ln -s profiles/mouse/default /etc/keyd/mouse.conf
 sudo systemctl enable --now keyd
 
 echo -e "[\033[33mINFO\033[0m] Configuring and enabling Thinkfan..."

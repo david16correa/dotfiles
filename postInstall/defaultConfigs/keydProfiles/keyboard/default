@@ -1,0 +1,120 @@
+# tip: use `keyd list-keys` to list keys
+# tip: use `sudo keyd monitor` to monitor key strokes
+
+#------------------------------------------------------------------------------#
+# these settings are applied across all keyboards; not my Logitech mice
+[ids]
+*
+-m:046d
+
+#------------------------------------------------------------------------------#
+[main]
+# Caps Lock acts as Esc when tapped, and as Ctrl when held
+capslock = overload(control,esc)
+
+# Left Alt is swapped with Left Meta
+leftmeta = layer(alt)
+leftalt = layer(meta)
+
+# Left Control and Copilot acts as Hyper
+leftcontrol = layer(hyper_L)
+f23 = layer(hyper_R)
+
+# Space acts as Space when tapped, and as my Alpha layer when held (lettermod
+# is used to avoid input lag while typing)
+space = lettermod(alpha, space, 150, 200)
+
+# Esc acts as Esc when tapped, and as Beta when held
+esc = overload(beta, esc)
+
+# Shift keys receive separate layers 
+leftshift = layer(shift_L)
+rightshift = layer(shift_R)
+
+#------------------------------------------------------------------------------#
+# Pressing both Shifts together toggles Caps Lock; otherwise they're just Shift
+[shift_L:S]
+rightshift = capslock
+
+[shift_R:S]
+leftshift = capslock
+
+#------------------------------------------------------------------------------#
+# Hyper keys
+[hyper_R:C-M]
+
+[hyper_L:C-S-A-M]
+
+#------------------------------------------------------------------------------#
+# alpha layer; vim-esque, media, F keys, etc
+[alpha]
+h = left
+j = down
+k = up
+l = right
+b = C-left
+w = C-right
+e = C-right
+/ = C-f
+u = pageup
+d = pagedown
+o = back
+i = forward
+x = delete
+g = home
+z = C-=
+
+m = playpause
+, = previoussong
+. = nextsong
+
+c = rightmeta
+; = compose
+
+1 = f1
+2 = f2
+3 = f3
+4 = f4
+5 = f5
+6 = f6
+7 = f7
+8 = f8
+9 = f9
+0 = f10
+
+# [alpha+shift], except I have two layers for shift
+[alpha+shift_L]
+m = mute
+, = volumedown
+. = volumeup
+x = backspace
+g = end
+z = C--
+[alpha+shift_R]
+m = mute
+, = volumedown
+. = volumeup
+x = backspace
+g = end
+z = C--
+
+[alpha+control]
+w = up
+a = left
+s = down
+d = right
+
+#------------------------------------------------------------------------------#
+# Numpad layer
+[beta]
+m = 0
+j = 1
+k = 2
+l = 3
+u = 4
+i = 5
+o = 6
+0 = /
+p = *
+; = -
+/ = +
