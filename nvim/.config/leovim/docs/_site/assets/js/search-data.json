@@ -1,0 +1,184 @@
+{"0": {
+    "doc": "CHANGELOG",
+    "title": "CHANGELOG",
+    "content": "All notable user-facing changes to this project are documented in this file. ",
+    "url": "/leovim/CHANGELOG/",
+    
+    "relUrl": "/CHANGELOG/"
+  },"1": {
+    "doc": "Autocompletion",
+    "title": "Autocompletion",
+    "content": " ",
+    "url": "/leovim/docs/coding/autocompletion/",
+    
+    "relUrl": "/docs/coding/autocompletion/"
+  },"2": {
+    "doc": "FAQ",
+    "title": "Frequently Asked Questions",
+    "content": "Here is a list of common questions, and their quick answers. | Frequently Asked Questions . | How do I keep leovim alongside my own configuration? | Why does yanking not sync with my system’s clipboard? | How do I see which plugins are installed? | How do I compile a LaTeX document? | Why is my latex document not compiling? | Why can’t I see my LaTeX document rendered? | Why do you use X plugin and not Y plugin I prefer? | . | . ",
+    "url": "/leovim/docs/faq/#frequently-asked-questions",
+    
+    "relUrl": "/docs/faq/#frequently-asked-questions"
+  },"3": {
+    "doc": "FAQ",
+    "title": "How do I keep leovim alongside my own configuration?",
+    "content": "Neovim lets you lauch it with a different configuration file by using the NVIM_APPNAME environmental variable when launching it with the command. NVIM_APPNAME=\"leovim\" nvim . This will look for a configuration file under ~/.config/leovim . Using this, you can clone . git clone https://github.com/leogabac/leovim.git ~/.config/leovim . and make the alias . alias leovim='NVIM_APPNAME=\"leovim\" nvim' . Then leovim will launch this confguration while nvim will keep your default. ",
+    "url": "/leovim/docs/faq/#how-do-i-keep-leovim-alongside-my-own-configuration",
+    
+    "relUrl": "/docs/faq/#how-do-i-keep-leovim-alongside-my-own-configuration"
+  },"4": {
+    "doc": "FAQ",
+    "title": "Why does yanking not sync with my system’s clipboard?",
+    "content": "To yank to your system’s clipboard you need to yank it to the + or * register. This can be done with the motion . \"+y . If it does not work, make sure to have a clipboard manager like xclip (For X11) or wl-copy (For Wayland) installed. ",
+    "url": "/leovim/docs/faq/#why-does-yanking-not-sync-with-my-systems-clipboard",
+    
+    "relUrl": "/docs/faq/#why-does-yanking-not-sync-with-my-systems-clipboard"
+  },"5": {
+    "doc": "FAQ",
+    "title": "How do I see which plugins are installed?",
+    "content": "Leovim uses lazy.nvim as its plugin manager. To see which packages are installed, run . :Lazy . ",
+    "url": "/leovim/docs/faq/#how-do-i-see-which-plugins-are-installed",
+    
+    "relUrl": "/docs/faq/#how-do-i-see-which-plugins-are-installed"
+  },"6": {
+    "doc": "FAQ",
+    "title": "How do I compile a LaTeX document?",
+    "content": "Leovim uses vimtex for LaTeX support. The default command for compilation is . :VimtexCompile . This will compile the document, references and all of the necessary dependencies. Then it will launch the default PDF viewer. This command is also mapped to . &lt;leader&gt;ll . ",
+    "url": "/leovim/docs/faq/#how-do-i-compile-a-latex-document",
+    
+    "relUrl": "/docs/faq/#how-do-i-compile-a-latex-document"
+  },"7": {
+    "doc": "FAQ",
+    "title": "Why is my latex document not compiling?",
+    "content": "Make sure to have a LaTeX distribution installed, I recommend texlive. Additionally, make sure to have the package latexmk installed as it is the default recipe for continuous compilation. ",
+    "url": "/leovim/docs/faq/#why-is-my-latex-document-not-compiling",
+    
+    "relUrl": "/docs/faq/#why-is-my-latex-document-not-compiling"
+  },"8": {
+    "doc": "FAQ",
+    "title": "Why can’t I see my LaTeX document rendered?",
+    "content": "By default, leovim uses zathura, a PDF viewer meant to work with LaTeX documents. Make sure to have it installed and in your PATH with some optional dependencies like zathura-pdf-mupdf . ",
+    "url": "/leovim/docs/faq/#why-cant-i-see-my-latex-document-rendered",
+    
+    "relUrl": "/docs/faq/#why-cant-i-see-my-latex-document-rendered"
+  },"9": {
+    "doc": "FAQ",
+    "title": "Why do you use X plugin and not Y plugin I prefer?",
+    "content": "Because people can actually have different opinions. ",
+    "url": "/leovim/docs/faq/#why-do-you-use-x-plugin-and-not-y-plugin-i-prefer",
+    
+    "relUrl": "/docs/faq/#why-do-you-use-x-plugin-and-not-y-plugin-i-prefer"
+  },"10": {
+    "doc": "FAQ",
+    "title": "FAQ",
+    "content": " ",
+    "url": "/leovim/docs/faq/",
+    
+    "relUrl": "/docs/faq/"
+  },"11": {
+    "doc": "Markdown",
+    "title": "Markdown",
+    "content": " ",
+    "url": "/leovim/docs/markdown/",
+    
+    "relUrl": "/docs/markdown/"
+  },"12": {
+    "doc": "LaTeX",
+    "title": "LaTeX",
+    "content": " ",
+    "url": "/leovim/docs/latex/",
+    
+    "relUrl": "/docs/latex/"
+  },"13": {
+    "doc": "General",
+    "title": "General",
+    "content": " ",
+    "url": "/leovim/docs/general/",
+    
+    "relUrl": "/docs/general/"
+  },"14": {
+    "doc": "Coding",
+    "title": "Coding",
+    "content": " ",
+    "url": "/leovim/docs/coding/",
+    
+    "relUrl": "/docs/coding/"
+  },"15": {
+    "doc": "UI",
+    "title": "User Interface (UI)",
+    "content": " ",
+    "url": "/leovim/docs/ui/#user-interface-ui",
+    
+    "relUrl": "/docs/ui/#user-interface-ui"
+  },"16": {
+    "doc": "UI",
+    "title": "UI",
+    "content": " ",
+    "url": "/leovim/docs/ui/",
+    
+    "relUrl": "/docs/ui/"
+  },"17": {
+    "doc": "Home",
+    "title": "leovim",
+    "content": "Leo’s neovim configuration. Get started now View it on GitHub . There is a lot of missing documentation. Work in progress. Welcome to leovim. At first I made it for myself when I wanted to heavily modify the behavior of my Neovim distribution at the time, after changing too much, I decided to make my own configuration. This is not a neovim distribution, but a template that you can use, modify, and make your own. In fact, I encourage you to keep and use this configuration along your own. To do this, go to the FAQ section. ",
+    "url": "/leovim/#leovim",
+    
+    "relUrl": "/#leovim"
+  },"18": {
+    "doc": "Home",
+    "title": "Features",
+    "content": ". | Simplicity | Preconfigured LaTeX support | . ",
+    "url": "/leovim/#features",
+    
+    "relUrl": "/#features"
+  },"19": {
+    "doc": "Home",
+    "title": "Getting started",
+    "content": "Requirements . Mandatory . | neovim &gt; 0.10.0 | . Optional . | A latex distribution, like texlive with the latexmk package. | Formatters like prettier. | . Installation . Clone the repopository . git clone https://github.com/leogabac/leovim.git ~/.config/nvim . and launch . nvim . Documentation . To see what all of the plugins leovim has, and how to work with some of them, you can go to the Documentation. License . Leovim is distributed by an MIT license. Thank you to the contributors of leovim! . | | . ",
+    "url": "/leovim/#getting-started",
+    
+    "relUrl": "/#getting-started"
+  },"20": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/leovim/",
+    
+    "relUrl": "/"
+  },"21": {
+    "doc": "Keybindings",
+    "title": "Keybindings",
+    "content": " ",
+    "url": "/leovim/docs/general/keybindings/",
+    
+    "relUrl": "/docs/general/keybindings/"
+  },"22": {
+    "doc": "LSP",
+    "title": "Language Server Protocol (LSP)",
+    "content": " ",
+    "url": "/leovim/docs/coding/lsp/#language-server-protocol-lsp",
+    
+    "relUrl": "/docs/coding/lsp/#language-server-protocol-lsp"
+  },"23": {
+    "doc": "LSP",
+    "title": "Recommended LSPs",
+    "content": ". | C: clangd | Python: pylsp | Lua: lua_ls | Markdown: marksman | Rust: rust_analyzer | . ",
+    "url": "/leovim/docs/coding/lsp/#recommended-lsps",
+    
+    "relUrl": "/docs/coding/lsp/#recommended-lsps"
+  },"24": {
+    "doc": "LSP",
+    "title": "LSP",
+    "content": " ",
+    "url": "/leovim/docs/coding/lsp/",
+    
+    "relUrl": "/docs/coding/lsp/"
+  },"25": {
+    "doc": "Plugins",
+    "title": "Plugins",
+    "content": " ",
+    "url": "/leovim/docs/general/plugins/",
+    
+    "relUrl": "/docs/general/plugins/"
+  }
+}
