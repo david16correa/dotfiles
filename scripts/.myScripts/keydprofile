@@ -1,0 +1,26 @@
+#!/bin/bash
+
+PROFILE=$(gum choose $(basename -a /etc/keyd/profiles/keyboard/*) "shut down keyd")
+
+if [ "$PROFILE" = "shut down keyd" ]; then
+  sudo systemctl stop keyd
+
+  echo -e "keyd stopped!"
+else
+  # the keyboard profile is set
+  sudo ln -sf profiles/keyboard/$PROFILE /etc/keyd/keyboard.conf
+
+  # if possible, the mouse profile is set as well
+  if [[ -f "/etc/keyd/profiles/mouse/$PROFILE" ]]; then
+    sudo ln -sf profiles/mouse/$PROFILE /etc/keyd/mouse.conf
+  fi
+
+  # if keyd is active, it gets reloaded
+  if systemctl is-active --quiet keyd; then
+    sudo keyd reload
+  else
+    sudo systemctl start keyd
+  fi
+
+  echo -e "Now using: \033[33m$PROFILE\033[0m profile"
+fi
