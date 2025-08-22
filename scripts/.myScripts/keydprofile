@@ -1,26 +1,46 @@
 #!/bin/bash
 
-PROFILE=$(gum choose $(basename -a /etc/keyd/profiles/keyboard/*) "shut down keyd")
+DEVICE=$(gum choose --header "choose a device:" $(basename -a /etc/keyd/profiles/*) "stop keyd")
+[ -z "$DEVICE" ] && { echo "aborting..."; exit 0; }
 
-if [ "$PROFILE" = "shut down keyd" ]; then
+if [ "$DEVICE" = "stop keyd" ]; then
+  # keyd is stopped
   sudo systemctl stop keyd
+  echo -e "\033[33mkeyd\033[0m stopped!"
+  exit 0
+fi
 
-  echo -e "keyd stopped!"
+PROFILE=$(gum choose --header "choose a profile:" $(basename -a /etc/keyd/profiles/$DEVICE/* | grep -v layers) "disable $DEVICE")
+[ -z "$PROFILE" ] && { echo "aborting..."; exit 0; }
+
+if [ "$PROFILE" = "disable $DEVICE" ]; then
+  # the config for the device is deleted
+  sudo rm /etc/keyd/$DEVICE.conf
+  echo -e "\033[33m$DEVICE\033[0m disabled!"
 else
-  # the keyboard profile is set
-  sudo ln -sf profiles/keyboard/$PROFILE /etc/keyd/keyboard.conf
+  SETALLDEVICES=$(gum choose --header "change all devices to $PROFILE?" "yes" "no")
+  [ -z "$SETALLDEVICES" ] && { echo "aborting..."; exit 0; }
 
-  # if possible, the mouse profile is set as well
-  if [[ -f "/etc/keyd/profiles/mouse/$PROFILE" ]]; then
-    sudo ln -sf profiles/mouse/$PROFILE /etc/keyd/mouse.conf
-  fi
+  # the config for the device is updated
+  sudo ln -sf profiles/$DEVICE/$PROFILE /etc/keyd/$DEVICE.conf
+  echo -e "\033[33m$DEVICE\033[0m profile set to: \033[33m$PROFILE\033[0m"
+fi
 
-  # if keyd is active, it gets reloaded
-  if systemctl is-active --quiet keyd; then
-    sudo keyd reload
-  else
-    sudo systemctl start keyd
-  fi
+if [ "$SETALLDEVICES" = "yes" ]; then
+  # the config for all remaining devices is updated
+  for AUXDEVICE in $(basename -a /etc/keyd/profiles/* | grep -v $DEVICE); do
+    if [[ -f "/etc/keyd/profiles/$AUXDEVICE/$PROFILE" ]]; then
+      sudo ln -sf profiles/$AUXDEVICE/$PROFILE /etc/keyd/$AUXDEVICE.conf
+      echo -e "\033[33m$AUXDEVICE\033[0m profile set to: \033[33m$PROFILE\033[0m"
+    else
+      echo -e "\033[33m$PROFILE\033[0m profile for \033[33m$AUXDEVICE\033[0m not found!"
+    fi
+  done
+fi
 
-  echo -e "Now using: \033[33m$PROFILE\033[0m profile"
+# if keyd is active, it gets reloaded. Otherwise the service is restarted
+if systemctl is-active --quiet keyd; then
+  sudo keyd reload
+else
+  sudo systemctl start keyd
 fi
