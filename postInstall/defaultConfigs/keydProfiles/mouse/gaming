@@ -10,13 +10,22 @@ m:046d
 # Logitech MX Master 3S Mouse
 mouse1 = f
 mouse2 = e
-mouseforward = space
+mouseforward = z
+
+mouse1+mouse2 = layer(alpha)
 
 # Logitech G502 HERO Gaming Mouse
 1 = f
 2 = e
-3 = space
+3 = z
+
 4 = c
 5 = q
 6 = esc
 7 = r
+
+1+2 = layer(alpha)
+
+[alpha]
+6 = S-tab
+leftmouse = playpause

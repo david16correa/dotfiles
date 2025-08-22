@@ -30,6 +30,7 @@ relevant_packages=(
   rsync
   keyd
   gum
+  sbctl
   # sshfs
 )
 for package in ${relevant_packages[@]}; do

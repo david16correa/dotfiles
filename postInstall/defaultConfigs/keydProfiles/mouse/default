@@ -16,27 +16,42 @@ mouseforward = layer(gamma)
 1 = overload(alpha,mouse1)
 2 = overload(beta,mouse2)
 3 = layer(gamma)
+
 4 = volumedown
 5 = volumeup
-6 = M-d
-7 = M-f
+6 = noop
+7 = noop
 
 #------------------------------------------------------------------------------#
-[alpha]
+# productivity layer; copy, paste, undo, scroll to zoom
+[alpha:C]
 leftmouse = C-insert
+middlemouse = C-z
 rightmouse = S-insert
 
+4 = S-delete
+5 = C-insert
+
 #------------------------------------------------------------------------------#
-[beta]
+# media and workspaces layer; playpause, next song, scroll through workspaces
+[beta:M]
 leftmouse = playpause
+middlemouse = M-a
 rightmouse = nextsong
 
+4 = previoussong
+5 = nextsong
+
+#------------------------------------------------------------------------------#
+# misc layer; cut, previous song, redo
 [alpha+beta]
 leftmouse = S-delete
+middlemouse = C-S-z
 rightmouse = previoussong
 
 #------------------------------------------------------------------------------#
-[gamma:M]
+# audio layer; volume up/down, mute, sideways scroll
+[gamma:S]
 leftmouse = volumedown
 middlemouse = mute
 rightmouse = volumeup
