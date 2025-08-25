@@ -17,13 +17,16 @@ if ! tmux has-session -t IT 2>/dev/null; then
   tmux new-session -d -s IT
 
   tmux new-window -t IT -n cpu
-  tmux send-keys -t IT:cpu 'btop' Enter
+  tmux send-keys -t IT:cpu 'btop --update 300000' Enter
 
   tmux new-window -t IT -n gpu
   tmux send-keys -t IT:gpu 'clear && nvidia-smi -L && nvidia-smi' Enter
 
   tmux new-window -t IT -n jctl
-  tmux send-keys -t IT:jctl 'clear && journalctl -b --priority=3' Enter
+  tmux send-keys -t IT:jctl 'clear && systemctl --failed && echo "" && journalctl -b --priority=3 --no-pager' Enter
+
+  tmux new-window -t IT -n db
+  tmux send-keys -t IT:db 'dropbox-cli start && watch -n 3600 "dropbox-cli status"' Enter
 
   tmux new-window -t IT -n ipynb
   tmux send-keys -t IT:ipynb 'clear && cd $HOME/Dropbox && source ~/.virtualenvs/pyglobal/bin/activate && jupyter notebook' Enter
