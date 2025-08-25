@@ -66,7 +66,7 @@ cli=(
   stow
   openssh
   yazi
-  kitty
+  kitty-terminfo
   wezterm
   zoxide
   fzf
