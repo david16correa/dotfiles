@@ -68,7 +68,7 @@ export JULIA_NUM_THREADS=$(nproc) # by default julia will use all threads
 # landing shell
 if [[ -n "$PS1" && -z "$TMUX" ]]; then # if not in tmux
   if [[ -n "$SSH_CONNECTION" ]]; then # if connected through ssh
-    $HOME/.myScripts/genTmux
+    $HOME/.myScripts/gentmux
   else
     clear && fastfetch
   fi
