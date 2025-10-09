@@ -45,6 +45,8 @@ alias sideBySideVid="ffmpeg -i left.mp4 -i right.mp4 -filter_complex hstack outp
 alias db="dropbox-cli"
 alias python='python3'
 alias pyglobal="source ~/.virtualenvs/pyglobal/bin/activate"
+alias tks="tmux kill-server"
+alias tat="tmux a -t"
 
 # private stuff
 if [ -f "$HOME/.zshrc.private" ]; then
