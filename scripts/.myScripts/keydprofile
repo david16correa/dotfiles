@@ -1,12 +1,45 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
-DEVICE=$(gum choose --header "choose a device:" $(basename -a /etc/keyd/profiles/*) "stop keyd")
+targetColor="\033[36m"
+infoColor="\033[32m"
+errorColor="\033[31m"
+resetSeq="\033[0m"
+
+DEVICE=$(gum choose --header "choose a device:" $(basename -a /etc/keyd/profiles/*) "auxiliary options...")
 [ -z "$DEVICE" ] && { echo "aborting..."; exit 0; }
 
-if [ "$DEVICE" = "stop keyd" ]; then
-  # keyd is stopped
-  sudo systemctl stop keyd
-  echo -e "\033[33mkeyd\033[0m stopped!"
+if [ "$DEVICE" = "auxiliary options..." ]; then
+  # the extra options are shown
+  DEVICE=$(gum choose --header "choose an option:" "print current configs" "toggle keyd")
+  [ -z "$DEVICE" ] && { echo "aborting..."; exit 0; }
+fi
+
+if [ "$DEVICE" = "print current configs" ]; then
+  # we check if keyd is active
+  if ! systemctl is-active --quiet keyd; then
+    echo -e "\033[33mkeyd is not active!${resetSeq}"
+    exit 0
+  fi
+
+  # the the link of each configuration file is followed to determine the profile
+  for configFile in /etc/keyd/*conf; do
+    device=$(basename "$configFile" .conf)
+    linkTarget=$(readlink $configFile)
+    profile=$(basename $linkTarget)
+    echo -e "${targetColor}$device${resetSeq} profile: ${infoColor}$profile${resetSeq}"
+  done
+  exit 0
+fi
+
+if [ "$DEVICE" = "toggle keyd" ]; then
+  # keyd is started/stopped, according to its current state
+  if systemctl is-active --quiet keyd; then
+    sudo systemctl stop keyd
+    echo -e "${targetColor}keyd${resetSeq} stopped!"
+  else
+    sudo systemctl start keyd
+    echo -e "${targetColor}keyd${resetSeq} started!"
+  fi
   exit 0
 fi
 
@@ -16,14 +49,14 @@ PROFILE=$(gum choose --header "choose a profile:" $(basename -a /etc/keyd/profil
 if [ "$PROFILE" = "disable $DEVICE" ]; then
   # the config for the device is deleted
   sudo rm /etc/keyd/$DEVICE.conf
-  echo -e "\033[33m$DEVICE\033[0m disabled!"
+  echo -e "${targetColor}$DEVICE${resetSeq} disabled!"
 else
   SETALLDEVICES=$(gum choose --header "change all devices to $PROFILE?" "yes" "no")
   [ -z "$SETALLDEVICES" ] && { echo "aborting..."; exit 0; }
 
   # the config for the device is updated
   sudo ln -sf profiles/$DEVICE/$PROFILE /etc/keyd/$DEVICE.conf
-  echo -e "\033[33m$DEVICE\033[0m profile set to: \033[33m$PROFILE\033[0m"
+  echo -e "${targetColor}$DEVICE${resetSeq} profile set to: ${infoColor}$PROFILE${resetSeq}"
 fi
 
 if [ "$SETALLDEVICES" = "yes" ]; then
@@ -31,9 +64,9 @@ if [ "$SETALLDEVICES" = "yes" ]; then
   for AUXDEVICE in $(basename -a /etc/keyd/profiles/* | grep -v $DEVICE); do
     if [[ -f "/etc/keyd/profiles/$AUXDEVICE/$PROFILE" ]]; then
       sudo ln -sf profiles/$AUXDEVICE/$PROFILE /etc/keyd/$AUXDEVICE.conf
-      echo -e "\033[33m$AUXDEVICE\033[0m profile set to: \033[33m$PROFILE\033[0m"
+      echo -e "${targetColor}$AUXDEVICE${resetSeq} profile set to: ${infoColor}$PROFILE${resetSeq}"
     else
-      echo -e "\033[33m$PROFILE\033[0m profile for \033[33m$AUXDEVICE\033[0m not found!"
+      echo -e "${errorColor}$PROFILE${resetSeq} profile for ${errorColor}$AUXDEVICE${resetSeq} not found!"
     fi
   done
 fi

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# zerotier is toggled with tailscale
+if systemctl is-active --quiet zerotier-one; then
+  sudo systemctl stop zerotier-one
+  sudo systemctl start tailscaled
+  echo -e "Now using: \033[33mtailscale\033[0m!"
+else
+  sudo systemctl stop tailscaled
+  sudo systemctl start zerotier-one
+  echo -e "Now using: \033[33mzerotier\033[0m!"
+fi
