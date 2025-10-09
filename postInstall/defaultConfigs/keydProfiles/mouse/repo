@@ -8,9 +8,9 @@ m:046d
 [main]
 
 # Logitech MX Master 3S Mouse
-mouse1 = layer(control)
-mouse2 = layer(shift)
-mouseforward = e
+mouse1 = f
+mouse2 = e
+mouseforward = z
 
 mouse1+mouse2 = layer(alpha)
 
@@ -19,9 +19,9 @@ mouse1+mouse2 = layer(alpha)
 2 = layer(shift)
 3 = e
 
-4 = f
+4 = q
 5 = z
-6 = q
+6 = f
 7 = r
 
 1+2 = layer(alpha)

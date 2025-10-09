@@ -18,15 +18,11 @@ leftalt = layer(meta)
 leftcontrol = layer(hyper)
 leftmeta+leftshift+f23 = layer(hyper)
 
-# Space acts as Space when tapped, and as Alpha when held
-space = lettermod(alpha, space, 150, 200)
+# Right Alt acts as Alpha
+rightalt = layer(alpha)
 
-# Esc acts as Esc when tapped, and as Beta when held
-esc = overload(beta, esc)
-
-# Caps Lock acts as Esc when tapped, and as Gamma when held
-capslock = overload(gamma,esc)
-
+# Caps Lock acts as Control
+capslock = layer(control)
 
 #------------------------------------------------------------------------------#
 # layers are included

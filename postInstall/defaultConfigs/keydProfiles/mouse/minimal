@@ -8,13 +8,13 @@ m:046d
 [main]
 
 # Logitech MX Master 3S Mouse
-mouse1 = overload(control,mouse1)
-mouse2 = overload(meta,mouse2)
+mouse1 = overload(control,C-S-z)
+mouse2 = overload(meta,C-z)
 mouseforward = overload(shift,enter)
 
 # Logitech G502 HERO Gaming Mouse
-1 = overload(control,mouse1)
-2 = overload(meta,mouse2)
+1 = overload(control,C-z)
+2 = overload(meta,C-S-z)
 3 = overload(shift,enter)
 
 4 = volumedown
@@ -23,41 +23,30 @@ mouseforward = overload(shift,enter)
 7 = noop
 
 #------------------------------------------------------------------------------#
-# productivity layer; copy, paste, undo, scroll to zoom
 [control]
-leftmouse = C-insert
-middlemouse = C-z
-rightmouse = S-insert
 
 4 = S-delete
 5 = C-insert
 
 #------------------------------------------------------------------------------#
-# media and workspaces layer; playpause, next song, scroll through workspaces
 [meta]
-leftmouse = playpause
-middlemouse = M-a
-rightmouse = nextsong
 
 4 = previoussong
 5 = nextsong
 
 #------------------------------------------------------------------------------#
-# misc layer; cut, previous song, redo
+# media layer
 [control+meta]
-leftmouse = S-delete
-middlemouse = C-S-z
-rightmouse = previoussong
+leftmouse = playpause
+rightmouse = nextsong
 
 4 = esc
 5 = enter
+6 = previoussong
+7 = nextsong
 
 #------------------------------------------------------------------------------#
-# audio layer; volume up/down, mute, sideways scroll
 [shift]
-leftmouse = volumedown
-middlemouse = mute
-rightmouse = volumeup
 
 4 = brightnessdown
 5 = brightnessup

@@ -9,8 +9,6 @@
 
 #------------------------------------------------------------------------------#
 [main]
-# Caps Lock acts as Ctrl
-capslock = layer(control)
 
 # Left Alt is swapped with Left Meta
 leftmeta = layer(alt)
@@ -20,11 +18,14 @@ leftalt = layer(meta)
 leftcontrol = layer(hyper)
 leftmeta+leftshift+f23 = layer(hyper)
 
-# Right Alt is my Alpha key 
+# Right Alt acts as Alpha
 rightalt = layer(alpha)
 
 # Esc acts as Esc when tapped, and as Beta when held
 esc = overload(beta, esc)
+
+# Caps Lock acts as Control
+capslock = layer(control)
 
 #------------------------------------------------------------------------------#
 # layers are included

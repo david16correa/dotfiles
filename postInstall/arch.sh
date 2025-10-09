@@ -78,6 +78,7 @@ done
 echo -e "[\033[33mINFO\033[0m] Installing desktop software..."
 desktop_soft=(
   inkscape
+  libreoffice-still
   obs-studio
   signal-desktop
   torbrowser-launcher
@@ -113,8 +114,9 @@ sudo systemctl start zerotier-one.service
 
 echo -e "[\033[33mINFO\033[0m] Installing AUR packages..."
 aur_packages=(
+  ttf-adwaita-mono-nerd
+  ttf-times-new-roman
   brave-bin
-  onlyoffice-bin
   zotero-bin
   obsidian
   spotify
@@ -126,6 +128,11 @@ aur_packages=(
   oh-my-posh
   apple_cursor
   thinkfan
+  elecwhat-bin
+  gdlauncher-bin
+  minecraft-launcher
+  protonplus
+  ventoy-bin
 )
 for package in ${aur_packages[@]}; do
     yay -S --noconfirm ${package}

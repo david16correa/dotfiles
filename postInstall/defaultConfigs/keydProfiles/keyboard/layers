@@ -1,21 +1,17 @@
 #------------------------------------------------------------------------------#
-# Control+; = Backspace
-[control]
-; = backspace
-
-#------------------------------------------------------------------------------#
-# Pressing both Shifts together toggles Caps Lock; otherwise they're just Shift
+# Pressing both Shifts together toggles Caps Lock
 [shift]
 rightshift = capslock
 leftshift = capslock
 
 #------------------------------------------------------------------------------#
-# Hyper keys
+# Hyper layer
 [hyper:C-S-A-M]
 
 #------------------------------------------------------------------------------#
-# alpha layer; vim-esque, media, home row mods, F keys, etc
+# Alpha layer; vim-esque, media, home row mods, F keys, etc
 [alpha]
+# vim-esque
 h = left
 j = down
 k = up
@@ -26,24 +22,29 @@ e = C-right
 / = C-f
 o = back
 i = forward
-u = pageup
+u = C-z
+r = C-S-z
 x = delete
 g = home
 z = C-=
+y = C-insert
+p = S-insert
+] = pagedown
+[ = pageup
 
+# media
 m = playpause
-, = previoussong
-. = nextsong
+, = volumedown
+. = volumeup
 
-a = layer(shift)
-s = layer(control)
-d = layer(alt)
-f = layer(meta)
-
-c = rightmeta
+# misc - compose key (configured as Right Meta in GNOME), enter, menu key, print screen, change input source (configured as Meta + f13 in GNOME)
+\ = rightmeta
 ; = enter
 ' = compose
+enter = print
+tab = M-f13
 
+# f-keys
 1 = f1
 2 = f2
 3 = f3
@@ -57,23 +58,43 @@ c = rightmeta
 - = f11
 = = f12
 
+# home row mods (special layers are used to avoid conficts)
+a = layer(hrControl)
+s = layer(hrShift)
+d = layer(hrAlt)
+f = layer(hrMeta)
+
+[hrControl:C]
+[hrShift:S]
+[hrAlt:A]
+[hrMeta:M]
+
 [alpha+shift]
+# vimesque
+h = home
+j = pagedown
+k = pageup
+l = end
 x = backspace
 g = end
 z = C--
-u = pagedown
-m = mute
-, = volumedown
-. = volumeup
 
-[alpha+control]
-w = up
-a = left
-s = down
-d = right
+# media
+m = mute
+, = previoussong
+. = nextsong
+
+# tiling assistant stuff
+[alpha+hrMeta]
+u = C-M-u
+i = C-M-i
+y = C-M-y
+o = C-M-o
+n = C-M-n
+. = C-M-.
 
 #------------------------------------------------------------------------------#
-# betea layer; numpad
+# Beta layer; numpad
 [beta]
 m = 0
 j = 1
@@ -86,3 +107,15 @@ o = 6
 p = *
 ; = -
 / = +
+
+#------------------------------------------------------------------------------#
+# Gamma layer; misc
+[gamma:C]
+; = backspace
+
+# gaming arrows
+[alpha+gamma]
+w = up
+a = left
+s = down
+d = right
