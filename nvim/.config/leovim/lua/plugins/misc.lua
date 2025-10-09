@@ -24,6 +24,7 @@ return {
     init = function()
       -- VimTeX configuration goes here, e.g.
       -- vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_view_general_viewer = "evince"
       vim.g.vimtex_compiler_method = "latexmk"
 
       vim.keymap.set("n", "<leader>ll", ":VimtexCompile<CR>", { desc = "vimtex-compile" })
