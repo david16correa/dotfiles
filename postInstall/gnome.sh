@@ -27,6 +27,7 @@ extensions=(
   tiling-assistant
   wiggle
   appindicator
+  vitals
   search-light-git
 )
 for extension in ${extensions[@]}; do
