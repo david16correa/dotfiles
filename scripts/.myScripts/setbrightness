@@ -1,4 +1,4 @@
 #!/bin/bash
 
-LEVEL=$(gum choose "25" "50" "75" "100")
+LEVEL=$(gum choose "0" "25" "50" "75" "100")
 ddcutil setvcp 10 $LEVEL
