@@ -34,7 +34,7 @@
         },
         {
             "type": "packages",
-            "key": "",
+            "key": "󰏖",
             "keyColor": "yellow"
         },
         {
@@ -57,6 +57,11 @@
         {
             "type": "de",
             "key": "",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wm",
+            "key": "󱪳",
             "keyColor": "blue"
         },
         {
@@ -88,8 +93,21 @@
             "key": "󰍛",
             "keyColor": "green"
         },
+        {
+            "type": "disk",
+            "folders": ["/"],
+            "key": "󰉋",
+            "keyColor": "green",
+            "format": "root: {3} full",
+        },
+        {
+            "type": "disk",
+            "folders": ["/home"],
+            "key": "󱂵",
+            "keyColor": "green",
+            "format": "home: {3} full",
+        },
         "break",
         "colors",
-        "break",
     ]
 }
