@@ -1,0 +1,13 @@
+[StreamInputs]
+inputDevice=alsa_input.pci-0000_c4_00.6.HiFi__Mic1__source
+
+[StreamOutputs]
+mostUsedPresets=ThinkPad P14s G4 - Dynamic
+outputDevice=alsa_output.pci-0000_c4_00.6.HiFi__Speaker__sink
+plugins=gate#0,convolver#0
+usedPresets=ThinkPad P14s G4 - Dynamic:1
+
+[Window]
+height=1192
+lastLoadedOutputPreset=ThinkPad P14s G4 - Dynamic
+width=1240
