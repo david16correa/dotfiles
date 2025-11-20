@@ -53,7 +53,7 @@ output "DP-2"{
   position x=1920 y=0
 }
 // Samsung@Tec
-output "HDMI-A-1"{
+output "Samsung Electric Company S22F350 H4ZHC02955"{
   mode "1920x1080@60.000"
   scale 1
   position x=0 y=-1080
@@ -158,7 +158,7 @@ binds {
   Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                    { quit; }
 
   // favourite apps
-  Mod+1                      hotkey-overlay-title="Open (or files) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
+  Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "/home/david/.myScripts/focusOrLaunch kitty kitty"; }
   Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen zen-browser"; }
   Mod+4                      hotkey-overlay-title="Open (or focus) Spotify"      { spawn-sh "/home/david/.myScripts/focusOrLaunch Spotify spotify-launcher"; }
@@ -168,7 +168,7 @@ binds {
 
   // screenshots
   Print        { screenshot; }
-  Ctrl+Print   { screenshot-screen; }
+  Shift+Print   { screenshot-screen; }
   Alt+Print    { screenshot-window; }
 
   // change keyboard layout
