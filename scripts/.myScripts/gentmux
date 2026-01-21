@@ -16,8 +16,8 @@ fi
 if ! tmux has-session -t IT 2>/dev/null; then
   tmux new-session -d -s IT
 
-  tmux new-window -t IT -n tlp
-  tmux send-keys -t IT:tlp 'watch -n 60 "tlp-stat -t && tlp-stat -p"' Enter
+  # tmux new-window -t IT -n tlp
+  # tmux send-keys -t IT:tlp 'watch -n 60 "tlp-stat -t && tlp-stat -p"' Enter
 
   tmux new-window -t IT -n jctl
   tmux send-keys -t IT:jctl 'clear && systemctl --failed && echo "" && journalctl -b --priority=3 --no-pager' Enter
