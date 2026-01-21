@@ -16,10 +16,10 @@ else
   compinit -C  # Skip compaudit completely if recent cache exists
 fi
 
-# ensure proper Wayland socket setup
-if [ -z "$WAYLAND_DISPLAY" ] || [ ! -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" ]; then
-  export WAYLAND_DISPLAY=$(basename "$(ls -t $XDG_RUNTIME_DIR/wayland-* | head -n1)")
-fi
+# # ensure proper Wayland socket setup
+# if [ -z "$WAYLAND_DISPLAY" ] || [ ! -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" ]; then
+#   export WAYLAND_DISPLAY=$(basename "$(ls -t $XDG_RUNTIME_DIR/wayland-* | head -n1)")
+# fi
 
 
 # >>> aniadir cosas a path >>>
@@ -39,7 +39,7 @@ source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 # >>> aliases y preferencias varias >>>
 alias reload='source ~/.zshrc'
 alias editrc='nvim ~/.zshrc && source ~/.zshrc'
-alias editniri='nvim ~/.config/niri/config.kdl'
+alias editniri='nvim ~/.dotfiles/niri/.config/niri/config.kdl'
 alias cd='z'
 alias ls='lsd' # lsd stuff
 alias l='ls -l' # lsd stuff
