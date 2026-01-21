@@ -5,7 +5,10 @@ inputDevice=alsa_input.pci-0000_c4_00.6.HiFi__Mic1__source
 mostUsedPresets=ThinkPad P14s G4 - Dynamic
 outputDevice=alsa_output.pci-0000_c4_00.6.HiFi__Speaker__sink
 plugins=gate#0,convolver#0
-usedPresets=ThinkPad P14s G4 - Dynamic:1
+usedPresets=ThinkPad P14s G4 - Dynamic:3
+
+[Style]
+forceBreezeTheme=false
 
 [Window]
 height=1192
