@@ -1,0 +1,62 @@
+input {
+    keyboard {
+        xkb {
+          layout "us(symbolic),latam"
+          options "compose:rwin"
+        }
+        repeat-delay 300
+        repeat-rate 100
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        accel-speed 0.5
+    }
+
+    mouse {
+        natural-scroll
+    }
+
+    trackpoint {
+        accel-speed 0.0
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // scroll-button-lock
+        // middle-emulation
+    }
+
+    // warp-mouse-to-focus
+    // focus-follows-mouse
+    // focus-follows-mouse max-scroll-amount="49%"
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+// use `niri msg outputs` to see monitors currently in use
+// ThinkPad
+output "eDP-1"{
+  mode "1920x1200@60.026"
+  variable-refresh-rate
+  scale 1
+  position x=0 y=0
+}
+// MG300
+output "PNP(GGF) MG300 0000000000001"{
+  mode "1920x1080@74.986"
+  scale 1
+  position x=1920 y=0
+}
+// Samsung@Tec
+output "Samsung Electric Company S22F350 H4ZHC02955"{
+  mode "1920x1080@60.000"
+  scale 1
+  position x=0 y=-1080
+}
+
+output "Sharp Corporation SHARP HDMI Unknown"{
+  mode "3840x2160@60.000"
+  scale 1
+  position x=1920 y=0
+}
+

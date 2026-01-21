@@ -1,0 +1,56 @@
+// overall rules for windows
+prefer-no-csd
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+layout {
+    gaps 8
+
+    center-focused-column "never"
+    always-center-single-column
+    empty-workspace-above-first
+
+    preset-column-widths {
+        // proportion 0.75
+        // proportion 1.0
+        proportion 0.66667
+        proportion 0.5
+        proportion 0.33333
+        // proportion 0.25
+        // fixed 1920
+    }
+
+    default-column-width { proportion 0.66667; }
+
+    focus-ring {
+        width 4
+        // active-color "#ffb86b"
+        // inactive-color "#e0c1a3"
+        active-color "#7aa2f7"
+        inactive-color "#c0caf5"
+    }
+
+    struts {
+        // left 64
+        // right 64
+        top -4
+        bottom -4
+    }
+}
+
+// exceptions to tiling
+window-rule {
+    match app-id=r#"firefox$"#                      title="^Picture-in-Picture$"
+    match app-id=r#"zen-browser$"#                  title="^Picture-in-Picture$"
+    match app-id="org.gnome.NautilusPreviewer"
+    match app-id="org.gnome.Loupe"                  title="display.png"
+    match app-id="steam"                            title="Recordings.*Screenshots"
+    match app-id="__main__.py"                      title="LaTeX.*TexText"
+    match app-id="zoom"                             title="meeting.*popup"
+    match app-id="org.inkscape.Inkscape"            title="import"
+    match app-id="nl.hjdskes.gcolor3"
+
+    open-floating true
+}
