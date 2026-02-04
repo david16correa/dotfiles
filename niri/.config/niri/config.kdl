@@ -1,17 +1,21 @@
-spawn-sh-at-startup "qs -c noctalia-shell"
-spawn-at-startup "xwayland-satellite"
-spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
-spawn-at-startup "/home/david/.myScripts/system-sounds"
-spawn-sh-at-startup "vicinae server"
+// docs: https://yalter.github.io/niri/Configuration%3A-Introduction.html
+
+// spawn at startup
+include "./cfg/autostart.kdl"
+
+// animation tweaks
+include "./cfg/animation.kdl"
 
 // keyboard, touchpad, mouse, etc, and displays
-include "io.kdl"
+include "./cfg/input.kdl"
+include "./cfg/output.kdl"
 
 // window settings
-include "windows.kdl"
+include "./cfg/rules.kdl"
+include "./cfg/layout.kdl"
 
 // keybinds
-include "binds.kdl"
+include "./cfg/keybinds.kdl"
 
 // misc
-include "misc.kdl"
+include "./cfg/misc.kdl"

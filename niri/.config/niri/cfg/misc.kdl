@@ -1,7 +1,14 @@
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
+prefer-no-csd
+
 environment {
     DISPLAY ":0"
+}
+
+xwayland-satellite {
+    // off
+    path "xwayland-satellite"
 }
 
 // Hide the cursor after one second of inactivity.

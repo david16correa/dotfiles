@@ -1,0 +1,4 @@
+spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
+spawn-at-startup "/home/david/.myScripts/system-sounds"
+spawn-sh-at-startup "vicinae server"
