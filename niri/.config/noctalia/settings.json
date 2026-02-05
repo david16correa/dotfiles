@@ -87,8 +87,9 @@
                     "showCpuFreq": false,
                     "showCpuTemp": true,
                     "showCpuUsage": false,
-                    "showDiskAsFree": false,
+                    "showDiskAvailable": false,
                     "showDiskUsage": false,
+                    "showDiskUsageAsPercent": false,
                     "showGpuTemp": false,
                     "showLoadAverage": false,
                     "showMemoryAsPercent": false,
@@ -225,15 +226,15 @@
             },
             {
                 "enabled": true,
+                "id": "brightness-card"
+            },
+            {
+                "enabled": false,
                 "id": "weather-card"
             },
             {
                 "enabled": true,
                 "id": "media-sysmon-card"
-            },
-            {
-                "enabled": true,
-                "id": "brightness-card"
             }
         ],
         "diskPath": "/",
@@ -311,8 +312,8 @@
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
         "animationDisabled": false,
-        "animationSpeed": 1,
-        "autoStartAuth": false,
+        "animationSpeed": 2,
+        "autoStartAuth": true,
         "avatarImage": "/home/david/Pictures/me/grinning coffee.jpg",
         "boxRadiusRatio": 1,
         "compactLockScreen": true,
@@ -352,7 +353,7 @@
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "monterrey",
+        "name": "Monterrey",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": true,
@@ -380,6 +381,8 @@
     },
     "notifications": {
         "backgroundOpacity": 1,
+        "batteryCriticalThreshold": 5,
+        "batteryWarningThreshold": 20,
         "criticalUrgencyDuration": 3,
         "enableKeyboardLayoutToast": false,
         "enableMediaToast": false,
@@ -470,12 +473,14 @@
         "showHeader": false,
         "showNumberLabels": true
     },
-    "settingsVersion": 46,
+    "settingsVersion": 47,
     "systemMonitor": {
         "cpuCriticalThreshold": 90,
-        "cpuPollingInterval": 3000,
+        "cpuPollingInterval": 1000,
         "cpuWarningThreshold": 80,
         "criticalColor": "",
+        "diskAvailCriticalThreshold": 10,
+        "diskAvailWarningThreshold": 20,
         "diskCriticalThreshold": 90,
         "diskPollingInterval": 1750,
         "diskWarningThreshold": 80,
@@ -486,13 +491,12 @@
         "gpuWarningThreshold": 80,
         "loadAvgPollingInterval": 3000,
         "memCriticalThreshold": 90,
-        "memPollingInterval": 2000,
+        "memPollingInterval": 1000,
         "memWarningThreshold": 80,
-        "networkPollingInterval": 3000,
+        "networkPollingInterval": 1000,
         "swapCriticalThreshold": 90,
         "swapWarningThreshold": 80,
         "tempCriticalThreshold": 85,
-        "tempPollingInterval": 3000,
         "tempWarningThreshold": 60,
         "useCustomColors": false,
         "warningColor": ""

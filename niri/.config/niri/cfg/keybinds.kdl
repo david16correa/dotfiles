@@ -4,9 +4,8 @@ binds {
 
   // general launchers
   Mod+Return                 hotkey-overlay-title="Open a Terminal"              { spawn "kitty"; }
-  // Mod+Space                  hotkey-overlay-title="Run an Application"           { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-  Mod+Space             hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-  Alt+Space                  hotkey-overlay-title="Run an Application"           { spawn-sh "vicinae toggle"; }
+  Mod+Space                  hotkey-overlay-title="Run an Application: noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+  Alt+Space                  hotkey-overlay-title="Run an Application: vicinae"  { spawn-sh "vicinae toggle"; }
   Mod+S                      hotkey-overlay-title="Control Center"               { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
   Mod+Shift+Return           hotkey-overlay-title="Settings"                     { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
   Mod+M                      hotkey-overlay-title="Calendar"                     { spawn-sh "qs -c noctalia-shell ipc call calendar toggle"; }
@@ -26,7 +25,7 @@ binds {
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "/home/david/.myScripts/focusOrLaunch kitty kitty"; }
   Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen zen-browser"; }
-  Mod+4                      hotkey-overlay-title="Open (or focus) Spotify"      { spawn-sh "/home/david/.myScripts/focusOrLaunch Spotify spotify-launcher"; }
+  // Mod+4                      hotkey-overlay-title="Open (or focus) Spotify"      { spawn-sh "/home/david/.myScripts/focusOrLaunch Spotify spotify-launcher"; }
   Mod+5                      hotkey-overlay-title="Open (or focus) Zotero"       { spawn-sh "/home/david/.myScripts/focusOrLaunch Zotero zotero"; }
   Mod+6                      hotkey-overlay-title="Open (or focus) Obsidian"     { spawn-sh "/home/david/.myScripts/focusOrLaunch obsidian obsidian"; }
   Mod+7                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
@@ -104,19 +103,19 @@ binds {
   Mod+Period           { expel-window-from-column; }
 
   // managing window sizes
-  Mod+R                { switch-preset-column-width-back; }
-  Mod+E                { switch-preset-column-width; }
-  Mod+Shift+R          { switch-preset-window-height; }
-  Mod+Shift+E          { switch-preset-window-height-back; }
-  Mod+Ctrl+R           { reset-window-height; }
-  Alt+F                { maximize-window-to-edges; }
-  Mod+F                { maximize-column; }
-  Mod+Ctrl+F           { fullscreen-window; }
-  Mod+Shift+F          { expand-column-to-available-width; }
-  Mod+Minus            { set-column-width "-10%"; }
-  Mod+Equal            { set-column-width "+10%"; }
-  Mod+Ctrl+Minus       { set-window-height "-10%"; }
-  Mod+Ctrl+Equal       { set-window-height "+10%"; }
+  Mod+R                 { switch-preset-column-width-back; }
+  Mod+E                 { switch-preset-column-width; }
+  Mod+Shift+R           { switch-preset-window-height; }
+  Mod+Shift+E           { switch-preset-window-height-back; }
+  Mod+Shift+F           { reset-window-height; }
+  Alt+Ctrl+F            { maximize-window-to-edges; }
+  Mod+F                 { maximize-column; }
+  Mod+Ctrl+F            { fullscreen-window; }
+  Alt+F                 { expand-column-to-available-width; }
+  Mod+Minus             { set-column-width "-10%"; }
+  Mod+Equal             { set-column-width "+10%"; }
+  Mod+Shift+Minus       { set-window-height "-10%"; }
+  Mod+Shift+Equal       { set-window-height "+10%"; }
 
   // misc - centering windows, floating windows, and tabbed column display
   Mod+I                { center-column; }
