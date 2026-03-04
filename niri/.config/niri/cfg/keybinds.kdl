@@ -11,10 +11,10 @@ binds {
   Mod+M                      hotkey-overlay-title="Calendar"                     { spawn-sh "qs -c noctalia-shell ipc call calendar toggle"; }
   Mod+N                      hotkey-overlay-title="Notification History"         { spawn-sh "qs -c noctalia-shell ipc call notifications toggleHistory"; }
   Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"               { spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"; }
-  Mod+V                      hotkey-overlay-title="Clipboard History"            { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+  // Mod+V                      hotkey-overlay-title="Clipboard History"            { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
 
   // session actions
-  Mod+C                      hotkey-overlay-title="Caffeinate"                   { spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle"; }
+  Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                   { spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle"; }
   Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                 { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
   Mod+Shift+Alt+Ctrl+L       hotkey-overlay-title="Lock the Screen"              { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
   Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock and Suspend"             { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock && systemctl suspend"; }
@@ -22,10 +22,12 @@ binds {
   Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                    { quit; }
 
   // favourite apps
+  // Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch nemo nemo"; }
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "/home/david/.myScripts/focusOrLaunch kitty kitty"; }
   Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen zen-browser"; }
-  // Mod+4                      hotkey-overlay-title="Open (or focus) Spotify"      { spawn-sh "/home/david/.myScripts/focusOrLaunch Spotify spotify-launcher"; }
+  Mod+4                      hotkey-overlay-title="Open spotify.com"             { spawn-sh "xdg-open https://www.spotify.com"; }
+  Mod+Shift+4                hotkey-overlay-title="Restart spotifyd"             { spawn-sh "systemctl --user restart spotifyd"; }
   Mod+5                      hotkey-overlay-title="Open (or focus) Zotero"       { spawn-sh "/home/david/.myScripts/focusOrLaunch Zotero zotero"; }
   Mod+6                      hotkey-overlay-title="Open (or focus) Obsidian"     { spawn-sh "/home/david/.myScripts/focusOrLaunch obsidian obsidian"; }
   Mod+7                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
@@ -37,6 +39,11 @@ binds {
 
   // change keyboard layout
   Mod+F1       { switch-layout "next"; }
+
+  // send clipboard to Dropbox
+  // Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Fetch clipboard from Dropbox"            { spawn-sh "/home/david/.myScripts/db-fetch && notify-send 'db-fetch success'"; }
+  // Mod+Shift+Alt+Ctrl+V       hotkey-overlay-title="Send clipboard to Dropbox"               { spawn-sh "/home/david/.myScripts/db-send && notify-send 'db-send: success'"; }
+  Mod+Shift+Alt+Ctrl+B       hotkey-overlay-title="Send clipboard to Dropbox (overwrite)"   { spawn-sh "/home/david/.myScripts/db-send --clear && notify-send 'db-send -c: success'"; }
 
   // volume keys mappings for PipeWire & WirePlumber.
   XF86AudioRaiseVolume       allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit=1 && canberra-gtk-play -i audio-volume-change"; }

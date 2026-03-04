@@ -11,7 +11,7 @@ xwayland-satellite {
     path "xwayland-satellite"
 }
 
-// Hide the cursor after one second of inactivity.
+// Hide the cursor after ten seconds of inactivity.
 cursor {
     hide-after-inactive-ms 10000
 }

@@ -27,7 +27,7 @@ input {
         // middle-emulation
     }
 
-    // warp-mouse-to-focus
+    warp-mouse-to-focus
     // focus-follows-mouse
     // focus-follows-mouse max-scroll-amount="33.33%"
     focus-follows-mouse max-scroll-amount="0%"

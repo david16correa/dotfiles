@@ -1,0 +1,24 @@
+{
+    "closeOnFocusLoss": false,
+    "considerPreedit": false,
+    "faviconService": "twenty",
+    "font": {
+        "normal": "Adwaita Sans",
+        "size": 11
+    },
+    "keybinding": "default",
+    "keybinds": {
+    },
+    "popToRootOnClose": true,
+    "rootSearch": {
+        "searchFiles": false
+    },
+    "theme": {
+        "name": "matugen"
+    },
+    "window": {
+        "csd": true,
+        "opacity": 1,
+        "rounding": 10
+    }
+}
