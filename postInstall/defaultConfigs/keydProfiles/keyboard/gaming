@@ -21,9 +21,6 @@ leftmeta+leftshift+f23 = layer(hyper)
 # Right Alt acts as Alpha
 rightalt = layer(alpha)
 
-# Esc acts as Esc when tapped, and as Beta when held
-esc = overload(beta, esc)
-
 # Caps Lock acts as Control
 capslock = layer(control)
 

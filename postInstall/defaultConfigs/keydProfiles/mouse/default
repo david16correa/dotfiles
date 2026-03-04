@@ -8,23 +8,28 @@ m:046d
 [main]
 
 # Logitech MX Master 3S Mouse
-mouse1 = overload(control,mouse1)
-mouse2 = overload(meta,mouse2)
-mouseforward = overload(shift,enter)
+mouse1 = overload(alpha,mouse1)
+mouse2 = overload(beta,mouse2)
+mouseforward = lettermod(gamma, toggle(epsilon), 150, 200)
 
 # Logitech G502 HERO Gaming Mouse
-1 = overload(control,mouse1)
-2 = overload(meta,mouse2)
-3 = overload(shift,enter)
+1 = overload(alpha,mouse1)
+2 = overload(beta,mouse2)
+3 = lettermod(gamma, toggle(epsilon), 150, 200)
 
 4 = volumedown
 5 = volumeup
 6 = noop
 7 = noop
 
+[epsilon]
+
+mouseforward = lettermod(delta, toggle(epsilon), 150, 200)
+3 = lettermod(delta, toggle(epsilon), 150, 200)
+
 #------------------------------------------------------------------------------#
 # productivity layer; copy, paste, undo, scroll to zoom
-[control]
+[alpha:A]
 leftmouse = C-insert
 middlemouse = C-z
 rightmouse = S-insert
@@ -34,7 +39,7 @@ rightmouse = S-insert
 
 #------------------------------------------------------------------------------#
 # media and workspaces layer; playpause, next song, scroll through workspaces
-[meta]
+[beta:M]
 leftmouse = playpause
 middlemouse = M-a
 rightmouse = nextsong
@@ -44,7 +49,7 @@ rightmouse = nextsong
 
 #------------------------------------------------------------------------------#
 # misc layer; cut, previous song, redo
-[control+meta]
+[alpha+beta]
 leftmouse = S-delete
 middlemouse = C-S-z
 rightmouse = previoussong
@@ -54,7 +59,17 @@ rightmouse = previoussong
 
 #------------------------------------------------------------------------------#
 # audio layer; volume up/down, mute, sideways scroll
-[shift]
+[gamma:C]
+leftmouse = volumedown
+middlemouse = mute
+rightmouse = volumeup
+
+4 = brightnessdown
+5 = brightnessup
+
+#------------------------------------------------------------------------------#
+# alternate audio layer; volume up/down, mute, scroll to zoom in/out
+[delta:S]
 leftmouse = volumedown
 middlemouse = mute
 rightmouse = volumeup

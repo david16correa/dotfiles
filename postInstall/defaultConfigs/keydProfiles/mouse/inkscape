@@ -24,11 +24,19 @@ mouseforward = lettermod(gamma, toggle(epsilon), 150, 200)
 
 [epsilon]
 
-mouseforward = lettermod(delta, toggle(epsilon), 150, 200)
-3 = lettermod(delta, toggle(epsilon), 150, 200)
+# mouseforward = lettermod(delta, toggle(epsilon), 150, 200)
+# 3 = lettermod(delta, toggle(epsilon), 150, 200)
+
+mouse1 = overload(delta,mouse1)
+1 = overload(delta,mouse1)
 
 #------------------------------------------------------------------------------#
 [alpha:A]
+
+4 = S-delete
+5 = C-insert
+
+[delta:S]
 
 4 = S-delete
 5 = C-insert
@@ -56,7 +64,8 @@ rightmouse = nextsong
 4 = brightnessdown
 5 = brightnessup
 
-[delta:S]
+#------------------------------------------------------------------------------#
+# [delta:S]
 
-4 = brightnessdown
-5 = brightnessup
+# 4 = brightnessdown
+# 5 = brightnessup

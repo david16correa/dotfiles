@@ -11,10 +11,12 @@ relevant_packages=(
   tealdeer
   which
   dhcp
+  dhcpcd
   bluez
   bluez-utils
   bluez-deprecated-tools
   pulseaudio-bluetooth
+  bluetui
   easyeffects
   lsp-plugins
   cups
@@ -24,14 +26,22 @@ relevant_packages=(
   fwupd
   tlp
   tlp-rdw
+  tlpui
   dosfstools
   ntfsprogs
   ntfs-3g
   rsync
   keyd
-  gum
   sbctl
-  # sshfs
+  caligula
+  ddcutil
+  unrar
+  ufw
+  gufw
+  nftables
+  pacman-contrib
+  reflector
+  sshfs
 )
 for package in ${relevant_packages[@]}; do
     sudo pacman -S --noconfirm ${package}
@@ -40,7 +50,10 @@ done
 echo -e "[\033[33mINFO\033[0m] Installing command line utilities..."
 cli=(
   ttf-jetbrains-mono-nerd
+  otf-latin-modern
+  otf-latinmodern-math
   btop
+  rocm-smi-lib
   nvtop
   lsd
   tree
@@ -48,6 +61,7 @@ cli=(
   tmux
   vim
   neovim
+  tree-sitter-cli
   ripgrep
   stow
   openssh
@@ -58,6 +72,16 @@ cli=(
   fzf
   timeshift
   cronie
+  distrobox
+  docker
+  dmidecode
+  gum
+  pdftk
+  spotifyd
+  trash-cli
+  unrar
+  wine
+  wine-mono
 )
 for package in ${cli[@]}; do
     sudo pacman -S --noconfirm ${package}
@@ -65,11 +89,9 @@ done
 
 echo -e "[\033[33mINFO\033[0m] Installing dev tools..."
 dev_tools=(
-  # pyenv
+  jdk21-openjdk
   python-virtualenv
-  # jdk-openjdk
   github-cli
-  # marksman
 )
 for package in ${dev_tools[@]}; do
     sudo pacman -S --noconfirm ${package}
@@ -83,9 +105,28 @@ desktop_soft=(
   signal-desktop
   torbrowser-launcher
   firefox
+  torbrowser-launcher
   gcolor3
   gimp
   flatpak
+  baobab
+  decibels
+  showtime
+  snapshot
+  evince
+  gnome-boxes
+  gnome-disk-utility
+  gnome-firmware
+  gnome-software
+  gparted
+  loupe
+  nautilus
+  sushi
+  nemo
+  nemo-fileroller
+  nemo-image-converter
+  nemo-media-columns
+  pavucontrol
 )
 for package in ${desktop_soft[@]}; do
     sudo pacman -S --noconfirm ${package}
@@ -115,15 +156,18 @@ sudo systemctl start zerotier-one.service
 echo -e "[\033[33mINFO\033[0m] Installing AUR packages..."
 aur_packages=(
   ttf-adwaita-mono-nerd
-  ttf-times-new-roman
+  ttf-linux-libertine
+  ttf-meslo-nerd
+  ttf-ms-fonts
   brave-bin
   zotero-bin
   obsidian
-  spotify
   zoom
   juliaup
-  dropbox
-  dropbox-cli
+  maestral
+  maestral-qt
+  # dropbox
+  # dropbox-cli
   ookla-speedtest-bin
   oh-my-posh
   apple_cursor
@@ -133,6 +177,9 @@ aur_packages=(
   minecraft-launcher
   protonplus
   ventoy-bin
+  zen-browser-bin
+  pwvucontrol
+  paru
 )
 for package in ${aur_packages[@]}; do
     yay -S --noconfirm ${package}

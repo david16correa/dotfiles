@@ -27,7 +27,6 @@ esc = overload(beta, esc)
 # Caps Lock acts as Esc when tapped, and as Gamma when held
 capslock = overload(gamma,esc)
 
-
 #------------------------------------------------------------------------------#
 # layers are included
 include profiles/keyboard/layers
