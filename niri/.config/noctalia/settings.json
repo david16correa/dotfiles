@@ -144,7 +144,6 @@
                 },
                 {
                     "blacklist": [
-                        "nm-applet"
                     ],
                     "chevronColor": "none",
                     "colorizeIcons": true,
