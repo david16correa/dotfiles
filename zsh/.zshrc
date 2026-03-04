@@ -40,6 +40,7 @@ source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 alias reload='source ~/.zshrc'
 alias editrc='nvim ~/.zshrc && source ~/.zshrc'
 alias editniri='nvim ~/.dotfiles/niri/.config/niri/config.kdl'
+alias editoutput='nvim ~/.dotfiles/niri/.config/niri/cfg/output.kdl'
 alias cd='z'
 alias ls='lsd' # lsd stuff
 alias l='ls -l' # lsd stuff
@@ -49,7 +50,9 @@ alias lt='ls --tree' # lsd stuff
 alias fzf="fzf --preview 'bat --style=numbers --color=always {}'" 
 alias compressImg="magick input.jpg -strip -interlace Plane -gaussian-blur 0.05 -quality 50% output.jpg"
 alias sideBySideVid="ffmpeg -i left.mp4 -i right.mp4 -filter_complex hstack output.mp4"
-alias db="dropbox-cli"
+alias open="xdg-open"
+# alias db="dropbox-cli"
+alias db="maestral"
 alias python='python3'
 alias pyglobal="source ~/.virtualenvs/pyglobal/bin/activate"
 alias tks="tmux kill-server"
