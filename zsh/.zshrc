@@ -42,6 +42,7 @@ alias editrc='nvim ~/.zshrc && source ~/.zshrc'
 alias editniri='nvim ~/.dotfiles/niri/.config/niri/config.kdl'
 alias editoutput='nvim ~/.dotfiles/niri/.config/niri/cfg/output.kdl'
 alias cd='z'
+alias rm='trash'
 alias ls='lsd' # lsd stuff
 alias l='ls -l' # lsd stuff
 alias la='ls -a' # lsd stuff
