@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 echo "$(pwd)"
 # Check if the correct number of arguments is passed
@@ -40,3 +40,5 @@ echo "Auxilary files are deleted..."
 rm aux0.png aux1.png aux2.png
 
 echo "Image overlaid on solid color saved as $output_image"
+
+exit 0

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#! /usr/bin/env bash
 
 cd $HOME
 
@@ -30,3 +30,5 @@ fi
 
 tmux send-keys -t main 'clear && fastfetch' Enter
 tmux attach -t main
+
+exit 0

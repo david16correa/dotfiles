@@ -1,0 +1,26 @@
+#! /usr/bin/env bash
+
+# this is my dedicated file for my clipboard in dropbox
+clipboardTxt=$HOME/Dropbox/clipboard/clipboard.txt
+
+# clear flag is dealt with
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --clear|-c) > $clipboardTxt ;;
+    *) echo "Unknown option: $1" >&2; exit 1 ;;
+  esac
+  shift
+done
+
+# the clipboard contents are saved to a variable
+strClipboard="$(wl-paste)"
+
+# sanity check; if there's no text in the clipboard, we exit
+if [[ -z "$strClipboard" ]]; then
+  exit 1
+fi
+
+# the clipboard is appended to my dedicated file
+printf '%s\n' "$strClipboard" >> $clipboardTxt
+
+exit 0

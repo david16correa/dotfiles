@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # zerotier is toggled with tailscale
 if systemctl is-active --quiet zerotier-one; then
@@ -10,3 +10,5 @@ else
   sudo systemctl start zerotier-one
   echo -e "Now using: \033[33mzerotier\033[0m!"
 fi
+
+exit 0

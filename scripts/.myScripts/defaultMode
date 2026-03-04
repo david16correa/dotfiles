@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+configPath="$HOME/.config/niri/cfg"
+
+# sanity check; if output.kdl contains no config modes, then all modes are already default
+if [[ -z $(grep mode $configPath/output.kdl) ]]; then
+  echo "modes are already default!"
+  exit 1
+fi
+
+# output.kdl is backed up
+cp $configPath/output.kdl $configPath/output.kdl.bak
+# output.kdl is rewritten without config modes; niri will fall back to preferred modes
+grep -v mode $configPath/output.kdl.bak > $configPath/output.kdl
+
+exit 0
