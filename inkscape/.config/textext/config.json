@@ -1,0 +1,8 @@
+{
+  "preamble": "/home/david/.config/inkscape/extensions/textext/default_packages.tex",
+  "scale": 1.0,
+  "previous_tex_command": "pdflatex",
+  "gui": {
+    "confirm_close": true
+  }
+}
