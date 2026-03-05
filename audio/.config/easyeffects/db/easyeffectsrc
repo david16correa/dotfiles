@@ -1,9 +1,9 @@
 [StreamInputs]
-inputDevice=easyeffects_sink
+inputDevice=alsa_output.pci-0000_c4_00.6.analog-stereo
 
 [StreamOutputs]
 mostUsedPresets=ThinkPad P14s G4 - Dynamic
-outputDevice=alsa_output.pci-0000_c4_00.6.HiFi__Speaker__sink
+outputDevice=alsa_output.pci-0000_c4_00.6.analog-stereo
 plugins=gate#0,convolver#0
 usedPresets=ThinkPad P14s G4 - Dynamic:3
 
@@ -11,6 +11,6 @@ usedPresets=ThinkPad P14s G4 - Dynamic:3
 forceBreezeTheme=false
 
 [Window]
-height=1192
+height=1072
 lastLoadedOutputPreset=ThinkPad P14s G4 - Dynamic
 width=1240
