@@ -1,0 +1,88 @@
+#------------------------------------------------------------------------------#
+# Control+; = Backspace
+[control]
+; = backspace
+
+#------------------------------------------------------------------------------#
+# Pressing both Shifts together toggles Caps Lock; otherwise they're just Shift
+[shift]
+rightshift = capslock
+leftshift = capslock
+
+#------------------------------------------------------------------------------#
+# Hyper keys
+[hyper:C-S-A-M]
+
+#------------------------------------------------------------------------------#
+# alpha layer; vim-esque, media, home row mods, F keys, etc
+[alpha]
+h = left
+j = down
+k = up
+l = right
+b = C-left
+w = C-right
+e = C-right
+/ = C-f
+o = back
+i = forward
+u = pageup
+x = delete
+g = home
+z = C-=
+
+m = playpause
+, = previoussong
+. = nextsong
+
+a = layer(shift)
+s = layer(control)
+d = layer(alt)
+f = layer(meta)
+
+c = rightmeta
+; = enter
+' = compose
+
+1 = f1
+2 = f2
+3 = f3
+4 = f4
+5 = f5
+6 = f6
+7 = f7
+8 = f8
+9 = f9
+0 = f10
+- = f11
+= = f12
+
+[alpha+shift]
+x = backspace
+g = end
+z = C--
+u = pagedown
+m = mute
+, = volumedown
+. = volumeup
+
+[alpha+control]
+w = up
+a = left
+s = down
+d = right
+
+#------------------------------------------------------------------------------#
+# betea layer; numpad
+[beta]
+m = 0
+j = 1
+k = 2
+l = 3
+u = 4
+i = 5
+o = 6
+0 = /
+p = *
+; = -
+/ = +
