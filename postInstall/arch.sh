@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo -e "[\033[33mINFO\033[0m] Installing stow, and setting up system configurations..."
+sudo pacman -S --noconfirm stow
+DOTFILES_PATH="$(cd $(dirname $0) && cd .. && pwd)"
+sudo stow -t / $DOTFILES_PATH/systemConfigs
+
 echo -e "[\033[33mINFO\033[0m] Installing system packages..."
 relevant_packages=(
   git
@@ -42,6 +47,7 @@ relevant_packages=(
   pacman-contrib
   reflector
   sshfs
+  zerotier-one
 )
 for package in ${relevant_packages[@]}; do
     sudo pacman -S --noconfirm ${package}
@@ -63,7 +69,6 @@ cli=(
   neovim
   tree-sitter-cli
   ripgrep
-  stow
   openssh
   yazi
   kitty
@@ -148,11 +153,6 @@ git clone https://aur.archlinux.org/yay.git /tmp/yay
 cd /tmp/yay
 makepkg -si
 
-echo -e "[\033[33mINFO\033[0m] Installing and enabling ZeroTier..."
-sudo pacman -S zerotier-one
-sudo systemctl enable zerotier-one.service
-sudo systemctl start zerotier-one.service
-
 echo -e "[\033[33mINFO\033[0m] Installing AUR packages..."
 aur_packages=(
   ttf-adwaita-mono-nerd
@@ -185,32 +185,25 @@ for package in ${aur_packages[@]}; do
     yay -S --noconfirm ${package}
 done
 
-configsPath="$(cd $(dirname $0) && pwd)/defaultConfigs"
+echo -e "[\033[33mINFO\033[0m] Enabling bluetooth.service..."
+sudo systemctl enable --now bluetooth.service
 
-echo -e "[\033[33mINFO\033[0m] Enabling bluetooth daemon..."
-sudo systemctl enable bluetooth.service
-sudo systemctl start bluetooth.service
-
-echo -e "[\033[33mINFO\033[0m] Configuring and enabling TLP..."
-sudo cp $configsPath/tlp.conf /etc/tlp.conf
+echo -e "[\033[33mINFO\033[0m] Enabling tlp.service..."
 sudo systemctl enable --now tlp.service
 sudo systemctl enable --now NetworkManager-dispatcher.service
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
 
-echo -e "[\033[33mINFO\033[0m] Configuring and enabling keyd..."
-sudo mkdir -p /etc/keyd/profiles
-sudo cp -r $configsPath/keydProfiles/* /etc/keyd/profiles
-sudo ln -s profiles/keyboard/default /etc/keyd/keyboard.conf
-sudo ln -s profiles/mouse/default /etc/keyd/mouse.conf
+echo -e "[\033[33mINFO\033[0m] Enabling keyd.service..."
 sudo systemctl enable --now keyd
 
-echo -e "[\033[33mINFO\033[0m] Configuring and enabling Thinkfan..."
-sudo cp $configsPath/thinkfan.conf /etc/thinkfan.conf
+echo -e "[\033[33mINFO\033[0m] Enabling thinkfan.service..."
 echo "options thinkpad_acpi fan_control=1" | sudo tee /etc/modprobe.d/thinkfan.conf
 sudo modprobe -r thinkpad_acpi && sudo modprobe thinkpad_acpi
 sudo mkinitcpio -P
 sudo systemctl enable --now thinkfan
 # thinkfan sleep hook
-sudo cp $configsPath/thinkfan.hook /usr/lib/systemd/system-sleep/thinkfan
 sudo chmod +x /usr/lib/systemd/system-sleep/thinkfan
+
+echo -e "[\033[33mINFO\033[0m] Enabling zerotier-one.service..."
+sudo systemctl enable --now zerotier-one.service
