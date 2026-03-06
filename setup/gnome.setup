@@ -1,10 +1,4 @@
-echo -e "[\033[33mINFO\033[0m] Installing firmware management software..."
-relevant_packages=(
-  gnome-firmware
-)
-for package in ${relevant_packages[@]}; do
-    sudo pacman -S --noconfirm ${package}
-done
+#! /usr/bin/env bash
 
 # some aur packages
 echo -e "[\033[33mINFO\033[0m] Installing essential packages (AUR)..."

@@ -1,9 +1,19 @@
-#!/bin/bash
+#! /usr/bin/env bash
+
+DOTFILES_PATH="$(cd $(dirname $0) && cd .. && pwd)"
 
 echo -e "[\033[33mINFO\033[0m] Installing stow, and setting up system configurations..."
 sudo pacman -S --noconfirm stow
-DOTFILES_PATH="$(cd $(dirname $0) && cd .. && pwd)"
-sudo stow -t / $DOTFILES_PATH/systemConfigs
+sudo stow -t / $DOTFILES_PATH/setup/systemConfigs
+
+echo -e "[\033[33mINFO\033[0m] Setting up terminal configurations..."
+stow $DOTFILES_PATH/terminal
+
+echo -e "[\033[33mINFO\033[0m] Setting up audio (easyeffects) configurations..."
+stow $DOTFILES_PATH/audio
+
+echo -e "[\033[33mINFO\033[0m] Setting up backgrounds..."
+stow $DOTFILES_PATH/backgrounds
 
 echo -e "[\033[33mINFO\033[0m] Installing system packages..."
 relevant_packages=(

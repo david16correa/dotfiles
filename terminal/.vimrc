@@ -1,33 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer:
-"       Amir Salihefendic - @amix3k
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -57,24 +28,24 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set so=4
 
-" Avoid garbled characters in Chinese language windows OS
-let $LANG='en'
-set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+" " Avoid garbled characters in Chinese language windows OS
+" let $LANG='en'
+" set langmenu=en
+" source $VIMRUNTIME/delmenu.vim
+" source $VIMRUNTIME/menu.vim
 
 " Turn on the Wild menu
 set wildmenu
 
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
+" " Ignore compiled files
+" set wildignore=*.o,*~,*.pyc
+" if has("win16") || has("win32")
+"     set wildignore+=.git\*,.hg\*,.svn\*
+" else
+"     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+" endif
 
 " Always show current position
 set ruler
@@ -119,13 +90,13 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
+" " Properly disable sound on errors on MacVim
+" if has("gui_macvim")
+"     autocmd GUIEnter * set vb t_vb=
+" endif
 
-" Add a bit extra margin to the left
-set foldcolumn=1
+" " Add a bit extra margin to the left
+" set foldcolumn=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,25 +108,25 @@ syntax enable
 " Set regular expression engine automatically
 set regexpengine=0
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+" " Enable 256 colors palette in Gnome Terminal
+" if $COLORTERM == 'gnome-terminal'
+"     set t_Co=256
+" endif
 
-try
-    colorscheme retrobox
-catch
-endtry
+" try
+"     colorscheme retrobox
+" catch
+" endtry
 
-set background=dark
+" set background=dark
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
+" " Set extra options when running in GUI mode
+" if has("gui_running")
+"     set guioptions-=T
+"     set guioptions-=e
+"     set t_Co=256
+"     set guitablabel=%M\ %t
+" endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -167,24 +138,23 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git etc. anyway...
-set nobackup
-set nowb
-set noswapfile
-
+" " Turn backup off, since most stuff is in SVN, git etc. anyway...
+" set nobackup
+" set nowb
+" set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
-set expandtab
+" set expandtab
 
 " Be smart when using tabs ;)
-set smarttab
+" set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+" set shiftwidth=4
+" set tabstop=4
 
 " Linebreak on 500 characters
 set lbr
@@ -208,11 +178,11 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <C-space> ?
+" map <space> /
+" map <C-space> ?
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+" map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -242,7 +212,7 @@ nmap <leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " CMD enter command mode (stolen from my nvim haha)
-nmap ; :
+" nmap ; :
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -322,7 +292,7 @@ map <leader>s? z=
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
 map <leader>n :enew<cr>

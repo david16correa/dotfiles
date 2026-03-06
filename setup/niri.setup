@@ -1,3 +1,10 @@
+#! /usr/bin/env bash
+
+DOTFILES_PATH="$(cd $(dirname $0) && cd .. && pwd)"
+
+echo -e "[\033[33mINFO\033[0m] Setting up niri configurations..."
+stow $DOTFILES_PATH/niri
+
 echo -e "[\033[33mINFO\033[0m] Installing general packages..."
 relevant_packages=(
   niri
