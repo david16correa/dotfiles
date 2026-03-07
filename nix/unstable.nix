@@ -1,20 +1,20 @@
-# Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, unstable, inputs, ... }:
+{ config, lib, unstable, inputs, ... }:
 
 {
   ########################################
   # program modules
   ########################################
 
-  programs.steam.enable = true;
+  programs.steam = {
+      enable = true;
+      package = unstable.steam;
+  };
 
   ########################################
   # system packages
   ########################################
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with unstable; [
     vicinae
     yazi
     kitty

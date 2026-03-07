@@ -1,7 +1,4 @@
-# Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, unstable, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   ########################################
@@ -35,10 +32,7 @@
   programs.zsh.enable = true;
   programs.firefox.enable = true;
   programs.zoxide.enable = true;
-  programs.steam = {
-      enable = true;
-      package = unstable.steam;
-  };
+  programs.niri.useNautilus = true;
 
   ########################################
   # system packages
@@ -68,14 +62,8 @@
     keyd
     gum
     killall
-    adwaita-icon-theme
-  ]++[
-    unstable.vicinae
-    unstable.yazi
-    unstable.kitty
-    unstable.neovim
-    unstable.noctalia-shell
-    inputs.zen-browser.packages."${pkgs.system}".default
+    nautilus
+    # adwaita-icon-theme
   ];
 
   fonts.packages = with pkgs; [
@@ -97,6 +85,8 @@
     enable = true;
     pulse.enable = true;
   };
+
+  services.gnome.sushi.enable = true;
 
   services.tlp.enable = true;
   services.thinkfan.enable = true;
