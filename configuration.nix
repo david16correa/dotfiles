@@ -1,7 +1,7 @@
 # Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, unstable, ... }:
+{ config, lib, pkgs, unstable, inputs, ... }:
 
 {
   imports =
@@ -15,6 +15,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   fileSystems = {
@@ -37,6 +38,7 @@
   networking.networkmanager.enable = true;
 
   hardware.graphics.enable = true; # OpenGl/AMD
+  hardware.bluetooth.enable = true;
 
   time.timeZone = "America/Mexico_City";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -84,6 +86,11 @@
       # };
     # };
   # };
+  
+  # environment.sessionVariables = {
+  #     XCURSOR_THEME = "Adwaita";
+  #     XCURSOR_SIZE = "24";
+  # };
 
   ########################################
   # program modules
@@ -92,42 +99,53 @@
   programs.zsh.enable = true;
   programs.firefox.enable = true;
   programs.zoxide.enable = true;
+  programs.steam = {
+      enable = true;
+      package = unstable.steam;
+  };
 
   ########################################
   # system packages
   ########################################
 
-  environment.systemPackages = [
-    pkgs.git
-    pkgs.vim
-    pkgs.neovim
-    pkgs.tmux
-    pkgs.fastfetch
-    pkgs.yazi
-    pkgs.kitty
-    pkgs.oh-my-posh
-    pkgs.wget
-    pkgs.stow
-    pkgs.fzf
-    pkgs.btop-rocm
-    pkgs.lsd
-    pkgs.tree
-    pkgs.bat
-    pkgs.tealdeer
-    pkgs.which
-    pkgs.bluetui
-    pkgs.rsync
-    pkgs.caligula
-    pkgs.xwayland-satellite
-    pkgs.trashy
-    pkgs.glibc
-
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    tmux
+    fastfetch
+    oh-my-posh
+    wget
+    stow
+    fzf
+    btop-rocm
+    lsd
+    tree
+    bat
+    tealdeer
+    which
+    bluetui
+    rsync
+    caligula
+    xwayland-satellite
+    trashy
+    glibc
+    keyd
+    gum
+    killall
+    adwaita-icon-theme
+  ]++[
+    unstable.vicinae
+    unstable.yazi
+    unstable.kitty
+    unstable.neovim
     unstable.noctalia-shell
-    unstable.zen-browser
+    inputs.zen-browser.packages."${pkgs.system}".default
   ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    nerd-fonts.adwaita-mono
+    adwaita-fonts
     lmodern
   ];
 
@@ -146,7 +164,17 @@
 
   services.tlp.enable = true;
   services.thinkfan.enable = true;
-  # services.keyd.enable = true;
+  systemd.services.keyd = {
+    description = "key remapping daemon";
+    enable = true;
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.keyd}/bin/keyd";
+    };
+    wantedBy = [ "sysinit.target" ];
+    requires = [ "local-fs.target" ];
+    after = [ "local-fs.target" ];
+  };
 
   ########################################
   # firewall
