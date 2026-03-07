@@ -47,6 +47,7 @@
     gum
     killall
     nautilus
+    pavucontrol
     # adwaita-icon-theme
   ];
 
@@ -64,6 +65,8 @@
   services.openssh.enable = true;
 
   services.printing.enable = true;
+
+  services.upower.enable = true;
 
   services.pipewire = {
     enable = true;

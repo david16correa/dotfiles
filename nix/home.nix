@@ -1,10 +1,17 @@
 { pkgs, ... }:
 
 {
+  xdg = {
+    enable = true;
+    userDirs.enable = true;
+    userDirs.createDirectories = true;
+  };
+
   gtk = {
       enable = true;
       theme = {
-          name = "Adwaita";
+          name = "Adwaita-dark";
+          # name = "Adwaita";
           package = pkgs.gnome-themes-extra;
       };
       iconTheme = {
