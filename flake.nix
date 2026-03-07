@@ -34,7 +34,7 @@
         };
 
         modules = [
-          ./configuration.nix
+          ./nix/configuration.nix
         ];
 
     };
