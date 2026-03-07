@@ -7,23 +7,7 @@
 
   # services.xserver.enable = true;
   programs.niri.enable=true;
-  # services.displayManager.ly.enable = true;
   services.displayManager.gdm.enable = true;
-
-  # services.greetd = {
-    # enable = true;
-    # settings = {
-      # default_session = {
-        # command = "niri";
-        # user = "david";
-      # };
-    # };
-  # };
-  
-  # environment.sessionVariables = {
-  #     XCURSOR_THEME = "Adwaita";
-  #     XCURSOR_SIZE = "24";
-  # };
 
   ########################################
   # program modules
@@ -88,8 +72,37 @@
 
   services.gnome.sushi.enable = true;
 
-  services.tlp.enable = true;
-  services.thinkfan.enable = true;
+  services.tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC="performance";
+        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+        CPU_ENERGY_PERF_POLICY_ON_BAT="power";
+        PLATFORM_PROFILE_ON_AC="balanced";
+        PLATFORM_PROFILE_ON_BAT="low-power";
+        START_CHARGE_THRESH_BAT0=40;
+        STOP_CHARGE_THRESH_BAT0=80;
+      };
+  };
+  services.thinkfan = {
+    enable = true;
+    sensors = [{
+      query = "/proc/acpi/ibm/thermal";
+      type = "tpacpi";
+      indices = [ 0 ];
+    }];
+    fans = [{
+      query = "/proc/acpi/ibm/fan";
+      type = "tpacpi";
+    }];
+    levels = [
+      ["level auto"       0   45]   # Let BIOS handle idle (fan off/quiet)
+      [2                  45  55]   # Low speed
+      [4                  55  65]   # Medium speed
+      [7                  65  75]   # High speed
+      ["level full-speed" 75  1000] # Max speed above 75°C (safety)
+    ];
+  };
   systemd.services.keyd = {
     description = "key remapping daemon";
     enable = true;
