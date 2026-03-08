@@ -72,7 +72,7 @@
     gh
     maestral
     ookla-speedtest
-    kdePackages.polkit-kde-agent-1
+    polkit_gnome
     playerctl
     brightnessctl
     cliphist

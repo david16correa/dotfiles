@@ -124,16 +124,33 @@
     ];
   };
 
-  systemd.services.keyd = {
-    description = "key remapping daemon";
-    enable = true;
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.keyd}/bin/keyd";
+  # custom systemd services
+  systemd = {
+    services.keyd = {
+      enable = true;
+      description = "key remapping daemon";
+      wantedBy = [ "sysinit.target" ];
+      wants = [ "local-fs.target" ];
+      after = [ "local-fs.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.keyd}/bin/keyd";
+      };
     };
-    wantedBy = [ "sysinit.target" ];
-    requires = [ "local-fs.target" ];
-    after = [ "local-fs.target" ];
+    user.services.polkit-gnome-authentication-agent-1 = {
+      enable = true;
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+    };
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
