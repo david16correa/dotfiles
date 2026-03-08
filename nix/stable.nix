@@ -57,6 +57,7 @@
     xwayland-satellite
     trashy
     glibc
+    gcc
     keyd
     gum
     killall

@@ -21,6 +21,7 @@
     neovim
     noctalia-shell
     julia
+    discord
   ]++[
     inputs.zen-browser.packages."${pkgs.system}".default
   ];
