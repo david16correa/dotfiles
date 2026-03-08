@@ -71,6 +71,7 @@
     jdk21_headless
     gh
     maestral
+    maestral-gui
     ookla-speedtest
     polkit_gnome
     playerctl
