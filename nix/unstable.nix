@@ -20,6 +20,7 @@
     kitty
     neovim
     noctalia-shell
+    julia
   ]++[
     inputs.zen-browser.packages."${pkgs.system}".default
   ];
