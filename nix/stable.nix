@@ -20,6 +20,7 @@
   programs.silentSDDM = {
       enable = true;
       theme = "default";
+      backgrounds.default = ./home/backgrounds/mainDisplay16_10.jpg;
       # settings = {
       #   backgrounds
       # };
