@@ -10,6 +10,11 @@
     enable = true;
     useNautilus = true;
   };
+  services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "catppuccin-mocha-mauve";
+  };
   # services.displayManager.gdm.enable = true;
 
   ########################################
@@ -109,7 +114,7 @@
     zotero
     prismlauncher
     protonplus
-    # catppuccin-sddm
+    catppuccin-sddm
   ]++[(
     catppuccin-sddm.override {
       flavor = "mocha";
@@ -118,7 +123,6 @@
       fontSize = "9";
       loginBackground = true;
       background = "${./home/backgrounds/mainDisplay16_10.jpg}";
-      loginBackground = false;
     }
   )];
 
@@ -128,12 +132,6 @@
     adwaita-fonts
     lmodern
   ];
-
-  services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "catppuccin-mocha-mauve";
-  };
 
   ########################################
   # services
