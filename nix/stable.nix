@@ -23,7 +23,7 @@
       # settings = {
       #   backgrounds
       # };
-  }
+  };
 
   ########################################
   # program modules
