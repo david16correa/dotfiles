@@ -29,6 +29,7 @@
     lazygit.enable = true;
     obs-studio.enable = true;
     zoom-us.enable = true;
+    dconf.enable = true;
     # gnome-disks.enable = true;
   };
 
