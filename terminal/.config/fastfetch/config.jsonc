@@ -19,7 +19,7 @@
             "type": "os",
             "key": "",
             "keyColor": "yellow",
-            "format": "{2}"
+            "format": "{2} {3}"
         },
         {
             "type": "command",
@@ -94,19 +94,19 @@
             "keyColor": "green"
         },
         {
-            "type": "disk",
-            "folders": ["/"],
+            "type": "btrfs",
+            // "folders": ["/"],
             "key": "󰉋",
             "keyColor": "green",
-            "format": "root: {3} full",
+            "format": "root: {used-percentage} used ({allocated-percentage} allocated)",
         },
-        {
-            "type": "disk",
-            "folders": ["/home"],
-            "key": "󱂵",
-            "keyColor": "green",
-            "format": "home: {3} full",
-        },
+        // {
+        //     "type": "disk",
+        //     "folders": ["/home"],
+        //     "key": "󱂵",
+        //     "keyColor": "green",
+        //     "format": "home: {3} full",
+        // },
         "break",
         "colors",
     ]

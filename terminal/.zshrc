@@ -42,7 +42,7 @@ alias editrc='nvim ~/.zshrc && source ~/.zshrc'
 alias editniri='nvim ~/.dotfiles/niri/.config/niri/config.kdl'
 alias editoutput='nvim ~/.dotfiles/niri/.config/niri/cfg/output.kdl'
 alias cd='z'
-alias rm='trash'
+# alias rm='trash'
 alias ls='lsd' # lsd stuff
 alias l='ls -l' # lsd stuff
 alias la='ls -a' # lsd stuff
@@ -94,6 +94,33 @@ function y() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+# NixOS utilities
+alias nixos-edit='cd ~/.dotfiles && nvim ~/.dotfiles/flake.nix && cd - >/dev/null'
+
+function nixos-commit(){
+  cd /home/david/.dotfiles
+  git add flake* nix
+  if git diff --cached --quiet; then
+    echo "Nothing to commit."
+  else
+    git commit -m "nixos-commit: $(date +"%Y.%m.%d %H:%M:%S")"
+  fi
+  cd - >/dev/null || return
+}
+
+function nixos-reload(){
+  # commit flag is dealt with
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --commit|-c) nixos-commit ;;
+      *) echo "Unknown option: $1" >&2; exit 1 ;;
+    esac
+    shift
+  done
+
+  sudo nixos-rebuild switch --flake /home/david/.dotfiles#bjork || return
 }
 
 # zprof # to debug loading time
