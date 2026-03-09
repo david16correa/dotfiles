@@ -111,9 +111,9 @@
     protonplus
   ]++[(
     catppuccin-sddm.override {
-      flavor = "mocha";
+      flavor = "macchiato";
       accent = "blue";
-      # clockEnabled = true;
+      clockEnabled = false;
       font  = "Adwaita Sans";
       # font  = "Noto Sans";
       fontSize = "9";
@@ -126,7 +126,7 @@
       enable = true;
       wayland.enable = true;
       package = pkgs.kdePackages.sddm;
-      theme = "catppuccin-mocha-blue";
+      theme = "catppuccin-macchiato-blue";
   };
 
   fonts.packages = with pkgs; [

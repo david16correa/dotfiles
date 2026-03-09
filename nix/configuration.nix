@@ -13,10 +13,15 @@
   # bootloeader, kernel, and fs
   ########################################
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = 0;
+    };
+    kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = [ "quiet" "splash" "loglevel=3" "rd.systemd.show_status=false" ];
+  };
 
   fileSystems = {
     "/".options = [ "compress=zstd" "noatime" ];
