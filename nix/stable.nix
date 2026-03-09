@@ -134,6 +134,11 @@
     nerd-fonts.adwaita-mono
     adwaita-fonts
     lmodern
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-emoji-blob-bin
+    liberation_ttf
   ];
 
   ########################################

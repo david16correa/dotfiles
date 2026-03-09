@@ -21,6 +21,7 @@
     };
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [ "quiet" "splash" "loglevel=3" "rd.systemd.show_status=false" ];
+    # consoleLogLevel = 0;
   };
 
   fileSystems = {
