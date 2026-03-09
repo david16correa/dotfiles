@@ -5,6 +5,10 @@
     enable = true;
     userDirs.enable = true;
     userDirs.createDirectories = true;
+    configFile = {
+      "gtk-3.0/gtk.css".source = ./gtk/tokyo-night.css;
+      "gtk-4.0/gtk.css".source = ./gtk/tokyo-night.css;
+    };
   };
 
   gtk = {
