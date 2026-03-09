@@ -114,7 +114,7 @@
     zotero
     prismlauncher
     protonplus
-    catppuccin-sddm
+    # catppuccin-sddm
   ]++[(
     catppuccin-sddm.override {
       flavor = "mocha";
