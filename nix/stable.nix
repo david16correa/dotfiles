@@ -10,7 +10,20 @@
     enable = true;
     useNautilus = true;
   };
-  services.displayManager.gdm.enable = true;
+  services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+  };
+  # services.displayManager.gdm.enable = true;
+
+  imports = [inputs.silentSDDM.nixosModules.default];
+  programs.silentSDDM = {
+      enable = true;
+      theme = "default";
+      # settings = {
+      #   backgrounds
+      # };
+  }
 
   ########################################
   # program modules
