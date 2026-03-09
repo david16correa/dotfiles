@@ -19,7 +19,7 @@
             "type": "os",
             "key": "",
             "keyColor": "yellow",
-            "format": "{2} {3}"
+            "format": "{3}"
         },
         {
             "type": "command",
