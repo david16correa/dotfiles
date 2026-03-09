@@ -6,7 +6,10 @@
   ########################################
 
   # services.xserver.enable = true;
-  programs.niri.enable=true;
+  programs.niri = {
+    enable = true;
+    useNautilus = true;
+  };
   services.displayManager.gdm.enable = true;
 
   ########################################
@@ -25,7 +28,6 @@
     zsh.enable = true;
     firefox.enable = true;
     zoxide.enable = true;
-    niri.useNautilus = true;
     lazygit.enable = true;
     obs-studio.enable = true;
     zoom-us.enable = true;
