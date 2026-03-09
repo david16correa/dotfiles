@@ -10,12 +10,6 @@
     enable = true;
     useNautilus = true;
   };
-  services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      package = pkgs.kdePackages.sddm;
-      theme = "catppuccin-mocha-mauve";
-  };
   # services.displayManager.gdm.enable = true;
 
   ########################################
@@ -115,18 +109,25 @@
     zotero
     prismlauncher
     protonplus
-    catppuccin-sddm
   ]++[(
     catppuccin-sddm.override {
       flavor = "mocha";
-      accent = "mauve";
-      font  = "Noto Sans";
+      accent = "blue";
+      # clockEnabled = true;
+      font  = "Adwaita Sans";
+      # font  = "Noto Sans";
       fontSize = "9";
-      disableBackground = false;
+      background = "${./home/backgrounds/dm16_10.jpg}";
       loginBackground = true;
-      background = "${./home/backgrounds/mainDisplay16_10.jpg}";
     }
   )];
+
+  services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      package = pkgs.kdePackages.sddm;
+      theme = "catppuccin-mocha-blue";
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
