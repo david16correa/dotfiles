@@ -6,11 +6,17 @@
   ########################################
 
   # services.xserver.enable = true;
+
+  services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "catppuccin-macchiato-blue";
+  };
+
   programs.niri = {
     enable = true;
     useNautilus = true;
   };
-  # services.displayManager.gdm.enable = true;
 
   ########################################
   # program modules
@@ -122,24 +128,30 @@
     }
   )];
 
-  services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      package = pkgs.kdePackages.sddm;
-      theme = "catppuccin-macchiato-blue";
-  };
+  fonts = {
+    enableDefaultPackages = true;
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.adwaita-mono
-    adwaita-fonts
-    lmodern
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-emoji-blob-bin
-    liberation_ttf
-  ];
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.adwaita-mono
+      adwaita-fonts
+      lmodern
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-emoji-blob-bin
+      liberation_ttf
+    ];
+
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
+        monospace = [ "Noto Sans Mono" ];
+        emoji = [ "Blobmoji" ];
+      };
+    };
+  };
 
   ########################################
   # services
