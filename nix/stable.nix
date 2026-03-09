@@ -94,7 +94,7 @@
     brightnessctl
     cliphist
     app2unit
-    # adwaita-icon-theme
+    texliveFull
   ]++[
     pavucontrol
     pwvucontrol
