@@ -51,6 +51,7 @@
   users.groups.keyd = { };
 
   users.users.david = {
+    description = "David Correa";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "keyd" ];
     shell = pkgs.zsh;

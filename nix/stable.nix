@@ -13,17 +13,9 @@
   services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      theme = "catppuccin-mocha-mauve";
   };
   # services.displayManager.gdm.enable = true;
-
-  imports = [inputs.silentSDDM.nixosModules.default];
-  programs.silentSDDM = {
-      enable = true;
-      theme = "default";
-      settings = {
-        "General".background = "/home/david/.dotfiles/nix/home/backgrounds/mainDisplay16_10.jpg";
-      };
-  };
 
   ########################################
   # program modules
@@ -122,7 +114,17 @@
     zotero
     prismlauncher
     protonplus
-  ];
+    catppuccin-sddm
+  ]++[(
+    catppuccin-sddm.override {
+      flavor = "mocha";
+      accent = "mauve";
+      font  = "Noto Sans";
+      fontSize = "9";
+      background = "${/home/david/.dotfiles/nix/home/backgrounds/mainDisplay16_10.jpg}";
+      loginBackground = false;
+    }
+  )];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
