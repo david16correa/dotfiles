@@ -121,6 +121,7 @@
       accent = "mauve";
       font  = "Noto Sans";
       fontSize = "9";
+      disableBackground = false;
       loginBackground = true;
       background = "${./home/backgrounds/mainDisplay16_10.jpg}";
     }
