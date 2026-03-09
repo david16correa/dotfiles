@@ -1,7 +1,6 @@
 /*
 pendientes:
 - [ ] configurar fprint solo para noctalia
-- [ ] colortheme de gtk
 */
 
 {

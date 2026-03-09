@@ -30,6 +30,20 @@
     obs-studio.enable = true;
     zoom-us.enable = true;
     dconf.enable = true;
+    git = {
+      enable = true;
+      config = {
+        init.defaultBranch = "main";
+        url."https://github.com/".insteadOf = [
+          "gh:"
+          "github:"
+        ];
+        user = {
+          name = "David Correa";
+          email = "david.correa.msc@gmail.com";
+        };
+      };
+    };
     # gnome-disks.enable = true;
   };
 
@@ -38,7 +52,6 @@
   ########################################
 
   environment.systemPackages = with pkgs; [
-    git
     vim
     tmux
     fastfetch
