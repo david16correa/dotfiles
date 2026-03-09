@@ -21,7 +21,7 @@
       enable = true;
       theme = "default";
       settings = {
-        "LockScreen".background = "/home/david/.dotfiles/nix/home/backgrounds/mainDisplay16_10.jpg";
+        "General".background = "/home/david/.dotfiles/nix/home/backgrounds/mainDisplay16_10.jpg";
       };
   };
 
