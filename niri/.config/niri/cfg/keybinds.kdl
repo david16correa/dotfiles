@@ -4,20 +4,20 @@ binds {
 
   // general launchers
   Mod+Return                 hotkey-overlay-title="Open a Terminal"              { spawn "kitty"; }
-  Mod+Space                  hotkey-overlay-title="Run an Application: noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+  Mod+Space                  hotkey-overlay-title="Run an Application: noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
   Alt+Space                  hotkey-overlay-title="Run an Application: vicinae"  { spawn-sh "vicinae toggle"; }
-  Mod+S                      hotkey-overlay-title="Control Center"               { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-  Mod+Shift+Return           hotkey-overlay-title="Settings"                     { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
-  Mod+M                      hotkey-overlay-title="Calendar"                     { spawn-sh "qs -c noctalia-shell ipc call calendar toggle"; }
-  Mod+N                      hotkey-overlay-title="Notification History"         { spawn-sh "qs -c noctalia-shell ipc call notifications toggleHistory"; }
-  Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"               { spawn-sh "qs -c noctalia-shell ipc call notifications toggleDND"; }
-  // Mod+V                      hotkey-overlay-title="Clipboard History"            { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+  Mod+S                      hotkey-overlay-title="Control Center"               { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
+  Mod+Shift+Return           hotkey-overlay-title="Settings"                     { spawn-sh "noctalia-shell ipc call settings toggle"; }
+  Mod+M                      hotkey-overlay-title="Calendar"                     { spawn-sh "noctalia-shell ipc call calendar toggle"; }
+  Mod+N                      hotkey-overlay-title="Notification History"         { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
+  Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"               { spawn-sh "noctalia-shell ipc call notifications toggleDND"; }
+  // Mod+V                      hotkey-overlay-title="Clipboard History"            { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
 
   // session actions
-  Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                   { spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle"; }
-  Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                 { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-  Mod+Shift+Alt+Ctrl+L       hotkey-overlay-title="Lock the Screen"              { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-  Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock and Suspend"             { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock && systemctl suspend"; }
+  Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                   { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
+  Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                 { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+  Mod+Shift+Alt+Ctrl+L       hotkey-overlay-title="Lock the Screen"              { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+  Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock and Suspend"             { spawn-sh "noctalia-shell ipc call lockScreen lock && systemctl suspend"; }
   Mod+Shift+Alt+Ctrl+P       hotkey-overlay-title="Power off all montiors"       { power-off-monitors; }
   Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                    { quit; }
 
@@ -25,12 +25,12 @@ binds {
   // Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch nemo nemo"; }
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "/home/david/.myScripts/focusOrLaunch kitty kitty"; }
-  Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen zen-browser"; }
+  Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen-beta zen-beta"; }
   Mod+4                      hotkey-overlay-title="Open spotify.com"             { spawn-sh "xdg-open https://www.spotify.com"; }
   Mod+Shift+4                hotkey-overlay-title="Restart spotifyd"             { spawn-sh "systemctl --user restart spotifyd"; }
   Mod+5                      hotkey-overlay-title="Open (or focus) Zotero"       { spawn-sh "/home/david/.myScripts/focusOrLaunch Zotero zotero"; }
   Mod+6                      hotkey-overlay-title="Open (or focus) Obsidian"     { spawn-sh "/home/david/.myScripts/focusOrLaunch obsidian obsidian"; }
-  Mod+7                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+  Mod+7                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "noctalia-shell ipc call settings toggle"; }
 
   // screenshots
   Print        { screenshot; }
