@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# thinkfan - systemd suspend/resume hook
-
-case $1 in
-    pre)  systemctl stop thinkfan ;;
-    post)  systemctl start thinkfan ;;
-esac
