@@ -10,11 +10,6 @@
     enable = true;
     useNautilus = true;
   };
-  services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "catppuccin-mocha-mauve";
-  };
   # services.displayManager.gdm.enable = true;
 
   ########################################
@@ -133,6 +128,12 @@
     adwaita-fonts
     lmodern
   ];
+
+  services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "catppuccin-mocha-mauve";
+  };
 
   ########################################
   # services
