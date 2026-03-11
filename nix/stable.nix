@@ -101,6 +101,7 @@
     cliphist
     app2unit
     texliveFull
+    spotifyd
   ]++[
     pavucontrol
     pwvucontrol
