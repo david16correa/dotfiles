@@ -61,9 +61,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "keyd" ];
     shell = pkgs.zsh;
-    # packages = with pkgs; [
-      # tree
-    # ];
+    # packages = with pkgs; [  ];
   };
 
   nix.gc = {

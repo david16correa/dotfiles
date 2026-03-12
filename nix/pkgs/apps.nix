@@ -1,0 +1,46 @@
+{ config, lib, pkgs, inputs, ... }:
+
+{
+  ########################################
+  # program modules
+  ########################################
+
+  programs = {
+    firefox.enable = true;
+    obs-studio.enable = true;
+    zoom-us.enable = true;
+  };
+
+  ########################################
+  # system packages
+  ########################################
+
+  environment.systemPackages = with pkgs; [
+    pdftk
+    maestral
+    maestral-gui
+    texliveFull
+    spotifyd
+    pavucontrol
+    pwvucontrol
+    easyeffects
+    libreoffice-fresh
+    gcolor3
+    gimp
+    evince
+    gnome-boxes
+    gparted
+    brave
+    zotero
+    prismlauncher
+    protonplus
+  ];
+
+  ########################################
+  # services
+  ########################################
+
+  services = {
+  };
+
+}

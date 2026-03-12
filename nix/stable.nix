@@ -76,7 +76,6 @@
     gum
     killall
     libcanberra-gtk3
-    caligula
     unrar
     tree-sitter
     ripgrep
@@ -161,6 +160,7 @@
       enable = true;
       pulse.enable = true;
     };
+    # keyd.enable = true;
     # fprintd.enable = true; # remember to use sudo with fprint-commands!
   };
 

@@ -20,7 +20,7 @@ pendientes:
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
 
@@ -50,8 +50,11 @@ pendientes:
 
         modules = [
           ./nix/configuration.nix
-          ./nix/stable.nix
-          ./nix/unstable.nix
+
+          ./nix/pkgs/core.nix
+          ./nix/pkgs/extra.nix
+          ./nix/pkgs/apps.nix
+          ./nix/pkgs/unstable.nix
 
           nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
 
