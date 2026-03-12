@@ -72,6 +72,8 @@
     options = "--delete-older-than 30d";
   };
 
+  security.polkit.enable = true;
+
   ########################################
   # services
   ########################################
@@ -81,22 +83,9 @@
       allowSFTP = true;
   };
 
-  services.zerotierone.enable = true;
-
   services.printing.enable = true;
 
   services.upower.enable = true;
-
-  security.polkit.enable = true;
-
-  services.udisks2.enable = true;
-
-  # services.fprintd.enable = true; # remember to use sudo with fprint-commands!
-
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
 
   services.tlp = {
       enable = true;
@@ -129,35 +118,6 @@
       [7                  65  75]   # High speed
       ["level full-speed" 75  1000] # Max speed above 75°C (safety)
     ];
-  };
-
-  # custom systemd services
-  systemd = {
-    services.keyd = {
-      enable = true;
-      description = "key remapping daemon";
-      wantedBy = [ "sysinit.target" ];
-      wants = [ "local-fs.target" ];
-      after = [ "local-fs.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.keyd}/bin/keyd";
-      };
-    };
-    user.services.polkit-gnome-authentication-agent-1 = {
-      enable = true;
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-    };
   };
 
   # Copy the NixOS configuration file and link it from the resulting system

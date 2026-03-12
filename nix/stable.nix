@@ -22,14 +22,6 @@
   # program modules
   ########################################
 
-  # programs.zsh.enable = true;
-  # programs.firefox.enable = true;
-  # programs.zoxide.enable = true;
-  # programs.niri.useNautilus = true;
-  # programs.lazygit.enable = true;
-  # programs.obs-studio.enable = true;
-  # programs.zoom-us.enable = true;
-
   programs = {
     zsh.enable = true;
     firefox.enable = true;
@@ -122,7 +114,6 @@
       accent = "blue";
       clockEnabled = false;
       font  = "Adwaita Sans";
-      # font  = "Noto Sans";
       fontSize = "9";
       background = "${./home/backgrounds/dm16_10.jpg}";
       loginBackground = true;
@@ -158,12 +149,48 @@
   # services
   ########################################
 
-  # services.gnome.sushi.enable = true;
-  services.gnome.core-apps.enable = true;
-  services.gnome.tinysparql.enable = true;
-  services.gvfs.enable = true;
+  services = {
+    gnome.core-apps.enable = true;
+    gnome.tinysparql.enable = true;
+    gvfs.enable = true;
+    spotifyd.enable = true;
+    flatpak.package = true;
+    zerotierone.enable = true;
+    udisks2.enable = true;
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
+    # fprintd.enable = true; # remember to use sudo with fprint-commands!
+  };
 
-  services.spotifyd.enable = true;
+  # custom systemd services
+  systemd = {
+    services.keyd = {
+      enable = true;
+      description = "key remapping daemon";
+      wantedBy = [ "sysinit.target" ];
+      wants = [ "local-fs.target" ];
+      after = [ "local-fs.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.keyd}/bin/keyd";
+      };
+    };
+    user.services.polkit-gnome-authentication-agent-1 = {
+      enable = true;
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+    };
+  };
 
-  services.flatpak.package = true;
 }
