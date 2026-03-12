@@ -34,6 +34,8 @@
     zotero
     prismlauncher
     protonplus
+  ]++[
+    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
   ];
 
   ########################################
