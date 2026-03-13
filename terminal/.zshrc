@@ -115,7 +115,8 @@ function nixos-reload(){
   while [[ $# -gt 0 ]]; do
     case "$1" in
       --commit|-c) nixos-commit ;;
-      --update|-Syu) sudo nix flake update --flake /home/david/.dotfiles ;;
+      --update-unstable|-Syu) sudo nix flake update nixpkgs-unstable --flake /home/david/.dotfiles ;;
+      --update-all|-Syyu) sudo nix flake update --flake /home/david/.dotfiles ;;
       *) echo "Unknown option: $1" >&2; exit 1 ;;
     esac
     shift
