@@ -20,6 +20,7 @@
     fzf
     lsd
     bat
+    alsa-utils
     bluetui
     trashy
     libcanberra-gtk3
