@@ -31,7 +31,8 @@
     ookla-speedtest
     cliphist
     app2unit
-    nodejs_24
+    nodejs
+    # nodejs_24
   ]++[(
     catppuccin-sddm.override {
       flavor = "macchiato";

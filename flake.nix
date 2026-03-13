@@ -56,7 +56,7 @@ pendientes:
           ./nix/pkgs/apps.nix
           ./nix/pkgs/unstable.nix
 
-          nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
+          # nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
 
           home-manager.nixosModules.home-manager
           {
