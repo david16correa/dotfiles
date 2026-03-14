@@ -96,8 +96,25 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# NixOS utilities
-alias nixos-edit='cd ~/.dotfiles && nvim ~/.dotfiles/flake.nix && cd - >/dev/null'
+# my NixOS utilities
+
+function nixos-edit(){
+  # first we edit flake.nix
+	local OG_PWD="$(pwd)"
+  cd ~/.dotfiles # (we move to ~/.dotfiles to ensure git status works within nvim)
+  nvim ~/.dotfiles/flake.nix
+
+  # flags are dealt with
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --reload|-r) nixos-reload ;;
+      *) echo "Unknown option: $1; Ignoring..." >&2 ;;
+    esac
+    shift
+  done
+
+  cd $OG_PWD >/dev/null || return # (we move back to the original working directory)
+}
 
 function nixos-commit(){
   cd /home/david/.dotfiles
@@ -105,24 +122,25 @@ function nixos-commit(){
   if git diff --cached --quiet; then
     echo "Nothing to commit."
   else
-    git commit -m "nixos-commit: $(date +"%Y.%m.%d %H:%M:%S")"
+    local currentGen=$(readlink /nix/var/nix/profiles/system | grep -o '[0-9]\+')
+    git commit -m "nixos-generation $currentGen - $(date +"%Y.%m.%d %H:%M:%S")"
   fi
   cd - >/dev/null || return
 }
 
 function nixos-reload(){
-  # commit flag is dealt with
+  # flags are dealt with
   while [[ $# -gt 0 ]]; do
     case "$1" in
-      --commit|-c) nixos-commit ;;
-      --update-unstable|-Syu) sudo nix flake update nixpkgs-unstable --flake /home/david/.dotfiles ;;
-      --update-all|-Syyu) sudo nix flake update --flake /home/david/.dotfiles ;;
-      *) echo "Unknown option: $1" >&2; exit 1 ;;
+      --update-unstable) sudo nix flake update nixpkgs-unstable --flake /home/david/.dotfiles ;;
+      --update|-Syu) sudo nix flake update --flake /home/david/.dotfiles ;;
+      *) echo "Unknown option: $1; Ignoring..." >&2 ;;
     esac
     shift
   done
 
-  sudo nixos-rebuild switch --flake /home/david/.dotfiles#bjork || return
+  sudo nixos-rebuild switch --flake /home/david/.dotfiles#bjork 
+  nixos-commit || return
 }
 
 # zprof # to debug loading time
