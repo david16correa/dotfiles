@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -45,6 +45,26 @@
     package = pkgs.adwaita-icon-theme;
     name = "Adwaita";
     size = 24;
+  };
+
+  imports = [ inputs.lazyvim.homeManagerModules.default ];
+  programs.lazyvim = {
+    enable = true;
+
+    extras = {
+      lang.nix.enable = true;
+      lang.julia.enable = true;
+      lang.python.enable = true;
+    };
+
+    # IMPORTANT: Extras don't install treesitter parsers automatically
+    # You must add them manually for syntax highlighting
+    treesitterParsers = with pkgs.tree-sitter-grammars; [
+      tree-sitter-nix
+      tree-sitter-julia
+      tree-sitter-python
+    ];
+
   };
 
   home.stateVersion = "25.11"; # the state version is required and should stay at the version you originally installed

@@ -31,7 +31,6 @@
     ookla-speedtest
     cliphist
     app2unit
-    nodejs
     # nodejs_24
   ]++[(
     catppuccin-sddm.override {

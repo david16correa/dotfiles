@@ -24,9 +24,14 @@ pendientes:
       inputs.home-manager.follows = "home-manager";
     };
 
+    lazyvim = {
+      url = "github:pfassina/lazyvim-nix/fix/62-treesitter-grammar-build-failure-nixpkgs-2411";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, lazyvim, ... } @ inputs:
 
   let
     system = "x86_64-linux";
@@ -62,6 +67,7 @@ pendientes:
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.david = import ./nix/home/home.nix;
           }
         ];

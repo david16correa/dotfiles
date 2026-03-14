@@ -18,7 +18,7 @@
     vicinae
     yazi
     kitty
-    neovim
+    # neovim
     noctalia-shell
     julia
     discord
