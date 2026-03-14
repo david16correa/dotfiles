@@ -11,7 +11,7 @@ pendientes:
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -26,7 +26,7 @@ pendientes:
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... } @ inputs:
 
   let
     system = "x86_64-linux";
@@ -56,7 +56,7 @@ pendientes:
           ./nix/pkgs/apps.nix
           ./nix/pkgs/unstable.nix
 
-          # nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
+          # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
 
           home-manager.nixosModules.home-manager
           {
