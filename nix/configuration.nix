@@ -46,6 +46,7 @@
   hardware.cpu.amd.updateMicrocode = true; # amd ucode
   hardware.graphics.enable = true; # OpenGl/AMD
   hardware.bluetooth.enable = true;
+  hardware.alsa.enablePersistence = true;
 
   time.timeZone = "America/Mexico_City";
   i18n.defaultLocale = "en_US.UTF-8";
