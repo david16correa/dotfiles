@@ -57,6 +57,25 @@
       lang.python.enable = true;
     };
 
+    
+    config = {
+      options = ''
+        vim.g.slime_target = "tmux"
+        vim.g.slime_default_config = {
+          socket_name = "default",
+          target_pane = ":.2",
+        }
+        vim.g.slime_dont_ask_default = true
+
+        vim.cmd("let g:latex_to_unicode_tab = 'off'")
+        vim.cmd("let g:latex_to_unicode_auto = 1")
+
+        vim.g.snacks_animate = false
+        vim.opt.conceallevel = 0 -- keep \alpha as \alpha instead of α
+        vim.g.autoformat = false
+      '';
+    };
+
     # IMPORTANT: Extras don't install treesitter parsers automatically
     # You must add them manually for syntax highlighting
     # treesitterParsers = with pkgs.tree-sitter-grammars; [
