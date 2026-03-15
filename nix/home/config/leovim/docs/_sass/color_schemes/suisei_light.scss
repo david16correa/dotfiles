@@ -1,0 +1,25 @@
+$color-scheme: suisei;
+$body-background-color: #f4f6fc; // Light off-white for a soft, bright background
+$body-heading-color: #4a6fa3; // Soft cosmic blue for headings
+$body-text-color: #5b6e8b; // Muted blue-gray for readability
+$link-color: #4a80c2; // Pastel light blue, reminiscent of stars
+$nav-child-link-color: #6a8aab; // Muted blue with a slight purple undertone for contrast
+$sidebar-color: #e3e8f5; // Lightened blue-gray for the sidebar
+$base-button-color: #c9d4e5; // Soft grayish-blue for the base button
+$btn-primary-color: #f2c14e; // Gold accent for primary buttons
+$code-background-color: #d0d9e8; // Very light background for code blocks
+$code-linenumber-color: #3c4d7f; // Light sky blue for code line numbers
+$feedback-color: darken($sidebar-color, 5%);
+$table-background-color: #e6edf6; // Very light muted blue for table background
+$search-background-color: #e6edf6; // Consistent with table and sidebar
+$search-result-preview-color: #3c4d7f; // Light cosmic purple for search results
+$border-color: #d0d9e8; // Subtle light grayish-blue border color
+
+// Adding some gold accents
+$gold-accent: #f2c14e; // Gold
+$highlight-color: $gold-accent; // Highlight text or key elements
+$button-hover-color: mix(black,$gold-accent, 10%); // Darker gold for button hover effect
+$link-hover-color: $gold-accent; // Gold for link hover effect
+
+// @import "./vendor/OneDarkJekyll/syntax"; // Keep the syntax theme
+
