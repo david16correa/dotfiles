@@ -30,12 +30,6 @@
     "/nix".options = [ "compress=zstd" "noatime" ];
   };
 
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
-    fileSystems = [ "/" ];
-  };
-
   ########################################
   # OS basics
   ########################################
@@ -43,10 +37,12 @@
   networking.hostName = "bjork"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  hardware.cpu.amd.updateMicrocode = true; # amd ucode
-  hardware.graphics.enable = true; # OpenGl/AMD
-  hardware.bluetooth.enable = true;
-  # hardware.alsa.enablePersistence = true;
+  hardware = {
+    cpu.amd.updateMicrocode = true; # amd ucode
+    graphics.enable = true; # OpenGl/AMD
+    bluetooth.enable = true;
+    # alsa.enablePersistence = true;
+  };
 
   time.timeZone = "America/Mexico_City";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -77,46 +73,54 @@
   # services
   ########################################
 
-  services.openssh = {
+  services = {
+    btrfs.autoScrub = {
       enable = true;
-      allowSFTP = true;
-  };
+      interval = "monthly";
+      fileSystems = [ "/" ];
+    };
 
-  services.printing.enable = true;
+    openssh = {
+        enable = true;
+        allowSFTP = true;
+    };
 
-  services.upower.enable = true;
+    printing.enable = true;
 
-  services.tlp = {
+    upower.enable = true;
+
+    tlp = {
+        enable = true;
+        settings = {
+          CPU_SCALING_GOVERNOR_ON_AC="performance";
+          CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+          CPU_ENERGY_PERF_POLICY_ON_BAT="power";
+          PLATFORM_PROFILE_ON_AC="balanced";
+          PLATFORM_PROFILE_ON_BAT="low-power";
+          START_CHARGE_THRESH_BAT0=40;
+          STOP_CHARGE_THRESH_BAT0=80;
+        };
+    };
+
+    thinkfan = {
       enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC="performance";
-        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-        CPU_ENERGY_PERF_POLICY_ON_BAT="power";
-        PLATFORM_PROFILE_ON_AC="balanced";
-        PLATFORM_PROFILE_ON_BAT="low-power";
-        START_CHARGE_THRESH_BAT0=40;
-        STOP_CHARGE_THRESH_BAT0=80;
-      };
-  };
-
-  services.thinkfan = {
-    enable = true;
-    sensors = [{
-      query = "/proc/acpi/ibm/thermal";
-      type = "tpacpi";
-      indices = [ 0 ];
-    }];
-    fans = [{
-      query = "/proc/acpi/ibm/fan";
-      type = "tpacpi";
-    }];
-    levels = [
-      ["level auto"       0   45]   # Let BIOS handle idle (fan off/quiet)
-      [2                  45  55]   # Low speed
-      [4                  55  65]   # Medium speed
-      [7                  65  75]   # High speed
-      ["level full-speed" 75  1000] # Max speed above 75°C (safety)
-    ];
+      sensors = [{
+        query = "/proc/acpi/ibm/thermal";
+        type = "tpacpi";
+        indices = [ 0 ];
+      }];
+      fans = [{
+        query = "/proc/acpi/ibm/fan";
+        type = "tpacpi";
+      }];
+      levels = [
+        ["level auto"       0   45]   # Let BIOS handle idle (fan off/quiet)
+        [2                  45  55]   # Low speed
+        [4                  55  65]   # Medium speed
+        [7                  65  75]   # High speed
+        ["level full-speed" 75  1000] # Max speed above 75°C (safety)
+      ];
+    };
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
