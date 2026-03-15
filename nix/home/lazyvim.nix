@@ -56,15 +56,19 @@
       # '';
       
       colorscheme = ''
-        "folke/tokyonight.nvim",
-        opts = {
-          style = "night",
-          transparent = true,
-          styles = {
-            sidebars = "transparent",
-            floats = "transparent",
+        return {
+          {
+            "folke/tokyonight.nvim",
+            opts = {
+              style = "night",
+              transparent = true,
+              styles = {
+                sidebars = "transparent",
+                floats = "transparent",
+              },
+            },
           },
-        },
+        }
       '';
 
       vim-slime = ''
