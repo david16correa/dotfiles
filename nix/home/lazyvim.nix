@@ -40,19 +40,31 @@
     };
 
     plugins = {
+      # colorscheme = ''
+      #   return {
+      #     {
+      #       "loctvl842/monokai-pro.nvim",
+      #       opts = { filter = "octagon" }, -- classic | octagon | pro | machine | ristretto | spectrum
+      #     },
+      #     {
+      #       "LazyVim/LazyVim",
+      #       opts = {
+      #         colorscheme = "monokai-pro",
+      #       },
+      #     },
+      #   }
+      # '';
+      
       colorscheme = ''
-        return {
-          {
-            "loctvl842/monokai-pro.nvim",
-            opts = { filter = "octagon" }, -- classic | octagon | pro | machine | ristretto | spectrum
+        "folke/tokyonight.nvim",
+        opts = {
+          style = "night",
+          transparent = true,
+          styles = {
+            sidebars = "transparent",
+            floats = "transparent",
           },
-          {
-            "LazyVim/LazyVim",
-            opts = {
-              colorscheme = "monokai-pro",
-            },
-          },
-        }
+        },
       '';
 
       vim-slime = ''
