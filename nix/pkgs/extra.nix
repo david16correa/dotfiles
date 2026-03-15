@@ -82,6 +82,10 @@
     gvfs.enable = true;
     spotifyd.enable = true;
     # flatpak.package = true;
+    #
+    displayManager.sddm = {
+        theme = "catppuccin-macchiato-blue";
+    };
   };
 
 }
