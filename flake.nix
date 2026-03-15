@@ -68,7 +68,7 @@ pendientes:
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
+              extraSpecialArgs = { inherit inputs unstable; };
               users.david = import ./nix/home/home.nix;
             };
           }

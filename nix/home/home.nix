@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, unstable, inputs, ... }:
 
 {
   imports = [
@@ -6,9 +6,10 @@
   ];
 
   home = {
-    packages = with pkgs; [
+    packages = with unstable; [
       adw-gtk3
       statix
+      tree-sitter
     ];
 
     pointerCursor = {
