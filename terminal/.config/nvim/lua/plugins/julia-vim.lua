@@ -1,5 +1,0 @@
-return {
-  {
-    "JuliaEditorSupport/julia-vim",
-  },
-}
