@@ -60,7 +60,7 @@
           {
             "folke/tokyonight.nvim",
             opts = {
-              style = "night",
+              style = "moon",
             },
           },
         }
