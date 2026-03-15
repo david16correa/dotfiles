@@ -4,7 +4,6 @@
 
   home.packages = with unstable; [
     statix
-    tree-sitter
     ghostscript
     ast-grep
     mermaid-cli
@@ -96,6 +95,14 @@
           },
         }
       '';
+
+      # treesitterParsers = with unstable.tree-sitter-grammars; [
+      #   tree-sitter-nix
+      #   tree-sitter-python
+      #   tree-sitter-julia
+      #   tree-sitter-cpp
+      #   tree-sitter-c
+      # ];
 
       # lsp-config = ''
       #   return {

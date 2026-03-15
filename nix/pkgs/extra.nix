@@ -25,7 +25,6 @@
     trashy
     libcanberra-gtk3
     unrar
-    tree-sitter
     ripgrep
     jdk21_headless
     ookla-speedtest
