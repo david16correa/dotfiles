@@ -69,9 +69,7 @@
       brightnessctl
     ];
     etc = {
-      "keyd/profiles" = {
-        source = ./etc/keyd/profiles;
-      };
+      "keyd/profiles".source = ./etc/keyd/profiles;
     };
   };
 
