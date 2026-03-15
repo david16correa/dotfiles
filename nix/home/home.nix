@@ -15,6 +15,10 @@
         source = ./config/tmux/.tmux;
         recursive = true;
       };
+      "Pictures/backgrounds" = {
+        source = ./backgrounds;
+        recursive = true;
+      };
     };
   };
 
@@ -38,10 +42,6 @@
       };
       "niri" = {
         source = ./config/niri;
-        recursive = true;
-      };
-      "Pictures/backgrounds" = {
-        source = ./backgrounds;
         recursive = true;
       };
     };
