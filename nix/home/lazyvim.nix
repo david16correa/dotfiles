@@ -1,6 +1,15 @@
-{ inputs, ... }:
+{ inputs, pkgs, unstable, ... }:
 {
   imports = [ inputs.lazyvim.homeManagerModules.default ];
+
+  home.packages = with unstable; [
+    statix
+    tree-sitter
+    ghostscript
+    ast-grep
+    mermaid-cli
+  ];
+
   programs.lazyvim = {
     enable = true;
 
