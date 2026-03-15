@@ -1,0 +1,37 @@
+#------------------------------------------------------------------------------#
+# these settings are applied to all Logitech mice
+
+[ids]
+m:046d
+
+#------------------------------------------------------------------------------#
+[main]
+
+# Logitech MX Master 3S Mouse
+mouse1 = f
+mouse2 = e
+mouseforward = z
+
+mouse1+mouse2 = layer(alpha)
+
+# Logitech G502 HERO Gaming Mouse
+1 = layer(control)
+2 = layer(shift)
+3 = e
+
+4 = q
+5 = z
+6 = f
+7 = r
+
+1+2 = layer(alpha)
+
+#------------------------------------------------------------------------------#
+# alpha layer; some useful stuff
+[alpha]
+4 = volumedown
+5 = volumeup
+6 = esc
+7 = S-tab
+leftmouse = playpause
+rightmouse = nextsong

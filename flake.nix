@@ -56,15 +56,14 @@ pendientes:
         modules = [
           ./nix/configuration.nix
 
-          ./nix/pkgs/core.nix
-          ./nix/pkgs/extra.nix
-          ./nix/pkgs/apps.nix
-          ./nix/pkgs/unstable.nix
+          ./nix/system/core.nix
+          ./nix/system/extra.nix
+          ./nix/system/apps.nix
+          ./nix/system/unstable.nix
 
           # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
 
-          home-manager.nixosModules.home-manager
-          {
+          home-manager.nixosModules.home-manager {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;

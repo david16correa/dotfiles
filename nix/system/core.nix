@@ -44,29 +44,37 @@
   # system packages
   ########################################
 
-  environment.systemPackages = with pkgs; [
-    vim
-    tmux
-    fastfetch
-    stow
-    btop-rocm
-    tree
-    tealdeer
-    which
-    rsync
-    caligula
-    xwayland-satellite
-    # glibc
-    gcc
-    keyd
-    gum
-    killall
-    dmidecode
-    gh
-    polkit_gnome
-    playerctl
-    brightnessctl
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      vim
+      tmux
+      fastfetch
+      stow
+      btop-rocm
+      tree
+      tealdeer
+      which
+      rsync
+      caligula
+      xwayland-satellite
+      # glibc
+      gcc
+      keyd
+      gum
+      killall
+      dmidecode
+      gh
+      polkit_gnome
+      playerctl
+      brightnessctl
+    ];
+    etc = {
+      "keyd/profiles" = {
+        source = ./etc/keyd/profiles;
+        recursive = true;
+      };
+    };
+  };
 
   ########################################
   # services

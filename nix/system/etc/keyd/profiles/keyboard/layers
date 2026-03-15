@@ -1,0 +1,123 @@
+#------------------------------------------------------------------------------#
+# Copy and paste like in macOS
+[meta]
+c = C-insert
+v = S-insert
+
+#------------------------------------------------------------------------------#
+# Pressing both Shifts together toggles Caps Lock
+[shift]
+rightshift = capslock
+leftshift = capslock
+
+#------------------------------------------------------------------------------#
+# Hyper layer
+[hyper:C-S-A-M]
+, = brightnessdown
+. = brightnessup
+
+#------------------------------------------------------------------------------#
+# Alpha layer; vim-esque, media, home row mods, F keys, etc
+[alpha]
+# vim-esque
+h = left
+j = down
+k = up
+l = right
+b = C-left
+w = C-right
+e = C-right
+/ = C-f
+o = back
+i = forward
+u = C-z
+r = C-S-z
+x = delete
+g = home
+z = C-=
+y = C-insert
+p = S-insert
+
+# media
+m = playpause
+, = volumedown
+. = volumeup
+
+] = brightnessup
+[ = brightnessdown
+
+# misc - compose key (configured as Right Meta in GNOME), enter, menu key, print screen, change input source (configured as Meta + f13 in GNOME)
+\ = rightmeta
+; = enter
+' = compose
+enter = print
+tab = M-f1
+
+# f-keys
+1 = f1
+2 = f2
+3 = f3
+4 = f4
+5 = f5
+6 = f6
+7 = f7
+8 = f8
+9 = f9
+0 = f10
+- = f11
+= = f12
+
+# home row mods (special layers are used to avoid conficts)
+a = layer(hrControl)
+s = layer(hrShift)
+d = layer(hrAlt)
+f = layer(hrMeta)
+
+[hrControl:C]
+[hrShift:S]
+[hrAlt:A]
+[hrMeta:M]
+
+[alpha+hrShift]
+# vimesque
+h = home
+j = pagedown
+k = pageup
+l = end
+
+[alpha+shift]
+# vimesque
+x = backspace
+g = end
+z = C--
+# media
+m = mute
+, = previoussong
+. = nextsong
+
+#------------------------------------------------------------------------------#
+# Beta layer; numpad
+[beta]
+m = 0
+j = 1
+k = 2
+l = 3
+u = 4
+i = 5
+o = 6
+0 = /
+p = *
+; = -
+/ = +
+
+#------------------------------------------------------------------------------#
+# Gamma layer; misc
+[gamma:C]
+; = backspace
+
+# gaming arrows
+[alpha+gamma]
+w = up
+a = left
+s = down
+d = right
