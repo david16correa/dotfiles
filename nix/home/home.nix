@@ -16,9 +16,9 @@
     userDirs.enable = true;
     userDirs.createDirectories = true;
     configFile = {
-      "fastfetch".source = ./config/fastfetch/config.jsonc;
-      "kitty".source = ./config/kitty/kitty.conf;
-      "oh-my-posh".source = ./config/oh-my-posh/theme.omp.json;
+      "fastfetch/config.jsonc".source = ./config/fastfetch/config.jsonc;
+      "kitty/kitty.conf".source = ./config/kitty/kitty.conf;
+      "oh-my-posh/theme.omp.json".source = ./config/oh-my-posh/theme.omp.json;
       "yazi" = {
         source = ./config/yazi;
         recursive = true;
