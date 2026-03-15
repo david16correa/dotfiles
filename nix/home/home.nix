@@ -40,6 +40,10 @@
         source = ./config/niri;
         recursive = true;
       };
+      "Pictures/backgrounds" = {
+        source = ./backgrounds;
+        recursive = true;
+      };
     };
   };
 }
