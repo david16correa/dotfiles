@@ -71,7 +71,6 @@
     etc = {
       "keyd/profiles" = {
         source = ./etc/keyd/profiles;
-        recursive = true;
       };
     };
   };
