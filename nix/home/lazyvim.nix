@@ -7,6 +7,7 @@
     ghostscript
     ast-grep
     mermaid-cli
+    clang-tools
   ];
 
   programs.lazyvim = {
