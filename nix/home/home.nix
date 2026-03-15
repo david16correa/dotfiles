@@ -9,6 +9,13 @@
   home = {
     stateVersion = "25.11"; # the state version is required and should stay at the version you originally installed
     # packages = with pkgs; [ ];
+    file = {
+      ".tmux.conf".source = ./config/tmux/.tmux.conf;
+      ".tmux" = {
+        source = ./config/tmux/.tmux;
+        recursive = true;
+      };
+    };
   };
 
   xdg = {
