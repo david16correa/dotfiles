@@ -14,18 +14,16 @@
 
     extras = {
       lang = {
-       nix.enable = true;
+        nix.enable = true;
         julia.enable = true;
         python.enable = true;
+        clangd.enable = true;
+        markdown.enable = true;
+        git.enable = true;
       };
     };
 
     treesitterParsers = with unstable.vimPlugins.nvim-treesitter-parsers; [
-      nix
-      python
-      julia
-      cpp
-      c
       bash
       zsh
     ];
@@ -49,6 +47,7 @@
     };
 
     plugins = {
+
       # colorscheme = ''
       #   return {
       #     {
