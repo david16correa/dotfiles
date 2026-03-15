@@ -15,7 +15,7 @@
         source = ./config/tmux/.tmux;
         recursive = true;
       };
-      "Pictures/backgrounds" = {
+      ".backgrounds" = {
         source = ./backgrounds;
         recursive = true;
       };
