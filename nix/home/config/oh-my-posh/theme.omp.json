@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "options": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "home_enabled": true
+          },
+          "template": "({{ if .Venv }}{{ .Venv }}{{ end }}) ",
+          "foreground": "lightYellow",
+          "powerline_symbol": "\ue0b0",
+          "type": "python",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "macos": "\uf179"
+          },
+          "template": "{{.Icon}} ",
+          "foreground": "lightMagenta",
+          "type": "os",
+          "style": "plain"
+        },
+        {
+          "template": "{{ .HostName }} ",
+          "foreground": "lightMagenta",
+          "type": "session",
+          "style": "plain"
+        },
+        // {
+        //   "template": "{{ .Env.PRETTY_HOSTNAME }} ",
+        //   "foreground": "lightMagenta",
+        //   "type": "text",
+        //   "style": "plain"
+        // },
+        {
+          "options": {
+            "style": "agnoster_short"
+          },
+          "template": "{{ .Path }} ",
+          "foreground": "lightGreen",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "branch_icon": "\ue725 ",
+            "fetch_stash_count": true
+          },
+          "template": "{{ .HEAD }}{{ if gt .StashCount 0 }} \udb80\ude49 {{ .StashCount }}{{ end }} ",
+          "foreground": "#d2573f",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "template": "❯ ",
+          "foreground": "lightYellow",
+          "type": "text",
+          "style": "plain"
+        }
+      ]
+    }
+  ],
+  "version": 4
+}

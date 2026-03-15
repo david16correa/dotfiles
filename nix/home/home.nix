@@ -15,5 +15,14 @@
     enable = true;
     userDirs.enable = true;
     userDirs.createDirectories = true;
+    configFile = {
+      "fastfetch".source = ./config/fastfetch/config.jsonc;
+      "kitty".source = ./config/kitty/kitty.conf;
+      "oh-my-posh".source = ./config/oh-my-posh/theme.omp.json;
+      "yazi" = {
+        source = ./config/yazi;
+        recursive = true;
+      };
+    };
   };
 }
