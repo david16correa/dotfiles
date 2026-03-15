@@ -332,7 +332,7 @@
         "animationDisabled": false,
         "animationSpeed": 2,
         "autoStartAuth": true,
-        "avatarImage": "/home/david/Pictures/me/grinning coffee.jpg",
+        "avatarImage": "/home/david/.face",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "custom",
