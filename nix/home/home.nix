@@ -19,6 +19,7 @@
         source = ./backgrounds;
         recursive = true;
       };
+      ".face".source = ./avatar/grinningCoffee.jpg;
     };
   };
 
