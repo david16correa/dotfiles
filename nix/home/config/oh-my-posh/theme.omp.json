@@ -10,7 +10,7 @@
           "style": "plain",
           "foreground": "lightBlue",
           "background": "transparent",
-          "template": "(󱄅 {{ .Type }}) "
+          "template": "{{ if ne .Type \"unknown\" }}(󱄅 {{ .Type }}){{ end }}"
         },
         {
           "options": {
