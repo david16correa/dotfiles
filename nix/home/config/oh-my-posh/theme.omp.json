@@ -47,8 +47,7 @@
         // },
         {
           "options": {
-            "style": "agnoster_short",
-            "max_depth": 2
+            "style": "agnoster_short"
           },
           "template": "{{ .Path }} ",
           "foreground": "lightGreen",
