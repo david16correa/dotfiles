@@ -86,8 +86,9 @@
       # alsa.enable = true;
     };
     snapper = {
+      useDefaultConfig = false;
       snaphotInterval = "hourly";
-      home = {
+      configs.home = {
         SUBVOLUME = "/home";
         ALLOW_USERS = [ "david" ];
         TIMELINE_CREATE = true;
