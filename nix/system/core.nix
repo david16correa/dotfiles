@@ -87,7 +87,7 @@
     };
     snapper = {
       useDefaultConfig = false;
-      snaphotInterval = "hourly";
+      snapshotInterval = "hourly";
       configs.home = {
         SUBVOLUME = "/home";
         ALLOW_USERS = [ "david" ];
