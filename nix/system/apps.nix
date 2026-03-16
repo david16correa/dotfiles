@@ -20,7 +20,6 @@
     maestral
     maestral-gui
     texliveFull
-    spotifyd
     pavucontrol
     pwvucontrol
     easyeffects
@@ -44,6 +43,7 @@
   ########################################
 
   services = {
+    spotifyd.enable = true;
   };
 
 }
