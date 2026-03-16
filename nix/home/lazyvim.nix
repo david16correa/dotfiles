@@ -8,6 +8,7 @@
     ast-grep
     mermaid-cli
     clang-tools
+    markdownlint-cli2
   ];
 
   programs.lazyvim = {

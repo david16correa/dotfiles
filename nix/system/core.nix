@@ -85,18 +85,20 @@
       pulse.enable = true;
       # alsa.enable = true;
     };
-    # snapper = {
-    #   home = {
-    #     SUBVOLUME = "/home";
-    #     ALLOW_USERS = [ "david" ];
-    #     TIMELINE_CREATE = true;
-    #     TIMELINE_CLEANUP = true;
-    #     TIMELINE_LIMIT_HOURLY = 5;
-    #     TIMELINE_LIMIT_DAILY = 2;
-    #     TIMELINE_LIMIT_WEEKLY = 2;
-    #     TIMELINE_LIMIT_MONTHLY = 2;
-    #   };
-    # };
+    snapper = {
+      snaphotInterval = "hourly";
+      home = {
+        SUBVOLUME = "/home";
+        ALLOW_USERS = [ "david" ];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        TIMELINE_LIMIT_HOURLY = 8;
+        TIMELINE_LIMIT_DAILY = 7;
+        TIMELINE_LIMIT_WEEKLY = 4;
+        TIMELINE_LIMIT_MONTHLY = 3;
+        TIMELINE_LIMIT_YEARLY = 0;
+      };
+    };
   };
 
   # custom systemd services
