@@ -43,7 +43,20 @@
   ########################################
 
   services = {
-    spotifyd.enable = true;
+    spotifyd = {
+      enable = true;
+      settings.global.zeroconf_port = 2020;
+    };
+  };
+
+  ########################################
+  # firewall
+  ########################################
+
+  networking.firewall = {
+    # spotifyd
+    allowedTCPPorts = [ 2020 ];
+    allowedUDPPorts = [ 5353 ];
   };
 
 }
