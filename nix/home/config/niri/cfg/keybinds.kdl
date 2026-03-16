@@ -18,6 +18,7 @@ binds {
   Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                 { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
   Mod+Shift+Alt+Ctrl+L       hotkey-overlay-title="Lock the Screen"              { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
   Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock and Suspend"             { spawn-sh "noctalia-shell ipc call lockScreen lock && systemctl suspend"; }
+  Mod+Shift+Alt+Ctrl+H       hotkey-overlay-title="Lock and Hibernate"           { spawn-sh "noctalia-shell ipc call lockScreen lock && systemctl hibernate"; }
   Mod+Shift+Alt+Ctrl+P       hotkey-overlay-title="Power off all montiors"       { power-off-monitors; }
   Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                    { quit; }
 
