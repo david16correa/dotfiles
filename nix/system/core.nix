@@ -86,7 +86,6 @@
       # alsa.enable = true;
     };
     snapper = {
-      useDefaultConfig = false;
       snapshotInterval = "hourly";
       configs.home = {
         SUBVOLUME = "/home";
