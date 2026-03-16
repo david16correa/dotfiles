@@ -10,7 +10,7 @@
           "style": "plain",
           "foreground": "lightBlue",
           "background": "transparent",
-          "template": "(󱄅-{{ .Type }})"
+          "template": "(󱄅 {{ .Type }})"
         },
         {
           "options": {
@@ -47,7 +47,8 @@
         // },
         {
           "options": {
-            "style": "agnoster_short"
+            "style": "agnoster_short",
+            "max_depth": 2
           },
           "template": "{{ .Path }} ",
           "foreground": "lightGreen",
