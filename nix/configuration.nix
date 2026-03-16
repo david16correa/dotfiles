@@ -10,7 +10,7 @@
     ];
 
   ########################################
-  # bootloeader, kernel, and fs
+  # bootloader, kernel, fs, and swap
   ########################################
 
   boot = {
@@ -20,7 +20,8 @@
       timeout = 0;
     };
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelParams = [ "quiet" "splash" "loglevel=3" "rd.systemd.show_status=false" ];
+    kernelParams = [ "quiet" "splash" "loglevel=3" "rd.systemd.show_status=false" "resume_offset=40698492" ];
+    resumeDevice = "/dev/disk/by-uuid/a71adb85-511c-46b6-a16e-e5a6678cc2d0";
     # consoleLogLevel = 0;
   };
 
@@ -28,8 +29,16 @@
     "/".options                   = [ "compress=zstd" "noatime" ];
     "/home".options               = [ "compress=zstd" "noatime" ];
     "/nix".options                = [ "compress=zstd" "noatime" ];
-    "/home/david/Games".options   = [ "compress=zstd" "noatime" ];
+    "/swap".options               = [ "noatime" ];
+    "/home/david/Games".options   = [ "compress=zstd" "noatime" "x-gvfs-hide" ];
   };
+
+  zramSwap.enable = true;
+
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 32*1024; # 32GB
+  }];
 
   ########################################
   # OS basics

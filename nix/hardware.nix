@@ -31,10 +31,16 @@
       options = [ "subvol=nix" ];
     };
 
+  fileSystems."/swap" =
+    { device = "/dev/disk/by-uuid/a71adb85-511c-46b6-a16e-e5a6678cc2d0";
+      fsType = "btrfs";
+      options = [ "subvol=swap" ];
+    };
+
   fileSystems."/home/david/Games" =
     { device = "/dev/disk/by-uuid/a71adb85-511c-46b6-a16e-e5a6678cc2d0";
       fsType = "btrfs";
-      options = [ "subvol=games" "x-gvfs-hide" ];
+      options = [ "subvol=games" ];
     };
 
   fileSystems."/boot" =
