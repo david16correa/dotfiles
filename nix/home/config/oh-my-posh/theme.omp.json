@@ -6,6 +6,13 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "nix-shell",
+          "style": "plain",
+          "foreground": "blue",
+          "background": "transparent",
+          "template": "(󱄅-{{ .Type }})"
+        },
+        {
           "options": {
             "display_mode": "environment",
             "fetch_virtual_env": true,
