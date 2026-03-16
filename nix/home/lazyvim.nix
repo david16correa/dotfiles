@@ -22,6 +22,7 @@
         clangd.enable = true;
         markdown.enable = true;
         git.enable = true;
+        dotnet.enable = true;
       };
     };
 
