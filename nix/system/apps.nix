@@ -24,7 +24,7 @@
     pavucontrol
     pwvucontrol
     easyeffects
-    lsp-plugins
+    # lsp-plugins
     libreoffice-fresh
     gcolor3
     gimp
