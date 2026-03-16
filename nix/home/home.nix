@@ -47,4 +47,12 @@
       };
     };
   };
+
+
+  services = {
+    spotifyd = {
+      enable = true;
+      settings.global.zeroconf_port = 2020;
+    };
+  };
 }

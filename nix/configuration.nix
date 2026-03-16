@@ -54,8 +54,15 @@
   # OS basics
   ########################################
 
-  networking.hostName = "bjork"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "bjork"; # Define your hostname.
+    networkmanager.enable = true;
+    firewall = {
+      # for spotifyd
+      allowedTCPPorts = [ 2020 ];
+      allowedUDPPorts = [ 5353 ];
+    };
+  };
 
   hardware = {
     cpu.amd.updateMicrocode = true; # amd ucode
@@ -147,17 +154,6 @@
       ];
     };
   };
-
-  ########################################
-  # firewall
-  ########################################
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
 
   ########################################
   # state version @ install
