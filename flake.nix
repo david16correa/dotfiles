@@ -25,7 +25,7 @@ pendientes:
     };
 
     lazyvim = {
-      url = "github:pfassina/lazyvim-nix/fix/62-treesitter-grammar-build-failure-nixpkgs-2411";
+      url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
