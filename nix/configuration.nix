@@ -30,6 +30,7 @@
     "/home".options               = [ "compress=zstd" "noatime" ];
     "/nix".options                = [ "compress=zstd" "noatime" ];
     "/swap".options               = [ "noatime" ];
+    "/home/.snapshots".options    = [ "compress=zstd" "noatime" ];
     "/home/david/Games".options   = [ "compress=zstd" "noatime" "x-gvfs-hide" ];
   };
 
