@@ -60,7 +60,7 @@
     # gnome.core-apps.enable = true;
     gvfs.enable = true;
     gnome.tinysparql.enable = true;
-    gnomeo.sushi.enable = true;
+    gnome.sushi.enable = true;
   };
 
 }
