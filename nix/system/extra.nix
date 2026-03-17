@@ -77,11 +77,7 @@
   ########################################
 
   services = {
-    gnome.core-apps.enable = true;
-    gnome.tinysparql.enable = true;
-    gvfs.enable = true;
     # flatpak.package = true;
-    #
     displayManager.sddm = {
         theme = "catppuccin-macchiato-blue";
     };
