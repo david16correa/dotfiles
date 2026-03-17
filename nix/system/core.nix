@@ -23,7 +23,10 @@
 
   programs = {
     zsh.enable = true;
-    starship.enable = true;
+    starship = {
+      enable = true;
+      presets = [ "nerd-font-symbols" ];
+    };
     dconf.enable = true;
     git = {
       enable = true;
