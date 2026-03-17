@@ -33,7 +33,9 @@ export PATH
 
 # >>> init de cosas varias >>>
 eval "$(zoxide init zsh)"
-eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.omp.json)"
+# eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.omp.json)"
+export STARSHIP_CONFIG=/home/david/.config/starship/config.toml
+eval "$(starship init zsh)"
 source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 
 # >>> aliases y preferencias varias >>>
