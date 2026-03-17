@@ -4,6 +4,7 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
+    presets = [ "nerd-font-symbols" ];
     # settings = {
     #   format = "$nix_shell$python$os$hostname$directory$git_branch$git_stash$character";
     #
