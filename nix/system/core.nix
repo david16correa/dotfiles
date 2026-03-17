@@ -12,10 +12,7 @@
       wayland.enable = true;
   };
 
-  programs.niri = {
-    enable = true;
-    useNautilus = true;
-  };
+  programs.niri.enable = true;
 
   ########################################
   # program modules

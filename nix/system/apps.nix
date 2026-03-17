@@ -12,10 +12,6 @@
     # gnome programs
     gnome-disks.enable = true;
     evince.enable = true;
-    nautilus-open-any-terminal = {
-      enable = true;
-      terminal = "kitty";
-    };
   };
 
   ########################################
@@ -48,7 +44,6 @@
     baobab # disk usage analyzer
     decibels # audio player
     loupe # image viewer
-    nautilus # files
     showtime # video player
   ];
 
@@ -58,9 +53,9 @@
 
   services = {
     # gnome.core-apps.enable = true;
+    # gnome.sushi.enable = true;
+    # gnome.tinysparql.enable = true;
     gvfs.enable = true;
-    gnome.tinysparql.enable = true;
-    gnome.sushi.enable = true;
   };
 
 }
