@@ -32,7 +32,7 @@
     configFile = {
       "fastfetch/config.jsonc".source = ./config/fastfetch/config.jsonc;
       "kitty/kitty.conf".source = ./config/kitty/kitty.conf;
-      "oh-my-posh/theme.omp.json".source = ./config/oh-my-posh/theme.omp.json;
+      "starship/config.toml".source = ./config/starship/config.toml;
       "yazi" = {
         source = ./config/yazi;
         recursive = true;
