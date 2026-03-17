@@ -4,7 +4,6 @@
   imports = [
     ./lazyvim.nix
     ./theme.nix
-    ./starship.nix
   ];
 
   home = {
@@ -48,7 +47,6 @@
       };
     };
   };
-
 
   services = {
     spotifyd = {

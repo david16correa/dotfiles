@@ -16,6 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     oh-my-posh
+    starship
     wget
     fzf
     lsd
