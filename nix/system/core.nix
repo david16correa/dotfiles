@@ -23,6 +23,7 @@
 
   programs = {
     zsh.enable = true;
+    starship.enable = true;
     dconf.enable = true;
     git = {
       enable = true;
