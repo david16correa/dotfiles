@@ -12,6 +12,7 @@
     # gnome programs
     gnome-disks.enable = true;
     evince.enable = true;
+    # dconf.enable = true;
   };
 
   ########################################
@@ -35,9 +36,6 @@
     protonplus
     nemo-with-extensions
     nemo-preview
-    nemo-emblems
-    nemo-python
-    nemo-fileroller
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     # gnome apps
     gnome-boxes
@@ -56,6 +54,9 @@
     # gnome.sushi.enable = true;
     # gnome.tinysparql.enable = true;
     gvfs.enable = true;
+    dbus.packages = with pkgs;[
+      nemo-preview
+    ];
   };
 
 }
