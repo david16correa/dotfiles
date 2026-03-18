@@ -5,7 +5,7 @@
 format = "$nix_shell$python$os$hostname$directory$git_branch$character"
 
 # Inserts a blank line between shell prompts
-# add_newline = true
+add_newline = false
 
 [nix_shell]
 format = '[\($symbol$state\)]($style) '

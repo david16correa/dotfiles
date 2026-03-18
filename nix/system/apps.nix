@@ -23,7 +23,7 @@
     pdftk
     maestral
     maestral-gui
-    texliveFull
+    texliveMedium
     pavucontrol
     pwvucontrol
     easyeffects
@@ -35,7 +35,6 @@
     prismlauncher
     protonplus
     nemo-with-extensions
-    nemo-preview
     ffmpegthumbnailer
     poppler
     gnome-epub-thumbnailer
@@ -57,9 +56,6 @@
     # gnome.sushi.enable = true;
     # gnome.tinysparql.enable = true;
     gvfs.enable = true;
-    dbus.packages = with pkgs;[
-      nemo-preview
-    ];
   };
 
 }
