@@ -39,6 +39,7 @@
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     # gnome apps
     gnome-boxes
