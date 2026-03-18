@@ -11,6 +11,11 @@ pendientes:
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
@@ -62,6 +67,9 @@ pendientes:
           ./nix/system/unstable.nix
 
           # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
+
+          nix-index-database.nixosModules.default
+          { programs.nix-index-database.comma.enable = true; }
 
           home-manager.nixosModules.home-manager {
             home-manager = {

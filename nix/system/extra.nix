@@ -30,8 +30,8 @@
     app2unit
     # jdk21_headless
     # nodejs_24
-  ]++[(
-    catppuccin-sddm.override {
+  ]++[
+    (catppuccin-sddm.override {
       flavor = "macchiato";
       accent = "blue";
       clockEnabled = false;
@@ -39,16 +39,15 @@
       fontSize = "9";
       background = "${../home/backgrounds/dm16_10.jpg}";
       loginBackground = true;
-    }
-    )
-    (texliveMedium.withPackages (
-        ps: with ps; [
-          dvisvgm dvipng # for preview and export as html
-          wrapfig amsmath ulem hyperref capt-of
-          preprint physics
-          #(setq org-latex-compiler "lualatex")
-          #(setq org-preview-latex-default-process 'dvisvgm)
-    ]))
+    })
+    # (texliveMedium.withPackages (
+    #     ps: with ps; [
+    #       dvisvgm dvipng # for preview and export as html
+    #       wrapfig amsmath ulem hyperref capt-of
+    #       preprint physics lipsum titlesec
+    #       #(setq org-latex-compiler "lualatex")
+    #       #(setq org-preview-latex-default-process 'dvisvgm)
+    # ]))
   ];
 
 
