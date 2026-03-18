@@ -23,7 +23,7 @@
     pdftk
     maestral
     maestral-gui
-    texliveFull
+    texliveMedium
     pavucontrol
     pwvucontrol
     easyeffects
