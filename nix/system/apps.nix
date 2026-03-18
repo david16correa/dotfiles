@@ -34,8 +34,8 @@
     nemo-with-extensions
     baobab # disk usage analyzer
     decibels # audio player
-    gcolor3
-    gnome-boxes
+    gcolor3 # color picker
+    gnome-boxes # virtual machines viwer/manager
     loupe # image viewer
     showtime # video player
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
