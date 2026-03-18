@@ -36,12 +36,9 @@
     protonplus
     nemo-with-extensions
     nemo-preview
-    gst_all_1.gstreamer
-    gst_all_1.gst-plugins-base
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-bad
-    gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-libav
+    ffmpegthumbnailer
+    poppler
+    gnome-epub-thumbnailer
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     # gnome apps
     gnome-boxes
