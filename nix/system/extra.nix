@@ -45,7 +45,7 @@
         ps: with ps; [
           dvisvgm dvipng # for preview and export as html
           wrapfig amsmath ulem hyperref capt-of
-          fullpage physics
+          preprint physics
           #(setq org-latex-compiler "lualatex")
           #(setq org-preview-latex-default-process 'dvisvgm)
     ]))
