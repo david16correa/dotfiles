@@ -33,6 +33,7 @@
     zotero
     prismlauncher
     protonplus
+    glib
     nemo-with-extensions
     nemo-preview
     nemo-emblems
