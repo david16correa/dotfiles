@@ -23,9 +23,11 @@
     pdftk
     maestral
     maestral-gui
-    texliveMedium
+    texliveMedium.withPackages ( ps: with ps; [
+      texdoc # recommended package to navigate the documentation
+      fullpage
+    ])
     pavucontrol
-    pwvucontrol
     easyeffects
     libreoffice-fresh
     gcolor3
@@ -35,9 +37,6 @@
     prismlauncher
     protonplus
     nemo-with-extensions
-    ffmpegthumbnailer
-    poppler
-    gnome-epub-thumbnailer
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
     # gnome apps
     gnome-boxes

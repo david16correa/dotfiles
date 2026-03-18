@@ -20,16 +20,15 @@
     fzf
     lsd
     bat
-    # alsa-utils
     bluetui
     trashy
     libcanberra-gtk3
     unrar
     ripgrep
-    jdk21_headless
     ookla-speedtest
     cliphist
     app2unit
+    # jdk21_headless
     # nodejs_24
   ]++[(
     catppuccin-sddm.override {
