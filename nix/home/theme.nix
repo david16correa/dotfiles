@@ -15,7 +15,6 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface".text-scaling-factor = 1.25;
-    "org/cinnamon/desktop/applications/terminal".exec = "kitty";
     # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
   };
 

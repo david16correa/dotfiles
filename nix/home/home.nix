@@ -23,6 +23,12 @@
     };
   };
 
+  dconf.settings = {
+    "org/cinnamon/desktop/applications/terminal".exec = "kitty";
+    "org/cinnamon/desktop/interface".can-change-accels = true;
+    # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
+  };
+
   xdg = {
     enable = true;
     # /home/* directories
