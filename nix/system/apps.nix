@@ -23,10 +23,6 @@
     pdftk
     maestral
     maestral-gui
-    texliveMedium.withPackages ( ps: with ps; [
-      texdoc # recommended package to navigate the documentation
-      fullpage
-    ])
     pavucontrol
     easyeffects
     libreoffice-fresh

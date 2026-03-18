@@ -40,7 +40,17 @@
       background = "${../home/backgrounds/dm16_10.jpg}";
       loginBackground = true;
     }
-  )];
+    )
+    (texliveMedium.withPackages (
+        ps: with ps; [
+          dvisvgm dvipng # for preview and export as html
+          wrapfig amsmath ulem hyperref capt-of
+          fullpage physics
+          #(setq org-latex-compiler "lualatex")
+          #(setq org-preview-latex-default-process 'dvisvgm)
+    ]))
+  ];
+
 
   ########################################
   # systme fonts
