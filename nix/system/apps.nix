@@ -26,20 +26,19 @@
     pavucontrol
     easyeffects
     libreoffice-fresh
-    gcolor3
     gimp
     brave
     zotero
     prismlauncher
     protonplus
     nemo-with-extensions
-    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
-    # gnome apps
-    gnome-boxes
     baobab # disk usage analyzer
     decibels # audio player
+    gcolor3
+    gnome-boxes
     loupe # image viewer
     showtime # video player
+    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
   ];
 
   ########################################

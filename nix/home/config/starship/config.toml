@@ -8,7 +8,7 @@ format = "$nix_shell$python$os$hostname$directory$git_branch$character"
 add_newline = false
 
 [nix_shell]
-format = '[\($symbol$state\)]($style) '
+format = '[\($symbol$name\)]($style) '
 symbol = " "
 
 [python]
