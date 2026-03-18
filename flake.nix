@@ -36,7 +36,7 @@ pendientes:
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, lazyvim, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix-index-database, home-manager, lazyvim, ... } @ inputs:
 
   let
     system = "x86_64-linux";
