@@ -35,6 +35,15 @@
         };
       };
     };
+    nh = {
+      enable = true;
+      flake = "/home/david/.dotfiles";
+      clean = {
+        enable = true;
+        dates = "weekly";
+        extraArgs = "--keep-since 3d";
+      };
+    };
   };
 
   ########################################

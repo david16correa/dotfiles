@@ -72,26 +72,22 @@
   };
 
   time.timeZone = "America/Mexico_City";
+
   i18n.defaultLocale = "en_US.UTF-8";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
 
-  users.groups.keyd = { };
-
-  users.users.david = {
-    description = "David Correa";
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "keyd" ];
-    shell = pkgs.zsh;
-    # packages = with pkgs; [  ];
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
+  users = {
+    users.david = {
+      description = "David Correa";
+      isNormalUser = true;
+      extraGroups = [ "wheel" "networkmanager" "keyd" ];
+      shell = pkgs.zsh;
+      # packages = with pkgs; [  ];
+    };
+    groups.keyd = { };
   };
 
   security.polkit.enable = true;
