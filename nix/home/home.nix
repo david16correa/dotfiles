@@ -7,7 +7,7 @@
   ];
 
   home = {
-    stateVersion = "25.11"; # the state version is required and should stay at the version you originally installed
+    stateVersion = "25.11"; # do NOT change this
     # packages = with pkgs; [ ];
     file = {
       ".tmux.conf".source = ./config/tmux/.tmux.conf;
