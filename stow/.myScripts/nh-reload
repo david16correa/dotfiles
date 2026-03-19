@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+nh os switch "$@" && nh-commit
+
+exit 0

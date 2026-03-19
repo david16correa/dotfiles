@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+cd /home/david/.dotfiles
+git add flake* nix
+if git diff --cached --quiet; then
+  echo "Nothing to commit."
+else
+  currentGen=$(readlink /nix/var/nix/profiles/system | grep -o '[0-9]\+')
+  git commit -m "nixos-generation $currentGen - $(date +"%Y.%m.%d %H:%M:%S")"
+fi
+cd - >/dev/null
+
+# done!
+exit 0
