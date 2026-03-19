@@ -14,6 +14,10 @@
     evince.enable = true;
     # dconf.enable = true;
     niri.useNautilus = true;
+    nautilus-open-any-terminal = {
+      enable = true;
+      terminal = "kitty";
+    };
   };
 
   ########################################
