@@ -38,7 +38,7 @@
     protonplus
     # nemo-with-extensions
     nautilus
-    gnome-console
+    # gnome-console
     baobab # disk usage analyzer
     decibels # audio player
     gcolor3 # color picker
@@ -46,6 +46,10 @@
     loupe # image viewer
     showtime # video player
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
+  ]++[
+  (pkgs.writeShellScriptBin "kgx" ''
+    exec ${pkgs.kitty}/bin/kitty "$@"
+  '')
   ];
 
   ########################################
