@@ -13,6 +13,7 @@
     gnome-disks.enable = true;
     evince.enable = true;
     # dconf.enable = true;
+    niri.useNautilus = true;
   };
 
   ########################################
@@ -31,7 +32,8 @@
     zotero
     prismlauncher
     protonplus
-    nemo-with-extensions
+    # nemo-with-extensions
+    nautilus
     baobab # disk usage analyzer
     decibels # audio player
     gcolor3 # color picker
@@ -47,8 +49,8 @@
 
   services = {
     # gnome.core-apps.enable = true;
-    # gnome.sushi.enable = true;
-    # gnome.tinysparql.enable = true;
+    gnome.sushi.enable = true;
+    gnome.tinysparql.enable = true;
     gvfs.enable = true;
   };
 

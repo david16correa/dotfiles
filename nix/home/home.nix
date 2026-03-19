@@ -20,15 +20,16 @@
         recursive = true;
       };
       ".face".source = ./avatar/grinningCoffee.jpg;
-      ".gnome2/accels/nemo".text = ''
-        (gtk_accel_path "<Actions>/DirViewActions/OpenInTerminal" "<Primary>Return")
-      '';
+      # ".gnome2/accels/nemo".text = ''
+      #   (gtk_accel_path "<Actions>/DirViewActions/OpenInTerminal" "<Primary>Return")
+      # '';
     };
   };
 
   dconf.settings = {
-    "org/cinnamon/desktop/applications/terminal".exec = "kitty";
-    "org/cinnamon/desktop/interface".can-change-accels = true;
+    "org/gnome/desktop/default-applications/terminal".exec = "kitty";
+    # "org/cinnamon/desktop/applications/terminal".exec = "kitty";
+    # "org/cinnamon/desktop/interface".can-change-accels = true;
     # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
   };
 
