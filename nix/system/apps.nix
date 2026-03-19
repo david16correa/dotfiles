@@ -38,6 +38,7 @@
     protonplus
     # nemo-with-extensions
     nautilus
+    gnome-console
     baobab # disk usage analyzer
     decibels # audio player
     gcolor3 # color picker

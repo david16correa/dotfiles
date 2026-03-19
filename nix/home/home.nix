@@ -27,8 +27,6 @@
   };
 
   dconf.settings = {
-    # "com/github/stunkymonkey/nautilus-open-any-terminal".keybindings = "F4";
-    "org/gnome/nautilus/keybindings ".open-any-terminal = "['<Primary>period']";
     # "org/cinnamon/desktop/applications/terminal".exec = "kitty";
     # "org/cinnamon/desktop/interface".can-change-accels = true;
     # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
