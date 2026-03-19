@@ -62,6 +62,8 @@ alias tat="tmux a -t"
 alias fillbat="sudo tlp fullcharge BAT0"
 alias pingArch="ping archlinux.org"
 
+alias latex-flake="nix develop /home/david/.dotfiles/flakes/LaTeX"
+
 # private stuff
 if [ -f "$HOME/.zshrc.private" ]; then
   source "$HOME/.zshrc.private"
