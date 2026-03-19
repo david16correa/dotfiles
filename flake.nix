@@ -1,15 +1,15 @@
 /*
 pendientes:
 - [ ] configurar fprint solo para noctalia
+- [ ] configurar swayidle, o echar a andar el widget de Keep Awake en noctalia
 */
 
 {
   description = "My NixOS configuration";
 
   inputs = {
-
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -33,32 +33,27 @@ pendientes:
       url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix-index-database, home-manager, lazyvim, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, nix-index-database, ... } @ inputs:
 
   let
     system = "x86_64-linux";
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-    unstable = import nixpkgs-unstable {
+    unstable = import inputs.nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
     };
   in
   {
-    nixosConfigurations.bjork = nixpkgs.lib.nixosSystem{
+    nixosConfigurations.bjork = nixpkgs.lib.nixosSystem {
         inherit system;
 
-        specialArgs = {
-            inherit unstable inputs;
-        };
+        specialArgs = { inherit inputs unstable; };
 
         modules = [
+          { nixpkgs.config.allowUnfree = true; }
+
           ./nix/configuration.nix
 
           ./nix/system/core.nix
@@ -68,8 +63,9 @@ pendientes:
 
           # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
 
-          nix-index-database.nixosModules.default
-          { programs.nix-index-database.comma.enable = true; }
+          nix-index-database.nixosModules.default {
+            programs.nix-index-database.comma.enable = true;
+          }
 
           home-manager.nixosModules.home-manager {
             home-manager = {
@@ -81,8 +77,6 @@ pendientes:
             };
           }
         ];
-
     };
-
   };
 }
