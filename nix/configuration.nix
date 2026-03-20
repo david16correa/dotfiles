@@ -149,6 +149,18 @@
     };
   };
 
+  systemd.services = {
+    tlp-resume = {
+      description = "Reapply TLP settings after resume";
+      wantedBy = [ "post-resume.target" ];
+      after = [ "post-resume.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.tlp}/bin/tlp start";
+      };
+    };
+  };
+
   ########################################
   # state version @ install
   ########################################
