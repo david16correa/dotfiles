@@ -79,7 +79,7 @@
 
   users = {
     users.david = {
-      description = "David Correa";
+      description = "David";
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" "keyd" ];
       shell = pkgs.zsh;
