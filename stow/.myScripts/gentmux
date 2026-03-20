@@ -29,6 +29,9 @@ if ! tmux has-session -t main 2>/dev/null; then
 fi
 
 tmux send-keys -t main 'clear && fastfetch' Enter
-tmux attach -t main
+
+if [[ -t 0 ]]; then
+  tmux attach -t main
+fi
 
 exit 0

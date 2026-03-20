@@ -60,7 +60,7 @@ alias pyglobal="source ~/.virtualenvs/pyglobal/bin/activate"
 alias tks="tmux kill-server"
 alias tat="tmux a -t"
 alias fillbat="sudo tlp fullcharge BAT0"
-alias pingArch="ping archlinux.org"
+alias pingNixos="ping nixos.org"
 
 alias latex-flake="nix develop /home/david/.dotfiles/flakes/LaTeX"
 
