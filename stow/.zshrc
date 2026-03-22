@@ -41,7 +41,8 @@ source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 # >>> aliases y preferencias varias >>>
 alias reload='source ~/.zshrc'
 alias editrc='nvim ~/.zshrc && source ~/.zshrc'
-alias editniri='nvim ~/.dotfiles/nix/home/config/niri/config.kdl'
+alias editniri='nvim ~/.config/niri/config.kdl'
+# alias editniri='nvim ~/.dotfiles/nix/home/config/niri/config.kdl'
 alias cd='z'
 # alias rm='trash'
 alias ls='lsd' # lsd stuff

@@ -1,0 +1,6 @@
+spawn-sh-at-startup "noctalia-shell"
+spawn-at-startup "/home/david/.myScripts/system-sounds"
+spawn-sh-at-startup "vicinae server"
+spawn-sh-at-startup "maestral start && maestral_qt"
+spawn-sh-at-startup "steam -silent"
+spawn-sh-at-startup "/home/david/.myScripts/gentmux"
