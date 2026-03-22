@@ -50,10 +50,10 @@
         source = ./config/leovim;
         recursive = true;
       };
-      "niri" = {
-        source = ./config/niri;
-        recursive = true;
-      };
+      # "niri" = {
+      #   source = ./config/niri;
+      #   recursive = true;
+      # };
     };
     desktopEntries = {
       nix_search_pkgs = {
