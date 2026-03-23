@@ -32,6 +32,7 @@
     easyeffects
     libreoffice-fresh
     gimp
+    inkscape-with-extensions
     brave
     zotero
     prismlauncher
