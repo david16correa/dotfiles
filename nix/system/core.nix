@@ -38,11 +38,11 @@
     nh = {
       enable = true;
       flake = "/home/david/.dotfiles";
-      clean = {
-        enable = true;
-        dates = "weekly";
-        extraArgs = "--keep-since 3d";
-      };
+      # clean = { # perhaps it was too much?
+      #   enable = true;
+      #   dates = "weekly";
+      #   extraArgs = "--keep-since 3d";
+      # };
     };
   };
 
@@ -73,6 +73,7 @@
       polkit_gnome
       playerctl
       brightnessctl
+      compsize
     ];
     etc = {
       "keyd/profiles".source = ./etc/keyd/profiles;

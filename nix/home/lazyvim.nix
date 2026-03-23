@@ -9,6 +9,7 @@
     mermaid-cli
     clang-tools
     markdownlint-cli2
+    tree-sitter
   ];
 
   programs.lazyvim = {
