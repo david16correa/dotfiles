@@ -129,13 +129,6 @@
                     "textColor": "none"
                 },
                 {
-                    "displayMode": "onhover",
-                    "iconColor": "none",
-                    "id": "KeyboardLayout",
-                    "showIcon": false,
-                    "textColor": "none"
-                },
-                {
                     "blacklist": [
                     ],
                     "chevronColor": "none",
@@ -149,8 +142,10 @@
             ],
             "right": [
                 {
+                    "displayMode": "onhover",
                     "iconColor": "none",
-                    "id": "KeepAwake",
+                    "id": "KeyboardLayout",
+                    "showIcon": false,
                     "textColor": "none"
                 },
                 {
@@ -186,10 +181,10 @@
                     "colorizeDistroLogo": false,
                     "colorizeSystemIcon": "none",
                     "customIconPath": "",
-                    "enableColorization": false,
+                    "enableColorization": true,
                     "icon": "square-rounded",
                     "id": "ControlCenter",
-                    "useDistroLogo": false
+                    "useDistroLogo": true
                 }
             ]
         }

@@ -62,6 +62,7 @@ alias tks="tmux kill-server"
 alias tat="tmux a -t"
 alias fillbat="sudo tlp fullcharge BAT0"
 alias pingNixos="ping nixos.org"
+alias du="btrfs filesystem du"
 
 alias latex-flake="nix develop /home/david/.dotfiles/flakes/LaTeX"
 
