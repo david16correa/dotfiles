@@ -58,8 +58,7 @@
     hostName = "bjork"; # Define your hostname.
     networkmanager.enable = true;
     firewall = {
-      # for spotifyd
-      allowedTCPPorts = [ 2020 ];
+      allowedTCPPorts = [ 2020 8888];
       allowedUDPPorts = [ 5353 ];
     };
   };
