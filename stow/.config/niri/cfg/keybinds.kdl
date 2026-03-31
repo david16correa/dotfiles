@@ -16,14 +16,11 @@ binds {
   // session actions
   Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                   { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
   Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                 { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
-  Mod+Shift+Alt+Ctrl+L       hotkey-overlay-title="Lock the Screen"              { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
-  Mod+Shift+Alt+Ctrl+S       hotkey-overlay-title="Lock and Suspend"             { spawn-sh "noctalia-shell ipc call lockScreen lock && systemctl suspend"; }
-  Mod+Shift+Alt+Ctrl+H       hotkey-overlay-title="Lock and Hibernate"           { spawn-sh "noctalia-shell ipc call lockScreen lock && systemctl hibernate"; }
+  Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock the Screen"              { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
   Mod+Shift+Alt+Ctrl+P       hotkey-overlay-title="Power off all montiors"       { power-off-monitors; }
   Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                    { quit; }
 
   // favourite apps
-  // Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch nemo nemo"; }
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "/home/david/.myScripts/focusOrLaunch kitty kitty"; }
   Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen-beta zen-beta"; }
@@ -40,11 +37,6 @@ binds {
 
   // change keyboard layout
   Mod+F1       { switch-layout "next"; }
-
-  // send clipboard to Dropbox
-  // Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Fetch clipboard from Dropbox"            { spawn-sh "/home/david/.myScripts/db-fetch && notify-send 'db-fetch success'"; }
-  // Mod+Shift+Alt+Ctrl+V       hotkey-overlay-title="Send clipboard to Dropbox"               { spawn-sh "/home/david/.myScripts/db-send && notify-send 'db-send: success'"; }
-  Mod+Shift+Alt+Ctrl+B       hotkey-overlay-title="Send clipboard to Dropbox (overwrite)"   { spawn-sh "/home/david/.myScripts/db-send --clear && notify-send 'db-send -c: success'"; }
 
   // volume keys mappings for PipeWire & WirePlumber.
   XF86AudioRaiseVolume       allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit=1 && canberra-gtk-play -i audio-volume-change"; }
@@ -161,7 +153,7 @@ binds {
   Mod+Delete allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 }
 
-// alt+tab stuff
+// mod+tab stuff
 recent-windows {
     debounce-ms 750
     open-delay-ms 150
