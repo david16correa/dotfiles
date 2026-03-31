@@ -58,7 +58,7 @@
     hostName = "bjork"; # Define your hostname.
     networkmanager.enable = true;
     firewall = {
-      allowedTCPPorts = [ 2020 8888];
+      allowedTCPPorts = [ 2020 8888]; # spotifyd, jupyter
       allowedUDPPorts = [ 5353 ];
     };
   };
@@ -126,7 +126,8 @@
           CPU_SCALING_GOVERNOR_ON_AC="performance";
           CPU_SCALING_GOVERNOR_ON_BAT="powersave";
           CPU_ENERGY_PERF_POLICY_ON_BAT="power";
-          PLATFORM_PROFILE_ON_AC="balanced";
+          PLATFORM_PROFILE_ON_AC="performance";
+          # PLATFORM_PROFILE_ON_AC="balanced";
           PLATFORM_PROFILE_ON_BAT="low-power";
           START_CHARGE_THRESH_BAT0=40;
           STOP_CHARGE_THRESH_BAT0=80;
