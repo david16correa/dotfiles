@@ -77,11 +77,14 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   users = {
+    mutableUsers = false;
     users.david = {
       description = "David";
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" "keyd" ];
       shell = pkgs.zsh;
+      # I used `mkpasswd` to generate this!
+      hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB";
       # packages = with pkgs; [  ];
     };
     groups.keyd = { };
