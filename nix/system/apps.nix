@@ -8,7 +8,7 @@
   programs = {
     firefox.enable = true;
     obs-studio.enable = true;
-    zoom-us.enable = true;
+    # zoom-us.enable = true;
     # gnome programs
     gnome-disks.enable = true;
     evince.enable = true;

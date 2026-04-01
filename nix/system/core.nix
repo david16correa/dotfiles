@@ -38,11 +38,11 @@
     nh = {
       enable = true;
       flake = "/home/david/.dotfiles";
-      # clean = { # perhaps it was too much?
-      #   enable = true;
-      #   dates = "weekly";
-      #   extraArgs = "--keep-since 3d";
-      # };
+      clean = {
+        enable = true;
+        dates = "weekly";
+        extraArgs = "--keep-since 30d";
+      };
     };
   };
 
