@@ -95,7 +95,7 @@
             vim.keymap.set("n", "<leader>ll", ":VimtexCompile<CR>", { desc = "vimtex-compile" })
             vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "vimtex-clean-aux" })
           end,
-        },
+        }
       '';
 
       vim-slime = ''
