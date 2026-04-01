@@ -73,6 +73,7 @@
       polkit_gnome
       playerctl
       brightnessctl
+      ddcutil
       compsize
     ];
     etc = {

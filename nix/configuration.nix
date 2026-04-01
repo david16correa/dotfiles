@@ -30,6 +30,7 @@
     };
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [ "quiet" "splash" "loglevel=3" "rd.systemd.show_status=false" "resume_offset=40698492" ];
+    kernelModules = [ "i2c-dev" ];
     resumeDevice = "/dev/disk/by-uuid/a71adb85-511c-46b6-a16e-e5a6678cc2d0";
     # consoleLogLevel = 0;
   };
@@ -81,7 +82,7 @@
     users.david = {
       description = "David";
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "keyd" ];
+      extraGroups = [ "wheel" "networkmanager" "keyd" "i2c" ];
       shell = pkgs.zsh;
       # I used `mkpasswd` to generate this!
       hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB";
@@ -109,6 +110,8 @@
     };
 
     printing.enable = true;
+
+    ddccontrol.enable = true;
 
     upower.enable = true;
 
