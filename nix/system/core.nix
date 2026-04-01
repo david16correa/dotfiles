@@ -109,9 +109,9 @@
         TIMELINE_LIMIT_YEARLY = 0;
       };
     };
-    udev.extraRules = ''
-      SUBSYSTEM=="leds", KERNEL=="platform::micmute", ACTION=="add", ATTR{brightness}="0"
-    '';
+    # udev.extraRules = ''
+    #   SUBSYSTEM=="leds", KERNEL=="platform::micmute", ACTION=="add", ATTR{brightness}="0"
+    # '';
   };
 
   # custom systemd services
@@ -128,18 +128,16 @@
           ExecStart = "${pkgs.keyd}/bin/keyd";
         };
       };
-      # thinkpad-micmute-led-fix = {
-      #   description = "Fix ThinkPad P14s mic mute LED by disabling ALSA auto-mute";
-      #   wantedBy = [ "multi-user.target" ];
-      #   after = [ "sound.target" "alsa-store.service" ];
-      #   serviceConfig = {
-      #     Type = "oneshot";
-      #     RemainAfterExit = true;
-      #     ExecStart = let
-      #       amixer = "${pkgs.alsa-utils}/bin/amixer";
-      #     in "${amixer} -c 1 sset 'Auto-Mute Mode' Disabled";
-      #   };
-      # };
+      micmute-led-fix = {
+        description = "Initialize mic capture switch to unmuted";
+        wantedBy = [ "multi-user.target" ];
+        after = [ "sound.target" "alsa-store.service" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = "${pkgs.alsa-utils}/bin/amixer -c 1 sset 'Capture' cap";
+        };
+      };
     };
     user.services.polkit-gnome-authentication-agent-1 = {
       enable = true;
