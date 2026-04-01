@@ -36,9 +36,9 @@ output "ASUSTek COMPUTER INC VG30VQL1A R3LMDW000632"{
   // off
   mode "2560x1080@180.000" // 180 Hz may fail at times; try commenting this line to get an output
   scale 1
-  // position x=-320 y=-1080 // above eDP-1
+  position x=-320 y=-1080 // above eDP-1
   // position x=1920 y=0 // to the right of eDP-1
-  position x=-2560 y=0 // to the left of eDP-1
+  // position x=-2560 y=0 // to the left of eDP-1
 }
 
 // monitor@home
