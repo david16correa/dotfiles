@@ -113,15 +113,29 @@
 
   # custom systemd services
   systemd = {
-    services.keyd = {
-      enable = true;
-      description = "key remapping daemon";
-      wantedBy = [ "sysinit.target" ];
-      wants = [ "local-fs.target" ];
-      after = [ "local-fs.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.keyd}/bin/keyd";
+    services = {
+      keyd = {
+        enable = true;
+        description = "key remapping daemon";
+        wantedBy = [ "sysinit.target" ];
+        wants = [ "local-fs.target" ];
+        after = [ "local-fs.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.keyd}/bin/keyd";
+        };
+      };
+      thinkpad-micmute-led-fix = {
+        description = "Fix ThinkPad P14s mic mute LED by disabling ALSA auto-mute";
+        wantedBy = [ "multi-user.target" ];
+        after = [ "sound.target" "alsa-store.service" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = let
+            amixer = "${pkgs.alsa-utils}/bin/amixer";
+          in "${amixer} -c 1 sset 'Auto-Mute Mode' Disabled";
+        };
       };
     };
     user.services.polkit-gnome-authentication-agent-1 = {
