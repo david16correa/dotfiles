@@ -109,9 +109,11 @@
         TIMELINE_LIMIT_YEARLY = 0;
       };
     };
-    # udev.extraRules = ''
-    #   SUBSYSTEM=="leds", KERNEL=="platform::micmute", ACTION=="add", ATTR{brightness}="0"
-    # '';
+    # I got tired of the F4 LED being always on. I can't fix it. This udev rule
+    # makes the F4 LED be permanently off.
+    udev.extraRules = ''
+      SUBSYSTEM=="leds", KERNEL=="platform::micmute", ACTION=="add", ATTR{brightness}="0"
+    '';
   };
 
   # custom systemd services
@@ -126,16 +128,6 @@
         serviceConfig = {
           Type = "simple";
           ExecStart = "${pkgs.keyd}/bin/keyd";
-        };
-      };
-      micmute-led-fix = {
-        description = "Initialize mic capture switch to unmuted";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "sound.target" "alsa-store.service" ];
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-          ExecStart = "${pkgs.alsa-utils}/bin/amixer -c 1 sset 'Capture' cap";
         };
       };
     };
