@@ -68,7 +68,7 @@
     cpu.amd.updateMicrocode = true; # amd ucode
     graphics.enable = true; # OpenGl/AMD
     bluetooth.enable = true;
-    # alsa.enablePersistence = true;
+    alsa.enablePersistence = true;
   };
 
   time.timeZone = "America/Mexico_City";
