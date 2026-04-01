@@ -91,7 +91,10 @@
     groups.keyd = { };
   };
 
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true; # PulseAudio and PipeWire use this to acquire realtime priority
+  };
 
   ########################################
   # services
