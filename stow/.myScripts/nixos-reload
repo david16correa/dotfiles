@@ -2,4 +2,9 @@
 
 nh os switch "$@" && nixos-commit
 
+# So far this is my best heuristic
+if [ "$(readlink /run/booted-system)" != "$(readlink /run/current-system)" ]; then
+  echo -e "\033[33mreboot recommended!\033[0m"
+fi
+
 exit 0
