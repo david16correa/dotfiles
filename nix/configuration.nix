@@ -126,12 +126,15 @@
     tlp = {
         enable = true;
         settings = {
-          CPU_SCALING_GOVERNOR_ON_AC="performance";
+          # CPU on AC
+          CPU_SCALING_GOVERNOR_ON_AC="powersave";
+          CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance";
+          PLATFORM_PROFILE_ON_AC="balanced";
+          # CPU on BAT
           CPU_SCALING_GOVERNOR_ON_BAT="powersave";
           CPU_ENERGY_PERF_POLICY_ON_BAT="power";
-          PLATFORM_PROFILE_ON_AC="performance";
-          # PLATFORM_PROFILE_ON_AC="balanced";
           PLATFORM_PROFILE_ON_BAT="low-power";
+          # battery thresholds
           START_CHARGE_THRESH_BAT0=40;
           STOP_CHARGE_THRESH_BAT0=80;
         };
