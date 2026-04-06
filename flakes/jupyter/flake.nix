@@ -16,14 +16,23 @@
         matplotlib
         pandas
         jupyter
+        jupyterlab-vim
       ];
   in {
     devShells = forAllSystems (pkgs: {
       default = pkgs.mkShell {
-        name = "jupyter";
-        packages = [(pkgs.python314.withPackages pythonPackages)];
+      name = "jupyter";
+      packages = [(pkgs.python314.withPackages pythonPackages)];
+
       shellHook = ''
-        exec ${pkgs.jupyter}/bin/jupyter notebook
+        export JUPYTER_CONFIG_DIR="/home/david/.dotfiles/flakes/jupyter/.jupyter"
+        export JUPYTER_DATA_DIR="$JUPYTER_CONFIG_DIR/data"
+        export JUPYTER_RUNTIME_DIR="$JUPYTER_CONFIG_DIR/runtime"
+
+        mkdir -p "$JUPYTER_CONFIG_DIR" "$JUPYTER_DATA_DIR" "$JUPYTER_RUNTIME_DIR"
+
+        # exec ${pkgs.zsh}/bin/zsh
+        exec jupyter lab --config /home/david/.dotfiles/flakes/jupyter/jupyter_lab_config.py
       '';
       };
     });
