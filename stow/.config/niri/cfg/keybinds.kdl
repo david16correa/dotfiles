@@ -13,7 +13,7 @@ binds {
   Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"               { spawn-sh "noctalia-shell ipc call notifications toggleDND"; }
   // Mod+V                      hotkey-overlay-title="Clipboard History"            { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
 
-  // session actions
+  // hyper (mod+shift+alt+ctrl) binds
   Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                            { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
   Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                          { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
   Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock the Screen"                       { spawn-sh "noctalia-shell ipc call lockScreen lock"; }

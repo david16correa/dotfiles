@@ -39,9 +39,9 @@ eval "$(starship init zsh)"
 source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
 
 # >>> aliases y preferencias varias >>>
-alias reload='source ~/.zshrc'
-alias editrc='nvim ~/.zshrc && source ~/.zshrc'
-alias editniri='nvim ~/.config/niri/config.kdl'
+alias zsh-reload='source ~/.zshrc'
+alias zsh-edit='nvim ~/.zshrc && source ~/.zshrc'
+alias niri-edit='nvim ~/.config/niri/config.kdl'
 # alias editniri='nvim ~/.dotfiles/nix/home/config/niri/config.kdl'
 alias cd='z'
 # alias rm='trash'
@@ -50,14 +50,9 @@ alias l='ls -l' # lsd stuff
 alias la='ls -a' # lsd stuff
 alias lla='ls -la' # lsd stuff
 alias lt='ls --tree' # lsd stuff
-alias fzf="fzf --preview 'bat --style=numbers --color=always {}'" 
-alias compressImg="magick input.jpg -strip -interlace Plane -gaussian-blur 0.05 -quality 50% output.jpg"
-alias sideBySideVid="ffmpeg -i left.mp4 -i right.mp4 -filter_complex hstack output.mp4"
+alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 alias open="xdg-open"
-# alias db="dropbox-cli"
 alias db="maestral"
-# alias python='python3'
-# alias pyglobal="source ~/.virtualenvs/pyglobal/bin/activate"
 alias tks="tmux kill-server"
 alias tat="tmux a -t"
 alias fillbat="sudo tlp fullcharge BAT0"
@@ -65,6 +60,7 @@ alias pingNixos="ping nixos.org"
 alias du="btrfs filesystem du"
 
 alias latex-flake="nix develop /home/david/.dotfiles/flakes/LaTeX"
+alias jupyter-flake="nix develop /home/david/.dotfiles/flakes/jupyter"
 
 # private stuff
 if [ -f "$HOME/.zshrc.private" ]; then
@@ -83,7 +79,7 @@ alias leovim='NVIM_APPNAME="leovim" nvim'
 export JULIA_NUM_THREADS=$(nproc) # by default julia will use all threads
 
 # landing shell
-if [[ -n "$PS1" && -z "$TMUX" ]]; then # if not in tmux
+if [[ -n "$PS1" && -z "$TMUX" && -z "$IN_NIX_SHELL" ]]; then # if not in tmux, nor in nix shell
   if [[ -n "$SSH_CONNECTION" ]]; then # if connected through ssh
     $HOME/.myScripts/gentmux
   else
