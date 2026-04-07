@@ -17,6 +17,8 @@
         pandas
         jupyter
         jupyterlab-vim
+        jupyterlab-lsp
+        python-lsp-server
       ];
   in {
     devShells = forAllSystems (pkgs: {
