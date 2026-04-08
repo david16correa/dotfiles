@@ -43,7 +43,7 @@
 
 
   ########################################
-  # systme fonts
+  # system fonts
   ########################################
 
   fonts = {
@@ -59,6 +59,10 @@
       noto-fonts-cjk-serif
       noto-fonts-emoji-blob-bin
       liberation_ttf
+      aileron
+      inter
+      eb-garamond
+      cabin
     ];
 
     fontconfig = {
