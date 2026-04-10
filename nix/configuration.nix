@@ -29,7 +29,15 @@
       timeout = 0;
     };
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelParams = [ "quiet" "splash" "loglevel=3" "rd.systemd.show_status=false" "resume_offset=40698492" ];
+    kernelParams = [
+      "quiet" "loglevel=3" "rd.systemd.show_status=false" # quiet boot
+      "resume_offset=40698492"  # for hibernation
+      "zswap.enabled=1" # enables zswap
+      "zswap.compressor=zstd" # compression algorithm
+      "zswap.max_pool_percent=20" # maximum percentage of RAM that zswap is allowed to use; increase if you Regularly hit high memory usage, or want to avoid disk swap at almost any cost
+      "zswap.zpool=z3fold" # compressed page allocator (higher density than default zbud)
+      "zswap.shrinker_enabled=1" # whether to shrink the pool proactively on high memory pressure
+    ];
     kernelModules = [ "i2c-dev" ];
     resumeDevice = "/dev/disk/by-uuid/a71adb85-511c-46b6-a16e-e5a6678cc2d0";
     # consoleLogLevel = 0;
@@ -43,8 +51,6 @@
     "/home/.snapshots".options    = [ "compress=zstd" "noatime" ];
     "/home/david/Games".options   = [ "compress=zstd" "noatime" "x-gvfs-hide" ];
   };
-
-  zramSwap.enable = true;
 
   swapDevices = [{
     device = "/swap/swapfile";
