@@ -63,6 +63,7 @@
       inter
       eb-garamond
       cabin
+      corefonts
     ];
 
     fontconfig = {
