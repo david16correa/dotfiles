@@ -52,7 +52,9 @@
           }/lib/python3.*/site-packages
       '';
     })
-    texliveSmall
+    (texliveSmall.withPackages (ps: with ps; [
+      physics
+    ]))
     brave
     zotero
     prismlauncher
