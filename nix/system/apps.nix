@@ -32,7 +32,10 @@
     easyeffects
     libreoffice-fresh
     gimp
-    inkscape-with-extensions
+    (inkscape-with-extensions.override {
+      inkscapeExtensions = [ inkscape-extensions.textext ];
+    })
+    texliveSmall
     brave
     zotero
     prismlauncher

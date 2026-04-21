@@ -1,7 +1,6 @@
 /*
 pendientes:
 - [ ] configurar fprint solo para noctalia
-- [ ] configurar swayidle, o echar a andar el widget de Keep Awake en noctalia
 */
 
 {
