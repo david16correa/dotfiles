@@ -32,8 +32,25 @@
     easyeffects
     libreoffice-fresh
     gimp
-    (inkscape-with-extensions.override {
-      inkscapeExtensions = [ inkscape-extensions.textext ];
+    (symlinkJoin {
+      name = "inkscape-with-textext-fixed";
+      paths = [
+        (inkscape-with-extensions.override {
+          inkscapeExtensions = [ inkscape-extensions.textext ];
+        })
+      ];
+
+      buildInputs = [ makeWrapper ];
+
+      postBuild = ''
+        wrapProgram $out/bin/inkscape \
+          --prefix PYTHONPATH : ${
+            python3.withPackages (ps: with ps; [
+              pygobject3
+              tk
+            ])
+          }/lib/python3.*/site-packages
+      '';
     })
     texliveSmall
     brave
