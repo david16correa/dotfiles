@@ -45,6 +45,7 @@ binds {
   XF86AudioMute              allow-when-locked=true      { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && canberra-gtk-play -i audio-volume-change"; }
   XF86AudioMicMute           allow-when-locked=true      { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
   XF86AudioPlay              allow-when-locked=true      { spawn-sh "playerctl play-pause"; }
+  Control+XF86AudioPlay      allow-when-locked=true      { spawn-sh "playerctl play-pause -a"; }
   XF86AudioPrev              allow-when-locked=true      { spawn-sh "playerctl previous"; }
   XF86AudioNext              allow-when-locked=true      { spawn-sh "playerctl next"; }
 

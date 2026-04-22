@@ -43,6 +43,7 @@ alias zsh-reload='source ~/.zshrc'
 alias zsh-edit='nvim ~/.zshrc && source ~/.zshrc'
 alias niri-edit='nvim ~/.config/niri/config.kdl'
 # alias editniri='nvim ~/.dotfiles/nix/home/config/niri/config.kdl'
+alias clipboard='nvim ~/Dropbox/clipboard/clipboard.txt'
 alias cd='z'
 # alias rm='trash'
 alias ls='lsd' # lsd stuff
