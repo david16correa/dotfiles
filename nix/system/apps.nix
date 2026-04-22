@@ -30,6 +30,8 @@
     maestral-gui
     pavucontrol
     easyeffects
+
+    # LibreOffice and GStreamer plugin stack for Impress video support
     libreoffice-fresh
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
@@ -37,7 +39,25 @@
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-libav
+
     gimp
+    texliveFull
+    brave
+    zotero
+    prismlauncher
+    protonplus
+    # nemo-with-extensions
+    nautilus
+    gnome-console
+    baobab # disk usage analyzer
+    decibels # audio player
+    gcolor3 # color picker
+    gnome-boxes # virtual machines viwer/manager
+    loupe # image viewer
+    showtime # video player
+    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
+
+    # inkscape stuff
     (symlinkJoin {
       name = "inkscape-with-textext-fixed";
       paths = [
@@ -58,24 +78,6 @@
           }/lib/python3.*/site-packages
       '';
     })
-    # (texliveSmall.withPackages (ps: with ps; [
-    #   physics
-    # ]))
-    texliveFull
-    brave
-    zotero
-    prismlauncher
-    protonplus
-    # nemo-with-extensions
-    nautilus
-    gnome-console
-    baobab # disk usage analyzer
-    decibels # audio player
-    gcolor3 # color picker
-    gnome-boxes # virtual machines viwer/manager
-    loupe # image viewer
-    showtime # video player
-    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
   ];
 
   ########################################
@@ -83,13 +85,7 @@
   ########################################
 
   environment.variables = {
-    GST_PLUGIN_SYSTEM_PATH_1_0 =
-      "${pkgs.gst_all_1.gstreamer}/lib/gstreamer-1.0:" +
-      "${pkgs.gst_all_1.gst-plugins-base}/lib/gstreamer-1.0:" +
-      "${pkgs.gst_all_1.gst-plugins-good}/lib/gstreamer-1.0:" +
-      "${pkgs.gst_all_1.gst-plugins-bad}/lib/gstreamer-1.0:" +
-      "${pkgs.gst_all_1.gst-plugins-ugly}/lib/gstreamer-1.0:" +
-      "${pkgs.gst_all_1.gst-libav}/lib/gstreamer-1.0";
+    GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   };
 
   ########################################
