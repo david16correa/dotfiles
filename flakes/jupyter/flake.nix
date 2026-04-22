@@ -33,7 +33,6 @@
 
         mkdir -p "$JUPYTER_CONFIG_DIR" "$JUPYTER_DATA_DIR" "$JUPYTER_RUNTIME_DIR"
 
-        # exec ${pkgs.zsh}/bin/zsh
         exec jupyter lab --config /home/david/.dotfiles/flakes/jupyter/jupyter_lab_config.py
       '';
       };
