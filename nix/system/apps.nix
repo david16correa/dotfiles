@@ -41,12 +41,11 @@
     gst_all_1.gst-libav
 
     gimp
-    texliveFull
+    texliveFull # needed for textext in inkscape, and for LaTeX support (duh)
     brave
     zotero
     prismlauncher
     protonplus
-    # nemo-with-extensions
     nautilus
     gnome-console
     baobab # disk usage analyzer
@@ -85,6 +84,7 @@
   ########################################
 
   environment.variables = {
+    # GStreamer plugin path for LibreOffice Impress video support
     GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   };
 
