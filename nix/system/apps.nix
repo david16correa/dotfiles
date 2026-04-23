@@ -41,7 +41,6 @@
     gst_all_1.gst-libav
 
     gimp
-    texliveFull # needed for textext in inkscape, and for LaTeX support (duh)
     brave
     zotero
     prismlauncher

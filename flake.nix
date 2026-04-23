@@ -9,6 +9,7 @@ pendientes:
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-static.url = "github:nixos/nixpkgs/e07580dae39738e46609eaab8b154de2488133ce"; # some packages take too long to copy from cache; I want to update them sparingly
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -36,7 +37,7 @@ pendientes:
     # for fhs-wrapped julia
     scientific-fhs = {
       url = "github:olynch/scientific-fhs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-static";
     };
   };
 
@@ -49,12 +50,17 @@ pendientes:
       inherit system;
       config.allowUnfree = true;
     };
+
+    static = import inputs.nixpkgs-static {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in
   {
     nixosConfigurations.bjork = nixpkgs.lib.nixosSystem {
         inherit system;
 
-        specialArgs = { inherit inputs unstable; };
+        specialArgs = { inherit inputs unstable static; };
 
         modules = [
           { nixpkgs.config.allowUnfree = true; }
@@ -65,6 +71,7 @@ pendientes:
           ./nix/system/extra.nix
           ./nix/system/apps.nix
           ./nix/system/unstable.nix
+          ./nix/system/static.nix
 
           # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
 
