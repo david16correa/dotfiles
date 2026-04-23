@@ -28,8 +28,7 @@
     ookla-speedtest
     cliphist
     app2unit
-    # jdk21_headless
-    # nodejs_24
+    ffmpeg
     (catppuccin-sddm.override {
       flavor = "macchiato";
       accent = "blue";
