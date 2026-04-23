@@ -32,6 +32,12 @@ pendientes:
       url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    # for fhs-wrapped julia
+    scientific-fhs = {
+      url = "github:olynch/scientific-fhs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, nix-index-database, ... } @ inputs:

@@ -119,7 +119,28 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "scientific-fhs": "scientific-fhs",
         "zen-browser": "zen-browser"
+      }
+    },
+    "scientific-fhs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769700647,
+        "narHash": "sha256-b0lSDPm7EOpKVM3yPGEnCLY3wZBZaxXpznZOl6+2xXk=",
+        "owner": "olynch",
+        "repo": "scientific-fhs",
+        "rev": "46e3fe1aa65133871c59d16757d67c6930492cdb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "olynch",
+        "repo": "scientific-fhs",
+        "type": "github"
       }
     },
     "systems": {

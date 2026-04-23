@@ -20,7 +20,7 @@
     kitty
     # neovim
     noctalia-shell
-    julia
+    # julia
     discord
   ];
 

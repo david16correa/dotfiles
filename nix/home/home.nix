@@ -4,6 +4,7 @@
   imports = [
     ./lazyvim.nix
     ./theme.nix
+    inputs.scientific-fhs.nixosModules.default
   ];
 
   home = {
@@ -72,6 +73,17 @@
         terminal = false;
         categories = [ "System" ];
       };
+    };
+  };
+
+  programs = {
+    scientific-fhs = {
+      enable = true;
+      juliaVersions = [
+        { version = "1.11.6"; default = true; }
+      ];
+      enableNVIDIA = false;
+      enableGraphical = true;  # needed for plotting, REPL graphics etc.
     };
   };
 
