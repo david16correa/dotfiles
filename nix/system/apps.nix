@@ -96,6 +96,7 @@
     gnome.sushi.enable = true;
     gnome.tinysparql.enable = true;
     gvfs.enable = true;
+    flatpak.enable = true; # docs: https://flatpak.org/setup/NixOS
   };
 
 }

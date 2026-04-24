@@ -21,7 +21,7 @@
     # neovim
     noctalia-shell
     # julia
-    discord
+    # discord
   ];
 
   ########################################
