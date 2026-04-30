@@ -80,7 +80,6 @@
   ########################################
 
   services = {
-    # flatpak.package = true;
     displayManager.sddm = {
         theme = "catppuccin-macchiato-blue";
     };
