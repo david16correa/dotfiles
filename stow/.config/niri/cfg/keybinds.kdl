@@ -40,8 +40,8 @@ binds {
   Mod+F1       { switch-layout "next"; }
 
   // volume keys mappings for PipeWire & WirePlumber.
-  XF86AudioRaiseVolume       allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit=1 && canberra-gtk-play -i audio-volume-change"; }
-  XF86AudioLowerVolume       allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1- && canberra-gtk-play -i audio-volume-change"; }
+  XF86AudioRaiseVolume       allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ --limit=1 && canberra-gtk-play -i audio-volume-change"; }
+  XF86AudioLowerVolume       allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- && canberra-gtk-play -i audio-volume-change"; }
   XF86AudioMute              allow-when-locked=true      { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && canberra-gtk-play -i audio-volume-change"; }
   XF86AudioMicMute           allow-when-locked=true      { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
   XF86AudioPlay              allow-when-locked=true      { spawn-sh "playerctl play-pause"; }
