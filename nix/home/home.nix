@@ -85,7 +85,20 @@
       enableNVIDIA = false;
       enableGraphical = true;  # needed for plotting, REPL graphics etc.
     };
-    mangohud.enable = true;
+    mangohud = {
+      enable = true;
+      settings = {
+        fps = true;
+        frametime = true;
+        position="top-left";
+        font_size=16;
+        background_alpha=0.2;
+        round_corners=10;
+        alpha=0.9;
+        no_display = true;
+        toggle_hud="Shift_R+F5";
+      };
+    };
   };
 
   services = {
