@@ -85,6 +85,7 @@
       enableNVIDIA = false;
       enableGraphical = true;  # needed for plotting, REPL graphics etc.
     };
+    mangohud.enable = true;
   };
 
   services = {

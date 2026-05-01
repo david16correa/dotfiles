@@ -72,9 +72,16 @@
 
   hardware = {
     cpu.amd.updateMicrocode = true; # amd ucode
-    graphics.enable = true; # OpenGl/AMD
     bluetooth.enable = true;
     alsa.enablePersistence = true;
+    graphics = {
+      enable = true; # OpenGl/AMD
+      enable32Bit = true;
+    };
+    # amdgpu.amdvlk = {
+    #   enable = true;
+    #   support32Bit.enable = true;
+    # };
   };
 
   time.timeZone = "America/Mexico_City";

@@ -63,7 +63,6 @@
       rsync
       caligula
       xwayland-satellite
-      # glibc
       gcc
       keyd
       gum
