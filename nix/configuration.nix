@@ -95,7 +95,7 @@
     users.david = {
       description = "David";
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "keyd" "i2c" ];
+      extraGroups = [ "wheel" "networkmanager" "keyd" "i2c" "gamemode" ];
       shell = pkgs.zsh;
       # I used `mkpasswd` to generate this!
       hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB";

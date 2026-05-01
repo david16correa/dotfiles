@@ -96,7 +96,7 @@
         round_corners=10;
         alpha=0.9;
         no_display = true;
-        toggle_hud="Shift_R+F5";
+        toggle_hud="Shift+F5";
       };
     };
   };
