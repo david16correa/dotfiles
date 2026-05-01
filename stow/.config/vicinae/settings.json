@@ -10,10 +10,18 @@
 
 {
    "$schema": "https://vicinae.com/schemas/config.json",
+   "font": {
+      "normal": {
+         "family": "Adwaita Sans"
+      }
+   },
    "theme": {
       "dark": {
          "name": "noctalia"
       }
+   },
+   "launcher_window": {
+      "opacity": 0.95
    },
    "providers": {
       "applications": {

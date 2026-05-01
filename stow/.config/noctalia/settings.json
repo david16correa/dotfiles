@@ -204,10 +204,10 @@
                     "colorizeSystemIcon": "none",
                     "colorizeSystemText": "none",
                     "customIconPath": "",
-                    "enableColorization": false,
+                    "enableColorization": true,
                     "icon": "square-rounded",
                     "id": "ControlCenter",
-                    "useDistroLogo": false
+                    "useDistroLogo": true
                 }
             ]
         }
@@ -652,10 +652,6 @@
             {
                 "enabled": true,
                 "id": "vicinae"
-            },
-            {
-                "enabled": true,
-                "id": "zenBrowser"
             }
         ],
         "enableUserTheming": false
