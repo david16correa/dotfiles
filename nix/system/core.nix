@@ -44,7 +44,11 @@
         extraArgs = "--keep-since 30d";
       };
     };
-    vim.enable = true;
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+    };
   };
 
   ########################################
