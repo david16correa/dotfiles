@@ -4,10 +4,10 @@ binds {
 
   // general launchers
   Mod+Return                 hotkey-overlay-title="Open a Terminal"              { spawn "kitty"; }
+  Mod+Shift+Return           hotkey-overlay-title="Open a Terminal (floating)"   { spawn "kitty" "--class=dot.floating.kitty"; }
   Mod+Space                  hotkey-overlay-title="Run an Application: noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
   Alt+Space                  hotkey-overlay-title="Run an Application: vicinae"  { spawn-sh "vicinae toggle"; }
   Mod+S                      hotkey-overlay-title="Control Center"               { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
-  Mod+Shift+Return           hotkey-overlay-title="Settings"                     { spawn-sh "noctalia-shell ipc call settings toggle"; }
   Mod+M                      hotkey-overlay-title="Calendar"                     { spawn-sh "noctalia-shell ipc call calendar toggle"; }
   Mod+N                      hotkey-overlay-title="Notification History"         { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
   Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"               { spawn-sh "noctalia-shell ipc call notifications toggleDND"; }
@@ -23,6 +23,8 @@ binds {
 
   // favourite apps
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
+  Alt+Return                 hotkey-overlay-title="Open a Yazi"                  { spawn "kitty" "yazi"; }
+  Alt+Shift+Return           hotkey-overlay-title="Open a Yazi (floating)"       { spawn "kitty" "--class=dot.floating.kitty" "yazi"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "/home/david/.myScripts/focusOrLaunch kitty kitty"; }
   Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen-beta zen-beta"; }
   Mod+4                      hotkey-overlay-title="Open spotify.com"             { spawn-sh "xdg-open https://www.spotify.com"; }
@@ -50,8 +52,10 @@ binds {
   XF86AudioNext              allow-when-locked=true      { spawn-sh "playerctl next"; }
 
   // brightness key mappings for brightnessctl.
-  XF86MonBrightnessUp        allow-when-locked=true      { spawn-sh "brightnessctl --class=backlight set +10%"; }
-  XF86MonBrightnessDown      allow-when-locked=true      { spawn-sh "brightnessctl --class=backlight set 10%-"; }
+  Shift+XF86MonBrightnessUp        allow-when-locked=true      { spawn-sh "brightnessctl --class=backlight set +10%"; }
+  Shift+XF86MonBrightnessDown      allow-when-locked=true      { spawn-sh "brightnessctl --class=backlight set 10%-"; }
+  XF86MonBrightnessUp        allow-when-locked=true      { spawn-sh "noctalia-shell ipc call brightness increase"; }
+  XF86MonBrightnessDown      allow-when-locked=true      { spawn-sh "noctalia-shell ipc call brightness decrease"; }
 
   // closing windows and overview
   Mod+A repeat=false   { toggle-overview; }
@@ -122,8 +126,8 @@ binds {
   // misc - centering windows, floating windows, and tabbed column display
   Mod+I                { center-column; }
   Alt+I                { center-window; }
-  Mod+T                { toggle-window-floating; }
-  Mod+Ctrl+T           { switch-focus-between-floating-and-tiling; }
+  Mod+T                { switch-focus-between-floating-and-tiling; }
+  Mod+Ctrl+T           { toggle-window-floating; }
   Mod+W                { toggle-column-tabbed-display; }
 
   // move workspaces within a monitor
