@@ -29,6 +29,7 @@
     cliphist
     app2unit
     ffmpeg
+    ripdrag
     (catppuccin-sddm.override {
       flavor = "macchiato";
       accent = "blue";

@@ -21,10 +21,7 @@
     vicinae
     yazi
     kitty
-    # neovim
     noctalia-shell
-    # julia
-    # discord
   ];
 
   ########################################
