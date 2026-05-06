@@ -94,6 +94,7 @@
   powerManagement.resumeCommands = ''
     sleep 1
     systemctl start thinkfan.service
+    systemctl start tlp.service
     ${pkgs.bluez}/bin/bluetoothctl power on
   '';
 
@@ -184,18 +185,6 @@
         [7                  65  75]   # High speed
         ["level full-speed" 75  1000] # Max speed above 75°C (safety)
       ];
-    };
-  };
-
-  systemd.services = {
-    tlp-resume = {
-      description = "Reapply TLP settings after resume";
-      wantedBy = [ "post-resume.target" ];
-      after = [ "post-resume.target" ];
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.tlp}/bin/tlp start";
-      };
     };
   };
 
