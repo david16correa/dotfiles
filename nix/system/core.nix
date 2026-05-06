@@ -78,6 +78,7 @@
       brightnessctl
       ddcutil
       compsize
+      gnome-firmware
     ];
     etc = {
       "keyd/profiles".source = ./etc/keyd/profiles;
@@ -94,6 +95,7 @@
 
   services = {
     zerotierone.enable = true;
+    fwupd.enable = true;
     udisks2.enable = true;
     pipewire = {
       enable = true;
