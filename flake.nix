@@ -31,7 +31,7 @@ pendientes:
 
     lazyvim = {
       url = "github:pfassina/lazyvim-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # for fhs-wrapped julia
