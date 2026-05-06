@@ -25,6 +25,10 @@
       #   (gtk_accel_path "<Actions>/DirViewActions/OpenInTerminal" "<Primary>Return")
       # '';
     };
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
   };
 
   dconf.settings = {

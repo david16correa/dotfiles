@@ -44,6 +44,7 @@
         extraArgs = "--keep-since 30d";
       };
     };
+    vim.enable = true;
   };
 
   ########################################
@@ -52,7 +53,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      vim
       tmux
       fastfetch
       stow
@@ -77,6 +77,10 @@
     ];
     etc = {
       "keyd/profiles".source = ./etc/keyd/profiles;
+    };
+    variables = {
+      EDITOR = "vim";
+      VISUAL = "vim";
     };
   };
 
