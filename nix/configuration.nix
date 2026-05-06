@@ -87,8 +87,13 @@
     # };
   };
 
+  powerManagement.powerDownCommands = ''
+    systemctl stop thinkfan.service
+  '';
+
   powerManagement.resumeCommands = ''
     sleep 1
+    systemctl start thinkfan.service
     ${pkgs.bluez}/bin/bluetoothctl power on
   '';
 
