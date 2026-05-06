@@ -16,8 +16,6 @@ pendientes:
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,8 +70,6 @@ pendientes:
           ./nix/system/apps.nix
           ./nix/system/unstable.nix
           ./nix/system/static.nix
-
-          # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
 
           nix-index-database.nixosModules.default {
             programs.nix-index-database.comma.enable = true;

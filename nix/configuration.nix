@@ -72,8 +72,11 @@
 
   hardware = {
     cpu.amd.updateMicrocode = true; # amd ucode
-    bluetooth.enable = true;
     alsa.enablePersistence = true;
+    bluetooth = {
+      enable = true;
+      settings.Policy.AutoEnable = true;
+    };
     graphics = {
       enable = true; # OpenGl/AMD
       enable32Bit = true;
@@ -83,6 +86,11 @@
     #   support32Bit.enable = true;
     # };
   };
+
+  powerManagement.resumeCommands = ''
+    sleep 1
+    ${pkgs.bluez}/bin/bluetoothctl power on
+  '';
 
   time.timeZone = "America/Mexico_City";
 
