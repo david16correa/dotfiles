@@ -73,10 +73,7 @@
   hardware = {
     cpu.amd.updateMicrocode = true; # amd ucode
     alsa.enablePersistence = true;
-    bluetooth = {
-      enable = true;
-      settings.Policy.AutoEnable = true;
-    };
+    bluetooth.enable = true;
     graphics = {
       enable = true; # OpenGl/AMD
       enable32Bit = true;
@@ -128,6 +125,10 @@
   ########################################
 
   services = {
+    printing.enable = true;
+    ddccontrol.enable = true;
+    upower.enable = true;
+
     btrfs.autoScrub = {
       enable = true;
       interval = "monthly";
@@ -138,12 +139,6 @@
         enable = true;
         allowSFTP = true;
     };
-
-    printing.enable = true;
-
-    ddccontrol.enable = true;
-
-    upower.enable = true;
 
     avahi = {
       enable = true;

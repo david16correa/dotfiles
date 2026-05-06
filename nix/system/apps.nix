@@ -26,6 +26,7 @@
 
   environment.systemPackages = with pkgs; [
     pdftk
+    poppler-utils
     maestral
     maestral-gui
     pavucontrol
