@@ -30,6 +30,7 @@
     app2unit
     ffmpeg
     ripdrag
+    wl-clipboard
     (catppuccin-sddm.override {
       flavor = "macchiato";
       accent = "blue";
