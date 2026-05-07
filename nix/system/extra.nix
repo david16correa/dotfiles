@@ -29,6 +29,7 @@
     cliphist
     app2unit
     ffmpeg
+    imagemagick
     ripdrag
     wl-clipboard
     (catppuccin-sddm.override {

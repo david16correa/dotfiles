@@ -74,6 +74,7 @@
     cpu.amd.updateMicrocode = true; # amd ucode
     alsa.enablePersistence = true;
     bluetooth.enable = true;
+    enableAllFirmware = true;
     graphics = {
       enable = true; # OpenGl/AMD
       enable32Bit = true;
