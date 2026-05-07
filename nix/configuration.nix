@@ -38,6 +38,9 @@
       "zswap.zpool=z3fold" # compressed page allocator (higher density than default zbud)
       "zswap.shrinker_enabled=1" # whether to shrink the pool proactively on high memory pressure
     ];
+    extraModprobeConfig = ''
+      options btusb enable_autosuspend=n
+    '';
     kernelModules = [ "i2c-dev" ];
     resumeDevice = "/dev/disk/by-uuid/a71adb85-511c-46b6-a16e-e5a6678cc2d0";
     # consoleLogLevel = 0;
@@ -93,7 +96,6 @@
     sleep 1
     systemctl start thinkfan.service
     systemctl start tlp.service
-    ${pkgs.bluez}/bin/bluetoothctl power on
   '';
 
   time.timeZone = "America/Mexico_City";
@@ -147,20 +149,22 @@
     };
 
     tlp = {
-        enable = true;
-        settings = {
-          # CPU on AC
-          CPU_SCALING_GOVERNOR_ON_AC="powersave";
-          CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance";
-          PLATFORM_PROFILE_ON_AC="balanced";
-          # CPU on BAT
-          CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-          CPU_ENERGY_PERF_POLICY_ON_BAT="power";
-          PLATFORM_PROFILE_ON_BAT="low-power";
-          # battery thresholds
-          START_CHARGE_THRESH_BAT0=40;
-          STOP_CHARGE_THRESH_BAT0=80;
-        };
+      enable = true;
+      settings = {
+        # CPU on AC
+        CPU_SCALING_GOVERNOR_ON_AC="powersave";
+        CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance";
+        PLATFORM_PROFILE_ON_AC="balanced";
+        # CPU on BAT
+        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+        CPU_ENERGY_PERF_POLICY_ON_BAT="power";
+        PLATFORM_PROFILE_ON_BAT="low-power";
+        # battery thresholds
+        START_CHARGE_THRESH_BAT0=40;
+        STOP_CHARGE_THRESH_BAT0=80;
+        # bluetooth stuff
+        USB_EXCLUDE_BTUSB=1;
+      };
     };
 
     thinkfan = {
