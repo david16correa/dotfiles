@@ -51,10 +51,6 @@
         source = ./config/yazi;
         recursive = true;
       };
-      "leovim" = {
-        source = ./config/leovim;
-        recursive = true;
-      };
       # "niri" = {
       #   source = ./config/niri;
       #   recursive = true;

@@ -72,7 +72,6 @@ fi
 
 # set -o vi
 export EDITOR='nvim'
-alias leovim='NVIM_APPNAME="leovim" nvim'
 
 # cosas para que los colores funcionen
 # export TERM=xterm-256color
