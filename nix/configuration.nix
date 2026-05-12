@@ -24,10 +24,15 @@
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      # systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       timeout = 0;
     };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
+
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
       "quiet" "loglevel=3" "rd.systemd.show_status=false" # quiet boot

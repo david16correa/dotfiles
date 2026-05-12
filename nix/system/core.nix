@@ -57,6 +57,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      sbctl
       tmux
       fastfetch
       stow

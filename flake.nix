@@ -11,6 +11,11 @@ pendientes:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-static.url = "github:nixos/nixpkgs/e07580dae39738e46609eaab8b154de2488133ce"; # some packages take too long to copy from cache; I want to update them sparingly
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +44,7 @@ pendientes:
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-index-database, ... } @ inputs:
+  outputs = { self, nixpkgs, lanzaboote, home-manager, nix-index-database, ... } @ inputs:
 
   let
     system = "x86_64-linux";
@@ -70,6 +75,8 @@ pendientes:
           ./nix/system/apps.nix
           ./nix/system/unstable.nix
           ./nix/system/static.nix
+
+          lanzaboote.nixosModules.lanzaboote
 
           nix-index-database.nixosModules.default {
             programs.nix-index-database.comma.enable = true;
