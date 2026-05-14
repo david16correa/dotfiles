@@ -21,7 +21,6 @@
     lsd
     bat
     bluetui
-    impala
     trashy
     libcanberra-gtk3
     unrar

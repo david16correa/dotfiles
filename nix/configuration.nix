@@ -42,6 +42,7 @@
       "zswap.max_pool_percent=20" # maximum percentage of RAM that zswap is allowed to use; increase if you Regularly hit high memory usage, or want to avoid disk swap at almost any cost
       "zswap.zpool=z3fold" # compressed page allocator (higher density than default zbud)
       "zswap.shrinker_enabled=1" # whether to shrink the pool proactively on high memory pressure
+      "pcie_aspm=off"
     ];
     extraModprobeConfig = ''
       options btusb enable_autosuspend=n
@@ -71,8 +72,10 @@
 
   networking = {
     hostName = "bjork"; # Define your hostname.
-    networkmanager.enable = true;
-    wireless.iwd.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
     firewall = {
       allowedTCPPorts = [ 2020 8888]; # spotifyd, jupyter
       allowedUDPPorts = [ 5353 ];
