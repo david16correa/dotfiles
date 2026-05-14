@@ -72,6 +72,7 @@
   networking = {
     hostName = "bjork"; # Define your hostname.
     networkmanager.enable = true;
+    wireless.iwd.enable = true;
     firewall = {
       allowedTCPPorts = [ 2020 8888]; # spotifyd, jupyter
       allowedUDPPorts = [ 5353 ];
