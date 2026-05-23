@@ -105,7 +105,6 @@
     sleep 1
     systemctl start thinkfan.service
     systemctl start tlp.service
-    ${pkgs.bluez}/bin/bluetoothctl power on
   '';
 
   time.timeZone = "America/Mexico_City";
