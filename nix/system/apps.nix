@@ -44,6 +44,7 @@
     gimp
     brave
     zotero
+    spotify
     prismlauncher
     protonplus
     nautilus
@@ -64,9 +65,7 @@
           inkscapeExtensions = [ inkscape-extensions.textext ];
         })
       ];
-
       buildInputs = [ makeWrapper ];
-
       postBuild = ''
         wrapProgram $out/bin/inkscape \
           --prefix PYTHONPATH : ${

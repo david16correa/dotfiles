@@ -87,17 +87,5 @@
     };
   };
 
-  services = {
-    spotifyd = {
-      enable = true;
-      settings.global = {
-        zeroconf_port = 2020;
-        bitrate = 320;
-        backend = "alsa";
-        volume_normalisation = false;
-        volume_controller = "none";
-        initial_volume = 100;
-      };
-    };
-  };
+  # services = { };
 }

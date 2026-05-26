@@ -76,10 +76,7 @@
       enable = true;
       wifi.powersave = false;
     };
-    firewall = {
-      allowedTCPPorts = [ 2020 8888]; # spotifyd, jupyter
-      allowedUDPPorts = [ 5353 ];
-    };
+    firewall.allowedTCPPorts = [8888]; # jupyter
   };
 
   hardware = {
