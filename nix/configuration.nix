@@ -35,7 +35,7 @@
 
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
-      "quiet" "loglevel=3" "rd.systemd.show_status=false" # quiet boot
+      "quiet" "loglevel=3" "systemd.show_status=auto" "rd.udev.log_level=3" # silent boot
       "resume_offset=40698492"  # for hibernation
       "zswap.enabled=1" # enables zswap
       "zswap.compressor=zstd" # compression algorithm
@@ -135,6 +135,8 @@
   ########################################
   # services
   ########################################
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   services = {
     printing.enable = true;
