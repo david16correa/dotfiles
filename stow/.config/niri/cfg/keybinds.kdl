@@ -27,10 +27,10 @@ binds {
   Alt+Shift+Return           hotkey-overlay-title="Open a Yazi (floating)"       { spawn "kitty" "--class=dot.floating.kitty" "yazi"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "/home/david/.myScripts/focusOrLaunch kitty kitty"; }
   Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen-beta zen-beta"; }
-  Mod+4                      hotkey-overlay-title="Open spotify.com"             { spawn-sh "xdg-open https://www.spotify.com"; }
-  Mod+Shift+4                hotkey-overlay-title="Restart spotifyd"             { spawn-sh "systemctl --user restart spotifyd"; }
+  Mod+4                      hotkey-overlay-title="Open Spotify"                 { spawn-sh "spotify"; }
   Mod+5                      hotkey-overlay-title="Open (or focus) Zotero"       { spawn-sh "/home/david/.myScripts/focusOrLaunch Zotero zotero"; }
-  Mod+6                      hotkey-overlay-title="Open (or focus) Obsidian"     { spawn-sh "/home/david/.myScripts/focusOrLaunch obsidian obsidian"; }
+  Mod+6                      hotkey-overlay-title="Open Julia"                   { spawn "kitty" "julia"; }
+  Mod+Shift+6                hotkey-overlay-title="Open Julia (floating)"        { spawn "kitty" "--class=dot.floating.kitty" "julia"; }
   Mod+7                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "noctalia-shell ipc call settings toggle"; }
 
   // screenshots
