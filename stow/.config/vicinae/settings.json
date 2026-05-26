@@ -21,7 +21,7 @@
       }
    },
    "launcher_window": {
-      "opacity": 0.95
+      "opacity": 1
    },
    "providers": {
       "applications": {
