@@ -1,6 +1,7 @@
 binds {
   // help
-  Mod+Shift+Slash { show-hotkey-overlay; }
+  Mod+Shift+Slash            { show-hotkey-overlay; }
+  Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                             { quit; }
 
   // general launchers
   Mod+Return                 hotkey-overlay-title="Open a Terminal"              { spawn "kitty"; }
@@ -19,7 +20,8 @@ binds {
   Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock the Screen"                       { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
   Mod+Shift+Alt+Ctrl+P       hotkey-overlay-title="Power off all montiors"                { power-off-monitors; }
   Mod+Shift+Alt+Ctrl+Delete  hotkey-overlay-title="Toggle the internal monitor (on/off)"  { spawn-sh "/home/david/.myScripts/toggle-eDP-1"; }
-  Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                             { quit; }
+  Mod+Shift+Alt+Ctrl+B       hotkey-overlay-title="Open bluetui (floating)"               { spawn "kitty" "--class=dot.floating.kitty" "bluetui"; }
+  Mod+Shift+Alt+Ctrl+K       hotkey-overlay-title="Open keydprofile (floating)"           { spawn-sh "kitty --class=dot.floating.kitty keydprofile --gui"; }
 
   // favourite apps
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
