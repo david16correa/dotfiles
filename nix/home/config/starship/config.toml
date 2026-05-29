@@ -9,7 +9,7 @@ add_newline = false
 
 [nix_shell]
 format = '[\($symbol$name\)]($style) '
-symbol = " "
+symbol = ""
 
 [python]
 format = '[${pyenv_prefix}](bold yellow)'

@@ -27,21 +27,24 @@
   };
 
   gtk = {
-      enable = true;
-      theme = {
-          name = "adw-gtk3-dark";
-          # name = "Adwaita-dark";
-          # name = "Adwaita";
-          package = pkgs.gnome-themes-extra;
-      };
-      iconTheme = {
-          name = "Adwaita";
-          package = pkgs.adwaita-icon-theme;
-      };
-      cursorTheme = {
-          name = "Adwaita";
-          package = pkgs.adwaita-icon-theme;
-          size = 24;
-      };
+    enable = true;
+    theme = {
+      name = "adw-gtk3-dark";
+      # name = "Adwaita-dark";
+      # name = "Adwaita";
+      # package = pkgs.gnome-themes-extra;
+      package = pkgs.adw-gtk3;
+    };
+    iconTheme = {
+      # name = "Adwaita";
+      # package = pkgs.adwaita-icon-theme;
+      name = "MoreWaita";
+      package = pkgs.morewaita-icon-theme;
+    };
+    cursorTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+      size = 24;
+    };
   };
 }

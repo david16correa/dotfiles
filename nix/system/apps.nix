@@ -8,8 +8,6 @@
   programs = {
     firefox.enable = true;
     obs-studio.enable = true;
-    # zoom-us.enable = true;
-    # gnome programs
     gnome-disks.enable = true;
     evince.enable = true;
     # dconf.enable = true;
@@ -29,7 +27,6 @@
     poppler-utils
     maestral
     maestral-gui
-    pavucontrol
     easyeffects
 
     # LibreOffice and GStreamer plugin stack for Impress video support
@@ -92,7 +89,6 @@
   ########################################
 
   services = {
-    # gnome.core-apps.enable = true;
     gnome.sushi.enable = true;
     gnome.tinysparql.enable = true;
     gvfs.enable = true;
