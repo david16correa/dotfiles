@@ -35,6 +35,7 @@
     # some of my dotfiles
     configFile = {
       "fastfetch/config.jsonc".source = ./config/fastfetch/config.jsonc;
+      "fastfetch/logo.png".source = ./config/fastfetch/logo.png;
       "kitty/kitty.conf".source = ./config/kitty/kitty.conf;
       "starship/config.toml".source = ./config/starship/config.toml;
       "yazi" = {
