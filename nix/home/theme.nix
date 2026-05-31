@@ -35,7 +35,7 @@
       # package = pkgs.gnome-themes-extra;
       package = pkgs.adw-gtk3;
     };
-    gtk4.theme = null;
+    gtk4.theme = null; # stateVersion compatibility config; new default adoption
     iconTheme = {
       # name = "Adwaita";
       # package = pkgs.adwaita-icon-theme;

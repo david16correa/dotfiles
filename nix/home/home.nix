@@ -29,7 +29,7 @@
     userDirs = {
       enable = true;
       createDirectories = true;
-      setSessionVariables = false;
+      setSessionVariables = false; # stateVersion compatibility config; new default adoption
     };
 
     # some of my dotfiles
