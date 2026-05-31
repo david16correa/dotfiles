@@ -59,6 +59,7 @@ alias tat="tmux a -t"
 alias fillbat="sudo tlp fullcharge BAT0"
 alias pingNixos="ping nixos.org"
 alias du="btrfs filesystem du"
+alias nm-restart="sudo systemctl restart NetworkManager"
 
 alias latex-flake="nix develop /home/david/.dotfiles/flakes/LaTeX"
 alias jupyter-flake="nix develop /home/david/.dotfiles/flakes/jupyter"

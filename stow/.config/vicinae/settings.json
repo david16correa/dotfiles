@@ -17,7 +17,8 @@
    },
    "theme": {
       "dark": {
-         "name": "noctalia"
+         "name": "noctalia",
+         "icon_theme": "MoreWaita"
       }
    },
    "launcher_window": {
