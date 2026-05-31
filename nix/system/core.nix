@@ -5,8 +5,6 @@
   # dm and wm
   ########################################
 
-  # services.xserver.enable = true;
-
   services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
@@ -57,6 +55,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      kitty
       sbctl
       tmux
       fastfetch
@@ -95,6 +94,7 @@
   ########################################
 
   services = {
+    keyd.enable = true;
     zerotierone.enable = true;
     fwupd.enable = true;
     udisks2.enable = true;
@@ -128,19 +128,6 @@
 
   # custom systemd services
   systemd = {
-    services = {
-      keyd = {
-        enable = true;
-        description = "key remapping daemon";
-        wantedBy = [ "sysinit.target" ];
-        wants = [ "local-fs.target" ];
-        after = [ "local-fs.target" ];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.keyd}/bin/keyd";
-        };
-      };
-    };
     user.services.polkit-gnome-authentication-agent-1 = {
       enable = true;
       description = "polkit-gnome-authentication-agent-1";

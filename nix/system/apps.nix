@@ -52,6 +52,9 @@
     gnome-boxes # virtual machines viwer/manager
     loupe # image viewer
     showtime # video player
+    pavucontrol
+    qbittorrent
+    dolphin-emu
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
 
     # inkscape stuff

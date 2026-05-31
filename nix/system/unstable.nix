@@ -20,14 +20,11 @@
   environment.systemPackages = with unstable; [
     vicinae
     yazi
-    kitty
     noctalia-shell
-    pavucontrol # in the stable release, pavucontrol has no icon (25.11)
   ];
 
   ########################################
   # services
   ########################################
 
-  # services.openssh.enable = true;
 }

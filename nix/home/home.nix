@@ -8,8 +8,7 @@
   ];
 
   home = {
-    stateVersion = "25.11"; # do NOT change this
-    # packages = with pkgs; [ ];
+    stateVersion = "25.11"; # do no NOT change this, unless you know what you're doing
     file = {
       ".tmux.conf".source = ./config/tmux/.tmux.conf;
       ".tmux" = {
@@ -21,28 +20,19 @@
         recursive = true;
       };
       ".face".source = ./avatar/grinningCoffee.jpg;
-      # ".gnome2/accels/nemo".text = ''
-      #   (gtk_accel_path "<Actions>/DirViewActions/OpenInTerminal" "<Primary>Return")
-      # '';
     };
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-    };
-  };
-
-  dconf.settings = {
-    # "org/cinnamon/desktop/applications/terminal".exec = "kitty";
-    # "org/cinnamon/desktop/interface".can-change-accels = true;
-    # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
   };
 
   xdg = {
     enable = true;
-    # /home/* directories
-    userDirs.enable = true;
-    userDirs.createDirectories = true;
-    # my dotfiles
+
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      setSessionVariables = false;
+    };
+
+    # some of my dotfiles
     configFile = {
       "fastfetch/config.jsonc".source = ./config/fastfetch/config.jsonc;
       "kitty/kitty.conf".source = ./config/kitty/kitty.conf;
@@ -51,11 +41,8 @@
         source = ./config/yazi;
         recursive = true;
       };
-      # "niri" = {
-      #   source = ./config/niri;
-      #   recursive = true;
-      # };
     };
+
     desktopEntries = {
       nix_search_pkgs = {
         name = "NixOS Search: Packages";
@@ -74,6 +61,7 @@
         categories = [ "System" ];
       };
     };
+
   };
 
   programs = {

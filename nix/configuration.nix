@@ -115,13 +115,12 @@
     users.david = {
       description = "David";
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "keyd" "i2c" "gamemode" ];
+      extraGroups = [ "wheel" "networkmanager" "i2c" "gamemode" ];
       shell = pkgs.zsh;
       # I used `mkpasswd` to generate this!
       hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB";
       # packages = with pkgs; [  ];
     };
-    groups.keyd = { };
   };
 
   security = {
@@ -220,5 +219,5 @@
   For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   */
 
-  system.stateVersion = "25.11"; # no NOT change this
+  system.stateVersion = "25.11"; # do NOT change this, unless you know what you're doing
 }

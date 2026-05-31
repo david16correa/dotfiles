@@ -35,6 +35,7 @@
       # package = pkgs.gnome-themes-extra;
       package = pkgs.adw-gtk3;
     };
+    gtk4.theme = null;
     iconTheme = {
       # name = "Adwaita";
       # package = pkgs.adwaita-icon-theme;
