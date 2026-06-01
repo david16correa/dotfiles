@@ -28,7 +28,7 @@ if ! tmux has-session -t main 2>/dev/null; then
   tmux new-session -d -s main
 fi
 
-tmux send-keys -t main 'clear && fastfetch' Enter
+tmux send-keys -t main 'clear && fastfetch --logo nixos' Enter
 
 if [[ -t 0 ]]; then
   tmux attach -t main
