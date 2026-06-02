@@ -49,13 +49,16 @@
     baobab # disk usage analyzer
     decibels # audio player
     gcolor3 # color picker
-    gnome-boxes # virtual machines viwer/manager
     loupe # image viewer
     showtime # video player
     pavucontrol
     qbittorrent
     dolphin-emu
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
+
+    gnome-boxes # virtual machines viwer/manager
+    dnsmasq # VM networking
+    phodav # share files with guest VMs
 
     # inkscape stuff
     (symlinkJoin {
@@ -86,6 +89,28 @@
     # GStreamer plugin path for LibreOffice Impress video support
     GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   };
+
+  ########################################
+  # virtualization setup
+  ########################################
+
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      # # Enable TPM emulation (for Windows 11)
+      # qemu = {
+      #   swtpm.enable = true;
+      #   ovmf.packages = [ pkgs.OVMFFull.fd ];
+      # };
+    };
+
+    # Enable USB redirection (for device passthrough)
+    spiceUSBRedirection.enable = true;
+  };
+
+  # Allow VM management
+  users.groups.libvirtd.members = [ "david" ];
+  users.groups.kvm.members = [ "david" ];
 
   ########################################
   # services
