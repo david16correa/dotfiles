@@ -639,7 +639,7 @@
             }
         ],
         "showHeader": false,
-        "showKeybinds": false
+        "showKeybinds": true
     },
     "settingsVersion": 59,
     "systemMonitor": {
