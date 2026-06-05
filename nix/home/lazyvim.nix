@@ -10,6 +10,7 @@
     clang-tools
     markdownlint-cli2
     tree-sitter
+    ltex-ls-plus
   ];
 
   programs.lazyvim = {
@@ -48,26 +49,24 @@
         vim.g.snacks_animate = false
         vim.opt.conceallevel = 0 -- keep \alpha as \alpha instead of α
         vim.g.autoformat = false
+
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = "tex",
+          callback = function()
+            vim.opt_local.wrap = true
+            vim.opt_local.linebreak = true
+            vim.opt_local.breakindent = true
+          end,
+        })
+      '';
+
+      autocmds = ''
+        vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
       '';
     };
 
     plugins = {
 
-      # colorscheme = ''
-      #   return {
-      #     {
-      #       "loctvl842/monokai-pro.nvim",
-      #       opts = { filter = "octagon" }, -- classic | octagon | pro | machine | ristretto | spectrum
-      #     },
-      #     {
-      #       "LazyVim/LazyVim",
-      #       opts = {
-      #         colorscheme = "monokai-pro",
-      #       },
-      #     },
-      #   }
-      # '';
-      
       colorscheme = ''
         return {
           {
@@ -129,15 +128,29 @@
         }
       '';
 
-      # lsp-config = ''
-      #   return {
-      #     "neovim/nvim-lspconfig",
-      #     opts = function(_, opts)
-      #       -- Add additional LSP configuration here
-      #       return opts
-      #     end,
-      #   }
-      # '';
+      lsp-config = ''
+        return {
+          {
+            "neovim/nvim-lspconfig",
+            opts = {
+              diagnostics = {
+                virtual_text = false,
+              },
+              servers = {
+                ltex = {
+                  cmd = { "ltex-ls-plus" },
+                  filetypes = { "tex", "markdown", "plaintex", "bib" },
+                  settings = {
+                    ltex = {
+                      language = "en-US",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        }
+      '';
     };
   };
 }

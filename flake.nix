@@ -1,8 +1,3 @@
-/*
-pendientes:
-- [ ] configurar fprint solo para noctalia
-*/
-
 {
   description = "My NixOS configuration";
 
@@ -13,11 +8,6 @@ pendientes:
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -44,7 +34,7 @@ pendientes:
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, home-manager, nix-index-database, ... } @ inputs:
+  outputs = { self, nixpkgs, lanzaboote, home-manager, ... } @ inputs:
 
   let
     system = "x86_64-linux";
@@ -77,10 +67,6 @@ pendientes:
           ./nix/system/static.nix
 
           lanzaboote.nixosModules.lanzaboote
-
-          nix-index-database.nixosModules.default {
-            programs.nix-index-database.comma.enable = true;
-          }
 
           home-manager.nixosModules.home-manager {
             home-manager = {

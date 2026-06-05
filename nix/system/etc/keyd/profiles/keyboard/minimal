@@ -28,12 +28,6 @@ capslock = layer(control)
 # layers are included
 
 #------------------------------------------------------------------------------#
-# Copy and paste like in macOS
-[meta]
-c = C-insert
-v = S-insert
-
-#------------------------------------------------------------------------------#
 # Pressing both Shifts together toggles Caps Lock
 [shift]
 rightshift = capslock
@@ -75,7 +69,7 @@ m = playpause
 ] = brightnessup
 [ = brightnessdown
 
-# misc - compose key (configured as Right Meta in GNOME), enter, menu key, print screen, change input source (configured as Meta + f13 in GNOME)
+# misc - compose key (configured as Right Meta in niri), enter, menu key, print screen, change input source (configured as Meta + f1 in niri)
 \ = rightmeta
 ; = enter
 ' = compose
