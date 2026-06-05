@@ -12,7 +12,7 @@ binds {
   Mod+M                      hotkey-overlay-title="Calendar"                     { spawn-sh "noctalia-shell ipc call calendar toggle"; }
   Mod+N                      hotkey-overlay-title="Notification History"         { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
   Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"               { spawn-sh "noctalia-shell ipc call notifications toggleDND"; }
-  // Mod+V                      hotkey-overlay-title="Clipboard History"            { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
+  Mod+C                      hotkey-overlay-title="Clipboard History"            { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
 
   // hyper (mod+shift+alt+ctrl) binds
   Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                            { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
@@ -22,18 +22,18 @@ binds {
   Mod+Shift+Alt+Ctrl+Delete  hotkey-overlay-title="Toggle the internal monitor (on/off)"  { spawn-sh "/home/david/.myScripts/toggle-eDP-1"; }
   Mod+Shift+Alt+Ctrl+B       hotkey-overlay-title="Open bluetui (floating)"               { spawn "kitty" "--class=dot.floating.kitty" "bluetui"; }
   Mod+Shift+Alt+Ctrl+K       hotkey-overlay-title="Open keydprofile (floating)"           { spawn-sh "kitty --class=dot.floating.kitty keydprofile --gui"; }
+  Mod+Shift+Alt+Ctrl+J       hotkey-overlay-title="Open Julia (floating)"                 { spawn "kitty" "--class=dot.floating.kitty" "julia"; }
+  Mod+Shift+Alt+Ctrl+Y       hotkey-overlay-title="Open Yazi (floating)"                  { spawn "kitty" "--class=dot.floating.kitty" "yazi"; }
 
   // favourite apps
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
-  Alt+Return                 hotkey-overlay-title="Open a Yazi"                  { spawn "kitty" "yazi"; }
-  Alt+Shift+Return           hotkey-overlay-title="Open a Yazi (floating)"       { spawn "kitty" "--class=dot.floating.kitty" "yazi"; }
+  Alt+Return                 hotkey-overlay-title="Open Yazi"                    { spawn "kitty" "yazi"; }
+  Alt+Shift+Return           hotkey-overlay-title="Open Yazi (floating)"         { spawn "kitty" "--class=dot.floating.kitty" "yazi"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "/home/david/.myScripts/focusOrLaunch kitty kitty"; }
   Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "/home/david/.myScripts/focusOrLaunch zen zen-beta"; }
   Mod+4                      hotkey-overlay-title="Open Spotify"                 { spawn-sh "spotify"; }
   Mod+5                      hotkey-overlay-title="Open (or focus) Zotero"       { spawn-sh "/home/david/.myScripts/focusOrLaunch Zotero zotero"; }
-  Mod+6                      hotkey-overlay-title="Open Julia"                   { spawn "kitty" "julia"; }
-  Mod+Shift+6                hotkey-overlay-title="Open Julia (floating)"        { spawn "kitty" "--class=dot.floating.kitty" "julia"; }
-  Mod+7                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "noctalia-shell ipc call settings toggle"; }
+  Mod+0                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "noctalia-shell ipc call settings toggle"; }
 
   // screenshots
   Print        { screenshot; }

@@ -1,4 +1,4 @@
-spawn-sh-at-startup "QT_QPA_PLATFORMTHEME=gtk3 noctalia-shell"
+spawn-sh-at-startup "noctalia-shell"
 spawn-sh-at-startup "sleep 59 && noctalia-shell ipc call idleInhibitor toggle"
 spawn-at-startup "/home/david/.myScripts/system-sounds"
 spawn-sh-at-startup "vicinae server"
