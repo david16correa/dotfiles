@@ -2,3 +2,5 @@
 **/yazi/theme.toml-*
 *.bak/
 .jupyter
+*.local
+*.local/
