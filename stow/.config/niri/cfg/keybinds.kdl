@@ -5,7 +5,7 @@ binds {
 
   // general launchers
   Mod+Return                 hotkey-overlay-title="Open a Terminal"              { spawn "kitty"; }
-  Mod+Shift+Return           hotkey-overlay-title="Open a Terminal (floating)"   { spawn "kitty" "--class=dot.floating.kitty"; }
+  Mod+Shift+Return           hotkey-overlay-title="Open a Terminal (floating)"   { spawn "kitty" "--class=dot.floating.large.kitty"; }
   Alt+Space                  hotkey-overlay-title="Run an Application: noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
   Mod+Space                  hotkey-overlay-title="Run an Application: vicinae"  { spawn-sh "vicinae toggle"; }
   Mod+S                      hotkey-overlay-title="Control Center"               { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
@@ -24,6 +24,7 @@ binds {
   Mod+Shift+Alt+Ctrl+K       hotkey-overlay-title="Open keydprofile (floating)"           { spawn-sh "kitty --class=dot.floating.kitty keydprofile --gui"; }
   Mod+Shift+Alt+Ctrl+J       hotkey-overlay-title="Open Julia (floating)"                 { spawn "kitty" "--class=dot.floating.kitty" "julia"; }
   Mod+Shift+Alt+Ctrl+Y       hotkey-overlay-title="Open Yazi (floating)"                  { spawn "kitty" "--class=dot.floating.kitty" "yazi"; }
+  Mod+Shift+Alt+Ctrl+T       hotkey-overlay-title="Open btop (floating)"                  { spawn "kitty" "--class=dot.floating.large.kitty" "btop"; }
 
   // favourite apps
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "/home/david/.myScripts/focusOrLaunch org.gnome.Nautilus nautilus"; }
