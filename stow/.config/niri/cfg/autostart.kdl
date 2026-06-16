@@ -1,0 +1,7 @@
+spawn-sh-at-startup "noctalia-shell"
+spawn-sh-at-startup "sleep 10 && noctalia-shell ipc call idleInhibitor toggle"
+spawn-at-startup "/home/david/.myScripts/system-sounds"
+spawn-sh-at-startup "vicinae server"
+spawn-sh-at-startup "maestral start && QT_QPA_PLATFORMTHEME='' maestral_qt"
+spawn-sh-at-startup "steam -silent"
+spawn-at-startup "/home/david/.myScripts/gentmux"

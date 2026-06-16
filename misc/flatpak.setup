@@ -1,0 +1,38 @@
+#! /usr/bin/env bash
+
+# This is an idempotent script that will setup all my flatpak packages for me
+
+targetColor="\033[36m"
+infoColor="\033[32m"
+errorColor="\033[31m"
+warningColor="\033[33m"
+resetSeq="\033[0m"
+
+# Make sure flatpak is installed
+if ! command -v flatpak >/dev/null 2>&1; then
+  echo -e "${errorColor}Error:${resetSeq} flatpak is not installed!" >&2
+  echo -e "${warningColor}Solution:${resetSeq} add"
+  echo "services.flatpak.enable = true;"
+  echo "to your configs"
+  exit 1
+fi
+
+# Add the flathub repository
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# Install my packages
+flatpak install -y \
+  com.discordapp.Discord \
+  us.zoom.Zoom
+
+# Expose and apply my cursor theme
+flatpak override --user --filesystem=~/.local/share/icons:ro
+flatpak override --user --filesystem=/nix/store:ro
+flatpak override --user --env=XCURSOR_THEME=Adwaita
+flatpak override --user --env=XCURSOR_SIZE=24
+
+# A quick reminder
+echo -e "${warningColor}To complete the initial setup, restart your system!${resetSeq}"
+
+# done!
+exit 0

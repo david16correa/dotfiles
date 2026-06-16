@@ -1,0 +1,132 @@
+#! /usr/bin/env bash
+
+# using colors is nice
+targetColor="\033[36m"
+infoColor="\033[32m"
+errorColor="\033[31m"
+resetSeq="\033[0m"
+
+# gui mode; in it, I want to be able to make several transactions (changes to my keyd profiles)
+GUI=false;
+
+# flags are dealt with
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --gui) GUI=true ;;
+    *) echo "Unknown option: $1; Ignoring..." >&2 ;;
+  esac
+  shift
+done
+
+# a nice title for gui mode
+$GUI && cat <<'EOF'
+
+ _                  _                  __ _ _
+| |                | |                / _(_) |
+| | _____ _   _  __| |_ __  _ __ ___ | |_ _| | ___
+| |/ / _ \ | | |/ _` | '_ \| '__/ _ \|  _| | |/ _ \
+|   <  __/ |_| | (_| | |_) | | | (_) | | | | |  __/
+|_|\_\___|\__, |\__,_| .__/|_|  \___/|_| |_|_|\___|
+           __/ |     | |
+          |___/      |_|
+
+EOF
+
+# main() implements a single keydprofile transaction
+main(){
+  # we choose a target device, or see auxiliary options; we exit if no choice is made
+  DEVICE=$(gum choose --header "choose a device:" $(basename -a /etc/keyd/profiles/*) "auxiliary options...") || exit 1
+
+  # option 1: some auxiliary options are shown
+  if [ "$DEVICE" = "auxiliary options..." ]; then
+    # the extra options are shown
+    DEVICE=$(gum choose --header "choose an option:" "print current configs" "toggle keyd") || exit 1
+  fi
+
+  # option 1.1: we format and print the current configs
+  if [ "$DEVICE" = "print current configs" ]; then
+    # we check if keyd is active
+    if ! systemctl is-active --quiet keyd; then
+      echo -e "\033[33mkeyd is not active!${resetSeq}"
+      return 0
+    fi
+
+    # the the link of each configuration file is followed to determine the profile
+    for configFile in /etc/keyd/*conf; do
+      device=$(basename "$configFile" .conf)
+      linkTarget=$(readlink $configFile)
+      profile=$(basename $linkTarget)
+      echo -e "${targetColor}$device${resetSeq} profile: ${infoColor}$profile${resetSeq}"
+    done
+    return 0
+  fi
+
+  # option 1.2: we toggle keyd
+  if [ "$DEVICE" = "toggle keyd" ]; then
+    # keyd is started/stopped, according to its current state
+    if systemctl is-active --quiet keyd; then
+      sudo systemctl stop keyd
+      echo -e "${targetColor}keyd${resetSeq} stopped!"
+    else
+      sudo systemctl start keyd
+      echo -e "${targetColor}keyd${resetSeq} started!"
+    fi
+    return 0
+  fi
+
+  # option 2: we actually chose a device; we now choose a profile (an additional disable option is included)
+  PROFILE=$(gum choose --header "choose a profile:" $(basename -a /etc/keyd/profiles/$DEVICE/* | grep -v layers) "disable $DEVICE") || exit 1
+
+  # option 2.1: we disable the device
+  if [ "$PROFILE" = "disable $DEVICE" ]; then
+    # the config for the device is deleted
+    sudo rm /etc/keyd/$DEVICE.conf
+    echo -e "${targetColor}$DEVICE${resetSeq} disabled!"
+  # option 2.2: some profile was chosen; we apply it, and we ask whether to apply it to all devices as well
+  else
+    SET_ALL_DEVICES=$(gum choose --header "change all devices to $PROFILE?" "yes" "no") || exit 1
+
+    # the config for the device is updated
+    sudo ln -sf profiles/$DEVICE/$PROFILE /etc/keyd/$DEVICE.conf
+    echo -e "${targetColor}$DEVICE${resetSeq} profile set to: ${infoColor}$PROFILE${resetSeq}"
+  fi
+
+  # option 2.2.1: we apply this profile to all devices
+  if [ "$SET_ALL_DEVICES" = "yes" ]; then
+    for AUX_DEVICE in $(basename -a /etc/keyd/profiles/* | grep -v $DEVICE); do
+      # if the profile exists, we set it
+      if [[ -f "/etc/keyd/profiles/$AUX_DEVICE/$PROFILE" ]]; then
+        sudo ln -sf profiles/$AUX_DEVICE/$PROFILE /etc/keyd/$AUX_DEVICE.conf
+        echo -e "${targetColor}$AUX_DEVICE${resetSeq} profile set to: ${infoColor}$PROFILE${resetSeq}"
+        # else, we warn the user
+      else
+        echo -e "${errorColor}$PROFILE${resetSeq} profile for ${errorColor}$AUX_DEVICE${resetSeq} not found!"
+      fi
+    done
+  fi
+
+  # final step: if keyd is active, it gets reloaded. Otherwise the service is started
+  if systemctl is-active --quiet keyd; then
+    sudo keyd reload
+  else
+    sudo systemctl start keyd
+  fi
+
+  return 0
+}
+
+while true; do
+
+  # perform a transation
+  main
+
+  # if not in gui mode, break
+  $GUI || break
+
+  # in gui mode we can loop
+  IFS= read -rn1 -p $'\nPress Space to continue, or any key to exit...' choice
+  [[ $choice == " " ]] || break
+
+done
+
+exit 0

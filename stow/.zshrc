@@ -1,0 +1,101 @@
+# zmodload zsh/zprof # to debug loading time
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -v
+# End of lines configured by zsh-newuser-install
+
+# Fast compinit setup
+autoload -Uz compinit
+
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.m+24) ]]; then
+  compinit
+else
+  compinit -C  # Skip compaudit completely if recent cache exists
+fi
+
+# # ensure proper Wayland socket setup
+# if [ -z "$WAYLAND_DISPLAY" ] || [ ! -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" ]; then
+#   export WAYLAND_DISPLAY=$(basename "$(ls -t $XDG_RUNTIME_DIR/wayland-* | head -n1)")
+# fi
+
+
+# >>> aniadir cosas a path >>>
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+
+PATH="$HOME/.myScripts:$PATH"
+
+export PATH
+
+# >>> init de cosas varias >>>
+eval "$(zoxide init zsh)"
+# eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.omp.json)"
+export STARSHIP_CONFIG=/home/david/.config/starship/config.toml
+eval "$(starship init zsh)"
+source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
+
+# >>> aliases y preferencias varias >>>
+alias zsh-reload='source ~/.zshrc'
+alias zsh-edit='nvim ~/.zshrc && source ~/.zshrc'
+alias niri-edit='nvim ~/.config/niri/config.kdl'
+# alias editniri='nvim ~/.dotfiles/nix/home/config/niri/config.kdl'
+alias clipboard='nvim ~/Dropbox/clipboard/clipboard.txt'
+alias cd='z'
+# alias rm='trash'
+alias ls='lsd' # lsd stuff
+alias l='ls -l' # lsd stuff
+alias la='ls -a' # lsd stuff
+alias lla='ls -la' # lsd stuff
+alias lt='ls --tree' # lsd stuff
+alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
+alias open="xdg-open"
+alias db="maestral"
+alias tks="tmux kill-server"
+alias tat="tmux a -t"
+alias fillbat="sudo tlp fullcharge BAT0"
+alias pingNixos="ping nixos.org"
+alias du="btrfs filesystem du"
+alias nm-restart="sudo systemctl restart NetworkManager"
+
+alias latex-flake="nix develop /home/david/.dotfiles/flakes/LaTeX"
+alias jupyter-flake="nix develop /home/david/.dotfiles/flakes/jupyter"
+
+# private stuff
+if [ -f "$HOME/.zshrc.private" ]; then
+  source "$HOME/.zshrc.private"
+else
+  echo -e "[\033[33mWARNING:\033[0m] ~/.zshrc.private not found!"
+fi
+
+# set -o vi
+export EDITOR='nvim'
+
+# cosas para que los colores funcionen
+# export TERM=xterm-256color
+
+export JULIA_NUM_THREADS=$(nproc) # by default julia will use all threads
+
+# landing shell
+if [[ -n "$PS1" && -z "$TMUX" && -z "$IN_NIX_SHELL" ]]; then # if not in tmux, nor in nix shell
+  if [[ -n "$SSH_CONNECTION" ]]; then # if connected through ssh
+    $HOME/.myScripts/gentmux
+  else
+    fastfetch
+  fi
+fi
+
+# to make yazi exit at cwd
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# zprof # to debug loading time

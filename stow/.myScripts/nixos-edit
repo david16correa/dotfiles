@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+
+# first we edit flake.nix
+OG_PWD="$(pwd)"
+cd ~/.dotfiles # (we move to ~/.dotfiles to ensure git status works within nvim)
+nvim ~/.dotfiles/flake.nix
+
+# flags are dealt with
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --reload|-r) nixos-reload ;;
+    *) echo "Unknown option: $1; Ignoring..." >&2 ;;
+  esac
+  shift
+done
+
+cd $OG_PWD >/dev/null # (we move back to the original working directory)
+
+# done!
+exit 0

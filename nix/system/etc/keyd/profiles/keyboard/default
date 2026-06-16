@@ -1,0 +1,149 @@
+# tip: use `keyd list-keys` to list keys
+# tip: use `sudo keyd monitor` to monitor key strokes
+
+#------------------------------------------------------------------------------#
+# these settings are applied across all keyboards; not my Logitech mice
+[ids]
+*
+-m:046d
+
+#------------------------------------------------------------------------------#
+[main]
+
+# Left Alt is swapped with Left Meta
+leftmeta = layer(alt)
+leftalt = layer(meta)
+
+# Left Control and Copilot acts as Hyper
+leftcontrol = layer(hyper)
+leftmeta+leftshift+f23 = layer(hyper)
+
+# Space acts as Space when tapped, and as Alpha when held
+space = lettermod(alpha, space, 150, 200)
+
+# Esc acts as Esc when tapped, and as Beta when held
+esc = overload(beta, esc)
+
+# Caps Lock acts as Esc when tapped, and as Gamma when held
+capslock = overload(gamma,esc)
+
+#------------------------------------------------------------------------------#
+# layers are included
+
+#------------------------------------------------------------------------------#
+# Pressing both Shifts together toggles Caps Lock
+[shift]
+rightshift = capslock
+leftshift = capslock
+
+#------------------------------------------------------------------------------#
+# Hyper layer
+[hyper:C-S-A-M]
+, = brightnessdown
+. = brightnessup
+
+#------------------------------------------------------------------------------#
+# Alpha layer; vim-esque, media, home row mods, F keys, etc
+[alpha]
+# vim-esque
+h = left
+j = down
+k = up
+l = right
+b = C-left
+w = C-right
+e = C-right
+/ = C-f
+o = back
+i = forward
+u = C-z
+r = C-S-z
+x = delete
+g = home
+z = C-=
+y = C-insert
+p = S-insert
+
+# media
+m = playpause
+, = volumedown
+. = volumeup
+
+] = brightnessup
+[ = brightnessdown
+
+# misc - compose key (configured as Right Meta in niri), enter, menu key, print screen, change input source (configured as Meta + f1 in niri)
+\ = rightmeta
+; = enter
+' = compose
+enter = print
+tab = M-f1
+
+# f-keys
+1 = f1
+2 = f2
+3 = f3
+4 = f4
+5 = f5
+6 = f6
+7 = f7
+8 = f8
+9 = f9
+0 = f10
+- = f11
+= = f12
+
+# home row mods (special layers are used to avoid conficts)
+a = layer(hrControl)
+s = layer(hrShift)
+d = layer(hrAlt)
+f = layer(hrMeta)
+
+[hrControl:C]
+[hrShift:S]
+[hrAlt:A]
+[hrMeta:M]
+
+[alpha+hrShift]
+# vimesque
+h = home
+j = pagedown
+k = pageup
+l = end
+
+[alpha+shift]
+# vimesque
+x = backspace
+g = end
+z = C--
+# media
+m = mute
+, = previoussong
+. = nextsong
+
+#------------------------------------------------------------------------------#
+# Beta layer; numpad
+[beta]
+m = 0
+j = 1
+k = 2
+l = 3
+u = 4
+i = 5
+o = 6
+0 = /
+p = *
+; = -
+/ = +
+
+#------------------------------------------------------------------------------#
+# Gamma layer; misc
+[gamma:C]
+; = backspace
+
+# gaming arrows
+[alpha+gamma]
+w = up
+a = left
+s = down
+d = right

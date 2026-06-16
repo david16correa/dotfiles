@@ -1,0 +1,34 @@
+input {
+    keyboard {
+        xkb {
+          layout "us(symbolic),latam"
+          options "compose:rwin"
+        }
+        repeat-delay 300
+        repeat-rate 100
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        accel-speed 0.5
+    }
+
+    mouse {
+        natural-scroll
+    }
+
+    trackpoint {
+        accel-speed 0.5
+        accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // scroll-button-lock
+        // middle-emulation
+    }
+
+    warp-mouse-to-focus
+    // focus-follows-mouse
+    // focus-follows-mouse max-scroll-amount="33.33%"
+    focus-follows-mouse max-scroll-amount="0%"
+}
