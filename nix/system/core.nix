@@ -6,8 +6,13 @@
   ########################################
 
   services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
+    enable = true;
+    wayland.enable = true;
+    wayland.compositor = "kwin";
+    settings.Theme = {
+      CursorTheme = "Adwaita";
+      CursorSize = 24;
+    };
   };
 
   programs.niri.enable = true;
@@ -79,6 +84,7 @@
       ddcutil
       compsize
       gnome-firmware
+      adwaita-icon-theme
     ];
     etc = {
       "keyd/profiles".source = ./etc/keyd/profiles;
@@ -135,12 +141,12 @@
       wants = [ "graphical-session.target" ];
       after = [ "graphical-session.target" ];
       serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
     };
   };
 
