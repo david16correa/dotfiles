@@ -27,7 +27,6 @@
             "kitty",
             "spotify-launcher",
             "zotero",
-            "obsidian",
             "org.gnome.DiskUtility",
             "steam",
             "zen-beta",
@@ -75,7 +74,7 @@
         "middleClickFollowMouse": false,
         "monitors": [
         ],
-        "mouseWheelAction": "none",
+        "mouseWheelAction": "volume",
         "mouseWheelWrap": false,
         "outerCorners": false,
         "position": "left",
@@ -321,13 +320,13 @@
                     "id": "KeepAwake"
                 },
                 {
-                    "id": "NightLight"
+                    "id": "NoctaliaPerformance"
                 }
             ]
         }
     },
     "desktopWidgets": {
-        "enabled": true,
+        "enabled": false,
         "gridSnap": true,
         "gridSnapScale": false,
         "monitorWidgets": [
@@ -398,7 +397,7 @@
         "clockFormat": "hh\\nmm",
         "clockStyle": "digital",
         "compactLockScreen": true,
-        "dimmerOpacity": 0.6,
+        "dimmerOpacity": 0,
         "enableBlurBehind": true,
         "enableLockScreenCountdown": true,
         "enableLockScreenMediaControls": true,
@@ -449,7 +448,7 @@
         "shadowDirection": "bottom_right",
         "shadowOffsetX": 2,
         "shadowOffsetY": 3,
-        "showChangelogOnStartup": true,
+        "showChangelogOnStartup": false,
         "showHibernateOnLockScreen": true,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": true,
@@ -484,11 +483,11 @@
     },
     "location": {
         "analogClockInCalendar": true,
-        "autoLocate": false,
+        "autoLocate": true,
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Monterrey",
+        "name": "San Nicolás de los Garza",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": true,
@@ -519,12 +518,12 @@
     },
     "noctaliaPerformance": {
         "disableDesktopWidgets": true,
-        "disableWallpaper": true
+        "disableWallpaper": false
     },
     "notifications": {
         "backgroundOpacity": 1,
         "clearDismissed": true,
-        "criticalUrgencyDuration": 9,
+        "criticalUrgencyDuration": 6,
         "density": "compact",
         "enableBatteryToast": true,
         "enableKeyboardLayoutToast": false,
@@ -532,10 +531,10 @@
         "enableMediaToast": false,
         "enabled": true,
         "location": "top",
-        "lowUrgencyDuration": 3,
+        "lowUrgencyDuration": 2,
         "monitors": [
         ],
-        "normalUrgencyDuration": 6,
+        "normalUrgencyDuration": 4,
         "overlayLayer": true,
         "respectExpireTimeout": false,
         "saveToHistory": {
@@ -691,7 +690,7 @@
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": false,
-        "settingsPanelMode": "attached",
+        "settingsPanelMode": "window",
         "settingsPanelSideBarCardStyle": false,
         "tooltipsEnabled": true,
         "translucentWidgets": false
@@ -719,9 +718,9 @@
                 "wallpaper": ""
             }
         ],
-        "overviewBlur": 0.4,
+        "overviewBlur": 0.66,
         "overviewEnabled": true,
-        "overviewTint": 0.6,
+        "overviewTint": 0.33,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,
