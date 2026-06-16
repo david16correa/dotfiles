@@ -12,6 +12,7 @@
     settings.Theme = {
       CursorTheme = "Adwaita";
       CursorSize = 24;
+      FacesDir="/etc/sddm.extra/faces/";
     };
   };
 
@@ -88,6 +89,7 @@
     ];
     etc = {
       "keyd/profiles".source = ./etc/keyd/profiles;
+      "sddm.extra/faces/david.face.icon".source = ../home/avatar/grinningCoffee.png;
     };
     variables = {
       EDITOR = "vim";

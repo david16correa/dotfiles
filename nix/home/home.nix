@@ -19,7 +19,7 @@
         source = ./backgrounds;
         recursive = true;
       };
-      ".face".source = ./avatar/grinningCoffee.jpg;
+      ".face.icon".source = ./avatar/grinningCoffee.png;
     };
   };
 

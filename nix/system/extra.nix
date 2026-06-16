@@ -40,6 +40,7 @@
       fontSize = "9";
       background = "${../home/backgrounds/dm16_10.jpg}";
       loginBackground = true;
+      # userIcon = true;
     })
   ];
 
@@ -82,10 +83,6 @@
   # services
   ########################################
 
-  services = {
-    displayManager.sddm = {
-        theme = "catppuccin-macchiato-blue";
-    };
-  };
+  services.displayManager.sddm.theme = "catppuccin-macchiato-blue";
 
 }
