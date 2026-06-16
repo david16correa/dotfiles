@@ -3,27 +3,24 @@
 > [!NOTE]
 > All instructions shown here assume the root of this repo is the current working directory!
 
-> [!NOTE] To do
-> - Set up `fprint` just for Noctalia
-
 ## Installation steps
 
 - Follow [NixOS' installation Guide](https://wiki.nixos.org/wiki/NixOS_Installation_Guide) up to "Format Partitions"; to set up the btrfs partition and its subvolumes, also see [this article](https://wiki.nixos.org/wiki/Btrfs#Installation_of_NixOS_on_btrfs). The intended partitions, subvolumes, and mountpoints are the following:
 
 ```
-NAME                                  MOUNTPOINT
+NAME                                              MOUNTPOINT
 nvme0nX
-├── nvme0nXp1 (size: 1G, fs: vfat)    /boot
+├── nvme0nXp1 (size: 1G, fs: vfat)                /boot
 └── nvme0nXp2 (fs: btrfs)
-    ├── root                          /
-    ├── nix                           /nix
-    ├── swap                          /swap
-    ├── home                          /home
-    ├── snapshots                     /home/.snapshots
-    └── games                         /home/david/Games
+    ├── root                                      /
+    ├── nix                                       /nix
+    ├── swap                                      /swap
+    ├── home                                      /home
+    ├── snapshots                                 /home/.snapshots
+    └── games                                     /home/david/Games
 ```
 
-- Mount all partitions and subvolumes
+- Mount all partitions and subvolumes using:
 
 ```sh
 mkdir /mnt
@@ -42,7 +39,7 @@ mount -o compress=zstd,noatime,subvol=snapshots   /dev/nvme0nXp2 /mnt/home/.snap
 mount -o compress=zstd,noatime,subvol=games       /dev/nvme0nXp2 /mnt/home/david/Games
 ```
 
-- Create a new `/mnt/etc/nixos/hardware-configuration.nix` with
+- Create a new `/mnt/etc/nixos/hardware-configuration.nix` with:
 
 ```sh
 nixos-generate-config --root /mnt
@@ -50,7 +47,7 @@ nixos-generate-config --root /mnt
 
 - Use `/mnt/etc/nixos/hardware-configuration.nix` to substitute all UUIDs in `./nix/hardware.nix` and `./nix/configuration.nix`
 
-Once everything is right, install with
+Once everything is right, install with:
 
 ```sh
 nixos-install --flake './flake.nix#bjork' # make sure to run this in path/to/flake.nix!
@@ -58,7 +55,7 @@ nixos-install --flake './flake.nix#bjork' # make sure to run this in path/to/fla
 
 ## Post-installation steps
 
-- Check and update the `resume_offset` kernel parameter in `./nix/configuration.nix` using:
+- Check and update the `resume_offset` kernel parameter in `./nix/configuration.nix` using the output of:
 
 ```sh
   sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
