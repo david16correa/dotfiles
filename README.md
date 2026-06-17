@@ -72,11 +72,6 @@ sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 
 - Set up secure boot following lanzaboote's guide: first [prepare your system](https://nix-community.github.io/lanzaboote/getting-started/prepare-your-system.html), then [enable secure boot](https://nix-community.github.io/lanzaboote/getting-started/enable-secure-boot.html)
 - Use `./misc/flatpak.setup` to install all flatpak applications; this script is idempotent, and is intended to be used to declaratively manage flatpaks
-- Install mutable configs and custom scripts using:
-
-```sh
-stow ./stow
-```
 
 - Set up Zen Browser by hand; the extensions I use are:
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)

@@ -3,17 +3,19 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 prefer-no-csd
 
 environment {
-    DISPLAY ":0"
+  DISPLAY ":0"
+  QT_QPA_PLATFORMTHEME "gtk3"
 }
 
 xwayland-satellite {
-    // off
-    path "xwayland-satellite"
+  // off
+  path "xwayland-satellite"
 }
 
 // Hide the cursor after ten seconds of inactivity.
 cursor {
-    hide-after-inactive-ms 10000
+  hide-after-inactive-ms 10000
+  hide-when-typing
 }
 
 // Allows notification actions and window activation from Noctalia.
@@ -29,8 +31,8 @@ layer-rule {
 
 // Enable the top-left and top-right hot corners (overview toggle)
 gestures {
-    hot-corners {
-        top-left
-        top-right
-    }
+  hot-corners {
+    top-left
+    top-right
+  }
 }

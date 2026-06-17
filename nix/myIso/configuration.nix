@@ -11,6 +11,8 @@
     btrfs-progs
     fastfetch
     stow
+    tealdeer
+    tmux
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

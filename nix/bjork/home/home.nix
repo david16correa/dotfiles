@@ -1,5 +1,8 @@
-{ pkgs, unstable, inputs, ... }:
+{ pkgs, config, unstable, inputs, ... }:
 
+let
+  configDir = "${config.home.homeDirectory}/.dotfiles/nix/bjork/home/config";
+in
 {
   imports = [
     ./lazyvim.nix
@@ -10,16 +13,30 @@
   home = {
     stateVersion = "25.11"; # do no NOT change this, unless you know what you're doing
     file = {
-      ".tmux.conf".source = ./config/tmux/.tmux.conf;
+      ".zshrc" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/zsh/zshrc";
+      };
       ".tmux" = {
-        source = ./config/tmux/.tmux;
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/tmux/.tmux";
         recursive = true;
+      };
+      ".tmux.conf" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/tmux/.tmux.conf";
+      };
+      ".myScripts" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/myScripts";
+        recursive = true;
+      };
+      ".vimrc" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/vim/vimrc";
+      };
+      ".face.icon" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/avatar/grinningCoffee.png";
       };
       ".backgrounds" = {
-        source = ./backgrounds;
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/backgrounds";
         recursive = true;
       };
-      ".face.icon".source = ./avatar/grinningCoffee.png;
     };
   };
 
@@ -32,14 +49,31 @@
       setSessionVariables = false; # stateVersion compatibility config; new default adoption
     };
 
-    # some of my dotfiles
     configFile = {
-      "fastfetch/config.jsonc".source = ./config/fastfetch/config.jsonc;
-      "fastfetch/logo.png".source = ./config/fastfetch/logo.png;
-      "kitty/kitty.conf".source = ./config/kitty/kitty.conf;
-      "starship/config.toml".source = ./config/starship/config.toml;
+      "niri" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/niri";
+        recursive = true;
+      };
+      "noctalia" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/noctalia";
+        recursive = true;
+      };
+      "kitty/kitty.conf" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/kitty/kitty.conf";
+      };
+      "starship/config.toml" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/starship/config.toml";
+      };
       "yazi" = {
-        source = ./config/yazi;
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/yazi";
+        recursive = true;
+      };
+      "fastfetch" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/fastfetch";
+        recursive = true;
+      };
+      "vicinae" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/vicinae";
         recursive = true;
       };
     };

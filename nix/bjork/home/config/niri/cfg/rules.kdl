@@ -13,7 +13,7 @@ window-rule {
 // exceptions to tiling
 window-rule {
     match app-id=r#"firefox$"#                      title="^Picture-in-Picture$"
-    match app-id=r#"zen-browser$"#                  title="^Picture-in-Picture$"
+    match app-id=r#"zen$"#                          title="^Picture-in-Picture$"
     match app-id="org.gnome.NautilusPreviewer"
     match app-id="org.gnome.Loupe"                  title="display.png"
     match app-id="steam"                            title="Recordings.*Screenshots"
@@ -23,4 +23,20 @@ window-rule {
     match app-id="nl.hjdskes.gcolor3"
 
     open-floating true
+}
+
+window-rule {
+    match app-id=r#"^dot\.floating\.kitty$"#
+
+    open-floating true
+    default-column-width { proportion 0.45; }
+    default-window-height { proportion 0.45; }
+}
+
+window-rule {
+    match app-id=r#"^dot\.floating.large\.kitty$"#
+
+    open-floating true
+    default-column-width { proportion 0.66; }
+    default-window-height { proportion 0.66; }
 }

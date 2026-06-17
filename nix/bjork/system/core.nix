@@ -89,7 +89,7 @@
     ];
     etc = {
       "keyd/profiles".source = ./etc/keyd/profiles;
-      "sddm.extra/faces/david.face.icon".source = ../home/avatar/grinningCoffee.png;
+      "sddm.extra/faces/david.face.icon".source = ../home/config/avatar/grinningCoffee.png;
     };
     variables = {
       EDITOR = "vim";
