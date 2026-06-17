@@ -35,49 +35,57 @@
   };
 
   outputs = { self, nixpkgs, lanzaboote, home-manager, ... } @ inputs:
+    let
+      system = "x86_64-linux";
 
-  let
-    system = "x86_64-linux";
-
-    unstable = import inputs.nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-
-    static = import inputs.nixpkgs-static {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  in
-  {
-    nixosConfigurations.bjork = nixpkgs.lib.nixosSystem {
+      unstable = import inputs.nixpkgs-unstable {
         inherit system;
+        config.allowUnfree = true;
+      };
 
-        specialArgs = { inherit inputs unstable static; };
+      static = import inputs.nixpkgs-static {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+      {
+      nixosConfigurations = {
+        bjork = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        modules = [
-          { nixpkgs.config.allowUnfree = true; }
+          specialArgs = { inherit inputs unstable static; };
 
-          ./nix/configuration.nix
+          modules = [
+            { nixpkgs.config.allowUnfree = true; }
 
-          ./nix/system/core.nix
-          ./nix/system/extra.nix
-          ./nix/system/apps.nix
-          ./nix/system/unstable.nix
-          ./nix/system/static.nix
+            ./nix/bjork/configuration.nix
 
-          lanzaboote.nixosModules.lanzaboote
+            ./nix/bjork/system/core.nix
+            ./nix/bjork/system/extra.nix
+            ./nix/bjork/system/apps.nix
+            ./nix/bjork/system/unstable.nix
+            ./nix/bjork/system/static.nix
 
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "nixnew";
-              extraSpecialArgs = { inherit inputs unstable; };
-              users.david = import ./nix/home/home.nix;
-            };
-          }
-        ];
+            lanzaboote.nixosModules.lanzaboote
+
+            home-manager.nixosModules.home-manager {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "nixnew";
+                extraSpecialArgs = { inherit inputs unstable; };
+                users.david = import ./nix/bjork/home/home.nix;
+              };
+            }
+          ];
+        };
+        myIso = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+
+          modules = [
+            ./nix/myIso/configuration.nix
+          ];
+        };
+      };
     };
-  };
 }
