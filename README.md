@@ -69,7 +69,7 @@ nixos-install --flake './flake.nix#bjork' # make sure to run this in path/to/fla
 stow ./stow
 ```
 
-- Setup Zen Browser by hand; the extensions I use are:
+- Set up Zen Browser by hand; the extensions I use are:
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - [Keepa](https://addons.mozilla.org/en-US/firefox/addon/keepa/)
   - [Vimium C](https://addons.mozilla.org/en-US/firefox/addon/vimium-c/?src=external-readme) (my configs are `./misc/vimium c/vimium_c-20260410_125539.json`)
