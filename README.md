@@ -12,11 +12,11 @@ cd /tmp/dotfiles
 > [!NOTE]
 > All instructions shown here assume the root of this repo is the current working directory!
 
-- Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./disks/disko.nix` (line 17).
+- Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./misc/disko.nix` (line 17).
 - Use `disko` to set up and mount the drive:
 
 ```sh
-disko --mode destroy,format,mount ./disks/disko.nix
+disko --mode destroy,format,mount ./misc/disko.nix
 
 # The final partitions, subvolumes, and mountpoints are the following:
 # NAME                                              MOUNTPOINT
