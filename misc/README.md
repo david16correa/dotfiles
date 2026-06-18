@@ -1,7 +1,9 @@
-# Some useful stuff to manage disks
+# Some notes I've taken
+
+## Some useful stuff to manage disks
 
 - `fdisk` - create and manage partitions; this is the ol' reliable
-- `cfdisk` - like `fdisk`, but graphical
+- `cfdisk` - like `fdisk`, but with a TUI (curses-based)
 - `sfdisk` - useful to restore partition layouts:
 
 ```sh
