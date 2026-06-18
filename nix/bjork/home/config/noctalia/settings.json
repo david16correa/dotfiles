@@ -483,11 +483,11 @@
     },
     "location": {
         "analogClockInCalendar": true,
-        "autoLocate": true,
+        "autoLocate": false,
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "San Nicolás de los Garza",
+        "name": "Monterrey",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": true,
