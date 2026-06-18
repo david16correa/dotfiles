@@ -2,49 +2,44 @@
 
 ## Installation steps
 
-- Follow [NixOS' installation Guide](https://wiki.nixos.org/wiki/NixOS_Installation_Guide) up to "Format Partitions"; to set up the btrfs partition and its subvolumes, also see [this article](https://wiki.nixos.org/wiki/Btrfs#Installation_of_NixOS_on_btrfs). The intended partitions, subvolumes, and mountpoints are the following:
-
-```
-NAME                                              MOUNTPOINT
-nvme0nX
-├── nvme0nXp1 (size: 1G, fs: vfat)                /boot
-└── nvme0nXp2 (fs: btrfs)
-    ├── root                                      /
-    ├── nix                                       /nix
-    ├── swap                                      /swap
-    ├── home                                      /home
-    ├── snapshots                                 /home/.snapshots
-    └── games                                     /home/david/Games
-```
-
-- Mount all partitions and subvolumes using:
+- Boot into a [NixOS image](https://nixos.org/download/#nixos-iso), clone this repo, and `cd` into it:
 
 ```sh
-mkdir -p /mnt
-mount -o compress=zstd,noatime,subvol=root        /dev/nvme0nXp2 /mnt
-
-mkdir -p /mnt/boot
-mount /dev/nvme0nXp1 /mnt/boot
-
-mkdir -p /mnt/{nix,swap,home}
-mount -o compress=zstd,noatime,subvol=nix         /dev/nvme0nXp2 /mnt/nix
-mount -o noatime,subvol=swap                      /dev/nvme0nXp2 /mnt/swap
-mount -o compress=zstd,noatime,subvol=home        /dev/nvme0nXp2 /mnt/home
-
-mkdir -p /mnt/home/{.snapshots,david/Games}
-mount -o compress=zstd,noatime,subvol=snapshots   /dev/nvme0nXp2 /mnt/home/.snapshots
-mount -o compress=zstd,noatime,subvol=games       /dev/nvme0nXp2 /mnt/home/david/Games
-```
-
-- Once all partitions and subvolumes are mounted, clone this repo in its intended place and `cd` into it as follows:
-
-```sh
-git clone https://github.com/david16correa/dotfiles /mnt/home/david/.dotfiles
-cd /mnt/home/david/.dotfiles
+git clone https://github.com/david16correa/dotfiles /tmp/dotfiles
+cd /tmp/dotfiles
 ```
 
 > [!NOTE]
 > All instructions shown here assume the root of this repo is the current working directory!
+
+- Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./disks/disko.nix` (line 17).
+- Use `disko` to set up and mount the drive:
+
+```sh
+disko --mode destroy,format,mount ./disks/disko.nix
+
+# The final partitions, subvolumes, and mountpoints are the following:
+# NAME                                              MOUNTPOINT
+# nvme0nX
+# ├── nvme0nXp1 (size: 1G, fs: vfat)                /boot
+# └── nvme0nXp2 (fs: btrfs)
+#     ├── root                                      /
+#     ├── nix                                       /nix
+#     ├── swap                                      /swap
+#     ├── home                                      /home
+#     ├── snapshots                                 /home/.snapshots
+#     └── games                                     /home/david/Games
+```
+
+>[!NOTE]
+> For a layout different to my own, follow [NixOS' installation Guide](https://wiki.nixos.org/wiki/NixOS_Installation_Guide) up to "Format Partitions"; to set up the btrfs partition and its subvolumes, also see [this article](https://wiki.nixos.org/wiki/Btrfs#Installation_of_NixOS_on_btrfs).
+
+- Once all partitions and subvolumes are mounted, move this repo in its intended place and `cd` into it as follows:
+
+```sh
+mv /tmp/dotfiles /mnt/home/david/.dotfiles
+cd /mnt/home/david/.dotfiles
+```
 
 - Create a new `./nix/bjork/hardware.nix` with:
 
@@ -55,6 +50,9 @@ cp /mnt/etc/nixos/hardware-configuration.nix ./nix/bjork/hardware.nix
 
 - Find the UUID of your drive in `./nix/bjork/hardware.nix`, and use it to substitute `resumeDevice` in `./nix/bjork/configuration.nix`
 - Update the state version at `./nix/bjork/configuration.nix` and `./nix/bjork/home/home.nix` to the current release (26.05)
+
+> [!NOTE]
+> Consider resolving all lines marked with a `stateVersion compatibility config` comment! I always try to adopt the new defaults, so reinstalling should make these lines obsolete.
 
 Once everything is right, install with:
 
@@ -87,4 +85,6 @@ In this flake I also have the setup for my ISO image; build it with:
 nixos-rebuild build-image --image-variant iso --flake .#myIso
 ```
 
-The resulting ISO can be found in `./result/iso`, and can be burned with `caligula`.
+The resulting ISO can be found in `./result/iso`. I like to flash ISOs with `caligula`.
+
+My ISO is mostly identical to [NixOS' minimal ISO image](https://nixos.org/download/#nixos-iso), but I've included extra packages and niceties. You can check its configuration file at `./nix/myIso/configuration.nix`.

@@ -71,6 +71,7 @@
       tealdeer
       which
       rsync
+      disko
       caligula
       xwayland-satellite
       gcc
