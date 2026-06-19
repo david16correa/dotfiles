@@ -12,11 +12,11 @@ cd /tmp/dotfiles
 > [!NOTE]
 > All instructions shown here assume the root of this repo is the current working directory!
 
-- Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./misc/disko.nix` (line 17).
+- Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./nix/bjork/disko.nix` (line 17).
 - Use `disko` to set up and mount the drive:
 
 ```sh
-disko --mode destroy,format,mount ./misc/disko.nix
+disko --mode destroy,format,mount ./nix/bjork/disko.nix
 
 # The final partitions, subvolumes, and mountpoints are the following:
 # NAME                                              MOUNTPOINT
@@ -87,4 +87,4 @@ nixos-rebuild build-image --image-variant iso --flake .#myIso
 
 The resulting ISO can be found in `./result/iso`. I like to flash ISOs with `caligula`.
 
-My ISO is mostly identical to [NixOS' minimal ISO image](https://nixos.org/download/#nixos-iso), but I've included extra packages and niceties. You can check its configuration file at `./nix/myIso/configuration.nix`.
+My ISO is mostly identical to [NixOS' minimal ISO image](https://nixos.org/download/#nixos-iso), but I've included extra packages and niceties (e.g. flakes are enabled by default). You can check its configuration file at `./nix/myIso/configuration.nix`.
