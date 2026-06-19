@@ -29,7 +29,7 @@
       git
       btrfs-progs
       fastfetch
-      stow
+      ripgrep
       tealdeer
       tmux
       btop

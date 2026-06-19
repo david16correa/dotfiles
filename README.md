@@ -48,11 +48,13 @@ nixos-generate-config --root /mnt
 cp /mnt/etc/nixos/hardware-configuration.nix ./nix/bjork/hardware.nix
 ```
 
-- Find the UUID of your drive in `./nix/bjork/hardware.nix`, and use it to substitute `resumeDevice` in `./nix/bjork/configuration.nix`
-- Update the state version at `./nix/bjork/configuration.nix` and `./nix/bjork/home/home.nix` to the current release (26.05)
+- Find the UUID of your drive in `./nix/bjork/hardware.nix`, and use it to substitute `resumeDevice` in `./nix/bjork/configuration.nix`.
+- Update the state version at `./nix/bjork/configuration.nix` and `./nix/bjork/home/home.nix` to the current release (26.05).
 
 > [!NOTE]
 > Consider resolving all lines marked with a `stateVersion compatibility config` comment! I always try to adopt the new defaults, so reinstalling should make these lines obsolete.
+
+- Comment out Lanzaboote's configs in `./flake.nix` to allow systemd-boot to be installed.
 
 Once everything is right, install with:
 
@@ -62,14 +64,14 @@ nixos-install --flake .#bjork
 
 ## Post-installation steps
 
-- Check and update the `resume_offset` kernel parameter in `./nix/configuration.nix` using the output of:
+- Check and update the `resume_offset` kernel parameter in `./nix/bjork/configuration.nix` using the output of:
 
 ```sh
 sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 ```
 
-- Set up secure boot following lanzaboote's guide: first [prepare your system](https://nix-community.github.io/lanzaboote/getting-started/prepare-your-system.html), then [enable secure boot](https://nix-community.github.io/lanzaboote/getting-started/enable-secure-boot.html)
-- Use `./misc/flatpak.setup` to install all flatpak applications; this script is idempotent, and is intended to be used to declaratively manage flatpaks
+- Set up secure boot following lanzaboote's guide: first [prepare your system](https://nix-community.github.io/lanzaboote/getting-started/prepare-your-system.html), then [enable secure boot](https://nix-community.github.io/lanzaboote/getting-started/enable-secure-boot.html).
+- Use `./misc/flatpak.setup` to install all flatpak applications; this script is idempotent, and is intended to be used to declaratively manage flatpaks.
 
 - Set up Zen Browser by hand; the extensions I use are:
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)

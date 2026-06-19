@@ -68,6 +68,16 @@
 
             lanzaboote.nixosModules.lanzaboote
 
+            # Lanzaboote replaces the systemd-boot module;
+            # In a new install, comment out this block
+            ({ pkgs, lib, ... }: {
+              boot.loader.systemd-boot.enable = lib.mkForce false;
+              lanzaboote = {
+                enable = true;
+                pkiBundle = "/var/lib/sbctl";
+              };
+            })
+
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useGlobalPkgs = true;
