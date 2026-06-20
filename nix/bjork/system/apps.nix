@@ -22,6 +22,15 @@
     };
   };
 
+  my.flatpak = {
+    enable = true;
+    updateWithFlake = true;
+    apps = [
+      "com.discordapp.Discord"
+      "us.zoom.Zoom"
+    ];
+  };
+
   ########################################
   # system packages
   ########################################
@@ -86,15 +95,6 @@
   ];
 
   ########################################
-  # flatpak packages
-  ########################################
-
-  my.flatpak.apps = [
-    "com.discordapp.Discord"
-    "us.zoom.Zoom"
-  ];
-
-  ########################################
   # extra environment variables
   ########################################
 
@@ -133,7 +133,6 @@
     gnome.sushi.enable = true;
     gnome.tinysparql.enable = true;
     gvfs.enable = true;
-    flatpak.enable = true; # docs: https://flatpak.org/setup/NixOS
   };
 
 }

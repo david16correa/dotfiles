@@ -1,13 +1,22 @@
+# flatpak docs: https://flatpak.org/setup/NixOS
 { lib, config, pkgs, ... }:
 let
+  cfg = config.my.flatpak;
+
   flakeDir = config.my.flakeDir;
 
   appList = pkgs.writeText "flatpak-apps" (
-    lib.concatStringsSep "\n" config.my.flatpak.apps
+    lib.concatStringsSep "\n" cfg.apps
   );
 in
-{
+  {
   options.my.flatpak = {
+    enable = lib.mkEnableOption "Flatpak support with my custom app list";
+
+    updateWithFlake = lib.mkEnableOption "Make Flatpaks update along with your flake";
+
+    package = lib.mkPackageOption pkgs "flatpak" { };
+
     apps = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
@@ -19,7 +28,9 @@ in
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
+    services.flatpak.enable = true;
+
     system.activationScripts.flatpak.text = ''
       # 0. preamble
 
@@ -58,11 +69,13 @@ in
       echo -e -n "''${infoColor}Flatpak: ''${resetSeq}"
       ${pkgs.flatpak}/bin/flatpak install -y "''${desiredApps[@]}"
 
-      # 4. Extra: if the system has been updated, flatpaks are updated too
-      if ! ${pkgs.git}/bin/git -C "${flakeDir}" diff --quiet -- flake.lock; then
-        echo -e -n "''${infoColor}Flatpak: ''${resetSeq}"
+      ${lib.optionalString cfg.updateWithFlake ''
+        # 4. Extra: if the system has been updated, flatpaks are updated too
+        if ! ${pkgs.git}/bin/git -C "${flakeDir}" diff --quiet -- flake.lock; then
+          echo -e -n "''${infoColor}Flatpak: ''${resetSeq}"
         ${pkgs.flatpak}/bin/flatpak update
-      fi
+        fi
+      ''}
     '';
   };
 }
