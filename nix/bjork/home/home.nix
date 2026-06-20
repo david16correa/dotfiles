@@ -1,5 +1,4 @@
-{ pkgs, config, unstable, inputs, ... }:
-
+{ config, lib, pkgs, inputs, unstable, ... }:
 let
   configDir = "${config.home.homeDirectory}/.dotfiles/nix/bjork/home/config";
 in

@@ -1,6 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  imports = [
+    ./modules/flatpak.nix
+  ];
+
   ########################################
   # program modules
   ########################################
@@ -79,6 +83,15 @@
         }/lib/python3.*/site-packages
         '';
     })
+  ];
+
+  ########################################
+  # flatpak packages
+  ########################################
+
+  my.flatpak.apps = [
+    "com.discordapp.Discord"
+    "us.zoom.Zoom"
   ];
 
   ########################################

@@ -1,4 +1,4 @@
-{ inputs, pkgs, unstable, ... }:
+{ config, lib, pkgs, inputs, unstable, ... }:
 {
   home = {
     packages = with pkgs; [
@@ -48,4 +48,12 @@
       size = 24;
     };
   };
+
+  # flatpak theming
+  home.activation.flatpakOverrides = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=$HOME/.local/share/icons:ro
+    run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=/nix/store:ro
+    run ${pkgs.flatpak}/bin/flatpak override --user --env=XCURSOR_THEME=Adwaita
+    run ${pkgs.flatpak}/bin/flatpak override --user --env=XCURSOR_SIZE=24
+  '';
 }

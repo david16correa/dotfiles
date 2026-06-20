@@ -1,6 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  imports = [
+    ./modules/flakeDir.nix
+  ];
+
   ########################################
   # dm and wm
   ########################################
@@ -41,7 +45,6 @@
     };
     nh = {
       enable = true;
-      flake = "/home/david/.dotfiles";
       clean = {
         enable = true;
         dates = "weekly";
@@ -101,7 +104,7 @@
   ########################################
   # activation scripts
   ########################################
-  
+
   system.activationScripts = {
     # all devices start with their default configs
     setDefaultProfiles-keyd.text = ''
