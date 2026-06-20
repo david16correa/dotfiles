@@ -38,7 +38,7 @@
       clockEnabled = false;
       font  = "Adwaita Sans";
       fontSize = "9";
-      background = "${../home/config/backgrounds/dm16_10.jpg}";
+      background = "${../home/config/wallpapers/dm16_10.jpg}";
       loginBackground = true;
       # userIcon = true;
     })

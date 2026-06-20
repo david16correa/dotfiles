@@ -33,8 +33,8 @@ in
       ".face.icon" = {
         source = config.lib.file.mkOutOfStoreSymlink "${configDir}/avatar/grinningCoffee.png";
       };
-      ".local/share/backgrounds" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/backgrounds";
+      "Pictures/Wallpapers" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/wallpapers";
         recursive = true;
       };
     };
