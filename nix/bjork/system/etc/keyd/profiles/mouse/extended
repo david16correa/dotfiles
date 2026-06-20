@@ -28,35 +28,51 @@ mouseforward = lettermod(delta, toggle(epsilon), 150, 200)
 3 = lettermod(delta, toggle(epsilon), 150, 200)
 
 #------------------------------------------------------------------------------#
+# productivity layer; copy, paste, undo, scroll to zoom
 [alpha:A]
+leftmouse = C-insert
+middlemouse = C-z
+rightmouse = S-insert
 
 4 = S-delete
 5 = C-insert
 
 #------------------------------------------------------------------------------#
+# media and workspaces layer; playpause, next song, scroll through workspaces
 [beta:M]
+leftmouse = playpause
+middlemouse = M-a
+rightmouse = nextsong
 
 4 = previoussong
 5 = nextsong
 
 #------------------------------------------------------------------------------#
-# media layer
+# misc layer; cut, previous song, redo
 [alpha+beta]
-leftmouse = playpause
-rightmouse = nextsong
+leftmouse = S-delete
+middlemouse = C-S-z
+rightmouse = previoussong
 
 4 = esc
 5 = enter
-6 = previoussong
-7 = nextsong
 
 #------------------------------------------------------------------------------#
+# audio layer; volume up/down, mute, sideways scroll
 [gamma:C]
+leftmouse = volumedown
+middlemouse = mute
+rightmouse = volumeup
 
 4 = brightnessdown
 5 = brightnessup
 
+#------------------------------------------------------------------------------#
+# alternate audio layer; volume up/down, mute, scroll to zoom in/out
 [delta:S]
+leftmouse = volumedown
+middlemouse = mute
+rightmouse = volumeup
 
 4 = brightnessdown
 5 = brightnessup

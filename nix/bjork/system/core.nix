@@ -99,6 +99,20 @@
   };
 
   ########################################
+  # activation scripts
+  ########################################
+  
+  system.activationScripts = {
+    # all devices start with their default configs
+    setDefaultProfiles-keyd.text = ''
+      for path in /home/david/.dotfiles/nix/bjork/system/etc/keyd/profiles/*; do
+        DEVICE=$(basename "$path")
+        ln -sf "profiles/$DEVICE/default" "/etc/keyd/$DEVICE.conf"
+      done
+    '';
+  };
+
+  ########################################
   # services
   ########################################
 
