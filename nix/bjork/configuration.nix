@@ -12,7 +12,7 @@
   ########################################
   # bootloader, kernel, fs, and swap
   ########################################
-  
+
   /*
   Upon reinstall, remember to:
   - check and update the resume_offset kernelParam using:
@@ -117,6 +117,7 @@
       hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB";
       # packages = with pkgs; [  ];
     };
+    users.root.hashedPassword = null;
   };
 
   security = {
@@ -142,8 +143,9 @@
     };
 
     openssh = {
-        enable = true;
-        allowSFTP = true;
+      enable = true;
+      settings.PermitRootLogin = "no";
+      allowSFTP = true;
     };
 
     avahi = {

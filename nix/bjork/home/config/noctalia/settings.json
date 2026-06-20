@@ -697,7 +697,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/david/.backgrounds",
+        "directory": "/home/david/.local/share/backgrounds",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
