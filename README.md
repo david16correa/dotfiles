@@ -34,7 +34,7 @@ disko --mode destroy,format,mount ./nix/bjork/disko.nix
 >[!NOTE]
 > For a layout different to my own, follow [NixOS' installation Guide](https://wiki.nixos.org/wiki/NixOS_Installation_Guide) up to "Format Partitions"; to set up the btrfs partition and its subvolumes, also see [this article](https://wiki.nixos.org/wiki/Btrfs#Installation_of_NixOS_on_btrfs).
 
-- Once all partitions and subvolumes are mounted, move this repo in its intended place and `cd` into it as follows:
+- Once all partitions and subvolumes are mounted, move this repo to its intended place and `cd` into it as follows:
 
 ```sh
 mv /tmp/dotfiles /mnt/home/david/.dotfiles
