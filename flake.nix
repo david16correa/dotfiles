@@ -72,7 +72,7 @@
             # In a new install, comment out this block
             ({ pkgs, lib, ... }: {
               boot.loader.systemd-boot.enable = lib.mkForce false;
-              lanzaboote = {
+              boot.lanzaboote = {
                 enable = true;
                 pkiBundle = "/var/lib/sbctl";
               };
