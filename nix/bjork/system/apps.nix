@@ -24,7 +24,6 @@
 
   my.flatpak = {
     enable = true;
-    updateWithFlake = true;
     apps = [
       "com.discordapp.Discord"
       "us.zoom.Zoom"
