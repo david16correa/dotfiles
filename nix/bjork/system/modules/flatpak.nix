@@ -32,36 +32,22 @@ in
     system.activationScripts.flatpak.text = ''
       # I use a cache to skip this entire activation script if the desired applications has not changed!
       if ! ${pkgs.busybox}/bin/cmp -s ${appList} /var/cache/flatpak-appList; then
-        # 0. preamble
-
-        # I save my installed and my desired apps in an array
+        # 0. preamble: I save my installed and my desired apps in an array
         mapfile -t installedApps < <(${pkgs.flatpak}/bin/flatpak list --app --columns=application)
         mapfile -t desiredApps < ${appList}
 
-        # An auxiliary function
-        auxFunction_isDesired(){
-          local candidateApp="''$1"
-          # we compare the candidate with every desired app
-          for desiredApp in "''${desiredApps[@]}"; do
-            # if there's a match, we return 0 (success)
-            [[ "''$candidateApp" == "''$desiredApp" ]] && return 0
-          done
-          # else we return 1 (failure)
-          return 1
-        }
-
-        # 1. Sanity check: add the flathub repository
+        # 1. sanity check: add the flathub repository
         ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-        # 2. Cleanup
-        # Remove any flatpaks I no longer want
+        # 2. cleanup
+        # If an installed app is no longer desired, it gets removed
         for installedApp in "''${installedApps[@]}"; do
-          auxFunction_isDesired "''$installedApp" || ${pkgs.flatpak}/bin/flatpak uninstall -y --noninteractive ''${installedApp} >/dev/null 2>&1
+          ${pkgs.busybox}/bin/grep "''$installedApp" ${appList} || ${pkgs.flatpak}/bin/flatpak uninstall -y --noninteractive ''${installedApp} >/dev/null 2>&1
         done
-        # Remove any unused stuff
+        # unused stuff is also removed
         ${pkgs.flatpak}/bin/flatpak remove --unused --noninteractive >/dev/null 2>&1
 
-        # 3. Install all my apps
+        # 3. all my apps are installed
         echo -e -n "Flatpak:"
         ${pkgs.flatpak}/bin/flatpak install -y "''${desiredApps[@]}"
 
