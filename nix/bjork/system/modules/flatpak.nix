@@ -3,8 +3,6 @@
 let
   cfg = config.my.flatpak;
 
-  flakeDir = config.my.flakeDir;
-
   appList = pkgs.writeText "flatpak-apps" (
     lib.concatStringsSep "\n" cfg.apps
   );

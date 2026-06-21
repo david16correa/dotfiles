@@ -1,5 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
 
+let
+  keydDevices = builtins.attrNames (builtins.readDir ./etc/keyd/profiles);
+in
 {
   imports = [
     ./modules/flakeDir.nix
@@ -107,12 +110,11 @@
 
   system.activationScripts = {
     # all devices start with their default configs
-    setDefaultProfiles-keyd.text = ''
-      for path in /home/david/.dotfiles/nix/bjork/system/etc/keyd/profiles/*; do
-        DEVICE=$(basename "$path")
-        ln -sf "profiles/$DEVICE/default" "/etc/keyd/$DEVICE.conf"
-      done
-    '';
+    setDefaultProfiles-keyd.text = builtins.concatStringsSep "\n" (
+      map (device: ''
+        ln -sf "profiles/${device}/default" "/etc/keyd/${device}.conf"
+      '') keydDevices
+    );
   };
 
   ########################################

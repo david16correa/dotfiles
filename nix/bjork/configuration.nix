@@ -13,15 +13,6 @@
   # bootloader, kernel, fs, and swap
   ########################################
 
-  /*
-  Upon reinstall, remember to:
-  - check and update the resume_offset kernelParam using:
-    sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
-  - update ./hardware.nix using:
-    nixos-generate-config
-  - update the uuid of resumeDevice (copy from ./hardware.nix)
-  */
-
   boot = {
     loader = {
       systemd-boot.enable = true;
