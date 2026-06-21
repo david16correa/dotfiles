@@ -30,7 +30,7 @@ in
     services.flatpak.enable = true;
 
     system.activationScripts.flatpak.text = ''
-      # I use a cache to skip this entire activation script if the desired applications has not changed!
+      # I use a cache to skip this entire activation script if the desired applications have not changed!
       if ! ${pkgs.busybox}/bin/cmp -s ${appList} /var/cache/flatpak-appList; then
         # 0. preamble: I save my installed and my desired apps in an array
         mapfile -t installedApps < <(${pkgs.flatpak}/bin/flatpak list --app --columns=application)
