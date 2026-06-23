@@ -21,7 +21,11 @@
     Then follow the README. Good luck!
   '';
 
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   environment = {
     systemPackages = with pkgs; [
