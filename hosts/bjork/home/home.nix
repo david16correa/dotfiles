@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, unstable, ... }:
 let
-  configDir = "${config.home.homeDirectory}/.dotfiles/nix/bjork/home/config";
+  configDir = "${config.home.homeDirectory}/.dotfiles/hosts/bjork/home/config";
 in
 {
   imports = [

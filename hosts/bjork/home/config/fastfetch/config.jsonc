@@ -26,7 +26,7 @@
       "type": "command",
       "key": "󰔟",
       "keyColor": "yellow",
-      "text": "echo $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days"
+      "text": "echo $(( ($(date +%s) - $(stat -c %W /home)) / 86400 )) days"
     },
     {
       "type": "kernel",

@@ -4,19 +4,20 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./hardware.nix
-  ];
-
   ########################################
   # bootloader, kernel, fs, and swap
   ########################################
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
       timeout = 0;
+    };
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
     };
 
     kernelPackages = pkgs.linuxPackages_zen;
@@ -206,5 +207,5 @@
   For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   */
 
-  system.stateVersion = "25.11"; # do NOT change this, unless you know what you're doing
+  system.stateVersion = "26.05"; # do NOT change this, unless you know what you're doing
 }

@@ -19,11 +19,11 @@ cd /tmp/dotfiles
 >
 > - All instructions shown here assume the root of this repo is the current working directory!
 
-- Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./nix/bjork/disko.nix` (line 17).
+- Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./hosts/bjork/disko.nix` (line 17).
 - Use `disko` to set up and mount the drive:
 
 ```sh
-disko --mode destroy,format,mount ./nix/bjork/disko.nix
+disko --mode destroy,format,mount ./hosts/bjork/disko.nix
 
 # The final partitions, subvolumes, and mountpoints are the following:
 # NAME                                              MOUNTPOINT
@@ -47,21 +47,20 @@ mv /tmp/dotfiles /mnt/home/david/.dotfiles
 cd /mnt/home/david/.dotfiles
 ```
 
-- Create a new `./nix/bjork/hardware.nix` with:
+- Create a new `./hosts/bjork/hardware.nix` with:
 
 ```sh
 nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix ./nix/bjork/hardware.nix
+cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/bjork/hardware.nix
 ```
 
-- Find the UUID of your drive in `./nix/bjork/hardware.nix`, and use it to substitute `resumeDevice` in `./nix/bjork/configuration.nix`.
-- Update the state version at `./nix/bjork/configuration.nix` and `./nix/bjork/home/home.nix` to the current release (26.05).
+- Find the UUID of your drive in `./hosts/bjork/hardware.nix`, and use it to substitute `resumeDevice` in `./hosts/bjork/configuration.nix`.
+- Update the state version at `./hosts/bjork/configuration.nix` and `./hosts/bjork/home/home.nix` to the current release (26.05).
 
 > [!NOTE]
 > Consider resolving all lines marked with a `stateVersion compatibility config` comment! I always try to adopt the new defaults, so reinstalling should make these lines obsolete.
 
-- Comment out Lanzaboote's configs in `./flake.nix` to allow systemd-boot to be installed.
-- Switch `my.flatpak.enable` to `false` in `./nix/bjork/system/apps.nix`.
+- Uncomment the block marked with a `Installation patches` comment in `./flake.nix`; this will disable Lanzaboote and `my.flatpak`, and enable systemd-boot.
 
 Once everything is right, install with:
 
@@ -71,14 +70,48 @@ nixos-install --flake .#bjork
 
 ## Post-installation steps
 
-- Check and update the `resume_offset` kernel parameter in `./nix/bjork/configuration.nix` using the output of:
+- Check and update the `resume_offset` kernel parameter in `./hosts/bjork/configuration.nix` using the output of:
 
 ```sh
 sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 ```
 
-- Set up secure boot following lanzaboote's guide: first [prepare your system](https://nix-community.github.io/lanzaboote/getting-started/prepare-your-system.html), then [enable secure boot](https://nix-community.github.io/lanzaboote/getting-started/enable-secure-boot.html).
-- Switch `my.flatpak.enable` back to `true` in `./nix/bjork/system/apps.nix` and rebuild.
+- Comment the block marked with the `Installation patches` block in `./flake.nix`.
+- Set up secure boot:
+  - First create the Secure Boot keys:
+
+  ```sh
+  sudo sbctl create-keys
+  ```
+
+  - Rebuild NixOS:
+
+  ```sh
+  nh os switch
+  ```
+
+  - Verify the machine is ready:
+
+  ```sh
+  sudo sbctl verify
+  ```
+
+  - Reboot into the firmware (`systemctl reboot --firmware-setup`) and enter Secure Boot Setup Mode.
+  - Enroll keys:
+
+  ```sh
+  sudo sbctl enroll-keys --microsoft
+  ```
+
+  - Reboot again, and verify Secure Boot is activated with:
+
+  ```sh
+  bootctl status
+  ```
+
+>[!NOTE]
+> When in doubt, check [Lanzaboote's guide](https://nix-community.github.io/lanzaboote/).
+
 - Run `maestral start`; this will prompt Maestral's setup.
 - Set up Zen Browser by hand; the extensions I use are:
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
@@ -97,4 +130,4 @@ nixos-rebuild build-image --image-variant iso --flake .#myIso
 
 The resulting ISO can be found in `./result/iso`. I like to flash ISOs with `caligula`.
 
-My ISO is mostly identical to [NixOS' minimal ISO image](https://nixos.org/download/#nixos-iso), but I've included extra packages and niceties (e.g. flakes are enabled by default). You can check its configuration file at `./nix/myIso/configuration.nix`.
+My ISO is mostly identical to [NixOS' minimal ISO image](https://nixos.org/download/#nixos-iso), but I've included extra packages and niceties (e.g. flakes are enabled by default). You can check its configuration file at `./hosts/myIso/configuration.nix`.

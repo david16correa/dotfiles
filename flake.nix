@@ -58,35 +58,15 @@
           modules = [
             { nixpkgs.config.allowUnfree = true; }
 
-            ./nix/bjork/configuration.nix
+            ./hosts/bjork/main.nix
 
-            ./nix/bjork/system/core.nix
-            ./nix/bjork/system/extra.nix
-            ./nix/bjork/system/apps.nix
-            ./nix/bjork/system/unstable.nix
-            ./nix/bjork/system/static.nix
+            # # Installation patches:
+            # ({ pkgs, lib, ... }: {
+            #   boot.loader.systemd-boot.enable = lib.mkForce true;
+            #   boot.lanzaboote.enable = lib.mkForce false;
+            #   my.flatpak.enable = lib.mkForce false;
+            # })
 
-            lanzaboote.nixosModules.lanzaboote
-
-            # Lanzaboote replaces the systemd-boot module;
-            # In a new install, comment out this block
-            ({ pkgs, lib, ... }: {
-              boot.loader.systemd-boot.enable = lib.mkForce false;
-              boot.lanzaboote = {
-                enable = true;
-                pkiBundle = "/var/lib/sbctl";
-              };
-            })
-
-            home-manager.nixosModules.home-manager {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "nixnew";
-                extraSpecialArgs = { inherit inputs unstable; };
-                users.david = import ./nix/bjork/home/home.nix;
-              };
-            }
           ];
         };
 
@@ -94,7 +74,7 @@
           specialArgs = { inherit inputs; };
 
           modules = [
-            ./nix/myIso/configuration.nix
+            ./hosts/myIso/configuration.nix
           ];
         };
       };
