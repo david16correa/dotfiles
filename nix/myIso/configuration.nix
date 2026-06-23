@@ -13,18 +13,20 @@
   services.getty.helpLine = lib.mkAfter ''
 
 
-    To start, clone my dotfiles and `cd` into them:
-    ```
-    git clone https://github.com/david16correa/dotfiles /tmp/dotfiles
-    cd /tmp/dotfiles
-    ```
+    To start, clone my dotfiles and `cd` into them with `cloneDotfiles`!
+
     Then follow the README. Good luck!
   '';
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
+  programs = {
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+    };
+    bash.shellAliases = {
+      cloneDotfiles = "git clone https://github.com/david16correa/dotfiles /tmp/dotfiles && cd /tmp/dotfiles";
+    };
   };
 
   environment = {
