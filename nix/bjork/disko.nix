@@ -37,47 +37,41 @@
           content = {
             type = "btrfs";
             subvolumes = {
-              "root" = {
+              "@" = {
                 mountpoint = "/";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
                 ];
               };
-              "nix" = {
+              "@nix" = {
                 mountpoint = "/nix";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
                 ];
               };
-              "swap" = {
+              "@swap" = {
                 mountpoint = "/swap";
                 mountOptions = [
                   "noatime"
                 ];
               };
-              "home" = {
+              "@home" = {
                 mountpoint = "/home";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
                 ];
               };
-              "snapshots" = {
+              "@snapshots" = {
                 mountpoint = "/home/.snapshots";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
                 ];
               };
-              "games" = {
-                mountpoint = "/home/david/Games";
-                mountOptions = [
-                  "compress=zstd"
-                  "noatime"
-                ];
-              };
+              "@home/david/Games" = { };
             };
           };
         };
