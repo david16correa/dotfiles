@@ -10,7 +10,14 @@ cd /tmp/dotfiles
 ```
 
 > [!NOTE]
-> All instructions shown here assume the root of this repo is the current working directory!
+>
+> - If you don't use my ISO, use the following to create a nix shell with all required packages:
+>
+> ``` sh
+> nix shell -p vim disko git btrfs-progs
+> ```
+>
+> - All instructions shown here assume the root of this repo is the current working directory!
 
 - Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./nix/bjork/disko.nix` (line 17).
 - Use `disko` to set up and mount the drive:
@@ -23,12 +30,11 @@ disko --mode destroy,format,mount ./nix/bjork/disko.nix
 # nvme0nX
 # ├── nvme0nXp1 (size: 1G, fs: vfat)                /boot
 # └── nvme0nXp2 (fs: btrfs)
-#     ├── root                                      /
-#     ├── nix                                       /nix
-#     ├── swap                                      /swap
-#     ├── home                                      /home
-#     ├── snapshots                                 /home/.snapshots
-#     └── games                                     /home/david/Games
+#     ├── @                                         /
+#     ├── @home                                     /home
+#     ├── @nix                                      /nix
+#     ├── @swap                                     /swap
+#     └── @snapshots                                /home/.snapshots
 ```
 
 >[!NOTE]
@@ -55,6 +61,7 @@ cp /mnt/etc/nixos/hardware-configuration.nix ./nix/bjork/hardware.nix
 > Consider resolving all lines marked with a `stateVersion compatibility config` comment! I always try to adopt the new defaults, so reinstalling should make these lines obsolete.
 
 - Comment out Lanzaboote's configs in `./flake.nix` to allow systemd-boot to be installed.
+- Switch `my.flatpak.enable` to `false` in `./nix/bjork/system/apps.nix`.
 
 Once everything is right, install with:
 
@@ -71,14 +78,14 @@ sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 ```
 
 - Set up secure boot following lanzaboote's guide: first [prepare your system](https://nix-community.github.io/lanzaboote/getting-started/prepare-your-system.html), then [enable secure boot](https://nix-community.github.io/lanzaboote/getting-started/enable-secure-boot.html).
-- Use `./misc/flatpak.setup` to install all flatpak applications; this script is idempotent, and is intended to be used to declaratively manage flatpaks.
+- Switch `my.flatpak.enable` back to `true` in `./nix/bjork/system/apps.nix` and rebuild.
 - Run `maestral start`; this will prompt Maestral's setup.
-
 - Set up Zen Browser by hand; the extensions I use are:
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - [Keepa](https://addons.mozilla.org/en-US/firefox/addon/keepa/)
   - [Vimium C](https://addons.mozilla.org/en-US/firefox/addon/vimium-c/?src=external-readme) (my configs are `./misc/vimium c/vimium_c-20260410_125539.json`)
   - [Zotero Connector](https://www.zotero.org/download/)
+- Log in to Steam, and make sure to set up `~/Games` as the default library; it's a different subvolume, which will keep `snapper` from backing up your entire Steam library.
 
 ## Building my ISO
 
