@@ -232,7 +232,7 @@
                     "enableColorization": true,
                     "icon": "square-rounded",
                     "id": "ControlCenter",
-                    "useDistroLogo": true
+                    "useDistroLogo": false
                 }
             ]
         }
@@ -504,7 +504,7 @@
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": true,
         "disableDiscoverability": false,
-        "networkPanelView": "wifi",
+        "networkPanelView": "ethernet",
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
