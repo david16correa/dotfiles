@@ -76,7 +76,7 @@ nixos-install --flake .#bjork
 sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 ```
 
-- Comment the block marked with the `Installation patches` block in `./flake.nix`.
+- Comment the block marked with the `Installation patches` comment in `./flake.nix`.
 - Set up secure boot:
   - First create the Secure Boot keys:
 
