@@ -34,49 +34,38 @@
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, home-manager, ... } @ inputs:
-    let
-      system = "x86_64-linux";
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-static, ... } @ inputs:
+  let
+    system = "x86_64-linux";
 
-      unstable = import inputs.nixpkgs-unstable {
+    setupExtraPkgs = extraPkgs : import extraPkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+    unstable = setupExtraPkgs nixpkgs-unstable;
+    static = setupExtraPkgs nixpkgs-static;
+  in {
+    nixosConfigurations = {
+      bjork = nixpkgs.lib.nixosSystem {
         inherit system;
-        config.allowUnfree = true;
+
+        specialArgs = { inherit inputs unstable static; };
+
+        modules = [
+          { nixpkgs.config.allowUnfree = true; }
+
+          ./hosts/bjork/main.nix
+        ];
       };
 
-      static = import inputs.nixpkgs-static {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
-      {
-      nixosConfigurations = {
-        bjork = nixpkgs.lib.nixosSystem {
-          inherit system;
+      myIso = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
 
-          specialArgs = { inherit inputs unstable static; };
-
-          modules = [
-            { nixpkgs.config.allowUnfree = true; }
-
-            ./hosts/bjork/main.nix
-
-            # # Installation patches:
-            # ({ pkgs, lib, ... }: {
-            #   boot.loader.systemd-boot.enable = lib.mkForce true;
-            #   boot.lanzaboote.enable = lib.mkForce false;
-            #   my.flatpak.enable = lib.mkForce false;
-            # })
-
-          ];
-        };
-
-        myIso = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-
-          modules = [
-            ./hosts/myIso/configuration.nix
-          ];
-        };
+        modules = [
+          ./hosts/myIso/configuration.nix
+        ];
       };
     };
+  };
 }

@@ -60,7 +60,7 @@ cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/bjork/hardware.nix
 > [!NOTE]
 > Consider resolving all lines marked with a `stateVersion compatibility config` comment! I always try to adopt the new defaults, so reinstalling should make these lines obsolete.
 
-- Uncomment the block marked with a `Installation patches` comment in `./flake.nix`; this will disable Lanzaboote and `my.flatpak`, and enable systemd-boot.
+- Uncomment the block marked with a `Installation patches` comment in `./hosts/bjork/main.nix`; this will disable Lanzaboote and `my.flatpak`, and enable systemd-boot.
 
 Once everything is right, install with:
 
@@ -76,7 +76,7 @@ nixos-install --flake .#bjork
 sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 ```
 
-- Comment the block marked with the `Installation patches` comment in `./flake.nix`.
+- Comment the block marked with the `Installation patches` comment in `./hosts/bjork/main.nix`.
 - Set up secure boot:
   - First create the Secure Boot keys:
 

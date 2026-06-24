@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, unstable, static, ... }:
+{ config, lib, pkgs, unstable, static, inputs, ... }:
 
 {
   imports = [
@@ -24,4 +24,10 @@
     }
 
   ];
+
+  # # Installation patches:
+  # boot.loader.systemd-boot.enable = lib.mkForce true;
+  # boot.lanzaboote.enable = lib.mkForce false;
+  # my.flatpak.enable = lib.mkForce false;
+
 }
