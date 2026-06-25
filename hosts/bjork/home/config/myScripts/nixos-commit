@@ -2,6 +2,8 @@
 
 FLAKE_PATH="/home/david/.dotfiles"
 
+niri msg action spawn -- kitty lazygit -p $FLAKE_PATH
+
 git -C $FLAKE_PATH add flake* hosts/bjork
 
 if git -C $FLAKE_PATH diff --cached --quiet; then
