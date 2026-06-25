@@ -12,14 +12,17 @@ in
   # dm and wm
   ########################################
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    wayland.compositor = "kwin";
-    settings.Theme = {
-      CursorTheme = "Adwaita";
-      CursorSize = 24;
-      FacesDir="/etc/sddm.extra/faces/";
+  services.displayManager = {
+    defaultSession = "niri";
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      wayland.compositor = "kwin";
+      settings.Theme = {
+        CursorTheme = "Adwaita";
+        CursorSize = 24;
+        FacesDir="/etc/sddm.extra/faces/";
+      };
     };
   };
 

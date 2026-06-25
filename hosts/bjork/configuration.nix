@@ -68,7 +68,13 @@
   hardware = {
     cpu.amd.updateMicrocode = true; # amd ucode
     alsa.enablePersistence = true;
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      settings.General = {
+        Experimental = true;
+        FastConnectable = true;
+      };
+    };
     enableAllFirmware = true;
     graphics = {
       enable = true; # OpenGl/AMD
