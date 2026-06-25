@@ -5,8 +5,8 @@
 - Boot into a [NixOS image](https://nixos.org/download/#nixos-iso), clone this repo, and `cd` into it:
 
 ```sh
-git clone https://github.com/david16correa/dotfiles /tmp/dotfiles
-cd /tmp/dotfiles
+❯ git clone https://github.com/david16correa/dotfiles /tmp/dotfiles
+❯ cd /tmp/dotfiles
 ```
 
 > [!NOTE]
@@ -14,7 +14,7 @@ cd /tmp/dotfiles
 > - If you don't use my ISO, use the following to create a nix shell with all required packages:
 >
 > ``` sh
-> nix shell -p vim disko git btrfs-progs
+> ❯ nix shell -p vim disko git btrfs-progs
 > ```
 >
 > - All instructions shown here assume the root of this repo is the current working directory!
@@ -23,7 +23,7 @@ cd /tmp/dotfiles
 - Use `disko` to set up and mount the drive:
 
 ```sh
-disko --mode destroy,format,mount ./hosts/bjork/disko.nix
+❯ disko --mode destroy,format,mount ./hosts/bjork/disko.nix
 
 # The final partitions, subvolumes, and mountpoints are the following:
 # NAME                                              MOUNTPOINT
@@ -43,15 +43,15 @@ disko --mode destroy,format,mount ./hosts/bjork/disko.nix
 - Once all partitions and subvolumes are mounted, move this repo to its intended place and `cd` into it as follows:
 
 ```sh
-mv /tmp/dotfiles /mnt/home/david/.dotfiles
-cd /mnt/home/david/.dotfiles
+❯ mv /tmp/dotfiles /mnt/home/david/.dotfiles
+❯ cd /mnt/home/david/.dotfiles
 ```
 
 - Create a new `./hosts/bjork/hardware.nix` with:
 
 ```sh
-nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/bjork/hardware.nix
+❯ nixos-generate-config --root /mnt
+❯ cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/bjork/hardware.nix
 ```
 
 - Find the UUID of your drive in `./hosts/bjork/hardware.nix`, and use it to substitute `resumeDevice` in `./hosts/bjork/configuration.nix`.
@@ -65,7 +65,7 @@ cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/bjork/hardware.nix
 Once everything is right, install with:
 
 ```sh
-nixos-install --flake .#bjork
+❯ nixos-install --flake .#bjork
 ```
 
 ## Post-installation steps
@@ -73,7 +73,7 @@ nixos-install --flake .#bjork
 - Check and update the `resume_offset` kernel parameter in `./hosts/bjork/configuration.nix` using the output of:
 
 ```sh
-sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
+❯ sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 ```
 
 - Comment the block marked with the `Installation patches` comment in `./hosts/bjork/main.nix`.
@@ -81,32 +81,32 @@ sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
   - First create the Secure Boot keys:
 
   ```sh
-  sudo sbctl create-keys
+  ❯ sudo sbctl create-keys
   ```
 
   - Rebuild NixOS:
 
   ```sh
-  nh os switch
+  ❯ nh os switch
   ```
 
   - Verify the machine is ready:
 
   ```sh
-  sudo sbctl verify
+  ❯ sudo sbctl verify
   ```
 
   - Reboot into the firmware (`systemctl reboot --firmware-setup`) and enter Secure Boot Setup Mode.
   - Enroll keys:
 
   ```sh
-  sudo sbctl enroll-keys --microsoft
+  ❯ sudo sbctl enroll-keys --microsoft
   ```
 
   - Reboot again, and verify Secure Boot is activated with:
 
   ```sh
-  bootctl status
+  ❯ bootctl status
   ```
 
 >[!NOTE]
@@ -125,7 +125,13 @@ sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 In this flake I also have the setup for my ISO image; build it with:
 
 ```sh
-nixos-rebuild build-image --image-variant iso --flake .#myIso
+❯ nixos-rebuild build-image --image-variant iso --flake .#myIso
+```
+
+or with `nh`:
+
+```sh
+❯ nh os build-image --image-variant=iso --hostname=myIso
 ```
 
 The resulting ISO can be found in `./result/iso`. I like to flash ISOs with `caligula`.
