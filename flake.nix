@@ -71,14 +71,21 @@
       };
     };
 
-    homeConfigurations.david = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+    # homeConfigurations.david = home-manager.lib.homeManagerConfiguration {
+    #   inherit pkgs;
+    #
+    #   extraSpecialArgs = { inherit inputs unstable static; };
+    #
+    #   modules = [
+    #       {
+    #         home = {
+    #           username = "david";
+    #           homeDirectory = "/home/david";
+    #         };
+    #       }
+    #       ./home/david/main.nix
+    #     ];
+    # };
 
-      extraSpecialArgs = { inherit inputs unstable; };
-
-      modules = [
-          ./home/david/main.nix
-        ];
-    };
   };
 }
