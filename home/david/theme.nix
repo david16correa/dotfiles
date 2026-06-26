@@ -24,16 +24,14 @@
   dconf.settings = {
     "org/gnome/desktop/interface".text-scaling-factor = 1.15;
     "org/gnome/desktop/wm/preferences".button-layout = ":";
-    # "org/gnome/desktop/preferences".button-layout = ":";
-
     # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
   };
 
   xdg = {
     configFile = {
-      "gtk-3.0/gtk.css".source = ./config/gtk/tokyo-night.css;
-      "gtk-4.0/gtk.css".source = ./config/gtk/tokyo-night.css;
-      "environment.d/gtk.conf".source = ./config/environment.d/gtk.conf;
+      "gtk-3.0/gtk.css".source = ./software/config/gtk/tokyo-night.css;
+      "gtk-4.0/gtk.css".source = ./software/config/gtk/tokyo-night.css;
+      "environment.d/gtk.conf".source = ./software/config/environment.d/gtk.conf;
     };
   };
 

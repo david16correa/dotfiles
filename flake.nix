@@ -43,6 +43,7 @@
       config.allowUnfree = true;
     };
 
+    pkgs = setupExtraPkgs nixpkgs;
     unstable = setupExtraPkgs nixpkgs-unstable;
     static = setupExtraPkgs nixpkgs-static;
   in {
@@ -71,13 +72,11 @@
     };
 
     homeConfigurations.david = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      inherit pkgs;
 
       extraSpecialArgs = { inherit inputs unstable; };
 
       modules = [
-          # { home-manager.backupFileExtension = "nixnew"; }
-          { nixpkgs.config.allowUnfree = true; }
           ./home/david/main.nix
         ];
     };
