@@ -12,17 +12,6 @@
     ./system/static.nix
 
     inputs.lanzaboote.nixosModules.lanzaboote
-
-    inputs.home-manager.nixosModules.home-manager {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "nixnew";
-        extraSpecialArgs = { inherit inputs unstable; };
-        users.david = import ./home/home.nix;
-      };
-    }
-
   ];
 
   # # Installation patches:

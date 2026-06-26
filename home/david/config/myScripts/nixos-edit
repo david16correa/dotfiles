@@ -8,7 +8,7 @@ nvim ~/.dotfiles/hosts/bjork/main.nix
 # flags are dealt with
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --reload|-r) nixos-reload ;;
+    --reload|-r) nh os switch ;;
     *) echo "Unknown option: $1; Ignoring..." >&2 ;;
   esac
   shift

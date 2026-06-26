@@ -1,5 +1,14 @@
 { config, lib, pkgs, inputs, unstable, ... }:
 {
+  programs = {
+    btop.settings = {
+      truecolor = true;
+      vim_keys = true;
+      custom_gpu_name0 = "Radeon 780M Graphics";
+
+    };
+  };
+
   home = {
     packages = with pkgs; [
       adw-gtk3
@@ -15,6 +24,7 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface".text-scaling-factor = 1.15;
+    "org/gnome/desktop/pereferences".button-layout = ":";
     # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
   };
 

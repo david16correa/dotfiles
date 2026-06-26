@@ -34,7 +34,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-static, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-static, home-manager, ... } @ inputs:
   let
     system = "x86_64-linux";
 
@@ -68,6 +68,18 @@
           ./hosts/myIso/configuration.nix
         ];
       };
+    };
+
+    homeConfigurations.david = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+      extraSpecialArgs = { inherit inputs unstable; };
+
+      modules = [
+          # { home-manager.backupFileExtension = "nixnew"; }
+          { nixpkgs.config.allowUnfree = true; }
+          ./home/david/main.nix
+        ];
     };
   };
 }

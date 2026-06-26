@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, unstable, ... }:
 let
-  configDir = "${config.home.homeDirectory}/.dotfiles/hosts/bjork/home/config";
+  configDir = "${config.home.homeDirectory}/.dotfiles/home/david/config";
+  # configDir = "${config.home.homeDirectory}/.dotfiles/hosts/bjork/home/config";
 in
 {
   imports = [
@@ -9,7 +10,11 @@ in
     inputs.scientific-fhs.nixosModules.default
   ];
 
+  programs.home-manager.enable = true;
+
   home = {
+    username = "david";
+    homeDirectory = "/home/david";
     stateVersion = "25.11"; # do no NOT change this, unless you know what you're doing
     file = {
       ".zshrc" = {

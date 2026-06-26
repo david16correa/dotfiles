@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  keydDevices = builtins.attrNames (builtins.readDir ./etc/keyd/profiles);
+  keydDevices = builtins.attrNames (builtins.readDir ./config/keyd/profiles);
 in
 {
   imports = [
@@ -18,10 +18,13 @@ in
       enable = true;
       wayland.enable = true;
       wayland.compositor = "kwin";
-      settings.Theme = {
-        CursorTheme = "Adwaita";
-        CursorSize = 24;
-        FacesDir="/etc/sddm.extra/faces/";
+      settings = {
+        Theme = {
+          CursorTheme = "Adwaita";
+          CursorSize = 24;
+          FacesDir="/config/sddm.extra/faces/";
+        };
+        Users.RememberLastSession=false;
       };
     };
   };
@@ -98,8 +101,8 @@ in
       adwaita-icon-theme
     ];
     etc = {
-      "keyd/profiles".source = ./etc/keyd/profiles;
-      "sddm.extra/faces/david.face.icon".source = ../home/config/avatar/grinningCoffee.png;
+      "keyd/profiles".source = ./config/keyd/profiles;
+      "sddm.extra/faces/david.face.icon".source = ./config/sddm/grinningCoffee.png;
     };
     variables = {
       EDITOR = "vim";
@@ -115,7 +118,7 @@ in
     # all devices start with their default configs
     setDefaultProfiles-keyd.text = builtins.concatStringsSep "\n" (
       map (device: ''
-        ln -sf "profiles/${device}/default" "/etc/keyd/${device}.conf"
+        ln -sf "profiles/${device}/default" "/config/keyd/${device}.conf"
       '') keydDevices
     );
   };
