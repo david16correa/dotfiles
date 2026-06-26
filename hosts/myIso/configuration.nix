@@ -42,7 +42,7 @@
       partclone
       keyd
     ];
-    etc."keyd/keyboard.conf".source = ./etc/keyd/keyboard.conf;
+    etc."keyd/keyboard.conf".source = ./config/keyd/keyboard.conf;
   };
 
   services.keyd.enable = true;

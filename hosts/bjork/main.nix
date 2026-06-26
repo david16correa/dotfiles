@@ -5,11 +5,11 @@
     ./hardware.nix
     ./configuration.nix
 
-    ./system/core.nix
-    ./system/extra.nix
-    ./system/apps.nix
-    ./system/unstable.nix
-    ./system/static.nix
+    ./software/core.nix
+    ./software/extra.nix
+    ./software/apps.nix
+    ./software/unstable.nix
+    ./software/static.nix
 
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
