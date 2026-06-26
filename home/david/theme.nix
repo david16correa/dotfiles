@@ -5,7 +5,6 @@
       truecolor = true;
       vim_keys = true;
       custom_gpu_name0 = "Radeon 780M Graphics";
-
     };
   };
 
@@ -24,7 +23,9 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface".text-scaling-factor = 1.15;
-    "org/gnome/desktop/pereferences".button-layout = ":";
+    "org/gnome/desktop/wm/preferences".button-layout = ":";
+    # "org/gnome/desktop/preferences".button-layout = ":";
+
     # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
   };
 
