@@ -118,7 +118,7 @@ in
     # all devices start with their default configs
     setDefaultProfiles-keyd.text = builtins.concatStringsSep "\n" (
       map (device: ''
-        ln -sf "profiles/${device}/default" "/config/keyd/${device}.conf"
+        ln -sf "profiles/${device}/default" "/etc/keyd/${device}.conf"
       '') keydDevices
     );
   };
