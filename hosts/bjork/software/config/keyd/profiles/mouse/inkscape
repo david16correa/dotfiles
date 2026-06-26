@@ -1,8 +1,8 @@
 #------------------------------------------------------------------------------#
-# these settings are applied to all Logitech mice
+# these settings are applied to all mice
 
 [ids]
-m:046d
+m:*
 
 #------------------------------------------------------------------------------#
 [main]

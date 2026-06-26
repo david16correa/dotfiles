@@ -2,10 +2,10 @@
 # tip: use `sudo keyd monitor` to monitor key strokes
 
 #------------------------------------------------------------------------------#
-# these settings are applied across all keyboards; not my Logitech mice
+# these settings are applied across all keyboards
 [ids]
 *
--m:046d
+-m:*
 
 #------------------------------------------------------------------------------#
 [main]
