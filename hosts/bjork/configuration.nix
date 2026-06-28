@@ -134,7 +134,7 @@
 
     btrfs.autoScrub = {
       enable = true;
-      interval = "monthly";
+      interval = "weekly";
       fileSystems = [ "/" ];
     };
 
