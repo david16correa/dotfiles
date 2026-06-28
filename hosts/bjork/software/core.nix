@@ -18,6 +18,7 @@ in
       enable = true;
       wayland.enable = true;
       wayland.compositor = "kwin";
+      theme = "catppuccin-macchiato-blue";
       settings = {
         Theme = {
           CursorTheme = "Adwaita";
@@ -54,6 +55,7 @@ in
     };
     nh = {
       enable = true;
+      flake = "/home/david/.dotfiles";
       clean = {
         enable = true;
         dates = "weekly";
@@ -79,6 +81,16 @@ in
       keyd
       killall
       adwaita-icon-theme
+      (catppuccin-sddm.override {
+        flavor = "macchiato";
+        accent = "blue";
+        clockEnabled = false;
+        font  = "Adwaita Sans";
+        fontSize = "9";
+        background = "${./config/sddm/dm16_10.jpg}";
+        loginBackground = true;
+        # userIcon = true;
+      })
     ];
     etc = {
       "keyd/profiles".source = ./config/keyd/profiles;

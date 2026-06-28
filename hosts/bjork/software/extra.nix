@@ -1,54 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  ########################################
-  # program modules
-  ########################################
-
-  programs = {
-    zoxide.enable = true;
-    lazygit.enable = true;
-  };
-
-  ########################################
-  # system packages
-  ########################################
-
-  environment.systemPackages = with pkgs; [
-    starship
-    wget
-    fzf
-    lsd
-    bat
-    bluetui
-    trashy
-    libcanberra-gtk3
-    unrar
-    ripgrep
-    ookla-speedtest
-    cliphist
-    app2unit
-    ffmpeg
-    imagemagick
-    ripdrag
-    wl-clipboard
-    (catppuccin-sddm.override {
-      flavor = "macchiato";
-      accent = "blue";
-      clockEnabled = false;
-      font  = "Adwaita Sans";
-      fontSize = "9";
-      background = "${./config/sddm/dm16_10.jpg}";
-      loginBackground = true;
-      # userIcon = true;
-    })
-  ];
-
-
-  ########################################
-  # system fonts
-  ########################################
-
   fonts = {
     enableDefaultPackages = true;
 
@@ -78,11 +30,4 @@
       };
     };
   };
-
-  ########################################
-  # services
-  ########################################
-
-  services.displayManager.sddm.theme = "catppuccin-macchiato-blue";
-
 }
