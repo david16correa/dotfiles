@@ -46,6 +46,10 @@ in
           "gh:"
           "github:"
         ];
+        user = {
+          name = "David Correa";
+          email = "david.correa.msc@gmail.com";
+        };
       };
     };
     nh = {

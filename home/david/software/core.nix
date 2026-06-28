@@ -7,14 +7,6 @@
   programs = {
     home-manager.enable = true;
 
-    git = {
-      enable = true;
-      settings.user = {
-        name = "David Correa";
-        email = "david.correa.msc@gmail.com";
-      };
-    };
-
     scientific-fhs = {
       enable = true;
       juliaVersions = [
