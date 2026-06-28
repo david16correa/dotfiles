@@ -57,7 +57,7 @@
   ########################################
 
   networking = {
-    hostName = "bjork"; # Define your hostname.
+    hostName = "bjork";
     networkmanager = {
       enable = true;
       wifi.powersave = false;
@@ -66,7 +66,7 @@
   };
 
   hardware = {
-    cpu.amd.updateMicrocode = true; # amd ucode
+    cpu.amd.updateMicrocode = true;
     alsa.enablePersistence = true;
     bluetooth = {
       enable = true;
@@ -109,9 +109,7 @@
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" "i2c" "gamemode" ];
       shell = pkgs.zsh;
-      # I used `mkpasswd` to generate this!
-      hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB";
-      # packages = with pkgs; [  ];
+      hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB"; # I used `mkpasswd` to generate this!
     };
     users.root.hashedPassword = null;
   };
@@ -187,31 +185,6 @@
         ["level full-speed" 75  1000] # Max speed above 75°C (safety)
       ];
     };
+
   };
-
-  ########################################
-  # state version @ install
-  ########################################
-
-  /*
-  This option defines the first version of NixOS you have installed on this particular machine,
-  and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-
-  Most users should NEVER change this value after the initial install, for any reason,
-  even if you've upgraded your system to a new NixOS release.
-
-  This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  to actually do that.
-
-  This value being lower than the current NixOS release does NOT mean your system is
-  out of date, out of support, or vulnerable.
-
-  Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  and migrated your data accordingly.
-
-  For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  */
-
-  system.stateVersion = "26.05"; # do NOT change this, unless you know what you're doing
 }

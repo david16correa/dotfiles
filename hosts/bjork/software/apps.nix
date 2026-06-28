@@ -21,9 +21,8 @@
 
   environment.systemPackages = with pkgs; [
     nautilus
-    gparted # graphical disk partitioning tool
-
-    gnome-boxes # virtual machines viwer/manager
+    gparted
+    gnome-boxes
     dnsmasq # VM networking
     phodav # share files with guest VMs
   ];

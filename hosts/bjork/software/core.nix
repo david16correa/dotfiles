@@ -4,10 +4,6 @@ let
   keydDevices = builtins.attrNames (builtins.readDir ./config/keyd/profiles);
 in
 {
-  imports = [
-    ./modules/flakeDir.nix
-  ];
-
   ########################################
   # dm and wm
   ########################################

@@ -1,6 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  ########################################
+  # system fonts
+  ########################################
+
   fonts = {
     enableDefaultPackages = true;
 

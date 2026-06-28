@@ -29,4 +29,5 @@
   # boot.lanzaboote.enable = lib.mkForce false;
   # my.flatpak.enable = lib.mkForce false;
 
+  system.stateVersion = "26.05"; # do not change this, unless you know what you're doing
 }
