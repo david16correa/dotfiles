@@ -1,10 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./modules/flatpak.nix
-  ];
-
   ########################################
   # program modules
   ########################################
@@ -17,14 +13,6 @@
       enable = true;
       terminal = "kitty";
     };
-  };
-
-  my.flatpak = {
-    enable = true;
-    apps = [
-      "com.discordapp.Discord"
-      "us.zoom.Zoom"
-    ];
   };
 
   ########################################
@@ -58,6 +46,7 @@
   ########################################
 
   services = {
+    flatpak.enable = true;
     gnome.sushi.enable = true;
     gnome.tinysparql.enable = true;
     gvfs.enable = true;

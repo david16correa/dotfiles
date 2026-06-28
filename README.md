@@ -77,6 +77,12 @@ Once everything is right, install with:
 ❯ sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 ```
 
+- Go to a `tty`, login, and install home-manager packages and configs:
+
+```sh
+nh home switch
+```
+
 - Comment the block marked with the `Installation patches` comment in `./hosts/bjork/main.nix`.
 - Set up secure boot:
   - First create the Secure Boot keys:

@@ -1,29 +1,15 @@
 { config, lib, pkgs, inputs, ... }:
 let
-  configDir = "${config.home.homeDirectory}/.dotfiles/home/david/software/config";
-  symlink = path : config.lib.file.mkOutOfStoreSymlink "${configDir}/${path}";
+  symlink = path : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/software/config/${path}";
 in
   {
-  home = {
-    file = {
-      ".zshrc".source = symlink "zsh/zshrc";
-      ".tmux.conf".source = symlink "tmux/.tmux.conf";
-      ".vimrc".source = symlink "vim/vimrc";
-      ".face.icon".source = symlink "avatar/grinningCoffee.png";
-
-      ".tmux" = {
-        source = symlink "tmux/.tmux";
-        recursive = true;
-      };
-      ".myScripts" = {
-        source = symlink "myScripts";
-        recursive = true;
-      };
-      "Pictures/Wallpapers" = {
-        source = symlink "wallpapers";
-        recursive = true;
-      };
-    };
+  home.file = {
+    ".zshrc".source = symlink "zsh/zshrc";
+    ".tmux".source = symlink "tmux/.tmux";
+    ".tmux.conf".source = symlink "tmux/.tmux.conf";
+    ".face.icon".source = symlink "avatar/grinningCoffee.png";
+    ".myScripts".source = symlink "myScripts";
+    "Pictures/Wallpapers".source = symlink "wallpapers";
   };
 
   xdg = {
@@ -36,32 +22,13 @@ in
     };
 
     configFile = {
-      "niri" = {
-        source = symlink "niri";
-        recursive = true;
-      };
-      "noctalia" = {
-        source = symlink "noctalia";
-        recursive = true;
-      };
-      "kitty/kitty.conf" = {
-        source = symlink "kitty/kitty.conf";
-      };
-      "starship/config.toml" = {
-        source = symlink "starship/config.toml";
-      };
-      "yazi" = {
-        source = symlink "yazi";
-        recursive = true;
-      };
-      "fastfetch" = {
-        source = symlink "fastfetch";
-        recursive = true;
-      };
-      "vicinae" = {
-        source = symlink "vicinae";
-        recursive = true;
-      };
+      "niri".source = symlink "niri";
+      "noctalia".source = symlink "noctalia";
+      "kitty".source = symlink "kitty";
+      "starship".source = symlink "starship";
+      "yazi".source = symlink "yazi";
+      "fastfetch".source = symlink "fastfetch";
+      "vicinae".source = symlink "vicinae";
     };
 
     desktopEntries = {
@@ -84,5 +51,4 @@ in
     };
 
   };
-
 }

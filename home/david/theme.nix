@@ -43,18 +43,4 @@
       size = 24;
     };
   };
-
-  # flatpak theming
-  home.activation.flatpakOverrides = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    # I use a cache to skip this entire activation script if the desired applications have not changed!
-    if ! ${pkgs.busybox}/bin/cmp -s /var/cache/flatpak-appList $HOME/.cache/my.flatpak/flatpak-appList; then
-      run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=$HOME/.local/share/icons:ro
-      run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=/nix/store:ro
-      run ${pkgs.flatpak}/bin/flatpak override --user --env=XCURSOR_THEME=Adwaita
-      run ${pkgs.flatpak}/bin/flatpak override --user --env=XCURSOR_SIZE=24
-
-      mkdir -p $HOME/.cache/my.flatpak
-      cat /var/cache/flatpak-appList > $HOME/.cache/my.flatpak/flatpak-appList
-    fi
-  '';
 }

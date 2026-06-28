@@ -2,6 +2,7 @@
 {
   imports = [
     ./modules/lazyvim.nix
+    ./modules/flatpak.nix
     inputs.scientific-fhs.nixosModules.default
   ];
 
@@ -16,6 +17,14 @@
     };
 
     obs-studio.enable = true;
+  };
+
+  my.flatpak = {
+    enable = true;
+    apps = [
+      "us.zoom.Zoom"
+      "com.discordapp.Discord"
+    ];
   };
 
   ########################################
