@@ -18,12 +18,13 @@
 > ```
 >
 > - All instructions shown here assume the root of this repo is the current working directory!
+> - Tip: you can use `git diff` to track your progress!
 
 - Determine the `NAME` of your drive with `lsblk`, and replace `/dev/nvme0nX` at `./hosts/bjork/disko.nix` (line 17).
 - Use `disko` to set up and mount the drive:
 
 ```sh
-❯ disko --mode destroy,format,mount ./hosts/bjork/disko.nix
+❯ sudo disko --mode destroy,format,mount ./hosts/bjork/disko.nix
 
 # The final partitions, subvolumes, and mountpoints are the following:
 # NAME                                              MOUNTPOINT
@@ -43,14 +44,14 @@
 - Once all partitions and subvolumes are mounted, move this repo to its intended place and `cd` into it as follows:
 
 ```sh
-❯ mv /tmp/dotfiles /mnt/home/david/.dotfiles
+❯ sudo mv /tmp/dotfiles /mnt/home/david/.dotfiles
 ❯ cd /mnt/home/david/.dotfiles
 ```
 
 - Create a new `./hosts/bjork/hardware.nix` with:
 
 ```sh
-❯ nixos-generate-config --root /mnt
+❯ sudo nixos-generate-config --root /mnt
 ❯ cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/bjork/hardware.nix
 ```
 
@@ -65,7 +66,7 @@
 Once everything is right, install with:
 
 ```sh
-❯ nixos-install --flake .#bjork
+❯ sudo nixos-install --flake .#bjork
 ```
 
 ## Post-installation steps
