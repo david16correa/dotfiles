@@ -1,13 +1,5 @@
 { config, lib, pkgs, inputs, unstable, ... }:
 {
-  programs = {
-    btop.settings = {
-      truecolor = true;
-      vim_keys = true;
-      custom_gpu_name0 = "Radeon 780M Graphics";
-    };
-  };
-
   home = {
     packages = with pkgs; [
       adw-gtk3
@@ -24,7 +16,6 @@
   dconf.settings = {
     "org/gnome/desktop/interface".text-scaling-factor = 1.15;
     "org/gnome/desktop/wm/preferences".button-layout = ":";
-    # "org/gnome/desktop/interface".gtk-theme = "adw-gtk3-dark";
   };
 
   xdg = {
@@ -39,15 +30,10 @@
     enable = true;
     theme = {
       name = "adw-gtk3-dark";
-      # name = "Adwaita-dark";
-      # name = "Adwaita";
-      # package = pkgs.gnome-themes-extra;
       package = pkgs.adw-gtk3;
     };
     gtk4.theme = null; # stateVersion compatibility config; new default adoption
     iconTheme = {
-      # name = "Adwaita";
-      # package = pkgs.adwaita-icon-theme;
       name = "MoreWaita";
       package = pkgs.morewaita-icon-theme;
     };

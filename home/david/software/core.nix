@@ -1,12 +1,19 @@
-{ config, lib, pkgs, inputs, unstable, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
-  imports = [
-    ./modules/lazyvim.nix
-    inputs.scientific-fhs.nixosModules.default
-  ];
+  ########################################
+  # program modules
+  ########################################
 
   programs = {
     home-manager.enable = true;
+
+    git = {
+      enable = true;
+      settings.user = {
+        name = "David Correa";
+        email = "david.correa.msc@gmail.com";
+      };
+    };
 
     scientific-fhs = {
       enable = true;
@@ -17,6 +24,37 @@
       enableGraphical = true;  # needed for plotting, REPL graphics etc.
     };
   };
+
+  ########################################
+  # home packages
+  ########################################
+
+  home.packages = with pkgs; [
+    kitty
+    trashy
+    tmux
+    fastfetch
+    stow
+    btop-rocm
+    tree
+    tealdeer
+    which
+    rsync
+    caligula
+    gcc
+    gum
+    dmidecode
+    gh
+    playerctl
+    brightnessctl
+    ddcutil
+    compsize
+    gnome-firmware
+  ];
+
+  ########################################
+  # desktop entries
+  ########################################
 
   xdg.desktopEntries = {
     nix_search_pkgs = {
@@ -36,5 +74,11 @@
       categories = [ "System" ];
     };
   };
+
+  ########################################
+  # user services
+  ########################################
+
+  services.polkit-gnome.enable = true;
 
 }

@@ -1,9 +1,12 @@
-{ config, lib, pkgs, inputs, unstable, ... }:
+{ config, lib, pkgs, unstable, static, inputs, ... }:
 {
   imports = [
     ./theme.nix
     ./configuration.nix
     ./software/core.nix
+    ./software/apps.nix
+    ./software/unstable.nix
+    ./software/static.nix
   ];
 
   home = {

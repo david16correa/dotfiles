@@ -46,10 +46,6 @@ in
           "gh:"
           "github:"
         ];
-        user = {
-          name = "David Correa";
-          email = "david.correa.msc@gmail.com";
-        };
       };
     };
     nh = {
@@ -73,31 +69,11 @@ in
 
   environment = {
     systemPackages = with pkgs; [
-      kitty
       sbctl
-      tmux
-      fastfetch
-      stow
-      btop-rocm
-      tree
-      tealdeer
-      which
-      rsync
       disko
-      caligula
       xwayland-satellite
-      gcc
       keyd
-      gum
       killall
-      dmidecode
-      gh
-      polkit_gnome
-      playerctl
-      brightnessctl
-      ddcutil
-      compsize
-      gnome-firmware
       adwaita-icon-theme
     ];
     etc = {
@@ -158,24 +134,6 @@ in
     udev.extraRules = ''
       SUBSYSTEM=="leds", KERNEL=="platform::micmute", ACTION=="add", ATTR{brightness}="0"
     '';
-  };
-
-  # custom systemd services
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      enable = true;
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
   };
 
 }

@@ -4,7 +4,6 @@ prefer-no-csd
 
 environment {
   DISPLAY ":0"
-  QT_QPA_PLATFORMTHEME "gtk3"
 }
 
 xwayland-satellite {

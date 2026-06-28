@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, unstable, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
   configDir = "${config.home.homeDirectory}/.dotfiles/home/david/software/config";
   symlink = path : config.lib.file.mkOutOfStoreSymlink "${configDir}/${path}";

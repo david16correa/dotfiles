@@ -9,7 +9,6 @@
     ./software/extra.nix
     ./software/apps.nix
     ./software/unstable.nix
-    ./software/static.nix
 
     inputs.lanzaboote.nixosModules.lanzaboote
 
@@ -18,7 +17,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "nixnew";
-        extraSpecialArgs = { inherit inputs unstable; };
+        extraSpecialArgs = { inherit inputs unstable static; };
         users.david = import ../../home/david/main.nix;
       };
     }
