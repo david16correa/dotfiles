@@ -1,32 +1,26 @@
 { config, lib, pkgs, inputs, unstable, ... }:
 let
   configDir = "${config.home.homeDirectory}/.dotfiles/home/david/software/config";
+  symlink = path : config.lib.file.mkOutOfStoreSymlink "${configDir}/${path}";
 in
   {
   home = {
     file = {
-      ".zshrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/zsh/zshrc";
-      };
+      ".zshrc".source = symlink "zsh/zshrc";
+      ".tmux.conf".source = symlink "tmux/.tmux.conf";
+      ".vimrc".source = symlink "vim/vimrc";
+      ".face.icon".source = symlink "avatar/grinningCoffee.png";
+
       ".tmux" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/tmux/.tmux";
+        source = symlink "tmux/.tmux";
         recursive = true;
-      };
-      ".tmux.conf" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/tmux/.tmux.conf";
       };
       ".myScripts" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/myScripts";
+        source = symlink "myScripts";
         recursive = true;
       };
-      ".vimrc" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/vim/vimrc";
-      };
-      ".face.icon" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/avatar/grinningCoffee.png";
-      };
       "Pictures/Wallpapers" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/wallpapers";
+        source = symlink "wallpapers";
         recursive = true;
       };
     };
@@ -43,29 +37,29 @@ in
 
     configFile = {
       "niri" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/niri";
+        source = symlink "niri";
         recursive = true;
       };
       "noctalia" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/noctalia";
+        source = symlink "noctalia";
         recursive = true;
       };
       "kitty/kitty.conf" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/kitty/kitty.conf";
+        source = symlink "kitty/kitty.conf";
       };
       "starship/config.toml" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/starship/config.toml";
+        source = symlink "starship/config.toml";
       };
       "yazi" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/yazi";
+        source = symlink "yazi";
         recursive = true;
       };
       "fastfetch" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/fastfetch";
+        source = symlink "fastfetch";
         recursive = true;
       };
       "vicinae" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${configDir}/vicinae";
+        source = symlink "vicinae";
         recursive = true;
       };
     };
