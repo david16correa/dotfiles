@@ -91,7 +91,6 @@
 
   systemd.user.sessionVariables = {
     GST_PLUGIN_PATH = "${pkgs.gst_all_1.gstreamer}/lib/gstreamer-1.0"; # GStreamer plugin path for LibreOffice Impress video support
-    QT_QPA_PLATFORMTHEME = "gtk3"; # https://docs.noctalia.dev/v4/getting-started/faq/#why-are-some-of-my-app-icons-missing
   };
 
 }

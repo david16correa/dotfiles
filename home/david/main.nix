@@ -1,4 +1,5 @@
 { config, lib, pkgs, unstable, static, inputs, ... }:
+
 {
   imports = [
     ./theme.nix

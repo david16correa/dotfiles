@@ -14,8 +14,6 @@ in
   options.my.flatpak = {
     enable = lib.mkEnableOption "Flatpak support with my custom app list in Home-Manager";
 
-    package = lib.mkPackageOption pkgs "flatpak" { };
-
     apps = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
@@ -51,13 +49,13 @@ in
         fi
 
         # 3. Theming fixes
-        run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=$HOME/.local/share/icons:ro
+        run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=${config.home.homeDirectory}/.local/share/icons:ro
         run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=/nix/store:ro
         run ${pkgs.flatpak}/bin/flatpak override --user --env=XCURSOR_THEME=${cursorTheme}
         run ${pkgs.flatpak}/bin/flatpak override --user --env=XCURSOR_SIZE=${toString cursorSize}
 
         # 4. update the cache
-        mkdir -p $HOME/.cache/my.flatpak
+        mkdir -p ${config.home.homeDirectory}/.cache/my.flatpak
         cat ${appList} > ${config.home.homeDirectory}/.cache/my.flatpak/appList
       fi
     '';

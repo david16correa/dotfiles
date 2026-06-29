@@ -49,7 +49,7 @@
   ########################################
 
   xdg.desktopEntries = {
-    nix_search_pkgs = {
+    nixpkgsSearch = {
       name = "NixOS Search: Packages";
       icon = "nix-snowflake";
       genericName = "System Manual (Package Search)";
@@ -57,11 +57,19 @@
       terminal = false;
       categories = [ "System" ];
     };
-    nix_search_opts = {
+    nixoptsSearch = {
       name = "NixOS Search: Options";
       icon = "nix-snowflake";
       genericName = "System Manual (Options Search)";
       exec = "xdg-open https://search.nixos.org/options";
+      terminal = false;
+      categories = [ "System" ];
+    };
+    dotfilesRepo = {
+      name = "david16correa/dotfiles";
+      icon = "nix-snowflake";
+      genericName = "Repo of my flake in GitHub";
+      exec = "xdg-open https://github.com/david16correa/dotfiles";
       terminal = false;
       categories = [ "System" ];
     };
