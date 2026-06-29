@@ -71,16 +71,16 @@ Once everything is right, install with:
 
 ## Post-installation steps
 
+- Upon first boot, go to a `tty`, login, and install home-manager packages and configs:
+
+```sh
+❯ nh home switch
+```
+
 - Check and update the `resume_offset` kernel parameter in `./hosts/bjork/configuration.nix` using the output of:
 
 ```sh
 ❯ sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
-```
-
-- Go to a `tty`, login, and install home-manager packages and configs:
-
-```sh
-nh home switch
 ```
 
 - Comment the block marked with the `Installation patches` comment in `./hosts/bjork/main.nix`.
@@ -119,7 +119,28 @@ nh home switch
 >[!NOTE]
 > When in doubt, check [Lanzaboote's guide](https://nix-community.github.io/lanzaboote/).
 
-- Run `maestral start`; this will prompt Maestral's setup.
+- To set up `maestral`, and start downloading my files (~ 60G):
+  - Run `maestral start`; this will prompt Maestral's setup.
+  - Keep `maestral` from downloading some directories:
+
+  ```sh
+  ❯ cd ~/Dropbox
+  ❯ maestral excluded add "my vault" mci servers tech_support vault.lbm wallpapers
+  ```
+
+  - Once `maestral` is finished downloading, link `~/Dropbox/.Home/*`:
+
+  ```sh
+  ❯ cd ~/Dropbox
+  ❯ stow .Home
+  ```
+
+- Update the NixOS' birth time in `./home/david/software/config/fastfetch/birthTime`:
+
+```sh
+❯ echo $(stat -c %W /) > ./home/david/software/config/fastfetch/birthTime
+```
+
 - Set up Zen Browser by hand; the extensions I use are:
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - [Keepa](https://addons.mozilla.org/en-US/firefox/addon/keepa/)
@@ -141,6 +162,6 @@ or with `nh`:
 ❯ nh os build-image --image-variant=iso --hostname=myIso
 ```
 
-The resulting ISO can be found in `./result/iso`. I like to flash ISOs with `caligula`.
+The resulting ISO will be placed in `./result/iso`. I like to flash ISOs with `caligula`.
 
 My ISO is mostly identical to [NixOS' minimal ISO image](https://nixos.org/download/#nixos-iso), but I've included extra packages and niceties (e.g. flakes are enabled by default). You can check its configuration file at `./hosts/myIso/configuration.nix`.

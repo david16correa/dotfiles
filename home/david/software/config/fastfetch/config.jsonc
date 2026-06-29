@@ -26,7 +26,8 @@
       "type": "command",
       "key": "󰔟",
       "keyColor": "yellow",
-      "text": "echo $(( ($(date +%s) - $(stat -c %W /home)) / 86400 )) days"
+      // "text": "echo $(( ($(date +%s) - $(stat -c %W /root)) / 86400 )) days"
+      "text": "echo $(( ($(date +%s) - $(cat $HOME/.config/fastfetch/birthTime)) / 86400 )) days"
     },
     {
       "type": "kernel",
