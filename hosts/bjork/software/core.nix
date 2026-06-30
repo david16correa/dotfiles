@@ -72,6 +72,7 @@ in
   environment = {
     systemPackages = with pkgs; [
       sbctl
+      busybox
       disko
       xwayland-satellite
       keyd
