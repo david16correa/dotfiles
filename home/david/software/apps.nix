@@ -24,6 +24,7 @@
     apps = [
       "us.zoom.Zoom"
       "com.discordapp.Discord"
+      "org.DolphinEmu.dolphin-emu"
     ];
   };
 
@@ -61,7 +62,6 @@
     showtime # video player
     pavucontrol
     qbittorrent
-    dolphin-emu
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
 
     # inkscape stuff
