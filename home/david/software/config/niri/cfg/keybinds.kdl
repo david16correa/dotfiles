@@ -38,9 +38,9 @@ binds {
   Mod+0                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "noctalia-shell ipc call settings toggle"; }
 
   // screenshots
-  Print        { screenshot; }
-  Shift+Print  { screenshot-screen; }
-  Alt+Print    { screenshot-window; }
+  Print         { screenshot-screen; }
+  Shift+Print   { screenshot; }
+  Alt+Print     { screenshot-window; }
 
   // change keyboard layout
   Mod+F1       { switch-layout "next"; }
