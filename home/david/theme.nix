@@ -1,4 +1,7 @@
 { config, lib, pkgs, inputs, unstable, ... }:
+let
+  symlink = path : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/software/config/${path}";
+in
 {
   home = {
     packages = with pkgs; [
@@ -20,9 +23,11 @@
 
   xdg = {
     configFile = {
-      "gtk-3.0/gtk.css".source = ./software/config/gtk/tokyo-night.css;
-      "gtk-4.0/gtk.css".source = ./software/config/gtk/tokyo-night.css;
-      "environment.d/gtk.conf".source = ./software/config/environment.d/gtk.conf;
+      "gtk-3.0/gtk.css".source = symlink "gtk/gtk.css";
+      "gtk-4.0/gtk.css".source = symlink "gtk/gtk.css";
+      "gtk-3.0/noctalia.css".source = symlink "gtk/colors.css";
+      "gtk-4.0/noctalia.css".source = symlink "gtk/colors.css";
+      "environment.d/gtk.conf".source = symlink "environment.d/gtk.conf";
     };
   };
 
