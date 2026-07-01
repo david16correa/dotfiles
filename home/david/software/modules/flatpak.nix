@@ -49,10 +49,11 @@ in
         fi
 
         # 3. Theming fixes
-        run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=${config.home.homeDirectory}/.local/share/icons:ro
-        run ${pkgs.flatpak}/bin/flatpak override --user --filesystem=/nix/store:ro
-        run ${pkgs.flatpak}/bin/flatpak override --user --env=XCURSOR_THEME=${cursorTheme}
-        run ${pkgs.flatpak}/bin/flatpak override --user --env=XCURSOR_SIZE=${toString cursorSize}
+        ${pkgs.flatpak}/bin/flatpak override --user \
+          --filesystem=${config.home.homeDirectory}/.local/share/icons:ro \
+          --filesystem=/nix/store:ro \
+          --env=XCURSOR_THEME=${cursorTheme} \
+          --env=XCURSOR_SIZE=${toString cursorSize}
 
         # 4. update the cache
         mkdir -p ${config.home.homeDirectory}/.cache/my.flatpak
