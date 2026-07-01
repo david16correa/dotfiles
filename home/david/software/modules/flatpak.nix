@@ -3,8 +3,8 @@
 let
   cfg = config.my.flatpak;
 
-  cursorTheme = config.gtk.cursorTheme.name;
-  cursorSize = config.gtk.cursorTheme.size;
+  cursorTheme = config.home.pointerCursor.name;
+  cursorSize = config.home.pointerCursor.size;
 
   appList = pkgs.writeText "flatpak-apps" (
     lib.concatStringsSep "\n" cfg.apps

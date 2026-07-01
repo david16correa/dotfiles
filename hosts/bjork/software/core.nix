@@ -17,7 +17,7 @@ in
       theme = "catppuccin-macchiato-blue";
       settings = {
         Theme = {
-          CursorTheme = "Adwaita";
+          CursorTheme = "Bibata-Modern-Classic";
           CursorSize = 24;
           FacesDir="/config/sddm.extra/faces/";
         };
@@ -78,7 +78,7 @@ in
       keyd
       killall
       automatic-timezoned
-      adwaita-icon-theme
+      bibata-cursors
       (catppuccin-sddm.override {
         flavor = "macchiato";
         accent = "blue";

@@ -10,9 +10,9 @@ in
 
     pointerCursor = {
       gtk.enable = true;
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-      size = 24;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 16;
     };
   };
 
@@ -44,10 +44,10 @@ in
       name = "MoreWaita";
       package = pkgs.morewaita-icon-theme;
     };
-    cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-      size = 24;
-    };
+    # cursorTheme = {
+    #   name = "Adwaita";
+    #   package = pkgs.adwaita-icon-theme;
+    #   size = 24;
+    # };
   };
 }
