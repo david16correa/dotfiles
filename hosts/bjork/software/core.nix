@@ -77,6 +77,7 @@ in
       xwayland-satellite
       keyd
       killall
+      automatic-timezoned
       adwaita-icon-theme
       (catppuccin-sddm.override {
         flavor = "macchiato";
@@ -121,6 +122,7 @@ in
     zerotierone.enable = true;
     fwupd.enable = true;
     udisks2.enable = true;
+    automatic-timezoned.enable = true;
     pipewire = {
       enable = true;
       pulse.enable = true;
