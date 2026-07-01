@@ -23,10 +23,12 @@ in
 
   xdg = {
     configFile = {
-      "gtk-3.0/gtk.css".source = symlink "gtk/gtk.css";
-      "gtk-4.0/gtk.css".source = symlink "gtk/gtk.css";
-      "gtk-3.0/noctalia.css".source = symlink "gtk/colors.css";
-      "gtk-4.0/noctalia.css".source = symlink "gtk/colors.css";
+      "gtk-3.0/gtk.css".source = symlink "colors/gtk/gtk.css";
+      "gtk-4.0/gtk.css".source = symlink "colors/gtk/gtk.css";
+      "gtk-3.0/noctalia.css".source = symlink "colors/gtk/colors.css";
+      "gtk-4.0/noctalia.css".source = symlink "colors/gtk/colors.css";
+      "qt5ct".source = symlink "colors/qt";
+      "qt6ct".source = symlink "colors/qt";
       "environment.d/gtk.conf".source = symlink "environment.d/gtk.conf";
     };
   };

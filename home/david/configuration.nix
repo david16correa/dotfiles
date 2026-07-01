@@ -25,6 +25,7 @@ in
       "niri".source = symlink "niri";
       "noctalia".source = symlink "noctalia";
       "kitty".source = symlink "kitty";
+      "btop".source = symlink "btop";
       "starship".source = symlink "starship";
       "yazi".source = symlink "yazi";
       "fastfetch".source = symlink "fastfetch";

@@ -696,3 +696,7 @@ exts = [
   { name = "cmake", text = "", fg_dark = "#7f849c", fg_light = "#7f849c" },
   { name = "webp", text = "", fg_dark = "#7f849c", fg_light = "#7f849c" },
 ]
+
+[flavor]
+dark  = "noctalia"
+light = "noctalia"

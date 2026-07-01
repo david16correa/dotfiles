@@ -79,7 +79,7 @@
         "outerCorners": false,
         "position": "left",
         "reverseScroll": false,
-        "rightClickAction": "settings",
+        "rightClickAction": "controlCenter",
         "rightClickCommand": "",
         "rightClickFollowMouse": false,
         "screenOverrides": [
@@ -666,22 +666,6 @@
     },
     "templates": {
         "activeTemplates": [
-            {
-                "enabled": true,
-                "id": "kcolorscheme"
-            },
-            {
-                "enabled": true,
-                "id": "pywalfox"
-            },
-            {
-                "enabled": true,
-                "id": "vicinae"
-            },
-            {
-                "enabled": true,
-                "id": "gtk"
-            }
         ],
         "enableUserTheming": false
     },
@@ -736,7 +720,7 @@
         "transitionEdgeSmoothness": 0.05,
         "transitionType": [
         ],
-        "useOriginalImages": false,
+        "useOriginalImages": true,
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "browse",
