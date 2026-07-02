@@ -44,10 +44,10 @@ in
       name = "MoreWaita";
       package = pkgs.morewaita-icon-theme;
     };
-    # cursorTheme = {
-    #   name = "Adwaita";
-    #   package = pkgs.adwaita-icon-theme;
-    #   size = 24;
-    # };
+    cursorTheme = {
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
+      size = 24;
+    };
   };
 }
