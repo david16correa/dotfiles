@@ -4,24 +4,12 @@
   imports = [
     ./hardware.nix
     ./configuration.nix
-
     ./software/core.nix
     ./software/extra.nix
     ./software/apps.nix
     ./software/unstable.nix
 
     inputs.lanzaboote.nixosModules.lanzaboote
-
-    # inputs.home-manager.nixosModules.home-manager {
-    #   home-manager = {
-    #     useGlobalPkgs = true;
-    #     useUserPackages = true;
-    #     backupFileExtension = "nixnew";
-    #     extraSpecialArgs = { inherit inputs unstable static; };
-    #     users.david = import ../../home/david/main.nix;
-    #   };
-    # }
-
   ];
 
   # # Installation patches:

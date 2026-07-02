@@ -75,12 +75,10 @@
       buildInputs = [ makeWrapper ];
       postBuild = ''
         wrapProgram $out/bin/inkscape \
-        --prefix PYTHONPATH : ${
-        python3.withPackages (ps: with ps; [
-        pygobject3
-        tk
-        ])
-        }/lib/python3.*/site-packages
+        --prefix PYTHONPATH : ${python3.withPackages (ps: with ps; [
+          pygobject3
+          tk
+        ])}/lib/python3.*/site-packages
         '';
     })
   ];

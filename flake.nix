@@ -47,45 +47,36 @@
     unstable = setupExtraPkgs nixpkgs-unstable;
     static = setupExtraPkgs nixpkgs-static;
   in {
+    ########################################
+    # hosts
+    ########################################
     nixosConfigurations = {
       bjork = nixpkgs.lib.nixosSystem {
         inherit system;
-
         specialArgs = { inherit inputs unstable static; };
-
         modules = [
           { nixpkgs.config.allowUnfree = true; }
-
           ./hosts/bjork/main.nix
         ];
       };
-
       myIso = nixpkgs.lib.nixosSystem {
         inherit system;
-
         specialArgs = { inherit inputs; };
-
         modules = [
           ./hosts/myIso/configuration.nix
         ];
       };
     };
 
-    homeConfigurations.david = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-
-      extraSpecialArgs = { inherit inputs unstable static; };
-
-      modules = [
-          {
-            home = {
-              username = "david";
-              homeDirectory = "/home/david";
-            };
-          }
-          ./home/david/main.nix
-        ];
+    ########################################
+    # home configs
+    ########################################
+    homeConfigurations = {
+      "david@bjork" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit inputs unstable static; };
+        modules = [ ./home/david/main.nix ];
+      };
     };
-
   };
 }
