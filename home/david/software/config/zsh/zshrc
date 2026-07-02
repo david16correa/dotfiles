@@ -7,20 +7,9 @@ SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-# Fast compinit setup
+# Initialize completion system
 autoload -Uz compinit
-
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.m+24) ]]; then
-  compinit
-else
-  compinit -C  # Skip compaudit completely if recent cache exists
-fi
-
-# # ensure proper Wayland socket setup
-# if [ -z "$WAYLAND_DISPLAY" ] || [ ! -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" ]; then
-#   export WAYLAND_DISPLAY=$(basename "$(ls -t $XDG_RUNTIME_DIR/wayland-* | head -n1)")
-# fi
-
+compinit
 
 # >>> aniadir cosas a path >>>
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
@@ -36,7 +25,7 @@ eval "$(zoxide init zsh)"
 # eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.omp.json)"
 export STARSHIP_CONFIG=/home/david/.config/starship/config.toml
 eval "$(starship init zsh)"
-source <(fzf --zsh) # Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)" # Set up fzf key bindings and fuzzy completion
 
 # >>> aliases y preferencias varias >>>
 alias zsh-reload='source ~/.zshrc'
@@ -98,5 +87,3 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-
-# zprof # to debug loading time
