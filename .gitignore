@@ -4,4 +4,5 @@
 .jupyter
 *.local
 *.local/
+playground/
 result
