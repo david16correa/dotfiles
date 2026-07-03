@@ -1,0 +1,78 @@
+#! /usr/bin/env bash
+
+########################################
+# bespoke edit functions
+########################################
+
+home(){
+  # 0. we edit my main config file
+  nvim ~/.dotfiles/home/david/main.nix
+
+  # 1. we migh rebuild or commit
+  if [ -n "$1" ]; then
+    case "$1" in
+      build|switch) nh home $1 ;;
+      commit) home-commit ;;
+      *) echo "Unknown option: $1..." >&2 && exit 1 ;;
+    esac
+  fi
+
+  # 2. we might rebuild and commit
+  if [ -n "$2" ]; then
+    case "$2" in
+      commit) home-commit ;;
+      *) echo "Unknown option: $2..." >&2 && exit 1 ;;
+    esac
+  fi
+}
+
+os(){
+  # 0. we edit my main config file
+  nvim ~/.dotfiles/hosts/bjork/main.nix
+
+  # 1. we migh rebuild or commit
+  if [ -n "$1" ]; then
+    case "$1" in
+      boot|build|switch|test) nh os $1 ;;
+      commit) nixos-commit ;;
+      *) echo "Unknown option: $1..." >&2 && exit 1 ;;
+    esac
+  fi
+
+  # 2. we might rebuild and commit
+  if [ -n "$2" ]; then
+    case "$2" in
+      commit) nixos-commit ;;
+      *) echo "Unknown option: $2..." >&2 && exit 1 ;;
+    esac
+  fi
+}
+
+niri(){
+  nvim $HOME/.config/niri/config.kdl
+}
+
+zsh(){
+  nvim $HOME/.zshrc
+}
+
+ls() {
+    declare -F | awk '{print $3}' | grep -v '^ls$'
+}
+
+########################################
+# main
+########################################
+
+# we move to ~/.dotfiles to ensure git status works within nvim
+cd ~/.dotfiles
+
+# all options are dispatched
+if declare -F "$1" >/dev/null; then
+  "$@"
+else
+  echo "Unknown option: $1" >&2 && exit 1
+fi
+
+# done!
+exit 0
