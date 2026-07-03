@@ -38,16 +38,7 @@
     maestral
     maestral-gui
     easyeffects
-
-    # LibreOffice and GStreamer plugin stack for Impress video support
     libreoffice-fresh
-    gst_all_1.gstreamer
-    gst_all_1.gst-plugins-base
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-bad
-    gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-libav
-
     gimp
     brave
     zotero
@@ -82,13 +73,5 @@
         '';
     })
   ];
-
-  ########################################
-  # extra session variables
-  ########################################
-
-  systemd.user.sessionVariables = {
-    GST_PLUGIN_PATH = "${pkgs.gst_all_1.gstreamer}/lib/gstreamer-1.0"; # GStreamer plugin path for LibreOffice Impress video support
-  };
 
 }
