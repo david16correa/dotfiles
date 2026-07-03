@@ -48,6 +48,17 @@ os(){
   fi
 }
 
+flake(){
+  # we wish to launch lazygit
+  if [ -n "$1" ]; then
+    case "$1" in
+      repo) lazygit && return 0;;
+      *) echo "Unknown option: $1..." >&2 && exit 1 ;;
+    esac
+  fi
+  nvim ~/.dotfiles/flake.nix
+}
+
 niri(){
   nvim $HOME/.config/niri/config.kdl
 }
