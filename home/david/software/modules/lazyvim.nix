@@ -34,7 +34,7 @@
     ];
 
     config = {
-      options = ''
+      options = /*lua*/''
         vim.g.slime_target = "tmux"
         vim.g.slime_default_config = {
           socket_name = "default",
@@ -59,14 +59,14 @@
         })
       '';
 
-      autocmds = ''
+      autocmds = /*lua*/''
         vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
       '';
     };
 
     plugins = {
 
-      colorscheme = ''
+      colorscheme = /*lua*/''
         return {
           {
             "folke/tokyonight.nvim",
@@ -77,7 +77,7 @@
         }
       '';
 
-      vimtex = ''
+      vimtex = /*lua*/''
         return {
           -- basic setup for latex
           "lervag/vimtex",
@@ -96,14 +96,14 @@
         }
       '';
 
-      vim-slime = ''
+      vim-slime = /*lua*/''
         return {
           "jpalardy/vim-slime",
           -- lazy = false,
         }
       '';
 
-      neo-tree = ''
+      neo-tree = /*lua*/''
         -- aniadi esto para mostrar mis playgrounds, que son documentos ignorados por git
         return {
           "nvim-neo-tree/neo-tree.nvim",
@@ -119,7 +119,7 @@
         }
       '';
 
-      julia-vim = ''
+      julia-vim = /*lua*/''
         return {
           {
             "JuliaEditorSupport/julia-vim",
@@ -127,7 +127,7 @@
         }
       '';
 
-      lsp-config = ''
+      lsp-config = /*lua*/''
         return {
           {
             "neovim/nvim-lspconfig",
@@ -142,6 +142,11 @@
                   settings = {
                     ltex = {
                       language = "en-US",
+                      disabledRules = {
+                        ["en-US"] = {
+                          "UPPERCASE_SENTENCE_START",
+                        },
+                      },
                     },
                   },
                 },

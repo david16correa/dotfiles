@@ -26,7 +26,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.activation.flatpak = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    home.activation.flatpak = lib.hm.dag.entryAfter [ "writeBoundary" ] /*bash*/''
       # I use a cache to skip this entire activation script if the desired applications have not changed!
       if ! ${pkgs.busybox}/bin/cmp -s ${appList} ${config.home.homeDirectory}/.cache/my.flatpak/appList; then
         # 0. sanity check: add the flathub repository

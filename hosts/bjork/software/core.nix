@@ -107,7 +107,7 @@ in
   system.activationScripts = {
     # all devices start with their default configs
     setDefaultProfiles-keyd.text = builtins.concatStringsSep "\n" (
-      map (device: ''
+      map (device: /*bash*/''
         ln -sf "profiles/${device}/default" "/etc/keyd/${device}.conf"
       '') keydDevices
     );
