@@ -720,7 +720,7 @@
         "transitionEdgeSmoothness": 0.05,
         "transitionType": [
         ],
-        "useOriginalImages": true,
+        "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "browse",
