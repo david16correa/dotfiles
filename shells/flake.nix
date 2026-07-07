@@ -7,14 +7,19 @@
   let
     system = "x86_64-linux";
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
+    pkgs = import nixpkgs { inherit system; };
+
+    shells = builtins.attrNames(
+      pkgs.lib.filterAttrs (entry: type: type == "directory")
+      (builtins.readDir ./.)
+    );
   in {
-    devShells.${system} = {
-      jupyter = import ./jupyter/main.nix { inherit pkgs; };
-      dotnet  = import ./dotnet/main.nix { inherit pkgs; };
-    };
+    # all shells are automatically imported
+    devShells.${system} = builtins.listToAttrs (
+      map (shell: {
+        name = shell;
+        value = import ./${shell}/main.nix { inherit pkgs; };
+      }) shells
+    );
   };
 }
