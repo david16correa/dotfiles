@@ -53,6 +53,7 @@
     showtime # video player
     pavucontrol
     qbittorrent
+    obsidian
     inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
 
     # inkscape stuff
