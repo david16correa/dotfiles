@@ -53,6 +53,8 @@ flake(){
   if [ -n "$1" ]; then
     case "$1" in
       repo) lazygit && return 0;;
+      nixos) nvim ~/.dotfiles/hosts/flake.nix && return 0;;
+      hm) nvim ~/.dotfiles/home/flake.nix && return 0;;
       *) echo "Unknown option: $1..." >&2 && exit 1 ;;
     esac
   fi

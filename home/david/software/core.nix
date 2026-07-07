@@ -6,6 +6,8 @@
 
   programs = {
     home-manager.enable = true;
+    zoxide.enable = true;
+    lazygit.enable = true;
 
     scientific-fhs = {
       enable = true;
@@ -42,6 +44,13 @@
     ddcutil
     compsize
     gnome-firmware
+    starship
+    fzf
+    lsd
+    ripgrep
+    vicinae
+    yazi
+    noctalia-shell
   ];
 
   ########################################

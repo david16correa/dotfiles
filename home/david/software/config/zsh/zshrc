@@ -49,8 +49,8 @@ alias du="btrfs filesystem du"
 alias df="btrfs filesystem usage"
 alias nm-restart="sudo systemctl restart NetworkManager"
 
-alias latex-flake="nix develop /home/david/.dotfiles/flakes/LaTeX"
-alias jupyter-flake="nix develop /home/david/.dotfiles/flakes/jupyter"
+# nix shells
+alias jupyter-shell="nix develop /home/david/.dotfiles#jupyter"
 
 # private stuff
 if [ -f "$HOME/.zshrc.private" ]; then

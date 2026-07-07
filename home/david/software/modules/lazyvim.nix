@@ -1,8 +1,8 @@
-{ inputs, pkgs, unstable, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [ inputs.lazyvim.homeManagerModules.default ];
 
-  home.packages = with unstable; [
+  home.packages = with pkgs; [
     statix
     ghostscript
     ast-grep
@@ -28,7 +28,7 @@
       };
     };
 
-    treesitterParsers = with unstable.vimPlugins.nvim-treesitter-parsers; [
+    treesitterParsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
       bash
       zsh
     ];

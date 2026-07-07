@@ -2,35 +2,48 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05"; # current release
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-static.url = "github:nixos/nixpkgs/e07580dae39738e46609eaab8b154de2488133ce"; # some packages take too long to copy from cache; I want to update them sparingly
+    ########################################
+    # pkgs
+    ########################################
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05"; # current release
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-static.url = "github:NixOS/nixpkgs/e07580dae39738e46609eaab8b154de2488133ce"; # some packages take too long to copy from cache; I want to update them sparingly
 
+    ########################################
+    # hosts
+    ########################################
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ########################################
+    # home
+    ########################################
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05"; # current release
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
     };
-
     lazyvim = {
       url = "github:pfassina/lazyvim-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
-    # for fhs-wrapped julia
-    scientific-fhs = {
+    scientific-fhs = { # for fhs-wrapped julia
       url = "github:olynch/scientific-fhs";
       inputs.nixpkgs.follows = "nixpkgs-static";
+    };
+
+    ########################################
+    # shells
+    ########################################
+    myShells = { # this allows me to follow nixpkgs in all my shells
+      url = "path:./shells";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -43,7 +56,7 @@
       config.allowUnfree = true;
     };
 
-    pkgs = setupExtraPkgs nixpkgs;
+    stable = setupExtraPkgs nixpkgs;
     unstable = setupExtraPkgs nixpkgs-unstable;
     static = setupExtraPkgs nixpkgs-static;
   in {
@@ -59,6 +72,7 @@
           ./hosts/bjork/main.nix
         ];
       };
+
       myIso = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
@@ -69,14 +83,19 @@
     };
 
     ########################################
-    # home configs
+    # home
     ########################################
     homeConfigurations = {
       "david@bjork" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs unstable static; };
+        pkgs = unstable;
+        extraSpecialArgs = { inherit inputs static; };
         modules = [ ./home/david/main.nix ];
       };
     };
+
+    ########################################
+    # shells
+    ########################################
+    inherit (inputs.myShells) devShells;
   };
 }
