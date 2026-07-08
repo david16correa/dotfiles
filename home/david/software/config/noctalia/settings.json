@@ -233,9 +233,6 @@
                     "icon": "square-rounded",
                     "id": "ControlCenter",
                     "useDistroLogo": false
-                },
-                {
-                    "id": "plugin:keybind-cheatsheet"
                 }
             ]
         }
