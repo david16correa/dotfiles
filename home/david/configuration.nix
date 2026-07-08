@@ -1,6 +1,19 @@
 { config, lib, pkgs, inputs, ... }:
 let
-  symlink = path : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/software/config/${path}";
+  # custom outOfStoreSymlinks
+  symlink = source : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/software/config/${source}";
+
+  # custom outOfStoreSymlinks; recursive. Useful when target needs to be kept as an actual directory
+  recursiveSymlink = target : source :
+    let
+      files = builtins.attrNames (builtins.readDir ./software/config/${source});
+    in
+    builtins.listToAttrs (
+      map (file: {
+        name = "${target}/${file}";
+        value.source = symlink "${source}/${file}";
+      }) files
+    );
 in
   {
   home.file = {
@@ -8,9 +21,9 @@ in
     ".tmux".source = symlink "tmux/.tmux";
     ".tmux.conf".source = symlink "tmux/.tmux.conf";
     ".face.icon".source = symlink "avatar/grinningCoffee.png";
-    ".myScripts".source = symlink "myScripts";
     "Pictures/Wallpapers".source = symlink "wallpapers";
-  };
+  } //
+    recursiveSymlink "${config.xdg.binHome}" "myScripts";
 
   xdg = {
     enable = true;

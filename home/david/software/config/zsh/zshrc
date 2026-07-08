@@ -16,14 +16,10 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
-PATH="$HOME/.myScripts:$PATH"
-
 export PATH
 
 # >>> init de cosas varias >>>
 eval "$(zoxide init zsh)"
-# eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/theme.omp.json)"
-export STARSHIP_CONFIG=/home/david/.config/starship/config.toml
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)" # Set up fzf key bindings and fuzzy completion
 
@@ -32,7 +28,6 @@ alias zsh-reload='source ~/.zshrc'
 alias notes='nvim ~/Projects/my\ wiki/notes.md'
 alias clipboard='nvim ~/Dropbox/clipboard/clipboard.txt'
 alias cd='z'
-# alias rm='trash'
 alias ls='lsd' # lsd stuff
 alias l='ls -l' # lsd stuff
 alias la='ls -a' # lsd stuff
@@ -62,18 +57,10 @@ else
   echo -e "[\033[33mWARNING:\033[0m] ~/.zshrc.private not found!"
 fi
 
-# set -o vi
-export EDITOR='nvim'
-
-# cosas para que los colores funcionen
-# export TERM=xterm-256color
-
-export JULIA_NUM_THREADS=$(nproc) # by default julia will use all threads
-
 # landing shell
 if [[ -n "$PS1" && -z "$TMUX" && -z "$IN_NIX_SHELL" ]]; then # if not in tmux, nor in nix shell
   if [[ -n "$SSH_CONNECTION" ]]; then # if connected through ssh
-    $HOME/.myScripts/gentmux
+    $XDG_BIN_HOME/gentmux
   else
     fastfetch
   fi
