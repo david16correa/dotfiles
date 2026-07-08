@@ -45,6 +45,24 @@ in
       "vicinae".source = symlink "vicinae";
     };
 
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        # File explorer
+        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+        # Browser
+        "text/html" = [ "zen-beta.desktop" ];
+        "x-scheme-handler/http" = [ "zen-beta.desktop" ];
+        "x-scheme-handler/https" = [ "zen-beta.desktop" ];
+        # Images
+        "image/png" = [ "org.gnome.Loupe.desktop" ];
+        "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
+        "image/svg+xml" = [ "org.inkscape.Inkscape.desktop" ];
+        # Documents
+        "application/pdf" = [ "org.gnome.Evince.desktop" ];
+      };
+    };
+
     desktopEntries = {
       nix_search_pkgs = {
         name = "NixOS Search: Packages";
