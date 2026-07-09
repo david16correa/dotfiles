@@ -5,9 +5,23 @@
     ../modules
     ./theme.nix
     ./configuration.nix
-
-    ./software/core.nix
   ];
+
+  ########################################
+  # modules
+  ########################################
+
+  programs.home-manager.enable = true;
+  my = {
+    terminal.enable = true;
+    desktop.enable = true;
+    apps.enable = true;
+    office.enable = true;
+  };
+
+  ########################################
+  # important settings
+  ########################################
 
   my.gpu = "amd";
 
@@ -16,4 +30,5 @@
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "25.11"; # do no not change this, unless you know what you're doing
   };
+
 }

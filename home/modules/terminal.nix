@@ -9,7 +9,7 @@ let
     intel = pkgs.btop;
   }.${config.my.gpu};
 in
-  {
+{
   options.my.terminal = {
     enable = lib.mkEnableOption "enable my terminal configuration";
   };
@@ -18,6 +18,15 @@ in
     programs = {
       zoxide.enable = true;
       lazygit.enable = true;
+
+      scientific-fhs = {
+        enable = true;
+        juliaVersions = [
+          { version = "1.11.6"; default = true; }
+        ];
+        enableNVIDIA = false;
+        enableGraphical = true;  # needed for plotting, REPL graphics etc.
+      };
     };
     my.nvim.enable = true;
 
@@ -54,10 +63,16 @@ in
       btopPackage
     ];
 
+    ########################################
+    # session variables
+    ########################################
+
     systemd.user.sessionVariables = {
       # for zsh
       STARSHIP_CONFIG = "${config.xdg.configHome}/starship/config.toml";
       EDITOR = "nvim";
+      # for julia
+      JULIA_NUM_THREADS = "auto"; # by default julia will use all threads
     };
   };
 }

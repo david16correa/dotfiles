@@ -1,12 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 let
   # custom outOfStoreSymlinks
-  symlink = source : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/software/config/${source}";
+  symlink = source : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/configFiles/${source}";
 
   # custom outOfStoreSymlinks; recursive. Useful when target needs to be kept as an actual directory
   recursiveSymlink = target : source :
     let
-      files = builtins.attrNames (builtins.readDir ./software/config/${source});
+      files = builtins.attrNames (builtins.readDir ./configFiles/${source});
     in
     builtins.listToAttrs (
       map (file: {
@@ -16,6 +16,10 @@ let
     );
 in
 {
+  ########################################
+  # dotfiles and user directories
+  ########################################
+
   home.file = {
     ".zshrc".source = symlink "zsh/zshrc";
     ".tmux".source = symlink "tmux/.tmux";
@@ -63,4 +67,5 @@ in
       };
     };
   };
+
 }
