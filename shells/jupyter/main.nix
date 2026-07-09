@@ -9,7 +9,7 @@ let
     c.ServerApp.root_dir = '/home/david'
   '';
 
-  jupyterLab = pkgs.writeShellScriptBin "jupyterLab" ''
+  myJupyterLab = pkgs.writeShellScriptBin "myJupyterLab" ''
     exec ${pkgs.jupyter}/bin/jupyter lab \
     --config ${jupyter_lab_config}
   '';
@@ -29,7 +29,7 @@ pkgs.mkShell {
 
   packages = [
     (pkgs.python314.withPackages pythonPackages)
-    jupyterLab
+    myJupyterLab
   ];
 
   shellHook = /*bash*/''
@@ -42,6 +42,9 @@ pkgs.mkShell {
       "$JUPYTER_DATA_DIR" \
       "$JUPYTER_RUNTIME_DIR"
 
-    jupyterLab
+    # set DEBUG before `nix develop /path/to/shell#jupyter to avoid executing the jupyter server directly
+    if ! [[ -n $DEBUG ]]; then 
+      exec myJupyterLab
+    fi
   '';
 }
