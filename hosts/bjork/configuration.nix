@@ -20,6 +20,7 @@
       pkiBundle = "/var/lib/sbctl";
     };
 
+    consoleLogLevel = 3; # only error conditions, or more severe messages, are printed
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
       "quiet" "loglevel=3" "systemd.show_status=auto" "rd.udev.log_level=3" # silent boot
@@ -35,8 +36,7 @@
       options btusb enable_autosuspend=n
     '';
     kernelModules = [ "i2c-dev" ];
-    resumeDevice = "/dev/disk/by-uuid/a71adb85-511c-46b6-a16e-e5a6678cc2d0";
-    # consoleLogLevel = 0;
+    resumeDevice = config.fileSystems."/swap".device;
   };
 
   fileSystems = {

@@ -6,7 +6,6 @@
     ./configuration.nix
 
     ./software/core.nix
-    ./software/extra.nix
     ./software/apps.nix
     ./software/unstable.nix
 

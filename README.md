@@ -55,7 +55,6 @@
 ❯ cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/bjork/hardware.nix
 ```
 
-- Find the UUID of your drive in `./hosts/bjork/hardware.nix`, and use it to substitute `resumeDevice` in `./hosts/bjork/configuration.nix`.
 - Update the state version at `./hosts/bjork/configuration.nix` and `./hosts/bjork/home/home.nix` to the current release (26.05).
 
 > [!NOTE]
