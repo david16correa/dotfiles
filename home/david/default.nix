@@ -2,14 +2,14 @@
 
 {
   imports = [
+    ../modules
     ./theme.nix
     ./configuration.nix
 
     ./software/core.nix
-    ./software/extra.nix
-    ./software/apps.nix
-    ./software/static.nix
   ];
+
+  my.gpu = "amd";
 
   home = {
     username = "david";

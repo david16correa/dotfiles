@@ -1,0 +1,60 @@
+{ lib, config, pkgs, inputs, ... }:
+let
+  cfg = config.my.desktop;
+in
+{
+  options.my.desktop = {
+    enable = lib.mkEnableOption "enable my desktop configuration";
+  };
+
+  config = lib.mkIf cfg.enable {
+
+    home.packages = with pkgs; [
+      dmidecode
+      playerctl
+      brightnessctl
+      ddcutil
+      gnome-firmware
+      libcanberra-gtk3 # system sounds
+      cliphist
+      app2unit
+      noctalia-shell
+      vicinae
+      maestral
+      maestral-gui
+    ];
+
+    services.polkit-gnome.enable = true;
+
+    xdg.desktopEntries = {
+      nixpkgsSearch = {
+        name = "NixOS Search: Packages";
+        icon = "nix-snowflake";
+        genericName = "System Manual (Package Search)";
+        exec = "xdg-open https://search.nixos.org/packages";
+        terminal = false;
+        categories = [ "System" ];
+      };
+      nixoptsSearch = {
+        name = "NixOS Search: Options";
+        icon = "nix-snowflake";
+        genericName = "System Manual (Options Search)";
+        exec = "xdg-open https://search.nixos.org/options";
+        terminal = false;
+        categories = [ "System" ];
+      };
+      dotfilesRepo = {
+        name = "david16correa/dotfiles";
+        icon = "nix-snowflake";
+        genericName = "Repo of my flake in GitHub";
+        exec = "xdg-open https://github.com/david16correa/dotfiles";
+        terminal = false;
+        categories = [ "System" ];
+      };
+    };
+
+    systemd.user.sessionVariables = {
+      QT_QPA_PLATFORMTHEME = "gtk3"; # https://docs.noctalia.dev/v4/getting-started/faq/#why-are-some-of-my-app-icons-missing
+    };
+  };
+}

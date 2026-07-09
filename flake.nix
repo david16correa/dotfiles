@@ -89,7 +89,7 @@
       "david@bjork" = home-manager.lib.homeManagerConfiguration {
         pkgs = unstable;
         extraSpecialArgs = { inherit inputs static; };
-        modules = [ ./home/david/main.nix ];
+        modules = [ ./home/david ];
       };
     };
 

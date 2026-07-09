@@ -6,8 +6,6 @@
 
   programs = {
     home-manager.enable = true;
-    zoxide.enable = true;
-    lazygit.enable = true;
 
     scientific-fhs = {
       enable = true;
@@ -20,74 +18,22 @@
   };
 
   ########################################
-  # home packages
+  # my modules
   ########################################
 
-  home.packages = with pkgs; [
-    kitty
-    trashy
-    tmux
-    fastfetch
-    stow
-    btop-rocm
-    tree
-    tealdeer
-    which
-    rsync
-    caligula
-    gcc
-    gum
-    dmidecode
-    gh
-    playerctl
-    brightnessctl
-    ddcutil
-    compsize
-    gnome-firmware
-    starship
-    fzf
-    lsd
-    ripgrep
-    vicinae
-    yazi
-    noctalia-shell
-  ];
-
-  ########################################
-  # desktop entries
-  ########################################
-
-  xdg.desktopEntries = {
-    nixpkgsSearch = {
-      name = "NixOS Search: Packages";
-      icon = "nix-snowflake";
-      genericName = "System Manual (Package Search)";
-      exec = "xdg-open https://search.nixos.org/packages";
-      terminal = false;
-      categories = [ "System" ];
-    };
-    nixoptsSearch = {
-      name = "NixOS Search: Options";
-      icon = "nix-snowflake";
-      genericName = "System Manual (Options Search)";
-      exec = "xdg-open https://search.nixos.org/options";
-      terminal = false;
-      categories = [ "System" ];
-    };
-    dotfilesRepo = {
-      name = "david16correa/dotfiles";
-      icon = "nix-snowflake";
-      genericName = "Repo of my flake in GitHub";
-      exec = "xdg-open https://github.com/david16correa/dotfiles";
-      terminal = false;
-      categories = [ "System" ];
-    };
+  my = {
+    terminal.enable = true;
+    desktop.enable = true;
+    apps.enable = true;
+    office.enable = true;
   };
 
   ########################################
-  # user services
+  # session variables
   ########################################
 
-  services.polkit-gnome.enable = true;
-
+  systemd.user.sessionVariables = {
+    # for zsh
+    JULIA_NUM_THREADS = "auto"; # by default julia will use all threads
+  };
 }

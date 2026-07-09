@@ -15,7 +15,7 @@ let
       }) files
     );
 in
-  {
+{
   home.file = {
     ".zshrc".source = symlink "zsh/zshrc";
     ".tmux".source = symlink "tmux/.tmux";
@@ -62,25 +62,5 @@ in
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
       };
     };
-
-    desktopEntries = {
-      nix_search_pkgs = {
-        name = "NixOS Search: Packages";
-        icon = "nix-snowflake";
-        genericName = "System Manual (Package Search)";
-        exec = "xdg-open https://search.nixos.org/packages";
-        terminal = false;
-        categories = [ "System" ];
-      };
-      nix_search_opts = {
-        name = "NixOS Search: Options";
-        icon = "nix-snowflake";
-        genericName = "System Manual (Options Search)";
-        exec = "xdg-open https://search.nixos.org/options";
-        terminal = false;
-        categories = [ "System" ];
-      };
-    };
-
   };
 }

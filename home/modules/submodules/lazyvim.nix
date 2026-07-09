@@ -1,40 +1,46 @@
-{ inputs, pkgs, ... }:
+{ lib, config, pkgs, ... }:
+let
+  cfg = config.my.nvim;
+in
 {
-  imports = [ inputs.lazyvim.homeManagerModules.default ];
+  options.my.nvim = {
+    enable = lib.mkEnableOption "enable my lazyvim configuration";
+  };
 
-  home.packages = with pkgs; [
-    statix
-    ghostscript
-    ast-grep
-    mermaid-cli
-    clang-tools
-    markdownlint-cli2
-    tree-sitter
-    ltex-ls-plus
-  ];
-
-  programs.lazyvim = {
-    enable = true;
-    extras = {
-      lang = {
-        nix.enable = true;
-        julia.enable = true;
-        python.enable = true;
-        clangd.enable = true;
-        markdown.enable = true;
-        git.enable = true;
-        tex.enable = true;
-        dotnet.enable = true;
-      };
-    };
-
-    treesitterParsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
-      bash
-      zsh
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      statix
+      ghostscript
+      ast-grep
+      mermaid-cli
+      clang-tools
+      markdownlint-cli2
+      tree-sitter
+      ltex-ls-plus
     ];
 
-    config = {
-      options = /*lua*/''
+    programs.lazyvim = {
+      enable = true;
+      extras = {
+        lang = {
+          nix.enable = true;
+          julia.enable = true;
+          python.enable = true;
+          clangd.enable = true;
+          markdown.enable = true;
+          git.enable = true;
+          tex.enable = true;
+          dotnet.enable = true;
+        };
+      };
+
+      treesitterParsers = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+        bash
+        zsh
+      ];
+
+      config = {
+        options = /*lua*/''
         vim.g.slime_target = "tmux"
         vim.g.slime_default_config = {
           socket_name = "default",
@@ -57,16 +63,16 @@
             vim.opt_local.breakindent = true
           end,
         })
-      '';
+        '';
 
-      autocmds = /*lua*/''
+        autocmds = /*lua*/''
         vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
-      '';
-    };
+        '';
+        };
 
-    plugins = {
+        plugins = {
 
-      colorscheme = /*lua*/''
+        colorscheme = /*lua*/''
         return {
           {
             "folke/tokyonight.nvim",
@@ -75,9 +81,9 @@
             },
           },
         }
-      '';
+        '';
 
-      vimtex = /*lua*/''
+        vimtex = /*lua*/''
         return {
           -- basic setup for latex
           "lervag/vimtex",
@@ -94,11 +100,11 @@
             vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "vimtex-clean-aux" })
           end,
         }
-      '';
+        '';
 
-      vim-slime = /*lua*/''
+        vim-slime = /*lua*/''
         return {
-          "jpalardy/vim-slime",
+        "jpalardy/vim-slime",
           -- lazy = false,
         }
       '';
@@ -139,22 +145,23 @@
                 ltex = {
                   cmd = { "ltex-ls-plus" },
                   filetypes = { "tex", "markdown", "plaintex", "bib" },
-                  settings = {
-                    ltex = {
-                      language = "en-US",
-                      disabledRules = {
-                        ["en-US"] = {
-                          "UPPERCASE_SENTENCE_START",
-                        },
-                      },
-                    },
-                  },
-                },
+        settings = {
+          ltex = {
+            language = "en-US",
+            disabledRules = {
+              ["en-US"] = {
+                "UPPERCASE_SENTENCE_START",
               },
             },
           },
+        },
+        },
+        },
+        },
+        },
         }
-      '';
+        '';
+      };
     };
   };
 }

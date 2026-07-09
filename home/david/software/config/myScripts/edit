@@ -6,7 +6,7 @@
 
 home(){
   # 0. we edit my main config file
-  nvim ~/.dotfiles/home/david/main.nix
+  nvim ~/.dotfiles/home/david/default.nix
 
   # 1. we migh rebuild or commit
   if [ -n "$1" ]; then
