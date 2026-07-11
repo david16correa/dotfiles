@@ -103,8 +103,6 @@
     users.root.hashedPassword = null;
   };
 
-  security.polkit.enable = true;
-
   programs.nh = {
     enable = true;
     clean = {

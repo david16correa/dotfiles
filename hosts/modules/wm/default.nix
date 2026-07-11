@@ -44,7 +44,10 @@ in
 
     hardware.alsa.enablePersistence = true;
 
-    security.rtkit.enable = true; # PulseAudio and PipeWire use this to acquire realtime priority
+    security = {
+      polkit.enable = true;
+      rtkit.enable = true; # PulseAudio and PipeWire use this to acquire realtime priority
+    };
 
     fonts = {
       enableDefaultPackages = true;

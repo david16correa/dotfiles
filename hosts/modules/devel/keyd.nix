@@ -2,7 +2,7 @@
 let
   cfg = config.my.devel.keyd;
 
-  keydDevices = builtins.attrNames (builtins.readDir ./configFiles/profiles);
+  keydDevices = builtins.attrNames (builtins.readDir ./configFiles/keyd/profiles);
 in
   {
   options.my.devel.keyd = {
@@ -13,7 +13,7 @@ in
 
     environment = {
       systemPackages = with pkgs; [ keyd ];
-      etc."keyd/profiles".source = ./configFiles/profiles;
+      etc."keyd/profiles".source = ./configFiles/keyd/profiles;
     };
 
     system.activationScripts = {
