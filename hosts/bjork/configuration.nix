@@ -85,16 +85,6 @@
     # };
   };
 
-  powerManagement.powerDownCommands = ''
-    systemctl stop thinkfan.service
-  '';
-
-  powerManagement.resumeCommands = ''
-    sleep 1
-    systemctl start thinkfan.service
-    systemctl start tlp.service
-  '';
-
   time.timeZone = lib.mkDefault "America/Mexico_City";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -122,7 +112,30 @@
   # services
   ########################################
 
-  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services = {
+    NetworkManager-wait-online.enable = false;
+
+    sleep-hooks = {
+      description = "Sleep Hooks";
+      wantedBy = [ "sleep.target" ];
+      before = [ "sleep.target" ];
+      unitConfig.StopWhenUnneeded = true;
+      # pre-sleep script
+      script = /*bash*/''
+        systemctl stop tlp.service
+        systemctl stop thinkfan.service
+      '';
+      # resume script
+      postStop = /*bash*/''
+        systemctl start thinkfan.service
+        systemctl start tlp.service
+      '';
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+    };
+  };
 
   services = {
     printing.enable = true;
