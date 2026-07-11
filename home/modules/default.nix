@@ -1,17 +1,18 @@
 { lib, pkgs, inputs, ... }:
+let
+  # I will import all directories as modules automatically
+  allModules = map (module: ./. + "/${module}")(
+    builtins.attrNames(
+      lib.filterAttrs (entry: type: type == "directory")
+      (builtins.readDir ./.)
+    )
+  );
+in
 {
   imports = [
     inputs.lazyvim.homeManagerModules.default
     inputs.scientific-fhs.nixosModules.default
-
-    ./terminal.nix
-    ./desktop.nix
-    ./apps.nix
-    ./office.nix
-
-    ./submodules/lazyvim.nix
-    ./submodules/flatpak.nix
-  ];
+  ] ++ allModules;
 
   # some very important options that govern my modules
   options.my = {
@@ -22,5 +23,4 @@
       description = "GPU vendor. Used to choose vendor-specific tools";
     };
   };
-
 }

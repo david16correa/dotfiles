@@ -3,6 +3,10 @@ let
   cfg = config.my.apps;
 in
 {
+  imports = [
+    ./flatpak.nix
+  ];
+
   options.my.apps = {
     enable = lib.mkEnableOption "enable my apps";
   };

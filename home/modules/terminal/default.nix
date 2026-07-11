@@ -10,6 +10,10 @@ let
   }.${config.my.gpu};
 in
 {
+  imports = [
+    ./lazyvim.nix
+  ];
+
   options.my.terminal = {
     enable = lib.mkEnableOption "enable my terminal configuration";
   };

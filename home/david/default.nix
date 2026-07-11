@@ -17,6 +17,7 @@
     desktop.enable = true;
     apps.enable = true;
     office.enable = true;
+    services.enable = true;
   };
 
   ########################################
