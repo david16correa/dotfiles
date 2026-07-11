@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 let
-  symlink = path : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/software/config/${path}";
+  # custom outOfStoreSymlinks
+  symlink = source : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/configFiles/${source}";
 in
 {
   home = {

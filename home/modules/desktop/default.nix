@@ -15,7 +15,6 @@ in
       brightnessctl
       ddcutil
       gnome-firmware
-      libcanberra-gtk3 # system sounds
       cliphist
       app2unit
       noctalia-shell
