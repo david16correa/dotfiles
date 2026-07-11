@@ -69,7 +69,7 @@
         specialArgs = { inherit inputs unstable static; };
         modules = [
           { nixpkgs.config.allowUnfree = true; }
-          ./hosts/bjork/main.nix
+          ./hosts/bjork
         ];
       };
 
@@ -77,7 +77,7 @@
         inherit system;
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/myIso/configuration.nix
+          ./hosts/myIso
         ];
       };
     };

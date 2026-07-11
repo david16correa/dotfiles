@@ -39,6 +39,8 @@
     resumeDevice = config.fileSystems."/swap".device;
   };
 
+  environment.systemPackages = with pkgs; [ sbctl ];
+
   fileSystems = {
     "/".options                   = [ "compress=zstd" "noatime" ];
     "/home".options               = [ "compress=zstd" "noatime" ];
@@ -66,7 +68,6 @@
 
   hardware = {
     cpu.amd.updateMicrocode = true;
-    alsa.enablePersistence = true;
     bluetooth = {
       enable = true;
       settings.General = {
@@ -97,106 +98,20 @@
       description = "David";
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" "i2c" "gamemode" ];
-      shell = pkgs.zsh;
       hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB"; # I used `mkpasswd` to generate this!
     };
     users.root.hashedPassword = null;
   };
 
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true; # PulseAudio and PipeWire use this to acquire realtime priority
-  };
+  security.polkit.enable = true;
 
-  ########################################
-  # services
-  ########################################
-
-  systemd.services = {
-    NetworkManager-wait-online.enable = false;
-
-    sleep-hooks = {
-      description = "Sleep Hooks";
-      wantedBy = [ "sleep.target" ];
-      before = [ "sleep.target" ];
-      unitConfig.StopWhenUnneeded = true;
-      # pre-sleep script
-      script = /*bash*/''
-        systemctl stop tlp.service
-        systemctl stop thinkfan.service
-      '';
-      # resume script
-      postStop = /*bash*/''
-        systemctl start thinkfan.service
-        systemctl start tlp.service
-      '';
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep-since 30d";
     };
   };
 
-  services = {
-    printing.enable = true;
-    ddccontrol.enable = true;
-    upower.enable = true;
-
-    btrfs.autoScrub = {
-      enable = true;
-      interval = "weekly";
-      fileSystems = [ "/" ];
-    };
-
-    openssh = {
-      enable = true;
-      settings.PermitRootLogin = "no";
-      allowSFTP = true;
-    };
-
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-    };
-
-    tlp = {
-      enable = true;
-      settings = {
-        # CPU on AC
-        CPU_SCALING_GOVERNOR_ON_AC="powersave";
-        CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance";
-        PLATFORM_PROFILE_ON_AC="balanced";
-        # CPU on BAT
-        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-        CPU_ENERGY_PERF_POLICY_ON_BAT="power";
-        PLATFORM_PROFILE_ON_BAT="low-power";
-        # battery thresholds
-        START_CHARGE_THRESH_BAT0=40;
-        STOP_CHARGE_THRESH_BAT0=80;
-        # bluetooth stuff
-        USB_EXCLUDE_BTUSB=1;
-      };
-    };
-
-    thinkfan = {
-      enable = true;
-      sensors = [{
-        query = "/proc/acpi/ibm/thermal";
-        type = "tpacpi";
-        indices = [ 0 ];
-      }];
-      fans = [{
-        query = "/proc/acpi/ibm/fan";
-        type = "tpacpi";
-      }];
-      levels = [
-        ["level auto"       0   45]   # Let BIOS handle idle (fan off/quiet)
-        [2                  45  55]   # Low speed
-        [4                  55  65]   # Medium speed
-        [7                  65  75]   # High speed
-        ["level full-speed" 75  1000] # Max speed above 75°C (safety)
-      ];
-    };
-
-  };
 }
