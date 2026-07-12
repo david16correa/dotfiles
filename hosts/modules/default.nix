@@ -15,11 +15,5 @@ in
 
   # some very important options that govern my modules
   # options.my = {
-  #   gpu = lib.mkOption {
-  #     type = lib.types.enum [ "none" "amd" "intel" "nvidia" ];
-  #     default = "none";
-  #     example = "amd";
-  #     description = "GPU vendor. Used to choose vendor-specific tools";
-  #   };
   # };
 }
