@@ -28,7 +28,7 @@ home(){
 
 os(){
   # 0. we edit my main config file
-  nvim ~/.dotfiles/hosts/bjork/main.nix
+  nvim ~/.dotfiles/hosts/bjork/default.nix
 
   # 1. we migh rebuild or commit
   if [ -n "$1" ]; then
@@ -53,8 +53,6 @@ flake(){
   if [ -n "$1" ]; then
     case "$1" in
       repo) lazygit && return 0;;
-      nixos) nvim ~/.dotfiles/hosts/flake.nix && return 0;;
-      hm) nvim ~/.dotfiles/home/flake.nix && return 0;;
       *) echo "Unknown option: $1..." >&2 && exit 1 ;;
     esac
   fi
