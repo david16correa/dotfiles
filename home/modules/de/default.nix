@@ -1,10 +1,10 @@
 { lib, config, pkgs, inputs, ... }:
 let
-  cfg = config.my.desktop;
+  cfg = config.my.de;
 in
 {
-  options.my.desktop = {
-    enable = lib.mkEnableOption "enable my desktop configuration";
+  options.my.de = {
+    enable = lib.mkEnableOption "enable my desktop environment (shell) configuration (noctalia)";
   };
 
   config = lib.mkIf cfg.enable {

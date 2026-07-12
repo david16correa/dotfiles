@@ -1,6 +1,6 @@
 { lib, config, pkgs, inputs, ... }:
 let
-  cfg = config.my.terminal;
+  cfg = config.my.tty;
 
   btopPackage = {
     none = pkgs.btop;
@@ -14,7 +14,7 @@ in
     ./lazyvim.nix
   ];
 
-  options.my.terminal = {
+  options.my.tty = {
     enable = lib.mkEnableOption "enable my terminal configuration";
   };
 

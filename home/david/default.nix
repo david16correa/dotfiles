@@ -13,8 +13,8 @@
 
   programs.home-manager.enable = true;
   my = {
-    terminal.enable = true;
-    desktop.enable = true;
+    de.enable = true;
+    tty.enable = true;
     apps.enable = true;
     office.enable = true;
     services.enable = true;
