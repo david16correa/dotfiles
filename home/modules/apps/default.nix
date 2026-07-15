@@ -26,6 +26,7 @@ in
         "us.zoom.Zoom"
         "com.discordapp.Discord"
         "org.DolphinEmu.dolphin-emu"
+        "com.mojang.Minecraft"
       ];
     };
 
@@ -35,7 +36,7 @@ in
       brave
       zotero
       spotify
-      prismlauncher
+      # prismlauncher
       protonplus
       baobab # disk usage analyzer
       decibels # audio player

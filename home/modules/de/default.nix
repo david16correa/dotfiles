@@ -21,6 +21,7 @@ in
       vicinae
       maestral
       maestral-gui
+      libcanberra-gtk3
     ];
 
     services.polkit-gnome.enable = true;

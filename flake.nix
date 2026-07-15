@@ -20,22 +20,26 @@
     ########################################
     # home
     ########################################
+
+    home-pkgs.follows = "nixpkgs"; # alias for all home-related inputs
+
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/home-manager/release-26.05"; # stable channel
+      # url = "github:nix-community/home-manager"; # unstable channel
+      inputs.nixpkgs.follows = "home-pkgs";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "home-pkgs";
       inputs.home-manager.follows = "home-manager";
     };
     lazyvim = {
       url = "github:pfassina/lazyvim-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "home-pkgs";
     };
     scientific-fhs = { # for fhs-wrapped julia
       url = "github:olynch/scientific-fhs";
-      inputs.nixpkgs.follows = "nixpkgs-static";
+      inputs.nixpkgs.follows = "home-pkgs";
     };
 
     ########################################
@@ -87,7 +91,8 @@
     ########################################
     homeConfigurations = {
       "david@bjork" = home-manager.lib.homeManagerConfiguration {
-        pkgs = unstable;
+        pkgs = stable;
+        # pkgs = unstable;
         extraSpecialArgs = { inherit inputs static; };
         modules = [ ./home/david ];
       };
