@@ -13,13 +13,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    ########################################
+    # program modules
+    ########################################
 
     my.devel = {
       keyd.enable = lib.mkDefault true;
       virtualisation.enable = lib.mkDefault true;
     };
-
-    users.users.david.shell = pkgs.zsh;
 
     programs = {
       zsh.enable = true;
@@ -44,6 +45,10 @@ in
       };
     };
 
+    ########################################
+    # system packages
+    ########################################
+
     environment = {
       systemPackages = with pkgs; [
         busybox
@@ -55,5 +60,10 @@ in
       };
     };
 
+    ########################################
+    # extra
+    ########################################
+
+    users.users.david.shell = pkgs.zsh;
   };
 }

@@ -5,7 +5,6 @@
     ../modules
     ./hardware.nix
     ./configuration.nix
-    ./unstable.nix
   ];
 
   ########################################
@@ -16,10 +15,8 @@
     wm.enable = true;
     dm.enable = true;
     devel.enable = true;
-    services = {
-      enable = true;
-      thinkpad.enable = true;
-    };
+    extra.enable = true;
+    services.enable = true;
   };
 
   ########################################

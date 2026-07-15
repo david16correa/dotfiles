@@ -8,6 +8,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    ########################################
+    # program modules
+    ########################################
 
     programs = {
       niri = {
@@ -23,10 +26,18 @@ in
       dconf.enable = true; # for theming
     };
 
+    ########################################
+    # system packages
+    ########################################
+
     environment.systemPackages = with pkgs; [
       nautilus
       xwayland-satellite
     ];
+
+    ########################################
+    # services
+    ########################################
 
     services = {
       ddccontrol.enable = true; # edit display parameters; e.g. brightness
@@ -42,12 +53,10 @@ in
       };
     };
 
-    hardware.alsa.enablePersistence = true;
 
-    security = {
-      polkit.enable = true;
-      rtkit.enable = true; # PulseAudio and PipeWire use this to acquire realtime priority
-    };
+    ########################################
+    # fonts
+    ########################################
 
     fonts = {
       enableDefaultPackages = true;
@@ -79,5 +88,15 @@ in
       };
     };
 
+    ########################################
+    # extra
+    ########################################
+
+    hardware.alsa.enablePersistence = true;
+
+    security = {
+      polkit.enable = true;
+      rtkit.enable = true; # PulseAudio and PipeWire use this to acquire realtime priority
+    };
   };
 }

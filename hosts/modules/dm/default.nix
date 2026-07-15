@@ -8,21 +8,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      wayland.compositor = "kwin";
-      theme = "catppuccin-macchiato-blue";
-      settings = {
-        Theme = {
-          CursorTheme = "Bibata-Modern-Classic";
-          CursorSize = 24;
-          FacesDir="/config/sddm.extra/faces/";
-        };
-        Users.RememberLastSession=false;
-      };
-    };
+    ########################################
+    # system packages
+    ########################################
 
     environment = {
       systemPackages = with pkgs; [
@@ -41,5 +29,23 @@ in
       etc."sddm.extra/faces/david.face.icon".source = ./configFiles/grinningCoffee.png;
     };
 
+    ########################################
+    # services
+    ########################################
+
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      wayland.compositor = "kwin";
+      theme = "catppuccin-macchiato-blue";
+      settings = {
+        Theme = {
+          CursorTheme = "Bibata-Modern-Classic";
+          CursorSize = 24;
+          FacesDir="/config/sddm.extra/faces/";
+        };
+        Users.RememberLastSession=false;
+      };
+    };
   };
 }

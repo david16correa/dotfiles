@@ -2,19 +2,15 @@
 let
   cfg = config.my.services;
 in
-{
-  # extra services; these are not enabled with my.services
-  imports = [
-    ./thinkpad.nix
-  ];
-
+  {
   options.my.services = {
     enable = lib.mkEnableOption "My services module";
   };
 
   config = lib.mkIf cfg.enable {
-
-    systemd.services.NetworkManager-wait-online.enable = false;
+    ########################################
+    # services
+    ########################################
 
     services = {
       printing.enable = true;
@@ -59,5 +55,11 @@ in
       };
 
     };
+
+    ########################################
+    # extra
+    ########################################
+
+    systemd.services.NetworkManager-wait-online.enable = false;
   };
 }

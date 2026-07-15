@@ -1,70 +1,23 @@
-# Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, inputs, ... }:
 
 {
   ########################################
-  # bootloader, kernel, fs, and swap
+  # bootloader, kernel, etc
   ########################################
 
   boot = {
-    loader = {
-      systemd-boot.enable = false;
-      efi.canTouchEfiVariables = true;
-      timeout = 0;
-    };
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-    };
-
-    consoleLogLevel = 3; # only error conditions, or more severe messages, are printed
-    kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
-      "quiet" "loglevel=3" "systemd.show_status=auto" "rd.udev.log_level=3" # silent boot
       "resume_offset=40698492"  # for hibernation
-      "zswap.enabled=1" # enables zswap
-      "zswap.compressor=zstd" # compression algorithm
-      "zswap.max_pool_percent=20" # maximum percentage of RAM that zswap is allowed to use; increase if you Regularly hit high memory usage, or want to avoid disk swap at almost any cost
-      "zswap.zpool=z3fold" # compressed page allocator (higher density than default zbud)
-      "zswap.shrinker_enabled=1" # whether to shrink the pool proactively on high memory pressure
       "pcie_aspm=off"
     ];
     extraModprobeConfig = ''
       options btusb enable_autosuspend=n
     '';
-    kernelModules = [ "i2c-dev" ];
-    resumeDevice = config.fileSystems."/swap".device;
   };
-
-  environment.systemPackages = with pkgs; [ sbctl ];
-
-  fileSystems = {
-    "/".options                   = [ "compress=zstd" "noatime" ];
-    "/home".options               = [ "compress=zstd" "noatime" ];
-    "/nix".options                = [ "compress=zstd" "noatime" ];
-    "/swap".options               = [ "noatime" ];
-    "/home/.snapshots".options    = [ "compress=zstd" "noatime" ];
-  };
-
-  swapDevices = [{
-    device = "/swap/swapfile";
-    size = 32*1024; # 32GB
-  }];
 
   ########################################
   # OS basics
   ########################################
-
-  networking = {
-    networkmanager = {
-      enable = true;
-      wifi.powersave = false;
-    };
-    firewall.allowedTCPPorts = [8888]; # jupyter
-  };
 
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -78,38 +31,77 @@
     enableAllFirmware = true;
     graphics = {
       enable = true; # OpenGl/AMD
-      enable32Bit = true;
     };
-    # amdgpu.amdvlk = {
-    #   enable = true;
-    #   support32Bit.enable = true;
-    # };
   };
 
-  time.timeZone = lib.mkDefault "America/Mexico_City";
+  ########################################
+  # services
+  ########################################
 
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  users = {
-    mutableUsers = false;
-    users.david = {
-      description = "David";
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "i2c" "gamemode" ];
-      hashedPassword = "$y$j9T$yNyeMYT74OLfNvm0pWp3d/$8J2m/SIw0SfwlkNcTcaY3S9xb5zkehA/YFeFLmHMxOB"; # I used `mkpasswd` to generate this!
+  systemd.services.sleep-hooks = {
+    description = "Sleep Hooks";
+    wantedBy = [ "sleep.target" ];
+    before = [ "sleep.target" ];
+    unitConfig.StopWhenUnneeded = true;
+    # pre-sleep script
+    script = /*bash*/''
+        systemctl stop tlp.service
+        systemctl stop thinkfan.service
+        '';
+        # resume script
+        postStop = /*bash*/''
+        systemctl start thinkfan.service
+        systemctl start tlp.service
+        '';
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
     };
-    users.root.hashedPassword = null;
   };
 
-  programs.nh = {
-    enable = true;
-    clean = {
+  services = {
+    tlp = {
       enable = true;
-      dates = "weekly";
-      extraArgs = "--keep-since 30d";
+      settings = {
+        # CPU on AC
+        CPU_SCALING_GOVERNOR_ON_AC="powersave";
+        CPU_ENERGY_PERF_POLICY_ON_AC="balance_performance";
+        PLATFORM_PROFILE_ON_AC="balanced";
+        # CPU on BAT
+        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+        CPU_ENERGY_PERF_POLICY_ON_BAT="power";
+        PLATFORM_PROFILE_ON_BAT="low-power";
+        # battery thresholds
+        START_CHARGE_THRESH_BAT0=40;
+        STOP_CHARGE_THRESH_BAT0=80;
+        # bluetooth stuff
+        USB_EXCLUDE_BTUSB=1;
+      };
     };
-  };
+    thinkfan = {
+      enable = true;
+      sensors = [{
+        query = "/proc/acpi/ibm/thermal";
+        type = "tpacpi";
+        indices = [ 0 ];
+      }];
+      fans = [{
+        query = "/proc/acpi/ibm/fan";
+        type = "tpacpi";
+      }];
+      levels = [
+        ["level auto"       0   45]   # Let BIOS handle idle (fan off/quiet)
+        [2                  45  55]   # Low speed
+        [4                  55  65]   # Medium speed
+        [7                  65  75]   # High speed
+        ["level full-speed" 75  1000] # Max speed above 75°C (safety)
+      ];
+    };
 
+    # I got tired of the F4 LED being always on. I can't fix it. This udev rule
+    # makes the F4 LED be permanently off.
+    udev.extraRules = ''
+      SUBSYSTEM=="leds", KERNEL=="platform::micmute", ACTION=="add", ATTR{brightness}="0"
+    '';
+  };
 }
