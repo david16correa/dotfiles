@@ -11,7 +11,6 @@ in
     ########################################
     # bootloader, kernel, fs, and swap
     ########################################
-
     boot = {
       loader = {
         systemd-boot.enable = false;
@@ -56,7 +55,6 @@ in
     ########################################
     # OS basics
     ########################################
-
     networking = {
       networkmanager = {
         enable = true;

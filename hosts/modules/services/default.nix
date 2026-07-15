@@ -11,7 +11,6 @@ in
     ########################################
     # services
     ########################################
-
     services = {
       printing.enable = true;
       upower.enable = true; # needed for noctalia battery widget
@@ -59,7 +58,6 @@ in
     ########################################
     # extra
     ########################################
-
     systemd.services.NetworkManager-wait-online.enable = false;
   };
 }

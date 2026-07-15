@@ -11,7 +11,6 @@ in
     ########################################
     # system packages
     ########################################
-
     environment = {
       systemPackages = with pkgs; [
         bibata-cursors
@@ -32,7 +31,6 @@ in
     ########################################
     # services
     ########################################
-
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;

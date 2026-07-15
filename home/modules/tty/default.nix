@@ -19,6 +19,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    ########################################
+    # program modules
+    ########################################
     programs = {
       zoxide.enable = true;
       lazygit.enable = true;
@@ -32,8 +35,12 @@ in
         enableGraphical = true;  # needed for plotting, REPL graphics etc.
       };
     };
+
     my.nvim.enable = true;
 
+    ########################################
+    # home packages
+    ########################################
     home.packages = with pkgs; [
       kitty
       gnome-console
@@ -70,7 +77,6 @@ in
     ########################################
     # session variables
     ########################################
-
     systemd.user.sessionVariables = {
       # for zsh
       STARSHIP_CONFIG = "${config.xdg.configHome}/starship/config.toml";

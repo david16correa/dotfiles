@@ -11,7 +11,6 @@ in
     ########################################
     # program modules
     ########################################
-
     programs = {
       niri = {
         enable = true;
@@ -29,7 +28,6 @@ in
     ########################################
     # system packages
     ########################################
-
     environment.systemPackages = with pkgs; [
       nautilus
       xwayland-satellite
@@ -38,7 +36,6 @@ in
     ########################################
     # services
     ########################################
-
     services = {
       ddccontrol.enable = true; # edit display parameters; e.g. brightness
       gnome.sushi.enable = true;
@@ -57,7 +54,6 @@ in
     ########################################
     # fonts
     ########################################
-
     fonts = {
       enableDefaultPackages = true;
 
@@ -91,7 +87,6 @@ in
     ########################################
     # extra
     ########################################
-
     hardware.alsa.enablePersistence = true;
 
     security = {

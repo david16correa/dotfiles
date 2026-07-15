@@ -16,7 +16,6 @@ in
     ########################################
     # program modules
     ########################################
-
     my.devel = {
       keyd.enable = lib.mkDefault true;
       virtualisation.enable = lib.mkDefault true;
@@ -48,7 +47,6 @@ in
     ########################################
     # system packages
     ########################################
-
     environment = {
       systemPackages = with pkgs; [
         busybox
@@ -63,7 +61,6 @@ in
     ########################################
     # extra
     ########################################
-
     users.users.david.shell = pkgs.zsh;
   };
 }

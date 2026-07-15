@@ -11,7 +11,6 @@ in
     ########################################
     # program modules
     ########################################
-
     programs = {
       steam = {
         enable = true;
@@ -23,7 +22,6 @@ in
     ########################################
     # extra
     ########################################
-
     hardware.graphics.enable32Bit = true;
 
     environment.variables = {

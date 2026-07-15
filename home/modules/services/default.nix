@@ -12,6 +12,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    ########################################
+    # user services
+    ########################################
     my.usb-sound-watcher.enable = true;
   };
 }

@@ -20,7 +20,6 @@
     ########################################
     # home
     ########################################
-
     home-pkgs.follows = "nixpkgs"; # alias for all home-related inputs
 
     home-manager = {

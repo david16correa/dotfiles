@@ -12,6 +12,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    ########################################
+    # program modules
+    ########################################
     programs = {
       obs-studio.enable = true;
       firefox = {
@@ -30,6 +33,9 @@ in
       ];
     };
 
+    ########################################
+    # home packages
+    ########################################
     home.packages = with pkgs; [
       easyeffects
       gimp
@@ -65,6 +71,5 @@ in
         '';
       })
     ];
-
   };
 }

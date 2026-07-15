@@ -8,13 +8,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
+    ########################################
+    # home packages
+    ########################################
     home.packages = with pkgs; [
       pdftk
       poppler-utils # pdf rendering library
       libreoffice-fresh
       static.texliveFull
     ];
-
   };
 }

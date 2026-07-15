@@ -8,7 +8,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-
+    ########################################
+    # home packages
+    ########################################
     home.packages = with pkgs; [
       dmidecode
       playerctl
@@ -24,8 +26,14 @@ in
       libcanberra-gtk3
     ];
 
+    ########################################
+    # user services
+    ########################################
     services.polkit-gnome.enable = true;
 
+    ########################################
+    # desktop entries
+    ########################################
     xdg.desktopEntries = {
       nixpkgsSearch = {
         name = "NixOS Search: Packages";
@@ -53,6 +61,9 @@ in
       };
     };
 
+    ########################################
+    # session variables
+    ########################################
     systemd.user.sessionVariables = {
       QT_QPA_PLATFORMTHEME = "gtk3"; # https://docs.noctalia.dev/v4/getting-started/faq/#why-are-some-of-my-app-icons-missing
     };
