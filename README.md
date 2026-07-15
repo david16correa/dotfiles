@@ -55,12 +55,12 @@
 ❯ cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/bjork/hardware.nix
 ```
 
-- Update the state version at `./hosts/bjork/configuration.nix` and `./hosts/bjork/home/home.nix` to the current release (26.05).
+- Update the state version at `./hosts/bjork/default.nix` and `./home/david/default.nix` to the current release (26.05).
 
 > [!NOTE]
 > Consider resolving all lines marked with a `stateVersion compatibility config` comment! I always try to adopt the new defaults, so reinstalling should make these lines obsolete.
 
-- Uncomment the block marked with a `Installation patches` comment in `./hosts/bjork/main.nix`; this will disable Lanzaboote and `my.flatpak`, and enable systemd-boot.
+- Uncomment the installation patches in `./hosts/bjork/default.nix`; this will disable Lanzaboote and enable systemd-boot.
 
 Once everything is right, install with:
 
@@ -82,7 +82,7 @@ Once everything is right, install with:
 ❯ sudo btrfs inspect-internal map-swapfile -r /swap/swapfile
 ```
 
-- Comment the block marked with the `Installation patches` comment in `./hosts/bjork/main.nix`.
+- Comment the installation patches in `./hosts/bjork/default.nix`.
 - Set up secure boot:
   - First create the Secure Boot keys:
 
@@ -134,16 +134,16 @@ Once everything is right, install with:
   ❯ stow .Home
   ```
 
-- Update the NixOS' birth time in `./home/david/software/config/fastfetch/birthTime`:
+- Update the NixOS' birth time in `./home/david/configFiles/fastfetch/birthTime`:
 
 ```sh
-❯ echo $(stat -c %W /) > ./home/david/software/config/fastfetch/birthTime
+❯ echo $(stat -c %W /) > ./home/david/configFiles/fastfetch/birthTime
 ```
 
 - Set up Zen Browser by hand; the extensions I use are:
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
   - [Keepa](https://addons.mozilla.org/en-US/firefox/addon/keepa/)
-  - [Vimium C](https://addons.mozilla.org/en-US/firefox/addon/vimium-c/?src=external-readme) (my configs are `./misc/vimium c/vimium_c-20260410_125539.json`)
+  - [Vimium C](https://addons.mozilla.org/en-US/firefox/addon/vimium-c/?src=external-readme) (my configs are `./misc/vimium_c/vimium_c-20260410_125539.json`)
   - [Zotero Connector](https://www.zotero.org/download/)
 - Log in to Steam, and make sure to set up `~/Games` as the default library; it's a different subvolume, which will keep `snapper` from backing up your entire Steam library.
 
@@ -163,4 +163,4 @@ or with `nh`:
 
 The resulting ISO will be placed in `./result/iso`. I like to flash ISOs with `caligula`.
 
-My ISO is mostly identical to [NixOS' minimal ISO image](https://nixos.org/download/#nixos-iso), but I've included extra packages and niceties (e.g. flakes are enabled by default). You can check its configuration file at `./hosts/myIso/configuration.nix`.
+My ISO is mostly identical to [NixOS' minimal ISO image](https://nixos.org/download/#nixos-iso), but I've included extra packages and niceties (e.g. flakes are enabled by default). You can check its configuration file at `./hosts/myIso/default.nix`.
