@@ -13,7 +13,7 @@ in
       gtk.enable = true;
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
-      size = 16;
+      size = 24;
     };
   };
 
@@ -30,7 +30,6 @@ in
       "gtk-4.0/noctalia.css".source = symlink "colors/gtk/colors.css";
       "qt5ct".source = symlink "colors/qt";
       "qt6ct".source = symlink "colors/qt";
-      "environment.d/gtk.conf".source = symlink "environment.d/gtk.conf";
     };
   };
 
@@ -44,11 +43,6 @@ in
     iconTheme = {
       name = "MoreWaita";
       package = pkgs.morewaita-icon-theme;
-    };
-    cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
-      size = 24;
     };
   };
 }
