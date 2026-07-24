@@ -18,7 +18,7 @@
     };
     jovian-nixos = {
       url = "github:Jovian-Experiments/Jovian-NixOS";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     ########################################
@@ -80,6 +80,15 @@
         ];
       };
 
+      fenrir = nixpkgs-unstable.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          { nixpkgs.config.allowUnfree = true; }
+          ./hosts/fenrir
+        ];
+      };
+
       myIso = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
@@ -98,6 +107,12 @@
         # pkgs = unstable;
         extraSpecialArgs = { inherit inputs static; };
         modules = [ ./home/david ];
+      };
+      "david@fenrir" = home-manager.lib.homeManagerConfiguration {
+        pkgs = stable;
+        # pkgs = unstable;
+        extraSpecialArgs = { inherit inputs static; };
+        modules = [ ./home/sysadmin ];
       };
     };
 

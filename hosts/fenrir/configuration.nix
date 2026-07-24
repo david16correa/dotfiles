@@ -29,8 +29,12 @@
     };
 
     nvidia = {
-      open = false;
+      open = false;                        # 960M is Maxwell — must use proprietary, NOT the open kernel module
       modesetting.enable = true;
+      powerManagement.enable = true;       # helps with suspend/resume
+      powerManagement.finegrained = false; # true only works on Turing+, not Maxwell
+      nvidiaSettings = true;
+      branch = "legacy_580";
     };
   };
 
@@ -74,8 +78,8 @@
       enable = true;
       autoStart = true;
       user = "gamer";
+      desktopSession = "gamescope-wayland"; # I have to change this later
     };
     devices.steamdeck.enableSoundSupport = true;
-    devices.steamdeck.enable = false;
   };
 }

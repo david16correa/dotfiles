@@ -14,7 +14,7 @@
 
 {
   disko.devices.disk.nixOS = {
-    device = "/dev/nvme0nX";
+    device = "/dev/sda";
     type = "disk";
     content = {
       type = "gpt";
