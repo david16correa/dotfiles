@@ -89,6 +89,8 @@ in
     ########################################
     hardware.alsa.enablePersistence = true;
 
+    boot.kernelModules = [ "i2c-dev" ]; # for ddcutil to access monitor DDC/CI over I2C.
+
     security = {
       polkit.enable = true;
       rtkit.enable = true; # PulseAudio and PipeWire use this to acquire realtime priority

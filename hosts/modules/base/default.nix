@@ -9,7 +9,7 @@ in
 
   config = lib.mkIf cfg.enable {
     ########################################
-    # bootloader, kernel, fs, and swap
+    # bootloader, kernel, boot, zswap
     ########################################
     boot = {
       loader = {
@@ -23,46 +23,30 @@ in
         pkiBundle = "/var/lib/sbctl";
       };
 
-      consoleLogLevel = 3; # only error conditions, or more severe messages, are printed
       kernelPackages = pkgs.linuxPackages_zen;
+
+      consoleLogLevel = 3; # only error conditions, or more severe messages, are printed
       kernelParams = [
-        "quiet" "loglevel=3" "systemd.show_status=auto" "rd.udev.log_level=3" # silent boot
-        "zswap.enabled=1" # enables zswap
+        ####################
+        # silent boot
+        ####################
+        "quiet" "loglevel=3" "systemd.show_status=auto" "rd.udev.log_level=3"
+        ####################
+        # zswap
+        ####################
+        "zswap.enabled=1"
         "zswap.compressor=zstd" # compression algorithm
         "zswap.max_pool_percent=20" # maximum percentage of RAM that zswap is allowed to use; increase if you Regularly hit high memory usage, or want to avoid disk swap at almost any cost
         "zswap.zpool=z3fold" # compressed page allocator (higher density than default zbud)
         "zswap.shrinker_enabled=1" # whether to shrink the pool proactively on high memory pressure
       ];
-      kernelModules = [ "i2c-dev" ];
-      resumeDevice = config.fileSystems."/swap".device;
     };
 
     environment.systemPackages = with pkgs; [ sbctl ];
 
-    fileSystems = {
-      "/".options                   = [ "compress=zstd" "noatime" ];
-      "/home".options               = [ "compress=zstd" "noatime" ];
-      "/nix".options                = [ "compress=zstd" "noatime" ];
-      "/swap".options               = [ "noatime" ];
-      "/home/.snapshots".options    = [ "compress=zstd" "noatime" ];
-    };
-
-    swapDevices = [{
-      device = "/swap/swapfile";
-      size = 32*1024; # 32GB
-    }];
-
     ########################################
     # OS basics
     ########################################
-    networking = {
-      networkmanager = {
-        enable = true;
-        wifi.powersave = false;
-      };
-      firewall.allowedTCPPorts = [8888]; # jupyter
-    };
-
     time.timeZone = lib.mkDefault "America/Mexico_City";
 
     i18n.defaultLocale = "en_US.UTF-8";

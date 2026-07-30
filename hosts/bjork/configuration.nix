@@ -2,7 +2,7 @@
 
 {
   ########################################
-  # bootloader, kernel, etc
+  # bootloader, kernel, fs, swap
   ########################################
 
   boot = {
@@ -13,11 +13,32 @@
     extraModprobeConfig = ''
       options btusb enable_autosuspend=n
     '';
+    resumeDevice = config.fileSystems."/swap".device;
   };
+
+  fileSystems = {
+    "/".options                   = [ "compress=zstd" "noatime" ];
+    "/home".options               = [ "compress=zstd" "noatime" ];
+    "/nix".options                = [ "compress=zstd" "noatime" ];
+    "/swap".options               = [ "noatime" ];
+    "/home/.snapshots".options    = [ "compress=zstd" "noatime" ];
+  };
+
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 32*1024; # 32GB
+  }];
 
   ########################################
   # OS basics
   ########################################
+  networking = {
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
+    firewall.allowedTCPPorts = [8888]; # jupyter
+  };
 
   hardware = {
     cpu.amd.updateMicrocode = true;
@@ -37,7 +58,6 @@
   ########################################
   # services
   ########################################
-
   systemd.services.sleep-hooks = {
     description = "Sleep Hooks";
     wantedBy = [ "sleep.target" ];
