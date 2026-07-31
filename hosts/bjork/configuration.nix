@@ -4,7 +4,6 @@
   ########################################
   # bootloader, kernel, fs, swap
   ########################################
-
   boot = {
     kernelParams = [
       "resume_offset=40698492"  # for hibernation

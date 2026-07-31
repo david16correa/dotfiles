@@ -23,6 +23,7 @@ in
         terminal = "kitty";
       };
       dconf.enable = true; # for theming
+      localsend.enable = true;
     };
 
     ########################################
@@ -49,7 +50,6 @@ in
         wireplumber.enable = true;
       };
     };
-
 
     ########################################
     # fonts
