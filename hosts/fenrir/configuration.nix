@@ -83,10 +83,16 @@
   };
 
   # docs: https://jovian-experiments.github.io/Jovian-NixOS/options.html
-  jovian.steam = {
-    enable = true; # note: also enables jovian.steamos.useSteamOSConfig! This brings several modules. Some are useless to me, but I don't mind
-    autoStart = true;
-    user = "gamer";
-    desktopSession = "gamescope-wayland"; # I have to change this later
+  jovian  = {
+    steam = {
+      enable = true; # note: also enables jovian.steamos.useSteamOSConfig! This brings several modules. Some are useless to me
+      autoStart = true;
+      user = "gamer";
+      desktopSession = "gamescope-wayland"; # I have to change this later
+    };
+    steamos = {
+      enableZram = false;
+      enableHdmiCecIntegration = false;
+    };
   };
 }
