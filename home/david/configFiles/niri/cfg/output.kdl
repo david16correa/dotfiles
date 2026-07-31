@@ -27,8 +27,9 @@ output "Samsung Electric Company S22F350 H4ZHC02955"{
 // tele@home
 output "Sharp Corporation SHARP HDMI Unknown"{
   mode "3840x2160@60.000"
-  scale 1
-  position x=1920 y=0
+  scale 2
+  // position x=1920 y=0 // to the right of eDP-1
+  position x=0 y=-2160 // above eDP-1
 }
 
 // monitor@home
