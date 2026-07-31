@@ -19,15 +19,13 @@
   ########################################
   # OS basics
   ########################################
+  networking.networkmanager = {
+    enable = true; # needed by gamescope session! E.g. shutdown won't work without it, somehow
+    wifi.powersave = false;
+  };
+
   hardware = {
     cpu.intel.updateMicrocode = true;
-    bluetooth = {
-      # enable = true;
-      settings.General = {
-        Experimental = true;
-        FastConnectable = true;
-      };
-    };
     enableAllFirmware = true;
     graphics = {
       enable = true; # OpenGl/AMD
@@ -84,8 +82,9 @@
     hashedPassword = null;
   };
 
+  # docs: https://jovian-experiments.github.io/Jovian-NixOS/options.html
   jovian.steam = {
-    enable = true;
+    enable = true; # note: also enables jovian.steamos.useSteamOSConfig! This brings several modules. Some are useless to me, but I don't mind
     autoStart = true;
     user = "gamer";
     desktopSession = "gamescope-wayland"; # I have to change this later
