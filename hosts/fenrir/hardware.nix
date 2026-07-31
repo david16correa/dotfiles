@@ -31,12 +31,6 @@
       options = [ "subvol=@home" ];
     };
 
-  fileSystems."/home/.snapshots" =
-    { device = "/dev/disk/by-uuid/5201c213-5f9e-4fa6-9cba-40f5362f5ea5";
-      fsType = "btrfs";
-      options = [ "subvol=@snapshots" ];
-    };
-
   fileSystems."/nix" =
     { device = "/dev/disk/by-uuid/5201c213-5f9e-4fa6-9cba-40f5362f5ea5";
       fsType = "btrfs";

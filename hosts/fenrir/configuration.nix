@@ -4,15 +4,21 @@
   ########################################
   # bootloader, kernel, etc
   ########################################
+  fileSystems = {
+    "/".options                   = [ "compress=zstd" "noatime" ];
+    "/home".options               = [ "compress=zstd" "noatime" ];
+    "/nix".options                = [ "compress=zstd" "noatime" ];
+    "/swap".options               = [ "noatime" ];
+  };
 
-  boot.kernelParams = [
-    "resume_offset=40698492"  # for hibernation
-  ];
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 16*1024;
+  }];
 
   ########################################
   # OS basics
   ########################################
-
   hardware = {
     cpu.intel.updateMicrocode = true;
     bluetooth = {
@@ -41,7 +47,6 @@
   ########################################
   # services
   ########################################
-
   systemd.services.NetworkManager-wait-online.enable = false;
 
   services = {
@@ -59,13 +64,19 @@
       settings.PermitRootLogin = "no";
       allowSFTP = true;
     };
-  };
 
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      wireplumber.enable = true;
+    };
+  };
 
   ########################################
   # gaming
   ########################################
-
   users.users.gamer = {
     description = "User for gamescope session";
     isNormalUser = true;
@@ -73,13 +84,10 @@
     hashedPassword = null;
   };
 
-  jovian = {
-    steam = {
-      enable = true;
-      autoStart = true;
-      user = "gamer";
-      desktopSession = "gamescope-wayland"; # I have to change this later
-    };
-    devices.steamdeck.enableSoundSupport = true;
+  jovian.steam = {
+    enable = true;
+    autoStart = true;
+    user = "gamer";
+    desktopSession = "gamescope-wayland"; # I have to change this later
   };
 }
