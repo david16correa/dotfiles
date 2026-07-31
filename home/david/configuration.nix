@@ -15,11 +15,24 @@ let
       }) files
     );
 in
-{
+  {
+  ########################################
+  # program modules
+  ########################################
+  programs = {
+    scientific-fhs = {
+      enable = true;
+      juliaVersions = [
+        { version = "1.11.6"; default = true; }
+      ];
+      enableNVIDIA = false;
+      enableGraphical = true;  # needed for plotting, REPL graphics etc.
+    };
+  };
+
   ########################################
   # dotfiles and user directories
   ########################################
-
   home.file = {
     ".zshrc".source = symlink "zsh/zshrc";
     ".tmux".source = symlink "tmux/.tmux";
@@ -68,4 +81,11 @@ in
     };
   };
 
+  ########################################
+  # session variables
+  ########################################
+  systemd.user.sessionVariables = {
+    # for julia
+    JULIA_NUM_THREADS = "auto"; # by default julia will use all threads
+  };
 }

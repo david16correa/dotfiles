@@ -11,7 +11,6 @@ in
 {
   imports = [
     inputs.lazyvim.homeManagerModules.default
-    inputs.scientific-fhs.nixosModules.default
   ] ++ allModules;
 
   # some very important options that govern my modules

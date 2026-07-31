@@ -5,6 +5,8 @@
     ../modules
     ./theme.nix
     ./configuration.nix
+
+    inputs.scientific-fhs.nixosModules.default
   ];
 
   ########################################
