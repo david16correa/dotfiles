@@ -49,7 +49,7 @@ in
     ########################################
     environment = {
       systemPackages = with pkgs; [
-        busybox
+        pciutils
         killall
       ];
       variables = {

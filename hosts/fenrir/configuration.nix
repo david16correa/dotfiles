@@ -48,6 +48,8 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
   services = {
+    thermald.enable = true;
+
     xserver.videoDrivers = [ "nvidia" ];
     zerotierone.enable = true;
 
@@ -72,13 +74,15 @@
     };
   };
 
+  security.rtkit.enable = true;
+
   ########################################
   # gaming
   ########################################
   users.users.gamer = {
     description = "User for gamescope session";
     isNormalUser = true;
-    extraGroups = [  "networkmanager" "gamemode" ];
+    extraGroups = [  "networkmanager" "gamemode" "audio" ];
     hashedPassword = null;
   };
 
