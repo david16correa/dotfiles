@@ -19,6 +19,7 @@ in
       zerotierone.enable = true;
       fwupd.enable = true;
       flatpak.enable = true;
+      fstrim.enable = true;
 
       btrfs.autoScrub = {
         enable = true;

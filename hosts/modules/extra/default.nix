@@ -22,8 +22,6 @@ in
     ########################################
     # extra
     ########################################
-    hardware.graphics.enable32Bit = true;
-
     environment.variables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/david/.steam/root/compatibilitytools.d";
     };

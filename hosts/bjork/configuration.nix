@@ -41,6 +41,11 @@
 
   hardware = {
     cpu.amd.updateMicrocode = true;
+    amdgpu.initrd.enable = true;
+    trackpoint = {
+      enable = true;
+      emulateWheel = true;
+    };
     bluetooth = {
       enable = true;
       settings.General = {
@@ -51,6 +56,7 @@
     enableAllFirmware = true;
     graphics = {
       enable = true; # OpenGl/AMD
+      enable32Bit = true;
     };
   };
 
@@ -79,6 +85,7 @@
   };
 
   services = {
+    xserver.videoDrivers = [ "modesetting" ];
     tlp = {
       enable = true;
       settings = {
