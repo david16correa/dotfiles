@@ -16,26 +16,28 @@ let
     );
 in
 {
+  home.packages = with pkgs; [
+    alsa-utils
+  ];
+
   ########################################
   # dotfiles and user directories
   ########################################
 
-  home.file = {
-    ".zshrc".source = symlink "zsh/zshrc";
-    ".tmux".source = symlink "tmux/.tmux";
-    ".tmux.conf".source = symlink "tmux/.tmux.conf";
-  } //
-    recursiveSymlink "${config.xdg.binHome}" "myScripts";
-
-  xdg = {
-    enable = true;
-
-    configFile = {
-      "kitty".source = symlink "kitty";
-      "btop".source = symlink "btop";
-      "starship".source = symlink "starship";
-      "yazi".source = symlink "yazi";
-      "fastfetch".source = symlink "fastfetch";
-    };
-  };
+  # home.file = {
+  #   ".zshrc".source = symlink "zsh/zshrc";
+  #   ".tmux".source = symlink "tmux/.tmux";
+  #   ".tmux.conf".source = symlink "tmux/.tmux.conf";
+  # } //
+  #   recursiveSymlink "${config.xdg.binHome}" "myScripts";
+  #
+  # xdg = {
+  #   enable = true;
+  #
+  #   configFile = {
+  #     "starship".source = symlink "starship";
+  #     "yazi".source = symlink "yazi";
+  #     "fastfetch".source = symlink "fastfetch";
+  #   };
+  # };
 }

@@ -11,7 +11,17 @@
   ########################################
 
   programs.home-manager.enable = true;
-  my.tty.enable = true;
+  my = {
+    tty.enable = true;
+    config = {
+      fastfetch.enable = true;
+      scripts.enable = true;
+      starship.enable = true;
+      tmux.enable = true;
+      yazi.enable = true;
+      zsh.enable = true;
+    };
+  };
 
   ########################################
   # important settings

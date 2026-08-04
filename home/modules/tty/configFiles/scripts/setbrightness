@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+LEVEL=$(gum choose "0" "25" "50" "75" "100")
+ddcutil setvcp 10 $LEVEL
+
+exit 0

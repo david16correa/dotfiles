@@ -19,7 +19,6 @@ fi
 export PATH
 
 # >>> init de cosas varias >>>
-
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml";
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
