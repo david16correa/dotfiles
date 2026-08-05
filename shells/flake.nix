@@ -18,7 +18,7 @@
     devShells.${system} = builtins.listToAttrs (
       map (shell: {
         name = shell;
-        value = import ./${shell}/main.nix { inherit pkgs; };
+        value = import ./${shell} { inherit pkgs; };
       }) shells
     );
   };
