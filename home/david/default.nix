@@ -3,7 +3,6 @@
 {
   imports = [
     ../modules
-    ./theme.nix
     ./configuration.nix
 
     inputs.scientific-fhs.nixosModules.default
@@ -12,7 +11,6 @@
   ########################################
   # modules
   ########################################
-
   programs.home-manager.enable = true;
   my = {
     de.enable = true;
@@ -25,13 +23,13 @@
   ########################################
   # important settings
   ########################################
-
-  my.gpu = "amd";
+  my = {
+    gpu = "amd";
+    hmProfile = builtins.baseNameOf (toString ./.);
+  };
 
   home = {
     username = "david";
-    homeDirectory = "/home/${config.home.username}";
     stateVersion = "25.11"; # do no not change this, unless you know what you're doing
   };
-
 }

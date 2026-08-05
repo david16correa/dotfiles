@@ -52,6 +52,8 @@ in
         ${pkgs.flatpak}/bin/flatpak override --user \
           --filesystem=${config.home.homeDirectory}/.local/share/icons:ro \
           --filesystem=/nix/store:ro \
+          --filesystem=/etc/localtime:ro \
+          --filesystem=/etc/timezone:ro \
           --env=XCURSOR_THEME=${cursorTheme} \
           --env=XCURSOR_SIZE=${toString cursorSize}
 

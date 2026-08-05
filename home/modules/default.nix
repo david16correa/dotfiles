@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 let
   # I will import all directories as modules automatically
   allModules = map (module: ./. + "/${module}")(
@@ -21,5 +21,15 @@ in
       example = "amd";
       description = "GPU vendor. Used to choose vendor-specific tools";
     };
+    hmProfile = lib.mkOption{
+      type = lib.types.str;
+      default = config.home.username;
+      example = "david";
+      description = "home manager's profile";
+    };
+  };
+
+  config = {
+    home.file."${config.xdg.configHome}/my.hm/profile".text = config.my.hmProfile;
   };
 }

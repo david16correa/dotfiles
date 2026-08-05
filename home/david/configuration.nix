@@ -8,12 +8,12 @@ let
     let
       files = builtins.attrNames (builtins.readDir ./configFiles/${source});
     in
-    builtins.listToAttrs (
-      map (file: {
-        name = "${target}/${file}";
-        value.source = symlink "${source}/${file}";
-      }) files
-    );
+      builtins.listToAttrs (
+        map (file: {
+          name = "${target}/${file}";
+          value.source = symlink "${source}/${file}";
+        }) files
+      );
 in
   {
   ########################################
@@ -31,16 +31,34 @@ in
   };
 
   ########################################
-  # dotfiles and user directories
+  # common and cusotm configs
   ########################################
-  home.file = {
-    ".zshrc".source = symlink "zsh/zshrc";
-    ".tmux".source = symlink "tmux/.tmux";
-    ".tmux.conf".source = symlink "tmux/.tmux.conf";
-    ".face.icon".source = symlink "avatar/grinningCoffee.png";
-    "Pictures/Wallpapers".source = symlink "wallpapers";
-  } //
-    recursiveSymlink "${config.xdg.binHome}" "myScripts";
+  my.configs = {
+    # tty
+    kitty.enable = true;
+    scripts.enable = true;
+    starship.enable = true;
+    tmux.enable = true;
+    yazi.enable = true;
+    zsh.enable = true;
+    # de
+    avatar.enable = true;
+    colors.enable = true;
+    niri.enable = true;
+    noctalia.enable = true;
+    vicinae.enable = true;
+    wallpapers.enable = true;
+  };
+
+  xdg.configFile = {
+    "btop".source = symlink "btop";
+    "fastfetch".source = symlink "fastfetch";
+  };
+
+  ########################################
+  # user directories and xdg configs
+  ########################################
+  home.homeDirectory = "/home/${config.home.username}";
 
   xdg = {
     enable = true;
@@ -49,17 +67,6 @@ in
       enable = true;
       createDirectories = true;
       setSessionVariables = false; # stateVersion compatibility config; new default adoption
-    };
-
-    configFile = {
-      "niri".source = symlink "niri";
-      "noctalia".source = symlink "noctalia";
-      "kitty".source = symlink "kitty";
-      "btop".source = symlink "btop";
-      "starship".source = symlink "starship";
-      "yazi".source = symlink "yazi";
-      "fastfetch".source = symlink "fastfetch";
-      "vicinae".source = symlink "vicinae";
     };
 
     mimeApps = {
@@ -78,6 +85,34 @@ in
         # Documents
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
       };
+    };
+  };
+
+  ########################################
+  # theming
+  ########################################
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface".text-scaling-factor = 1.15;
+    "org/gnome/desktop/wm/preferences".button-layout = ":";
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
+    };
+    gtk4.theme = null; # stateVersion compatibility config; new default adoption
+    iconTheme = {
+      name = "MoreWaita";
+      package = pkgs.morewaita-icon-theme;
     };
   };
 

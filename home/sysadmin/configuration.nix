@@ -8,36 +8,38 @@ let
     let
       files = builtins.attrNames (builtins.readDir ./configFiles/${source});
     in
-    builtins.listToAttrs (
-      map (file: {
-        name = "${target}/${file}";
-        value.source = symlink "${source}/${file}";
-      }) files
-    );
+      builtins.listToAttrs (
+        map (file: {
+          name = "${target}/${file}";
+          value.source = symlink "${source}/${file}";
+        }) files
+      );
 in
-{
+  {
+  ########################################
+  # home packages
+  ########################################
   home.packages = with pkgs; [
     alsa-utils
   ];
 
   ########################################
+  # common and cusotm configs
+  ########################################
+  my.configs = {
+    scripts.enable = true;
+    starship.enable = true;
+    tmux.enable = true;
+    zsh.enable = true;
+  };
+
+  xdg.configFile = {
+    "fastfetch".source = symlink "fastfetch";
+    "yazi".source = symlink "yazi";
+  };
+
+  ########################################
   # dotfiles and user directories
   ########################################
-
-  # home.file = {
-  #   ".zshrc".source = symlink "zsh/zshrc";
-  #   ".tmux".source = symlink "tmux/.tmux";
-  #   ".tmux.conf".source = symlink "tmux/.tmux.conf";
-  # } //
-  #   recursiveSymlink "${config.xdg.binHome}" "myScripts";
-  #
-  # xdg = {
-  #   enable = true;
-  #
-  #   configFile = {
-  #     "starship".source = symlink "starship";
-  #     "yazi".source = symlink "yazi";
-  #     "fastfetch".source = symlink "fastfetch";
-  #   };
-  # };
+  home.homeDirectory = "/home/${config.home.username}";
 }

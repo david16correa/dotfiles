@@ -3,10 +3,6 @@ let
   cfg = config.my.de;
 in
 {
-  # imports = [
-  #   ./configuration.nix
-  # ];
-
   options.my.de = {
     enable = lib.mkEnableOption "enable my desktop environment (shell) configuration (noctalia)";
   };

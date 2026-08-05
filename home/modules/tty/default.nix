@@ -12,7 +12,6 @@ in
 {
   imports = [
     ./lazyvim.nix
-    ./configuration.nix
   ];
 
   options.my.tty = {
