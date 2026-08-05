@@ -30,7 +30,19 @@ in
     # tty
     fastfetch.enable = lib.mkEnableOption "enable my fastfetch configs";
     kitty.enable = lib.mkEnableOption "enable my kitty configs";
-    scripts.enable = lib.mkEnableOption "enable my scripts";
+    scripts = {
+      enable = lib.mkEnableOption "enable all my scripts";
+      base.enable = lib.mkOption {
+        default = cfg.scripts.enable;
+        type = lib.types.bool;
+        description = "enable my base scripts";
+      };
+      extra.enable = lib.mkOption {
+        default = cfg.scripts.enable;
+        type = lib.types.bool;
+        description = "enable my extra scripts";
+      };
+    };
     starship.enable = lib.mkEnableOption "enable my starship configs";
     tmux.enable = lib.mkEnableOption "enable my tmux configs";
     vim.enable = lib.mkEnableOption "enable my vim configs";
@@ -49,7 +61,8 @@ in
     # tty
     (mkLink cfg.fastfetch.enable "${config.xdg.configHome}/fastfetch" "fastfetch")
     (mkLink cfg.kitty.enable "${config.xdg.configHome}/kitty" "kitty")
-    (mkReLink cfg.scripts.enable "${config.xdg.binHome}" "scripts")
+    (mkReLink cfg.scripts.base.enable "${config.xdg.binHome}" "scripts.base")
+    (mkReLink cfg.scripts.extra.enable "${config.xdg.binHome}" "scripts.extra")
     (mkLink cfg.starship.enable "${config.xdg.configHome}/starship" "starship")
     (mkLink cfg.tmux.enable ".tmux" "tmux/tmux")
     (mkLink cfg.tmux.enable ".tmux.conf" "tmux/tmux.conf")

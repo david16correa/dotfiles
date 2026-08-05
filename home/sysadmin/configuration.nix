@@ -27,7 +27,7 @@ in
   # common and cusotm configs
   ########################################
   my.configs = {
-    scripts.enable = true;
+    scripts.base.enable = true;
     starship.enable = true;
     tmux.enable = true;
     zsh.enable = true;
