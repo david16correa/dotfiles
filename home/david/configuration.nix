@@ -1,21 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
-let
-  # custom outOfStoreSymlinks
-  symlink = source : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/david/configFiles/${source}";
-
-  # custom outOfStoreSymlinks; recursive. Useful when target needs to be kept as an actual directory
-  recursiveSymlink = target : source :
-    let
-      files = builtins.attrNames (builtins.readDir ./configFiles/${source});
-    in
-      builtins.listToAttrs (
-        map (file: {
-          name = "${target}/${file}";
-          value.source = symlink "${source}/${file}";
-        }) files
-      );
-in
-  {
+{
   ########################################
   # program modules
   ########################################
@@ -35,6 +19,10 @@ in
   ########################################
   my.configs = {
     # tty
+    fastfetch = {
+      enable = true;
+      source = lib.mkForce "david/configFiles/fastfetch";
+    };
     kitty.enable = true;
     scripts.enable = true;
     starship.enable = true;
@@ -48,11 +36,10 @@ in
     noctalia.enable = true;
     vicinae.enable = true;
     wallpapers.enable = true;
-  };
-
-  xdg.configFile = {
-    "btop".source = symlink "btop";
-    "fastfetch".source = symlink "fastfetch";
+    extra.btop = {
+      source = "david/configFiles/btop";
+      target = "${config.xdg.configHome}/btop";
+    };
   };
 
   ########################################

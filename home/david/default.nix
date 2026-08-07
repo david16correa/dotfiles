@@ -25,7 +25,7 @@
   ########################################
   my = {
     gpu = "amd";
-    hmProfile = builtins.baseNameOf (toString ./.);
+    hmDirectory = toString ./.;
   };
 
   home = {

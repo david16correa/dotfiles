@@ -1,21 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
-let
-  # custom outOfStoreSymlinks
-  symlink = source : config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/home/sysadmin/configFiles/${source}";
-
-  # custom outOfStoreSymlinks; recursive. Useful when target needs to be kept as an actual directory
-  recursiveSymlink = target : source :
-    let
-      files = builtins.attrNames (builtins.readDir ./configFiles/${source});
-    in
-      builtins.listToAttrs (
-        map (file: {
-          name = "${target}/${file}";
-          value.source = symlink "${source}/${file}";
-        }) files
-      );
-in
-  {
+{
   ########################################
   # home packages
   ########################################
@@ -27,15 +11,18 @@ in
   # common and cusotm configs
   ########################################
   my.configs = {
-    scripts.base.enable = true;
+    fastfetch = {
+      enable = true;
+      source = lib.mkForce "sysadmin/configFiles/fastfetch";
+    };
+    scriptsBase.enable = true;
     starship.enable = true;
     tmux.enable = true;
+    yazi = {
+      enable = true;
+      source = lib.mkForce "sysadmin/configFiles/yazi";
+    };
     zsh.enable = true;
-  };
-
-  xdg.configFile = {
-    "fastfetch".source = symlink "fastfetch";
-    "yazi".source = symlink "yazi";
   };
 
   ########################################

@@ -21,9 +21,15 @@ in
       example = "amd";
       description = "GPU vendor. Used to choose vendor-specific tools";
     };
+    hmDirectory = lib.mkOption{
+      type = lib.types.str;
+      default = "";
+      example = "/home/user/.dotfiles/home/profile";
+      description = "the path to home manager's profile";
+    };
     hmProfile = lib.mkOption{
       type = lib.types.str;
-      default = config.home.username;
+      default = builtins.baseNameOf config.my.hmDirectory;
       example = "david";
       description = "home manager's profile";
     };
