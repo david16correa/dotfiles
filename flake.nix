@@ -79,7 +79,14 @@
           ./hosts/bjork
         ];
       };
-
+      gallus = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs unstable static; };
+        modules = [
+          { nixpkgs.config.allowUnfree = true; }
+          ./hosts/gallus
+        ];
+      };
       fenrir = nixpkgs-unstable.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
@@ -88,7 +95,6 @@
           ./hosts/fenrir
         ];
       };
-
       myIso = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
