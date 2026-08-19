@@ -5,10 +5,10 @@
   # bootloader, kernel, etc
   ########################################
   fileSystems = {
-    "/".options                   = [ "compress=zstd" "noatime" ];
-    "/home".options               = [ "compress=zstd" "noatime" ];
-    "/nix".options                = [ "compress=zstd" "noatime" ];
-    "/swap".options               = [ "noatime" ];
+    "/".options     = [ "compress=zstd" "noatime" ];
+    "/home".options = [ "compress=zstd" "noatime" ];
+    "/nix".options  = [ "compress=zstd" "noatime" ];
+    "/swap".options = [ "noatime" ];
   };
 
   swapDevices = [{
