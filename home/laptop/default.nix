@@ -5,7 +5,7 @@
     ../modules
     ./configuration.nix
 
-    inputs.scientific-fhs.nixosModules.default
+    # inputs.scientific-fhs.nixosModules.default
   ];
 
   ########################################

@@ -42,7 +42,7 @@ in
       brave
       zotero
       spotify
-      # prismlauncher
+      tor-browser
       protonplus
       baobab # disk usage analyzer
       decibels # audio player

@@ -2,15 +2,15 @@ binds {
   ////////////////////////////////////////
   // general launchers
   ////////////////////////////////////////
-  Mod+Return                 hotkey-overlay-title="Open a Terminal"              { spawn "kitty"; }
-  Mod+Shift+Return           hotkey-overlay-title="Open a Terminal (floating)"   { spawn "kitty" "--class=dot.floating.large.kitty"; }
-  Mod+Space                  hotkey-overlay-title="Run an Application: noctalia" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+  Mod+Return                 hotkey-overlay-title="Open a Terminal"                         { spawn "kitty"; }
+  Mod+Shift+Return           hotkey-overlay-title="Open a Terminal (floating)"              { spawn "kitty" "--class=dot.floating.large.kitty"; }
+  Mod+Space                  hotkey-overlay-title="Run an Application (noctalia launcher)"  { spawn-sh "noctalia-shell ipc call launcher toggle"; }
   // Alt+Space                  hotkey-overlay-title="Run an Application: vicinae"  { spawn-sh "vicinae toggle"; }
-  Mod+S                      hotkey-overlay-title="Control Center"               { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
-  Mod+M                      hotkey-overlay-title="Calendar"                     { spawn-sh "noctalia-shell ipc call calendar toggle"; }
-  Mod+N                      hotkey-overlay-title="Notification History"         { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
-  Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"               { spawn-sh "noctalia-shell ipc call notifications toggleDND"; }
-  Mod+C                      hotkey-overlay-title="Clipboard History"            { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
+  Mod+S                      hotkey-overlay-title="Control Center"                          { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
+  Mod+M                      hotkey-overlay-title="Calendar"                                { spawn-sh "noctalia-shell ipc call calendar toggle"; }
+  Mod+N                      hotkey-overlay-title="Notification History"                    { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
+  Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"                          { spawn-sh "noctalia-shell ipc call notifications toggleDND"; }
+  Mod+V                      hotkey-overlay-title="Clipboard History (noctalia launcher)"   { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
 
   ////////////////////////////////////////
   // favourite apps
@@ -39,6 +39,8 @@ binds {
   Mod+Shift+Alt+Ctrl+Y       hotkey-overlay-title="Open Yazi (floating)"                  { spawn "kitty" "--class=dot.floating.kitty" "yazi"; }
   Mod+Shift+Alt+Ctrl+T       hotkey-overlay-title="Open btop (floating)"                  { spawn "kitty" "--class=dot.floating.large.kitty" "btop"; }
   Mod+Shift+Alt+Ctrl+N       hotkey-overlay-title="Toggle Noctalia performance mode"      { spawn-sh "noctalia-shell ipc call powerProfile toggleNoctaliaPerformance"; }
+  Mod+Shift+Alt+Ctrl+Space   hotkey-overlay-title="Emoji picker (noctalia launcher)"      { spawn-sh "noctalia-shell ipc call launcher emoji"; }
+  Mod+Shift+Alt+Ctrl+W       hotkey-overlay-title="Windows picker (noctalia launcher)"    { spawn-sh "noctalia-shell ipc call launcher windows"; }
 
   ////////////////////////////////////////
   // media keys

@@ -10,7 +10,13 @@
   # modules
   ########################################
   programs.home-manager.enable = true;
-  my.tty.enable = true;
+  my = {
+    de.enable = true;
+    tty.enable = true;
+    apps.enable = true;
+    office.enable = true;
+    services.enable = true;
+  };
 
   ########################################
   # important settings

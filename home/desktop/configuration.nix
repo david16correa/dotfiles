@@ -3,26 +3,17 @@
   ########################################
   # program modules
   ########################################
-  programs = {
-    scientific-fhs = {
-      enable = true;
-      juliaVersions = [
-        { version = "1.11.6"; default = true; }
-      ];
-      enableNVIDIA = false;
-      enableGraphical = true;  # needed for plotting, REPL graphics etc.
-    };
-  };
+  home.packages = with pkgs; [
+    devenv
+    julia
+  ];
 
   ########################################
   # common and cusotm configs
   ########################################
   my.configs = {
     # tty
-    fastfetch = {
-      enable = true;
-      source = lib.mkForce "david/configFiles/fastfetch";
-    };
+    fastfetch.enable = true;
     kitty.enable = true;
     scripts.enable = true;
     starship.enable = true;
@@ -36,10 +27,6 @@
     noctalia.enable = true;
     vicinae.enable = true;
     wallpapers.enable = true;
-    extra.btop = {
-      source = "david/configFiles/btop";
-      target = "${config.xdg.configHome}/btop";
-    };
   };
 
   ########################################

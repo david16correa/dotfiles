@@ -106,7 +106,13 @@
         pkgs = stable;
         # pkgs = unstable;
         extraSpecialArgs = { inherit inputs static; };
-        modules = [ ./home/david ];
+        modules = [ ./home/laptop ];
+      };
+      "david@gallus" = home-manager.lib.homeManagerConfiguration {
+        pkgs = stable;
+        # pkgs = unstable;
+        extraSpecialArgs = { inherit inputs static; };
+        modules = [ ./home/desktop ];
       };
       "david@fenrir" = home-manager.lib.homeManagerConfiguration {
         pkgs = stable;

@@ -62,36 +62,36 @@ in{
     scriptsBase = {
       enable = cfg.scripts.enable;
       recursive = true;
-      source = "${configPath}/scripts/base";
-      target = "${config.xdg.binHome}";
+      source = lib.mkDefault "${configPath}/scripts/base";
+      target = lib.mkDefault "${config.xdg.binHome}";
     };
     scriptsExtra = {
       enable = cfg.scripts.enable;
       recursive = true;
-      source = "${configPath}/scripts/extra";
-      target = "${config.xdg.binHome}";
+      source = lib.mkDefault "${configPath}/scripts/extra";
+      target = lib.mkDefault "${config.xdg.binHome}";
     };
     tmux = {
       recursive = true;
-      target = "${config.home.homeDirectory}";
+      target = lib.mkDefault "${config.home.homeDirectory}";
     };
     vim = {
       recursive = true;
-      target = "${config.home.homeDirectory}";
+      target = lib.mkDefault "${config.home.homeDirectory}";
     };
     zsh = {
       recursive = true;
-      target = "${config.home.homeDirectory}";
+      target = lib.mkDefault "${config.home.homeDirectory}";
     };
     # de
     avatar = {
       recursive = true;
-      target = "${config.home.homeDirectory}";
+      target = lib.mkDefault "${config.home.homeDirectory}";
     };
     colorsGtk = {
       enable = cfg.colors.enable;
       recursive = true;
-      source = "${configPath}/colors/gtk";
+      source = lib.mkDefault "${configPath}/colors/gtk";
       target = [
         "${config.xdg.configHome}/gtk-3.0"
         "${config.xdg.configHome}/gtk-4.0"
@@ -99,7 +99,7 @@ in{
     };
     colorsQt = {
       enable = cfg.colors.enable;
-      source = "${configPath}/colors/qt";
+      source = lib.mkDefault "${configPath}/colors/qt";
       target = [
         "${config.xdg.configHome}/qt5ct"
         "${config.xdg.configHome}/qt6ct"
