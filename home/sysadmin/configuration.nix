@@ -13,14 +13,14 @@
   my.configs = {
     fastfetch = {
       enable = true;
-      source = lib.mkForce "sysadmin/configFiles/fastfetch";
+      source = "sysadmin/configFiles/fastfetch";
     };
     scriptsBase.enable = true;
     starship.enable = true;
     tmux.enable = true;
     yazi = {
       enable = true;
-      source = lib.mkForce "sysadmin/configFiles/yazi";
+      source = "sysadmin/configFiles/yazi";
     };
     zsh.enable = true;
   };

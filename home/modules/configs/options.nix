@@ -60,13 +60,13 @@ in{
   config.my.configs = {
     # tty
     scriptsBase = {
-      enable = cfg.scripts.enable;
+      enable = lib.mkDefault cfg.scripts.enable;
       recursive = true;
       source = lib.mkDefault "${configPath}/scripts/base";
       target = lib.mkDefault "${config.xdg.binHome}";
     };
     scriptsExtra = {
-      enable = cfg.scripts.enable;
+      enable = lib.mkDefault cfg.scripts.enable;
       recursive = true;
       source = lib.mkDefault "${configPath}/scripts/extra";
       target = lib.mkDefault "${config.xdg.binHome}";
@@ -89,7 +89,7 @@ in{
       target = lib.mkDefault "${config.home.homeDirectory}";
     };
     colorsGtk = {
-      enable = cfg.colors.enable;
+      enable = lib.mkDefault cfg.colors.enable;
       recursive = true;
       source = lib.mkDefault "${configPath}/colors/gtk";
       target = [
@@ -98,7 +98,7 @@ in{
       ];
     };
     colorsQt = {
-      enable = cfg.colors.enable;
+      enable = lib.mkDefault cfg.colors.enable;
       source = lib.mkDefault "${configPath}/colors/qt";
       target = [
         "${config.xdg.configHome}/qt5ct"
