@@ -61,5 +61,8 @@
   ########################################
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services = {
+    xserver.videoDrivers = [ "nvidia" ];
+    automatic-timezoned.enable = lib.mkForce false;
+  };
 }
