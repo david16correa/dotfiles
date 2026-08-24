@@ -23,7 +23,10 @@
     # de
     avatar.enable = true;
     colors.enable = true;
-    niri.enable = true;
+    niri = {
+      enable = true;
+      source = "desktop/configFiles/niri";
+    };
     noctalia.enable = true;
     vicinae.enable = true;
     wallpapers.enable = true;

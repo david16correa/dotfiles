@@ -1,0 +1,24 @@
+// use `niri msg outputs` to see monitors currently in use
+
+// ASUSTek COMPUTER INC VG30VQL1A R3LMDW000632
+output "DP-2"{
+  // off
+  // variable-refresh-rate // flickers...
+  mode "2560x1080@119.881"
+  position x=0 y=0
+}
+
+// PNP(GGF) MG300 0000000000001
+output "DP-1"{
+  mode "1920x1080@74.998"
+  scale 1
+  position x=1920 y=0 // to the right of DP-2
+  transform "90"
+}
+
+// tele@home
+output "Sharp Corporation SHARP HDMI Unknown"{
+  mode "3840x2160@60.000"
+  scale 2
+  position x=0 y=-2160 // above DP-2
+}
