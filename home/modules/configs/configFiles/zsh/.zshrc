@@ -56,6 +56,7 @@ if [ -f "$HOME/.zshrc.private" ]; then
   source "$HOME/.zshrc.private"
 else
   echo -e "[\033[33mWARNING:\033[0m] ~/.zshrc.private not found!"
+  touch "$HOME/.zshrc.private"
 fi
 
 # landing shell
