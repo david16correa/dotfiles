@@ -17,10 +17,11 @@ binds {
   ////////////////////////////////////////
   Mod+1                      hotkey-overlay-title="Open (or focus) Files"        { spawn-sh "$XDG_BIN_HOME/focusOrLaunch org.gnome.Nautilus nautilus"; }
   Mod+2                      hotkey-overlay-title="Open (or focus) a Terminal"   { spawn-sh "$XDG_BIN_HOME/focusOrLaunch kitty kitty"; }
-  Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "$XDG_BIN_HOME/focusOrLaunch zen zen-beta"; }
+  Mod+3                      hotkey-overlay-title="Open (or focus) Zen Browser"  { spawn-sh "$XDG_BIN_HOME/focusOrLaunch zen-beta zen-beta"; }
   Mod+4                      hotkey-overlay-title="Open Spotify"                 { spawn-sh "spotify"; }
   Mod+5                      hotkey-overlay-title="Open (or focus) Zotero"       { spawn-sh "$XDG_BIN_HOME/focusOrLaunch Zotero zotero"; }
   Mod+6                      hotkey-overlay-title="Open (or focus) Obsidian"     { spawn-sh "$XDG_BIN_HOME/focusOrLaunch obsidian obsidian"; }
+  Mod+7                      hotkey-overlay-title="Open (or focus) WhatsApp"     { spawn-sh "$XDG_BIN_HOME/whatsapp-web"; }
   Mod+0                      hotkey-overlay-title="Toggle Settings"              { spawn-sh "noctalia-shell ipc call settings toggle"; }
   Alt+Return                 hotkey-overlay-title="Open Yazi"                    { spawn "kitty" "yazi"; }
   Alt+Shift+Return           hotkey-overlay-title="Open Yazi (floating)"         { spawn "kitty" "--class=dot.floating.kitty" "yazi"; }

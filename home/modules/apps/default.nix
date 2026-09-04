@@ -39,6 +39,7 @@ in
     home.packages = with pkgs; [
       easyeffects
       gimp
+      gnome-obfuscate
       brave
       zotero
       spotify

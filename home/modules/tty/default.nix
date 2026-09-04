@@ -61,7 +61,7 @@ in
       imagemagick
       wl-clipboard
       unrar
-
+      btdu
       btopPackage
     ];
 

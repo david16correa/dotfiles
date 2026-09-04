@@ -28,8 +28,8 @@ output "Sharp Corporation SHARP HDMI Unknown"{
 // monitor@home
 output "ASUSTek COMPUTER INC VG30VQL1A R3LMDW000632"{
   // off
-  // mode "2560x1080@120.003"
-  mode "2560x1080@180.000"
+  mode "2560x1080@120.003"
+  // mode "2560x1080@180.000"
   scale 1
   // position x=-320 y=-1080 // above eDP-1
   position x=1920 y=0 // to the right of eDP-1

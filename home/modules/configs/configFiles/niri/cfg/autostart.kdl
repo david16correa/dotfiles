@@ -9,3 +9,6 @@ spawn-at-startup "/home/david/.local/bin/gentmux"
 // apps
 spawn-sh-at-startup "maestral start && QT_QPA_PLATFORMTHEME='' maestral_qt"
 spawn-sh-at-startup "steam -silent"
+
+// note to self: to manually launch stuff:
+// ❯ niri msg action spawn-sh -- <COMMAND>

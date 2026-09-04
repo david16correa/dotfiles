@@ -34,6 +34,7 @@ alias l='ls -l' # lsd stuff
 alias la='ls -a' # lsd stuff
 alias lla='ls -la' # lsd stuff
 alias lt='ls --tree' # lsd stuff
+alias cat='bat'
 alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 alias open="xdg-open"
 alias db="maestral"
@@ -44,6 +45,7 @@ alias pingNixos="ping nixos.org"
 alias du="btrfs filesystem du"
 alias df="btrfs filesystem usage"
 alias nm-restart="sudo systemctl restart NetworkManager"
+alias nm-test="ping nixos.org"
 
 # nix shells
 alias jupyter-shell="nix develop /home/david/.dotfiles#jupyter"
