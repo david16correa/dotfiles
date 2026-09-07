@@ -12,11 +12,12 @@
   };
 
   fileSystems = {
-    "/".options     = [ "compress=zstd" "noatime" ];
-    "/home".options = [ "compress=zstd" "noatime" ];
-    "/nix".options  = [ "compress=zstd" "noatime" ];
-    "/swap".options = [ "noatime" ];
-    "/home/.snapshots".options  = [ "compress=zstd" "noatime" ];
+    "/".options                       =   [ "compress=zstd" "noatime" ];
+    "/home".options                   =   [ "compress=zstd" "noatime" ];
+    "/nix".options                    =   [ "compress=zstd" "noatime" ];
+    "/swap".options                   =   [ "noatime" ];
+    "/home/david/.snapshots".options  =   [ "compress=zstd" "noatime" ];
+    "/home/gamer/sdX".options         =   [ "compress=zstd" "noatime" ];
   };
 
   swapDevices = [{
@@ -64,5 +65,19 @@
   services = {
     xserver.videoDrivers = [ "nvidia" ];
     automatic-timezoned.enable = lib.mkForce false;
+    snapper = {
+      snapshotInterval = "hourly";
+      configs.home = {
+        SUBVOLUME = "/home/david";
+        ALLOW_USERS = [ "david" ];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        TIMELINE_LIMIT_HOURLY = 8;
+        TIMELINE_LIMIT_DAILY = 7;
+        TIMELINE_LIMIT_WEEKLY = 4;
+        TIMELINE_LIMIT_MONTHLY = 3;
+        TIMELINE_LIMIT_YEARLY = 0;
+      };
+    };
   };
 }

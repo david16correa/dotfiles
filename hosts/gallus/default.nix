@@ -10,13 +10,13 @@
   ########################################
   # modules
   ########################################
-
   my = {
-    wm.enable = true;
-    dm.enable = true;
-    devel.enable = true;
-    extra.enable = true;
-    services.enable = true;
+    steamConsole.enable = true;
+    devel = {
+      enable = true;
+      keyd.enable = false;
+      virtualisation.enable = false;
+    };
   };
 
   ########################################

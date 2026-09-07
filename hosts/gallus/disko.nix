@@ -64,14 +64,14 @@
                   "noatime"
                 ];
               };
+              "@home/david" = { };
               "@snapshots" = {
-                mountpoint = "/home/.snapshots";
+                mountpoint = "/home/david/.snapshots";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
                 ];
               };
-              "@home/david/Games" = { };
             };
           };
         };
@@ -91,7 +91,7 @@
             type = "btrfs";
             subvolumes = {
               "@games" = {
-                mountpoint = "/games";
+                mountpoint = "/home/gamer/sdX";
                 mountOptions = [
                   "compress=zstd"
                   "noatime"
