@@ -17,12 +17,15 @@ in
 
     networking.networkmanager.enable = lib.mkForce true; # needed by gamescope session! E.g. shutdown won't work without it, somehow
 
-    services.pipewire = {
-      enable = true;
-      pulse.enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      wireplumber.enable = true;
+    services = {
+      desktopManager.plasma6.enable = true; # for desktop session support
+      pipewire = {
+        enable = true;
+        pulse.enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        wireplumber.enable = true;
+      };
     };
 
     security.rtkit.enable = true;
@@ -33,7 +36,7 @@ in
         enable = true; # note: also enables jovian.steamos.useSteamOSConfig! This brings several modules. Some are useless to me
         autoStart = true;
         user = "gamer";
-        desktopSession = "gamescope-wayland"; # I have to change this later
+        desktopSession = "plasma";
       };
       steamos = {
         enableZram = false; # enabled by jovian.steamos.useSteamOSConfig; incompatible with my setup (I use zswap)
