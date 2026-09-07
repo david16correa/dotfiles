@@ -10,7 +10,8 @@ let
 in
 {
   imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
+    inputs.lanzaboote.nixosModules.lanzaboote # secure boot; defined @ ./base/default.nix
+    inputs.jovian-nixos.nixosModules.default # setup for my "steam machines"; defined @ ./steamConsole/default.nix
   ] ++ allModules;
 
   # base is enabled by default

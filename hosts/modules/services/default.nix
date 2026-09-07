@@ -16,16 +16,8 @@ in
       upower.enable = true; # needed for noctalia battery widget
       udisks2.enable = true; # d-bus interfaces used to query and manipulate storage devices
       automatic-timezoned.enable = true;
-      zerotierone.enable = true;
       fwupd.enable = true;
       flatpak.enable = true;
-      fstrim.enable = true;
-
-      btrfs.autoScrub = {
-        enable = true;
-        interval = "weekly";
-        fileSystems = [ "/" ];
-      };
 
       snapper = {
         snapshotInterval = "hourly";
@@ -42,18 +34,11 @@ in
         };
       };
 
-      openssh = {
-        enable = true;
-        settings.PermitRootLogin = "no";
-        allowSFTP = true;
-      };
-
       # makes my machine accessible in the local network
       avahi = {
         enable = true;
         nssmdns4 = true;
       };
-
     };
 
     ########################################

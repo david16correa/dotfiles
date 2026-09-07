@@ -5,16 +5,18 @@
     ../modules
     ./hardware.nix
     ./configuration.nix
-    inputs.jovian-nixos.nixosModules.default
   ];
 
   ########################################
   # modules
   ########################################
-  my.devel = {
-    enable = true;
-    keyd.enable = false;
-    virtualisation.enable = false;
+  my = {
+    steamConsole.enable = true;
+    devel = {
+      enable = true;
+      keyd.enable = false;
+      virtualisation.enable = false;
+    };
   };
 
   ########################################

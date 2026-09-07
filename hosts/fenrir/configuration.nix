@@ -19,11 +19,6 @@
   ########################################
   # OS basics
   ########################################
-  networking.networkmanager = {
-    enable = true; # needed by gamescope session! E.g. shutdown won't work without it, somehow
-    wifi.powersave = false;
-  };
-
   hardware = {
     cpu.intel.updateMicrocode = true;
     enableAllFirmware = true;
@@ -31,7 +26,6 @@
       enable = true; # OpenGl/AMD
       enable32Bit = true;
     };
-
     nvidia = {
       open = false;                        # 960M is Maxwell — must use proprietary, NOT the open kernel module
       modesetting.enable = true;
@@ -49,54 +43,7 @@
 
   services = {
     thermald.enable = true;
-
     xserver.videoDrivers = [ "nvidia" ];
-    zerotierone.enable = true;
-
-    btrfs.autoScrub = {
-      enable = true;
-      interval = "weekly";
-      fileSystems = [ "/" ];
-    };
-
-    openssh = {
-      enable = true;
-      settings.PermitRootLogin = "no";
-      allowSFTP = true;
-    };
-
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      wireplumber.enable = true;
-    };
-  };
-
-  security.rtkit.enable = true;
-
-  ########################################
-  # gaming
-  ########################################
-  users.users.gamer = {
-    description = "User for gamescope session";
-    isNormalUser = true;
-    extraGroups = [  "networkmanager" "gamemode" "audio" ];
-    hashedPassword = null;
-  };
-
-  # docs: https://jovian-experiments.github.io/Jovian-NixOS/options.html
-  jovian  = {
-    steam = {
-      enable = true; # note: also enables jovian.steamos.useSteamOSConfig! This brings several modules. Some are useless to me
-      autoStart = true;
-      user = "gamer";
-      desktopSession = "gamescope-wayland"; # I have to change this later
-    };
-    steamos = {
-      enableZram = false;
-      enableHdmiCecIntegration = false;
-    };
+    automatic-timezoned.enable = lib.mkForce false;
   };
 }

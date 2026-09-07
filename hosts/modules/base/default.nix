@@ -2,7 +2,7 @@
 let
   cfg = config.my.base;
 in
-{
+  {
   options.my.base = {
     enable = lib.mkEnableOption "My base module";
   };
@@ -70,6 +70,24 @@ in
         enable = true;
         dates = "weekly";
         extraArgs = "--keep-since 30d";
+      };
+    };
+
+    ########################################
+    # most important services
+    ########################################
+    services = {
+      zerotierone.enable = true;
+      fstrim.enable = true;
+      btrfs.autoScrub = {
+        enable = true;
+        interval = "weekly";
+        fileSystems = [ "/" ];
+      };
+      openssh = {
+        enable = true;
+        settings.PermitRootLogin = "no";
+        allowSFTP = true;
       };
     };
   };
