@@ -14,43 +14,43 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/d8c189cf-6c3d-4b14-85d2-32d5602a5819";
+    { device = "/dev/disk/by-uuid/dbc4beb8-6a10-4e94-a947-0c03ac2f6dcb";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A189-0A7A";
+    { device = "/dev/disk/by-uuid/853D-7D76";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/games" =
-    { device = "/dev/disk/by-uuid/c18b130c-eea4-4279-bf37-1cf3b2f0f9d0";
-      fsType = "btrfs";
-      options = [ "subvol=@games" ];
-    };
-
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/d8c189cf-6c3d-4b14-85d2-32d5602a5819";
+    { device = "/dev/disk/by-uuid/dbc4beb8-6a10-4e94-a947-0c03ac2f6dcb";
       fsType = "btrfs";
       options = [ "subvol=@home" ];
     };
 
-  fileSystems."/home/.snapshots" =
-    { device = "/dev/disk/by-uuid/d8c189cf-6c3d-4b14-85d2-32d5602a5819";
+  fileSystems."/home/david/.snapshots" =
+    { device = "/dev/disk/by-uuid/dbc4beb8-6a10-4e94-a947-0c03ac2f6dcb";
       fsType = "btrfs";
       options = [ "subvol=@snapshots" ];
     };
 
+  fileSystems."/home/gamer/sdX" =
+    { device = "/dev/disk/by-uuid/fa40ff02-6dbf-479c-9ef3-41b4182e5dc3";
+      fsType = "btrfs";
+      options = [ "subvol=@games" ];
+    };
+
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/d8c189cf-6c3d-4b14-85d2-32d5602a5819";
+    { device = "/dev/disk/by-uuid/dbc4beb8-6a10-4e94-a947-0c03ac2f6dcb";
       fsType = "btrfs";
       options = [ "subvol=@nix" ];
     };
 
   fileSystems."/swap" =
-    { device = "/dev/disk/by-uuid/d8c189cf-6c3d-4b14-85d2-32d5602a5819";
+    { device = "/dev/disk/by-uuid/dbc4beb8-6a10-4e94-a947-0c03ac2f6dcb";
       fsType = "btrfs";
       options = [ "subvol=@swap" ];
     };

@@ -6,7 +6,7 @@
   ########################################
   boot = {
     kernelParams = [
-      "resume_offset=2963592"  # for hibernation
+      "resume_offset=3679488"  # for hibernation
     ];
     resumeDevice = config.fileSystems."/swap".device;
   };
