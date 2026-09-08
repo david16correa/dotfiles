@@ -5,13 +5,13 @@
     ../modules
     ./hardware.nix
     ./configuration.nix
+    ../fenrir/steamConsole.nix
   ];
 
   ########################################
   # modules
   ########################################
   my = {
-    steamConsole.enable = true;
     devel = {
       enable = true;
       keyd.enable = false;
