@@ -53,6 +53,10 @@ function shell() {
   nix develop /home/david/.dotfiles#"$1"
 }
 
+function sudo-shell(){
+  sudo machinectl shell $1@
+}
+
 # private stuff
 if [ -f "$HOME/.zshrc.private" ]; then
   source "$HOME/.zshrc.private"
