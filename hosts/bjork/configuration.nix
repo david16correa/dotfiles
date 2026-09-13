@@ -63,13 +63,14 @@
   ########################################
   # services
   ########################################
-  systemd.services.sleep-hooks = {
-    description = "Sleep Hooks";
-    wantedBy = [ "sleep.target" ];
-    before = [ "sleep.target" ];
-    unitConfig.StopWhenUnneeded = true;
-    # pre-sleep script
-    script = /*bash*/''
+  systemd.services = {
+    sleep-hooks = {
+      description = "Sleep Hooks";
+      wantedBy = [ "sleep.target" ];
+      before = [ "sleep.target" ];
+      unitConfig.StopWhenUnneeded = true;
+      # pre-sleep script
+      script = /*bash*/''
         systemctl stop tlp.service
         systemctl stop thinkfan.service
         '';
@@ -78,9 +79,20 @@
         systemctl start thinkfan.service
         systemctl start tlp.service
         '';
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+    };
+    alsa-init = { # fix: microphone mute button light is always on
+      description = "Initialize ALSA sound cards and UCM";
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        SuccessExitStatus = [ 0 99 ];
+        ExecStart = "${pkgs.alsa-utils}/bin/alsactl init";
+      };
     };
   };
 
@@ -123,11 +135,5 @@
         ["level full-speed" 75  1000] # Max speed above 75°C (safety)
       ];
     };
-
-    # I got tired of the F4 LED being always on. I can't fix it. This udev rule
-    # makes the F4 LED be permanently off.
-    udev.extraRules = ''
-      SUBSYSTEM=="leds", KERNEL=="platform::micmute", ACTION=="add", ATTR{brightness}="0"
-    '';
   };
 }
