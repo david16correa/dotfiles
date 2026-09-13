@@ -1,6 +1,5 @@
 // noctalia et al
-spawn-sh-at-startup "noctalia-shell"
-spawn-sh-at-startup "sleep 10 && noctalia-shell ipc call idleInhibitor toggle"
+spawn-sh-at-startup "noctalia"
 // spawn-sh-at-startup "vicinae server"
 
 // my scripts

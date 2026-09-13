@@ -19,7 +19,7 @@ in
       gnome-firmware
       cliphist
       app2unit
-      noctalia-shell
+      noctalia
       vicinae
       maestral
       maestral-gui

@@ -6,20 +6,20 @@ binds {
   Mod+Shift+Return           hotkey-overlay-title="Open a Terminal (floating)"                    { spawn-sh "kitty --class=dot.floating.large.kitty"; }
   Alt+Return                 hotkey-overlay-title="Open Yazi"                                     { spawn-sh "kitty yazi"; }
   Alt+Shift+Return           hotkey-overlay-title="Open Yazi (floating)"                          { spawn-sh "kitty --class=dot.floating.kitty yazi"; }
-  Mod+Space                  hotkey-overlay-title="Run an Application (noctalia launcher)"        { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+  Mod+Space                  hotkey-overlay-title="Run an Application (noctalia launcher)"        { spawn-sh "noctalia msg panel-toggle launcher"; }
   // Alt+Space               hotkey-overlay-title="Run an Application: vicinae"                   { spawn-sh "vicinae toggle"; }
-  Mod+S                      hotkey-overlay-title="Control Center"                                { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
-  Mod+M                      hotkey-overlay-title="Calendar"                                      { spawn-sh "noctalia-shell ipc call calendar toggle"; }
-  Mod+N                      hotkey-overlay-title="Notification History"                          { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
-  Mod+V                      hotkey-overlay-title="Clipboard History (noctalia launcher)"         { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
+  Mod+S                      hotkey-overlay-title="Control Center"                                { spawn-sh "noctalia msg panel-toggle control-center"; }
+  Mod+M                      hotkey-overlay-title="Calendar"                                      { spawn-sh "noctalia msg panel-toggle control-center calendar"; }
+  Mod+N                      hotkey-overlay-title="Notification History"                          { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
+  Mod+V                      hotkey-overlay-title="Clipboard History (noctalia launcher)"         { spawn-sh "noctalia msg panel-toggle clipboard"; }
 
   ////////////////////////////////////////
   // toggles of state
   ////////////////////////////////////////
-  Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"                                { spawn-sh "noctalia-shell ipc call notifications toggleDND"; }
-  Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                                    { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
+  Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"                                { spawn-sh "noctalia msg notification-dnd-toggle"; }
+  Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                                    { spawn-sh "noctalia msg caffeine-toggle"; }
   Mod+Shift+Alt+Ctrl+Delete  hotkey-overlay-title="Toggle the internal monitor (on/off)"          { spawn-sh "$XDG_BIN_HOME/toggle-eDP-1"; }
-  Mod+Shift+Alt+Ctrl+N       hotkey-overlay-title="Toggle Noctalia performance mode"              { spawn-sh "noctalia-shell ipc call powerProfile toggleNoctaliaPerformance"; }
+  // Mod+Shift+Alt+Ctrl+N       hotkey-overlay-title="Toggle Noctalia performance mode"              { spawn-sh "noctalia ipc call powerProfile toggleNoctaliaPerformance"; }
 
   ////////////////////////////////////////
   // favourite apps
@@ -31,27 +31,27 @@ binds {
   Mod+5                      hotkey-overlay-title="Open (or focus) Zotero"                        { spawn-sh "$XDG_BIN_HOME/focusOrLaunch Zotero zotero"; }
   Mod+6                      hotkey-overlay-title="Open (or focus) Obsidian"                      { spawn-sh "$XDG_BIN_HOME/focusOrLaunch obsidian obsidian"; }
   Mod+7                      hotkey-overlay-title="Open (or focus) WhatsApp"                      { spawn-sh "$XDG_BIN_HOME/whatsapp-web"; }
-  Mod+0                      hotkey-overlay-title="Toggle Settings"                               { spawn-sh "noctalia-shell ipc call settings toggle"; }
+  Mod+0                      hotkey-overlay-title="Toggle Settings"                               { spawn-sh "noctalia msg settings-open"; }
 
   ////////////////////////////////////////
   // hyper (mod+shift+alt+ctrl) binds
   ////////////////////////////////////////
-  Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                                  { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
-  Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock the Screen"                               { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+  Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                                  { spawn-sh "noctalia msg panel-toggle session"; }
+  Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock the Screen"                               { spawn-sh "noctalia msg session lock"; }
   Mod+Shift+Alt+Ctrl+P       hotkey-overlay-title="Power off all montiors"                        { power-off-monitors; }
   Mod+Shift+Alt+Ctrl+B       hotkey-overlay-title="Open bluetui (floating)"                       { spawn-sh "kitty --class=dot.floating.kitty bluetui"; }
   Mod+Shift+Alt+Ctrl+K       hotkey-overlay-title="Open keydprofile (floating)"                   { spawn-sh "kitty --class=dot.floating.kitty keydprofile --gui"; }
   Mod+Shift+Alt+Ctrl+J       hotkey-overlay-title="Open Julia (floating)"                         { spawn-sh "kitty --class=dot.floating.kitty julia"; }
   Mod+Shift+Alt+Ctrl+Y       hotkey-overlay-title="Open Yazi (floating)"                          { spawn-sh "kitty --class=dot.floating.kitty yazi"; }
   Mod+Shift+Alt+Ctrl+T       hotkey-overlay-title="Open btop (floating)"                          { spawn-sh "kitty --class=dot.floating.large.kitty btop"; }
-  Mod+Shift+Alt+Ctrl+Space   hotkey-overlay-title="Emoji picker (noctalia launcher)"              { spawn-sh "noctalia-shell ipc call launcher emoji"; }
-  Mod+Shift+Alt+Ctrl+W       hotkey-overlay-title="Windows picker (noctalia launcher)"            { spawn-sh "noctalia-shell ipc call launcher windows"; }
+  Mod+Shift+Alt+Ctrl+Space   hotkey-overlay-title="Emoji picker (noctalia launcher)"              { spawn-sh "noctalia msg panel-toggle launcher /emo"; }
+  Mod+Shift+Alt+Ctrl+W       hotkey-overlay-title="Windows picker (noctalia launcher)"            { spawn-sh "noctalia msg panel-toggle launcher /win"; }
 
   ////////////////////////////////////////
   // niri and noctalia misc
   ////////////////////////////////////////
   Ctrl+Shift+Slash                                                                                { show-hotkey-overlay; }
-  Mod+Shift+Slash                                                                                 { spawn-sh "noctalia-shell ipc call plugin:keybind-cheatsheet toggle"; }
+  // Mod+Shift+Slash                                                                                 { spawn-sh "noctalia ipc call plugin:keybind-cheatsheet toggle"; }
   Mod+F1                                                                                          { switch-layout "next"; }
   Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                                     { quit; }
 
@@ -59,9 +59,9 @@ binds {
   // media keys
   ////////////////////////////////////////
   // volume mappings for PipeWire & WirePlumber
-  XF86AudioRaiseVolume       hotkey-overlay-title="Raise Volume"     allow-when-locked=true       { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ --limit=1 && canberra-gtk-play -i audio-volume-change"; }
-  XF86AudioLowerVolume       hotkey-overlay-title="Lower Volume"     allow-when-locked=true       { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- && canberra-gtk-play -i audio-volume-change"; }
-  XF86AudioMute              hotkey-overlay-title="Mute Audio"       allow-when-locked=true       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && canberra-gtk-play -i audio-volume-change"; }
+  XF86AudioRaiseVolume       hotkey-overlay-title="Raise Volume"     allow-when-locked=true       { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ --limit=1"; }
+  XF86AudioLowerVolume       hotkey-overlay-title="Lower Volume"     allow-when-locked=true       { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+  XF86AudioMute              hotkey-overlay-title="Mute Audio"       allow-when-locked=true       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
   XF86AudioMicMute           hotkey-overlay-title="Mute Mic"         allow-when-locked=true       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
   XF86AudioPlay              hotkey-overlay-title="Play-pause"       allow-when-locked=true       { spawn-sh "playerctl play-pause"; }
   Control+XF86AudioPlay      hotkey-overlay-title="Play-puse (all)"  allow-when-locked=true       { spawn-sh "playerctl play-pause -a"; }
@@ -71,8 +71,8 @@ binds {
   // brightness key mappings for brightnessctl.
   Shift+XF86MonBrightnessUp                                          allow-when-locked=true       { spawn-sh "brightnessctl --class=backlight set +10%"; }
   Shift+XF86MonBrightnessDown                                        allow-when-locked=true       { spawn-sh "brightnessctl --class=backlight set 10%-"; }
-  XF86MonBrightnessUp                                                allow-when-locked=true       { spawn-sh "noctalia-shell ipc call brightness increase"; }
-  XF86MonBrightnessDown                                              allow-when-locked=true       { spawn-sh "noctalia-shell ipc call brightness decrease"; }
+  XF86MonBrightnessUp                                                allow-when-locked=true       { spawn-sh "noctalia msg brightness-up 10"; }
+  XF86MonBrightnessDown                                              allow-when-locked=true       { spawn-sh "noctalia msg brightness-down 10"; }
 
   // select and set up display devices
   XF86Display                                                                                     { spawn-sh "kitty nvim ~/.config/niri/cfg/output.kdl"; }
