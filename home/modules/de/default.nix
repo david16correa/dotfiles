@@ -16,6 +16,7 @@ in
       playerctl
       brightnessctl
       ddcutil
+      udiskie
       gnome-firmware
       cliphist
       app2unit
