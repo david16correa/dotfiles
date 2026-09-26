@@ -26,7 +26,8 @@ eval "$(fzf --zsh)" # Set up fzf key bindings and fuzzy completion
 
 # >>> aliases y preferencias varias >>>
 alias zsh-reload='source ~/.zshrc'
-alias notes='nvim ~/Projects/my\ wiki/notes.md'
+alias wiki='nvim ~/Projects/my\ wiki/notes.md'
+alias notes='nvim $(date '+%Y.%m.%d')\ notes.md'
 alias clipboard='nvim ~/Dropbox/clipboard/clipboard.txt'
 alias cd='z'
 alias ls='lsd' # lsd stuff

@@ -133,6 +133,28 @@ in
         }
       '';
 
+      colorizer = /*lua*/''
+        return {
+          {
+            "catgoose/nvim-colorizer.lua",
+            event = "BufReadPre",
+                opts = {
+                filetypes = { "*" },
+              options = {
+                parsers = {
+                  hex = {
+                    default = true,
+                  },
+                },
+                display = {
+                  mode = "background",
+                },
+              },
+            },
+          },
+        }
+      '';
+
       lsp-config = /*lua*/''
         return {
           {

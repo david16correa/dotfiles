@@ -17,6 +17,7 @@ in
     ########################################
     programs = {
       obs-studio.enable = true;
+      chromium.enable = true;
       firefox = {
         enable = true;
         configPath = "${config.xdg.configHome}/mozilla/firefox"; # stateVersion compatibility config; new default adoption
@@ -53,6 +54,7 @@ in
       pavucontrol
       qbittorrent
       obsidian
+      zapzap
       inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
       # inkscape stuff
       (symlinkJoin {
