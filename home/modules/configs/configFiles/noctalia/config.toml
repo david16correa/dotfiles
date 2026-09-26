@@ -39,7 +39,16 @@ order = [ "default" ]
     concave_edge_corners = false
     contact_shadow = false
     enabled = true
-    end = [ "clipboard", "caffeine", "notifications", "input_volume", "output_volume", "brightness", "control-center" ]
+    end = [
+        "status",
+        "clipboard",
+        "caffeine",
+        "notifications",
+        "input_volume",
+        "output_volume",
+        "brightness",
+        "control-center"
+    ]
     font_family = "Adwaita Sans"
     font_scale = 1.0
     font_weight = 500
@@ -57,12 +66,12 @@ order = [ "default" ]
     radius_top_left = 12
     radius_top_right = 12
     reserve_space = true
-    scale = 1.0
+    scale = 1.1000000238418579
     shadow = true
     show_on_workspace_switch = true
     smart_auto_hide = false
     start = [ "temp", "battery", "network", "bluetooth", "keyboard_layout", "tray" ]
-    thickness = 34
+    thickness = 37
     widget_spacing = 15
 
         [bar.default.dead_zone.actions]
@@ -79,7 +88,7 @@ minimum_brightness = 0.0
 sync_all_monitors = false
 
 [calendar]
-enabled = false
+enabled = true
 event_date_format = "%A %e %B"
 event_time_format = "%H:%M"
 refresh_minutes = 15
@@ -143,15 +152,7 @@ main_axis_padding = 16
 margin_edge = 0
 margin_ends = 0
 monitors = []
-pinned = [
-    "org.gnome.Nautilus",
-    "kitty",
-    "zen-beta",
-    "spotify",
-    "zotero",
-    "obsidian",
-    "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default"
-]
+pinned = [ "org.gnome.Nautilus", "kitty", "app.zen_browser.zen", "spotify", "zotero", "obsidian", "com.rtosta.zapzap" ]
 position = "bottom"
 radius = 16
 radius_bottom_left = 16
@@ -409,7 +410,7 @@ scale = 1.0
     keyboard_backlight = true
     keyboard_layout = true
     lock_keys = true
-    media = true
+    media = false
     nightlight = true
     power_profile = true
     privacy = true
@@ -418,11 +419,14 @@ scale = 1.0
     volume_output = true
     wifi = true
 
-[plugin_settings]
+[plugin_settings."aristides/udiskie"]
+file_manager_cmd = "nautilus"
+manager_open_near_click = true
+manager_placement = "attached"
 
 [plugins]
 auto_update = "all"
-enabled = []
+enabled = [ "aristides/udiskie" ]
 
     [[plugins.source]]
     enabled = true
@@ -462,7 +466,7 @@ polkit_agent = false
 popup_borders = true
 popup_shadows = true
 screen_time_enabled = true
-settings_show_advanced = false
+settings_show_advanced = true
 settings_window_translucent = false
 setup_wizard_enabled = true
 shared_gl_context = true
@@ -490,7 +494,7 @@ time_format = "{:%H:%M}"
         "com.discordapp.Discord",
         "com.github.wwmm.easyeffects",
         "org.pulseaudio.pavucontrol",
-        "zen-beta",
+        "app.zen_browser.zen",
         "org.gnome.Nautilus",
         "kitty",
         "spotify",
@@ -504,6 +508,14 @@ time_format = "{:%H:%M}"
     sort_by_usage = true
 
         [shell.launcher.dmenu]
+
+        [shell.launcher.providers.emoji]
+        global = true
+        prefix = ""
+
+        [shell.launcher.providers.session]
+        global = true
+        prefix = ""
 
     [shell.mpris]
     blacklist = []
@@ -602,13 +614,23 @@ time_format = "{:%H:%M}"
         variant = "default"
 
         [[shell.session.actions]]
+        action = "command"
+        command = "noctalia msg session lock && systemctl hibernate"
+        countdown_seconds = 0.0
+        enabled = true
+        glyph = "hibernate"
+        label = "Hibernate"
+        shortcut = "5"
+        variant = "default"
+
+        [[shell.session.actions]]
         action = "shutdown"
         command = ""
         countdown_seconds = 0.0
         enabled = true
         glyph = ""
         label = ""
-        shortcut = "5"
+        shortcut = "6"
         variant = "destructive"
 
     [shell.shadow]
@@ -672,8 +694,8 @@ wallpaper_scheme = "m3-content"
     [theme.templates]
     builtin_ids = []
     community_ids = []
-    enable_builtin_templates = true
-    enable_community_templates = true
+    enable_builtin_templates = false
+    enable_community_templates = false
 
 [wallpaper]
 directory = "/home/david/Pictures/Wallpapers"
@@ -739,6 +761,10 @@ device = "input"
 show_label = false
 type = "volume"
 
+    [widget.input_volume.actions]
+    scroll_down = "mic-volume-up"
+    scroll_up = "mic-volume-down"
+
 [widget.keyboard_layout]
 hide_when_single_layout = false
 show_glyph = false
@@ -776,6 +802,10 @@ device = "output"
 show_label = false
 type = "volume"
 
+    [widget.output_volume.actions]
+    scroll_down = "volume-up"
+    scroll_up = "volume-down"
+
 [widget.ram]
 stat = "ram_used"
 type = "sysmon"
@@ -783,6 +813,10 @@ type = "sysmon"
 [widget.spacer]
 interactive = false
 type = "spacer"
+
+[widget.status]
+hide_when_empty = true
+type = "aristides/udiskie:status"
 
 [widget.temp]
 show_value = false
