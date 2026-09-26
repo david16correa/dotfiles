@@ -52,10 +52,9 @@ in
         ${pkgs.flatpak}/bin/flatpak override --user \
           --filesystem=${config.home.homeDirectory}/.local/share/icons:ro \
           --filesystem=/nix/store:ro \
-          --filesystem=/etc/localtime:ro \
-          --filesystem=/etc/timezone:ro \
           --env=XCURSOR_THEME=${cursorTheme} \
-          --env=XCURSOR_SIZE=${toString cursorSize}
+          --env=XCURSOR_SIZE=${toString cursorSize} \
+          --env=TZ="America/Mexico_City";
 
         # 4. update the cache
         mkdir -p ${config.home.homeDirectory}/.cache/my.flatpak
