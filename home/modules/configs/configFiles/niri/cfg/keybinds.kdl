@@ -1,17 +1,30 @@
+// hyper = Mod+Shift+Alt+Ctrl
 binds {
   ////////////////////////////////////////
-  // general launchers
+  // launchers
   ////////////////////////////////////////
   Mod+Return                 hotkey-overlay-title="Open a Terminal"                               { spawn-sh "kitty"; }
   Mod+Shift+Return           hotkey-overlay-title="Open a Terminal (floating)"                    { spawn-sh "kitty --class=dot.floating.large.kitty"; }
   Alt+Return                 hotkey-overlay-title="Open Yazi"                                     { spawn-sh "kitty yazi"; }
   Alt+Shift+Return           hotkey-overlay-title="Open Yazi (floating)"                          { spawn-sh "kitty --class=dot.floating.kitty yazi"; }
-  Mod+Space                  hotkey-overlay-title="Run an Application (noctalia launcher)"        { spawn-sh "noctalia msg panel-toggle launcher"; }
+  Mod+Space                  hotkey-overlay-title="Run an Application"                            { spawn-sh "noctalia msg panel-toggle launcher"; }
+  Mod+Shift+Alt+Ctrl+Space   hotkey-overlay-title="Emoji picker"                                  { spawn-sh "noctalia msg panel-toggle launcher /emo"; }
+  Mod+Shift+Alt+Ctrl+W       hotkey-overlay-title="Windows picker"                                { spawn-sh "noctalia msg panel-toggle launcher /win"; }
   // Alt+Space               hotkey-overlay-title="Run an Application: vicinae"                   { spawn-sh "vicinae toggle"; }
+  Mod+Print                  hotkey-overlay-title="Color Picker"                                  { spawn-sh "gcolor3"; }
+  Mod+semicolon              hotkey-overlay-title="Clipboard History"                             { spawn-sh "noctalia msg panel-toggle clipboard"; }
   Mod+S                      hotkey-overlay-title="Control Center"                                { spawn-sh "noctalia msg panel-toggle control-center"; }
-  Mod+M                      hotkey-overlay-title="Calendar"                                      { spawn-sh "noctalia msg panel-toggle control-center calendar"; }
+  Mod+M                      hotkey-overlay-title="Media Panel"                                   { spawn-sh "noctalia msg panel-toggle control-center media"; }
+  Mod+V                      hotkey-overlay-title="Audio Panel"                                   { spawn-sh "noctalia msg panel-toggle control-center audio"; }
+  Mod+Y                      hotkey-overlay-title="System Panel"                                  { spawn-sh "noctalia msg panel-toggle control-center system"; }
+  Mod+W                      hotkey-overlay-title="Wifi/Network Panel"                            { spawn-sh "noctalia msg panel-toggle control-center network"; }
+  Mod+B                      hotkey-overlay-title="Bluetooth Panel"                               { spawn-sh "noctalia msg panel-toggle control-center bluetooth"; }
+  Mod+C                      hotkey-overlay-title="Calendar"                                      { spawn-sh "noctalia msg panel-toggle control-center calendar"; }
   Mod+N                      hotkey-overlay-title="Notification History"                          { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
-  Mod+V                      hotkey-overlay-title="Clipboard History (noctalia launcher)"         { spawn-sh "noctalia msg panel-toggle clipboard"; }
+  Mod+Shift+Alt+Ctrl+B       hotkey-overlay-title="Open bluetui (floating)"                       { spawn-sh "kitty --class=dot.floating.kitty bluetui"; }
+  Mod+Shift+Alt+Ctrl+K       hotkey-overlay-title="Open keydprofile (floating)"                   { spawn-sh "kitty --class=dot.floating.kitty keydprofile --gui"; }
+  Mod+Shift+Alt+Ctrl+J       hotkey-overlay-title="Open Julia (floating)"                         { spawn-sh "kitty --class=dot.floating.kitty julia"; }
+  Mod+Shift+Alt+Ctrl+Y       hotkey-overlay-title="Open btop (floating)"                          { spawn-sh "kitty --class=dot.floating.large.kitty btop"; }
 
   ////////////////////////////////////////
   // toggles of state
@@ -19,7 +32,6 @@ binds {
   Mod+Ctrl+N                 hotkey-overlay-title="Do Not Disturb"                                { spawn-sh "noctalia msg notification-dnd-toggle"; }
   Mod+Shift+Alt+Ctrl+C       hotkey-overlay-title="Caffeinate"                                    { spawn-sh "noctalia msg caffeine-toggle"; }
   Mod+Shift+Alt+Ctrl+Delete  hotkey-overlay-title="Toggle the internal monitor (on/off)"          { spawn-sh "$XDG_BIN_HOME/toggle-eDP-1"; }
-  // Mod+Shift+Alt+Ctrl+N       hotkey-overlay-title="Toggle Noctalia performance mode"              { spawn-sh "noctalia ipc call powerProfile toggleNoctaliaPerformance"; }
 
   ////////////////////////////////////////
   // favourite apps
@@ -30,52 +42,57 @@ binds {
   Mod+4                      hotkey-overlay-title="Open (or focus) Spotify"                       { spawn-sh "$XDG_BIN_HOME/focusOrLaunch spotify spotify"; }
   Mod+5                      hotkey-overlay-title="Open (or focus) Zotero"                        { spawn-sh "$XDG_BIN_HOME/focusOrLaunch Zotero zotero"; }
   Mod+6                      hotkey-overlay-title="Open (or focus) Obsidian"                      { spawn-sh "$XDG_BIN_HOME/focusOrLaunch obsidian obsidian"; }
-  Mod+7                      hotkey-overlay-title="Open (or focus) WhatsApp"                      { spawn-sh "$XDG_BIN_HOME/whatsapp-web"; }
+  Mod+7                      hotkey-overlay-title="Open (or focus) WhatsApp"                      { spawn-sh "$XDG_BIN_HOME/focusOrLaunch com.rtosta.zapzap zapzap"; }
   Mod+0                      hotkey-overlay-title="Toggle Settings"                               { spawn-sh "noctalia msg settings-open"; }
 
   ////////////////////////////////////////
-  // hyper (mod+shift+alt+ctrl) binds
+  // session binds
   ////////////////////////////////////////
-  Mod+Shift+Alt+Ctrl+Return  hotkey-overlay-title="Session Menu"                                  { spawn-sh "noctalia msg panel-toggle session"; }
+  Mod+Escape                 hotkey-overlay-title="Session Menu"                                  { spawn-sh "noctalia msg panel-toggle session"; }
   Mod+Shift+Alt+Ctrl+Q       hotkey-overlay-title="Lock the Screen"                               { spawn-sh "noctalia msg session lock"; }
   Mod+Shift+Alt+Ctrl+P       hotkey-overlay-title="Power off all montiors"                        { power-off-monitors; }
-  Mod+Shift+Alt+Ctrl+B       hotkey-overlay-title="Open bluetui (floating)"                       { spawn-sh "kitty --class=dot.floating.kitty bluetui"; }
-  Mod+Shift+Alt+Ctrl+K       hotkey-overlay-title="Open keydprofile (floating)"                   { spawn-sh "kitty --class=dot.floating.kitty keydprofile --gui"; }
-  Mod+Shift+Alt+Ctrl+J       hotkey-overlay-title="Open Julia (floating)"                         { spawn-sh "kitty --class=dot.floating.kitty julia"; }
-  Mod+Shift+Alt+Ctrl+Y       hotkey-overlay-title="Open Yazi (floating)"                          { spawn-sh "kitty --class=dot.floating.kitty yazi"; }
-  Mod+Shift+Alt+Ctrl+T       hotkey-overlay-title="Open btop (floating)"                          { spawn-sh "kitty --class=dot.floating.large.kitty btop"; }
-  Mod+Shift+Alt+Ctrl+Space   hotkey-overlay-title="Emoji picker (noctalia launcher)"              { spawn-sh "noctalia msg panel-toggle launcher /emo"; }
-  Mod+Shift+Alt+Ctrl+W       hotkey-overlay-title="Windows picker (noctalia launcher)"            { spawn-sh "noctalia msg panel-toggle launcher /win"; }
 
   ////////////////////////////////////////
-  // niri and noctalia misc
+  // misc
   ////////////////////////////////////////
   Ctrl+Shift+Slash                                                                                { show-hotkey-overlay; }
-  // Mod+Shift+Slash                                                                                 { spawn-sh "noctalia ipc call plugin:keybind-cheatsheet toggle"; }
   Mod+F1                                                                                          { switch-layout "next"; }
   Ctrl+Alt+Delete            hotkey-overlay-title="Quit Niri"                                     { quit; }
 
   ////////////////////////////////////////
   // media keys
   ////////////////////////////////////////
-  // volume mappings for PipeWire & WirePlumber
-  XF86AudioRaiseVolume       hotkey-overlay-title="Raise Volume"     allow-when-locked=true       { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ --limit=1"; }
-  XF86AudioLowerVolume       hotkey-overlay-title="Lower Volume"     allow-when-locked=true       { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
-  XF86AudioMute              hotkey-overlay-title="Mute Audio"       allow-when-locked=true       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-  XF86AudioMicMute           hotkey-overlay-title="Mute Mic"         allow-when-locked=true       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-  XF86AudioPlay              hotkey-overlay-title="Play-pause"       allow-when-locked=true       { spawn-sh "playerctl play-pause"; }
-  Control+XF86AudioPlay      hotkey-overlay-title="Play-puse (all)"  allow-when-locked=true       { spawn-sh "playerctl play-pause -a"; }
-  XF86AudioPrev              hotkey-overlay-title="Previous song"    allow-when-locked=true       { spawn-sh "playerctl previous"; }
-  XF86AudioNext              hotkey-overlay-title="Next song"        allow-when-locked=true       { spawn-sh "playerctl next"; }
+  // audio
+  XF86AudioRaiseVolume       hotkey-overlay-title="Raise Volume"      allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ --limit=1"; }
+  XF86AudioLowerVolume       hotkey-overlay-title="Lower Volume"      allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+  Ctrl+XF86AudioRaiseVolume  hotkey-overlay-title="Raise Volume (1%)" allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+ --limit=1"; }
+  Ctrl+XF86AudioLowerVolume  hotkey-overlay-title="Lower Volume (1%)" allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-"; }
+  Mod+Alt+WheelScrollDown                                                allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+ --limit=1"; }
+  Mod+Alt+WheelScrollUp                                                  allow-when-locked=true      { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-"; }
 
-  // brightness key mappings for brightnessctl.
-  Shift+XF86MonBrightnessUp                                          allow-when-locked=true       { spawn-sh "brightnessctl --class=backlight set +10%"; }
-  Shift+XF86MonBrightnessDown                                        allow-when-locked=true       { spawn-sh "brightnessctl --class=backlight set 10%-"; }
+  XF86AudioMute              hotkey-overlay-title="Mute Audio"        allow-when-locked=true      { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+  Ctrl+MouseMiddle                                                    allow-when-locked=true      { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+  XF86AudioMicMute           hotkey-overlay-title="Mute Mic"          allow-when-locked=true      { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+  XF86AudioPlay              hotkey-overlay-title="Play-pause"        allow-when-locked=true      { spawn-sh "playerctl play-pause"; }
+  Ctrl+XF86AudioPlay         hotkey-overlay-title="Play-pause (all)"  allow-when-locked=true      { spawn-sh "playerctl play-pause -a"; }
+
+  XF86AudioPrev              hotkey-overlay-title="Previous song"     allow-when-locked=true      { spawn-sh "playerctl previous"; }
+  XF86AudioNext              hotkey-overlay-title="Next song"         allow-when-locked=true      { spawn-sh "playerctl next"; }
+
+  // brightness
   XF86MonBrightnessUp                                                allow-when-locked=true       { spawn-sh "noctalia msg brightness-up 10"; }
   XF86MonBrightnessDown                                              allow-when-locked=true       { spawn-sh "noctalia msg brightness-down 10"; }
+  Shift+XF86MonBrightnessUp                                          allow-when-locked=true       { spawn-sh "noctalia msg brightness-set 100"; }
+  Shift+XF86MonBrightnessDown                                        allow-when-locked=true       { spawn-sh "noctalia msg brightness-set 0"; }
+
+  Alt+XF86MonBrightnessUp                                            allow-when-locked=true       { spawn-sh "brightnessctl --device='tpacpi::kbd_backlight' set 1+"; }
+  Alt+XF86MonBrightnessDown                                          allow-when-locked=true       { spawn-sh "brightnessctl --device='tpacpi::kbd_backlight' set 1-"; }
+  Shift+Alt+XF86MonBrightnessUp                                      allow-when-locked=true       { spawn-sh "brightnessctl --device='tpacpi::kbd_backlight' set 2"; }
+  Shift+Alt+XF86MonBrightnessDown                                    allow-when-locked=true       { spawn-sh "brightnessctl --device='tpacpi::kbd_backlight' set 0"; }
 
   // select and set up display devices
-  XF86Display                                                                                     { spawn-sh "kitty nvim ~/.config/niri/cfg/output.kdl"; }
+  XF86Display                                                                                     { spawn-sh "kitty nvim $HOME/.config/niri/cfg/output.kdl"; }
 
   // screenshots
   Print                                                                                           { screenshot-screen; }
@@ -154,15 +171,18 @@ binds {
   Alt+F                                                                                           { expand-column-to-available-width; }
   Mod+Minus                                                                                       { set-column-width "-10%"; }
   Mod+Equal                                                                                       { set-column-width "+10%"; }
+  Mod+Ctrl+Minus                                                                                  { set-column-width "-5%"; }
+  Mod+Ctrl+Equal                                                                                  { set-column-width "+5%"; }
   Mod+Shift+Minus                                                                                 { set-window-height "-10%"; }
   Mod+Shift+Equal                                                                                 { set-window-height "+10%"; }
+  Mod+Shift+Ctrl+Minus                                                                            { set-window-height "-5%"; }
+  Mod+Shift+Ctrl+Equal                                                                            { set-window-height "+5%"; }
 
   // misc - centering windows, floating windows, and tabbed column display
-  Mod+I                                                                                           { center-column; }
-  Alt+I                                                                                           { center-window; }
+  Mod+I                                                                                           { center-window; }
   Mod+T                                                                                           { switch-focus-between-floating-and-tiling; }
   Mod+Ctrl+T                                                                                      { toggle-window-floating; }
-  Mod+W                                                                                           { toggle-column-tabbed-display; }
+  Mod+G                                                                                           { toggle-column-tabbed-display; }
 
   // move workspaces within a monitor
   Mod+Ctrl+Page_Down                                                                              { move-workspace-down; }
@@ -177,8 +197,8 @@ binds {
   Mod+Alt+L                                                                                       { move-workspace-to-monitor-right; }
 
   // scroll wheel stuff - focus
-  Mod+WheelScrollDown                                                                             { focus-column-right; }
-  Mod+WheelScrollUp                                                                               { focus-column-left; }
+  Mod+WheelScrollDown                                                cooldown-ms=150              { focus-column-right; }
+  Mod+WheelScrollUp                                                  cooldown-ms=150              { focus-column-left; }
   Alt+WheelScrollDown                                                cooldown-ms=150              { focus-workspace-down; }
   Alt+WheelScrollUp                                                  cooldown-ms=150              { focus-workspace-up; }
 
