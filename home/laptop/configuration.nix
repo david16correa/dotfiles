@@ -67,9 +67,9 @@
         # File explorer
         "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
         # Browser
-        "text/html" = [ "zen-beta.desktop" ];
-        "x-scheme-handler/http" = [ "zen-beta.desktop" ];
-        "x-scheme-handler/https" = [ "zen-beta.desktop" ];
+        "text/html" = [ "app.zen_browser.zen.desktop" ];
+        "x-scheme-handler/http" = [ "app.zen_browser.zen.desktop" ];
+        "x-scheme-handler/https" = [ "app.zen_browser.zen.desktop" ];
         # Images
         "image/png" = [ "org.gnome.Loupe.desktop" ];
         "image/jpeg" = [ "org.gnome.Loupe.desktop" ];

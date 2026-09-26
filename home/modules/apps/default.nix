@@ -31,6 +31,7 @@ in
         "com.discordapp.Discord"
         "org.DolphinEmu.dolphin-emu"
         "com.mojang.Minecraft"
+        "app.zen_browser.zen"
       ];
     };
 
@@ -55,7 +56,6 @@ in
       qbittorrent
       obsidian
       zapzap
-      inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
       # inkscape stuff
       (symlinkJoin {
         name = "inkscape-with-textext-fixed";

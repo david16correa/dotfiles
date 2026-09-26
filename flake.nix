@@ -31,11 +31,6 @@
       # url = "github:nix-community/home-manager"; # unstable channel
       inputs.nixpkgs.follows = "home-pkgs";
     };
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "home-pkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     lazyvim = {
       url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "home-pkgs";
