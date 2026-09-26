@@ -12,6 +12,7 @@ in
 {
   imports = [
     ./lazyvim.nix
+    ./gpg.nix
   ];
 
   options.my.tty = {
@@ -27,7 +28,10 @@ in
       lazygit.enable = true;
     };
 
-    my.nvim.enable = true;
+    my = {
+      nvim.enable = true;
+      gpg.enable = true;
+    };
 
     ########################################
     # home packages
@@ -63,6 +67,7 @@ in
       unrar
       btdu
       btopPackage
+      usbutils
     ];
 
     ########################################
