@@ -215,30 +215,30 @@ binds {
 
 // mod+tab stuff
 recent-windows {
-    debounce-ms 750
-    open-delay-ms 150
+  debounce-ms 750
+  open-delay-ms 150
 
-    highlight {
-        active-color "#7aa2f7"
-        urgent-color "#ff9999ff"
-        padding 30
-        corner-radius 12
-    }
+  highlight {
+    active-color "#7aa2f7"
+    urgent-color "#ff9999ff"
+    padding 30
+    corner-radius 12
+  }
 
-    previews {
-        max-height 480
-        max-scale 0.5
-    }
+  previews {
+    max-height 480
+    max-scale 0.5
+  }
 
-    binds {
-        Mod+Tab         { next-window; }
-        Mod+Shift+Tab   { previous-window; }
-        Mod+grave       { next-window     filter="app-id"; }
-        Mod+Shift+grave { previous-window filter="app-id"; }
-    }
+  binds {
+    Mod+Tab         { next-window; }
+    Mod+Shift+Tab   { previous-window; }
+    Mod+grave       { next-window     filter="app-id"; }
+    Mod+Shift+grave { previous-window filter="app-id"; }
+  }
 }
 
 hotkey-overlay {
-    skip-at-startup
-    hide-not-bound
+  skip-at-startup
+  hide-not-bound
 }
