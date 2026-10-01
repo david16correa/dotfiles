@@ -15,7 +15,7 @@ in
       dmidecode
       playerctl
       brightnessctl
-      ddcutil
+      # ddcutil
       udiskie
       gnome-firmware
       cliphist

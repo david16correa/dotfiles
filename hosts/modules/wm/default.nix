@@ -38,7 +38,7 @@ in
     # services
     ########################################
     services = {
-      ddccontrol.enable = true; # edit display parameters; e.g. brightness
+      # ddccontrol.enable = true; # edit display parameters; e.g. brightness
       gnome.sushi.enable = true;
       gnome.tinysparql.enable = true;
       gvfs.enable = true;
@@ -90,7 +90,7 @@ in
     ########################################
     hardware.alsa.enablePersistence = true;
 
-    boot.kernelModules = [ "i2c-dev" ]; # for ddcutil to access monitor DDC/CI over I2C.
+    # boot.kernelModules = [ "i2c-dev" ]; # for ddcutil to access monitor DDC/CI over I2C.
 
     security = {
       polkit.enable = true;
