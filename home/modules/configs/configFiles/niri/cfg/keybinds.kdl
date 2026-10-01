@@ -9,17 +9,16 @@ binds {
   Alt+Shift+Return           hotkey-overlay-title="Open Yazi (floating)"                          { spawn-sh "kitty --class=dot.floating.kitty yazi"; }
   Mod+Space                  hotkey-overlay-title="Run an Application"                            { spawn-sh "noctalia msg panel-toggle launcher"; }
   Mod+Shift+Alt+Ctrl+Space   hotkey-overlay-title="Emoji picker"                                  { spawn-sh "noctalia msg panel-toggle launcher /emo"; }
-  Mod+Shift+Alt+Ctrl+W       hotkey-overlay-title="Windows picker"                                { spawn-sh "noctalia msg panel-toggle launcher /win"; }
   // Alt+Space               hotkey-overlay-title="Run an Application: vicinae"                   { spawn-sh "vicinae toggle"; }
   Mod+Print                  hotkey-overlay-title="Color Picker"                                  { spawn-sh "gcolor3"; }
-  Mod+semicolon              hotkey-overlay-title="Clipboard History"                             { spawn-sh "noctalia msg panel-toggle clipboard"; }
+  Mod+V                      hotkey-overlay-title="Clipboard History"                             { spawn-sh "noctalia msg panel-toggle clipboard"; }
   Mod+S                      hotkey-overlay-title="Control Center"                                { spawn-sh "noctalia msg panel-toggle control-center"; }
-  Mod+M                      hotkey-overlay-title="Media Panel"                                   { spawn-sh "noctalia msg panel-toggle control-center media"; }
-  Mod+V                      hotkey-overlay-title="Audio Panel"                                   { spawn-sh "noctalia msg panel-toggle control-center audio"; }
-  Mod+Y                      hotkey-overlay-title="System Panel"                                  { spawn-sh "noctalia msg panel-toggle control-center system"; }
-  Mod+W                      hotkey-overlay-title="Wifi/Network Panel"                            { spawn-sh "noctalia msg panel-toggle control-center network"; }
+  Mod+Shift+Alt+Ctrl+M       hotkey-overlay-title="Media Panel"                                   { spawn-sh "noctalia msg panel-toggle control-center media"; }
+  Mod+Shift+Alt+Ctrl+V       hotkey-overlay-title="Audio Panel"                                   { spawn-sh "noctalia msg panel-toggle control-center audio"; }
+  Mod+Shift+Alt+Ctrl+T       hotkey-overlay-title="System Panel"                                  { spawn-sh "noctalia msg panel-toggle control-center system"; }
+  Mod+Shift+Alt+Ctrl+W       hotkey-overlay-title="Wifi/Network Panel"                            { spawn-sh "noctalia msg panel-toggle control-center network"; }
   Mod+B                      hotkey-overlay-title="Bluetooth Panel"                               { spawn-sh "noctalia msg panel-toggle control-center bluetooth"; }
-  Mod+C                      hotkey-overlay-title="Calendar"                                      { spawn-sh "noctalia msg panel-toggle control-center calendar"; }
+  Mod+M                      hotkey-overlay-title="Calendar"                                      { spawn-sh "noctalia msg panel-toggle control-center calendar"; }
   Mod+N                      hotkey-overlay-title="Notification History"                          { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
   Mod+Shift+Alt+Ctrl+B       hotkey-overlay-title="Open bluetui (floating)"                       { spawn-sh "kitty --class=dot.floating.kitty bluetui"; }
   Mod+Shift+Alt+Ctrl+K       hotkey-overlay-title="Open keydprofile (floating)"                   { spawn-sh "kitty --class=dot.floating.kitty keydprofile --gui"; }
@@ -182,7 +181,7 @@ binds {
   Mod+I                                                                                           { center-window; }
   Mod+T                                                                                           { switch-focus-between-floating-and-tiling; }
   Mod+Ctrl+T                                                                                      { toggle-window-floating; }
-  Mod+G                                                                                           { toggle-column-tabbed-display; }
+  Mod+W                                                                                           { toggle-column-tabbed-display; }
 
   // move workspaces within a monitor
   Mod+Ctrl+Page_Down                                                                              { move-workspace-down; }

@@ -3,6 +3,10 @@ layout {
 
   background-color "transparent"
 
+  shadow {
+    on
+  }
+
   center-focused-column "never"
   always-center-single-column
   empty-workspace-above-first
