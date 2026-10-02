@@ -57,6 +57,7 @@ in
     ########################################
     fonts = {
       enableDefaultPackages = true;
+      fontDir.enable = true;
 
       packages = with pkgs; [
         nerd-fonts.jetbrains-mono

@@ -54,6 +54,7 @@ in
           --filesystem=/nix/store:ro \
           --env=XCURSOR_THEME=${cursorTheme} \
           --env=XCURSOR_SIZE=${toString cursorSize} \
+          --filesystem=/run/current-system/sw/share/X11/fonts:ro \
           --env=TZ="America/Mexico_City";
 
         # 4. update the cache
