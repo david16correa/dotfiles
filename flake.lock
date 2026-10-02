@@ -256,7 +256,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-static": "nixpkgs-static",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "scientific-fhs": "scientific-fhs"
+        "scientific-fhs": "scientific-fhs",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-overlay": {
@@ -312,6 +313,29 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "home-pkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790843055,
+        "narHash": "sha256-rTDYMyiKgVNiL7sAc2LMr7zw3n3eC5YR+IGblzDdQQk=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "a2cb59515204ebe895f73cce387b811a78b3c032",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

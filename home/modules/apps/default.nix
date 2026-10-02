@@ -5,6 +5,8 @@ in
 {
   imports = [
     ./flatpak.nix
+
+    inputs.zen-browser.homeModules.beta
   ];
 
   options.my.apps = {
@@ -22,6 +24,10 @@ in
         enable = true;
         configPath = "${config.xdg.configHome}/mozilla/firefox"; # stateVersion compatibility config; new default adoption
       };
+      zen-browser = {
+        enable = true;
+        setAsDefaultBrowser = true;
+      };
     };
 
     my.flatpak = {
@@ -31,7 +37,6 @@ in
         "com.discordapp.Discord"
         "org.DolphinEmu.dolphin-emu"
         "com.mojang.Minecraft"
-        "app.zen_browser.zen"
       ];
     };
 
