@@ -9,26 +9,31 @@ let
     c.ServerApp.root_dir = '/home/david'
   '';
 
-  myJupyterLab = pkgs.writeShellScriptBin "myJupyterLab" ''
-    exec ${pkgs.jupyter}/bin/jupyter lab \
-    --config ${jupyter_lab_config}
-  '';
-
   pythonPackages = p: with p; [
+    jupyter
+    ipython
     numpy
     scipy
     matplotlib
     pandas
+    ipykernel
     jupyterlab-vim
     jupyterlab-lsp
     python-lsp-server
   ];
+
+  pythonEnv = pkgs.python314.withPackages pythonPackages;
+
+  myJupyterLab = pkgs.writeShellScriptBin "myJupyterLab" ''
+    exec ${pythonEnv}/bin/jupyter lab \
+    --config ${jupyter_lab_config}
+  '';
 in
 pkgs.mkShell {
   name = "jupyter";
 
   packages = [
-    (pkgs.python314.withPackages pythonPackages)
+    pythonEnv
     myJupyterLab
   ];
 
