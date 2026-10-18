@@ -12,9 +12,10 @@ in
     # program modules
     ########################################
     programs = {
-      steam = {
+      steam.enable = true;
+      gamescope = { # a micro-compositor to wrap games; fixes windowing issues, enables upscaling, and improves performance
         enable = true;
-        gamescopeSession.enable = true; # a microcompositor from Valve that is tailored towards gaming
+        # capSysNice = true; # no bueno
       };
       gamemode.enable = true; # improve CPU governor, scheduling, and I/O priority while gaming
     };
