@@ -55,6 +55,7 @@ binds {
   // session binds
   ////////////////////////////////////////
   Mod+Escape                  hotkey-overlay-title="Session Menu"                   repeat=false   { spawn-sh "noctalia msg panel-toggle session"; }
+  Super+Shift+Alt+Ctrl+Return                                                       repeat=false   { spawn-sh "noctalia msg panel-toggle session"; }
   Super+Shift+Alt+Ctrl+Q      hotkey-overlay-title="Lock the Screen"                repeat=false   { spawn-sh "noctalia msg session lock"; }
   Super+Shift+Alt+Ctrl+P      hotkey-overlay-title="Power off all montiors"         repeat=false   { power-off-monitors; }
 
