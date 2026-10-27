@@ -134,6 +134,11 @@ p = *
 ; = -
 / = +
 
+# clicks around the trackpoint
+g = leftmouse
+h = rightmouse
+b = middlemouse
+
 #------------------------------------------------------------------------------#
 # Gamma layer; misc
 [gamma:C]
