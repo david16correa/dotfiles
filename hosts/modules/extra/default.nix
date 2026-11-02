@@ -14,6 +14,7 @@ in
     programs = {
       steam = {
         enable = true;
+        gamescopeSession.enable = true;
         # package = unstable.steam;
       };
       gamescope = { # a micro-compositor to wrap games; fixes windowing issues, enables upscaling, and improves performance
