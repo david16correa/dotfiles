@@ -23,7 +23,7 @@ leftmeta+leftshift+f23 = layer(hyper)
 space = lettermod(alpha, space, 150, 200)
 
 # Esc acts as Esc when tapped, and as Beta when held
-esc = overload(beta, esc)
+esc = lettermod(beta, `, 150, 200)
 
 # Caps Lock acts as Esc when tapped, and as Gamma when held
 capslock = overload(gamma,esc)
