@@ -7,7 +7,7 @@
     ########################################
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05"; # current release
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-static.url = "github:NixOS/nixpkgs/e07580dae39738e46609eaab8b154de2488133ce"; # some packages take too long to copy from cache; I want to update them sparingly
+    nixpkgs-static.url = "github:NixOS/nixpkgs/7c8764b7c7b09b34f632464276218ef9090eaa11"; # some packages take too long to copy from cache; I want to update them sparingly
 
     ########################################
     # hosts

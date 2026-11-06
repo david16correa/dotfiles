@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, pkgs, static, inputs, ... }:
 let
   cfg = config.my.apps;
 in
@@ -47,7 +47,7 @@ in
       easyeffects
       gimp
       gnome-obfuscate
-      brave
+      static.brave # brave has been removed from nixpkgs, as there were no committers among its maintainers to unblock security issues
       zotero
       spotify
       tor-browser
