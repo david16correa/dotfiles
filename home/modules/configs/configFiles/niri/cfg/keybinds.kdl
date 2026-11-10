@@ -58,6 +58,9 @@ binds {
   Super+Shift+Alt+Ctrl+Return                                                       repeat=false   { spawn-sh "noctalia msg panel-toggle session"; }
   Super+Shift+Alt+Ctrl+Q      hotkey-overlay-title="Lock the Screen"                repeat=false   { spawn-sh "noctalia msg session lock"; }
   Super+Shift+Alt+Ctrl+P      hotkey-overlay-title="Power off all montiors"         repeat=false   { power-off-monitors; }
+  Super+Shift+Alt+Ctrl+F1     hotkey-overlay-title="Lock the Screen"                repeat=false   { spawn-sh "noctalia msg session lock"; }
+  Super+Shift+Alt+Ctrl+F2     hotkey-overlay-title="Log Out"                        repeat=false   { spawn-sh "noctalia msg session logout"; }
+  Super+Shift+Alt+Ctrl+F3     hotkey-overlay-title="Lock & Suspend"                 repeat=false   { spawn-sh "noctalia msg session lock-and-suspend"; }
 
   ////////////////////////////////////////
   // misc
@@ -80,6 +83,7 @@ binds {
   XF86AudioMute               hotkey-overlay-title="Mute Audio"              allow-when-locked=true repeat=false       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
   Ctrl+MouseMiddle                                                           allow-when-locked=true repeat=false       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
   XF86AudioMicMute            hotkey-overlay-title="Mute Mic"                allow-when-locked=true repeat=false       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+  Ctrl+XF86AudioMute                                                         allow-when-locked=true repeat=false       { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
   XF86AudioPlay               hotkey-overlay-title="Play-pause"              allow-when-locked=true repeat=false       { spawn-sh "playerctl play-pause"; }
   Ctrl+XF86AudioPlay          hotkey-overlay-title="Play-pause (all)"        allow-when-locked=true repeat=false       { spawn-sh "playerctl play-pause -a"; }
