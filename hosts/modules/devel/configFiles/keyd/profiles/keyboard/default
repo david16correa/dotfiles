@@ -22,11 +22,11 @@ leftmeta+leftshift+f23 = layer(hyper)
 # Space acts as Space when tapped, and as Alpha when held
 space = lettermod(alpha, space, 150, 200)
 
-# Esc acts as Esc when tapped, and as Beta when held
-esc = lettermod(beta, `, 150, 200)
+# I use a 65% keyboard, and there's an esc in place of the backtick
+esc = `
 
-# Caps Lock acts as Esc when tapped, and as Gamma when held
-capslock = overload(gamma,esc)
+# Caps Lock acts as Esc when tapped, and as Beta when held
+capslock = overload(beta,esc)
 
 #------------------------------------------------------------------------------#
 # layers are included
@@ -123,8 +123,18 @@ m = mute
 . = nextsong
 
 #------------------------------------------------------------------------------#
-# Beta layer; numpad
-[beta]
+# Beta layer (control)
+[beta:C]
+
+# more arrows, numpad, and clicks for trackpoint
+[alpha+beta]
+# gaming arrows
+w = up
+a = left
+s = down
+d = right
+
+# numpad
 m = 0
 j = 1
 k = 2
@@ -132,24 +142,17 @@ l = 3
 u = 4
 i = 5
 o = 6
+7 = 7
+8 = 8
+9 = 9
 0 = /
 p = *
 ; = -
 / = +
+. = .
+, = ,
 
 # clicks around the trackpoint
 g = leftmouse
 h = rightmouse
 b = middlemouse
-
-#------------------------------------------------------------------------------#
-# Gamma layer; misc
-[gamma:C]
-; = backspace
-
-# gaming arrows
-[alpha+gamma]
-w = up
-a = left
-s = down
-d = right

@@ -118,35 +118,3 @@ z = C--
 m = mute
 , = previoussong
 . = nextsong
-
-#------------------------------------------------------------------------------#
-# Beta layer; numpad
-[beta]
-m = 0
-j = 1
-k = 2
-l = 3
-u = 4
-i = 5
-o = 6
-0 = /
-p = *
-; = -
-/ = +
-
-# clicks around the trackpoint
-g = leftmouse
-h = rightmouse
-b = middlemouse
-
-#------------------------------------------------------------------------------#
-# Gamma layer; misc
-[gamma:C]
-; = backspace
-
-# gaming arrows
-[alpha+gamma]
-w = up
-a = left
-s = down
-d = right
