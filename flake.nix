@@ -40,10 +40,6 @@
       url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "home-pkgs";
     };
-    scientific-fhs = { # for fhs-wrapped julia
-      url = "github:olynch/scientific-fhs";
-      inputs.nixpkgs.follows = "home-pkgs";
-    };
 
     ########################################
     # shells

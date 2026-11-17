@@ -1,14 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 {
   ########################################
-  # program modules
-  ########################################
-  home.packages = with pkgs; [
-    devenv
-    julia
-  ];
-
-  ########################################
   # common and cusotm configs
   ########################################
   my.configs = {
@@ -91,13 +83,5 @@
       name = "MoreWaita";
       package = pkgs.morewaita-icon-theme;
     };
-  };
-
-  ########################################
-  # session variables
-  ########################################
-  systemd.user.sessionVariables = {
-    # for julia
-    JULIA_NUM_THREADS = "auto"; # by default julia will use all threads
   };
 }

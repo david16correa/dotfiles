@@ -1,25 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 {
   ########################################
-  # program modules
-  ########################################
-  # programs = {
-  #   scientific-fhs = {
-  #     enable = true;
-  #     juliaVersions = [
-  #       { version = "1.11.6"; default = true; }
-  #     ];
-  #     enableNVIDIA = false;
-  #     enableGraphical = true;  # needed for plotting, REPL graphics etc.
-  #   };
-  # };
-  home.packages = with pkgs; [
-    devenv
-    julia
-    # julia-bin
-  ];
-
-  ########################################
   # common and cusotm configs
   ########################################
   my.configs = {
@@ -106,13 +87,5 @@
       name = "MoreWaita";
       package = pkgs.morewaita-icon-theme;
     };
-  };
-
-  ########################################
-  # session variables
-  ########################################
-  systemd.user.sessionVariables = {
-    # for julia
-    JULIA_NUM_THREADS = "auto"; # by default julia will use all threads
   };
 }

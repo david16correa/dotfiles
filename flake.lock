@@ -255,7 +255,6 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-static": "nixpkgs-static",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "scientific-fhs": "scientific-fhs",
         "zen-browser": "zen-browser"
       }
     },
@@ -277,26 +276,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "scientific-fhs": {
-      "inputs": {
-        "nixpkgs": [
-          "home-pkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769700647,
-        "narHash": "sha256-b0lSDPm7EOpKVM3yPGEnCLY3wZBZaxXpznZOl6+2xXk=",
-        "owner": "olynch",
-        "repo": "scientific-fhs",
-        "rev": "46e3fe1aa65133871c59d16757d67c6930492cdb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "olynch",
-        "repo": "scientific-fhs",
         "type": "github"
       }
     },

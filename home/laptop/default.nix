@@ -4,8 +4,6 @@
   imports = [
     ../modules
     ./configuration.nix
-
-    # inputs.scientific-fhs.nixosModules.default
   ];
 
   ########################################

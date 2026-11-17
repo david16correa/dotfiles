@@ -68,6 +68,10 @@ in
       btdu
       btopPackage
       usbutils
+      devenv
+      (julia.withPackages [
+        "Plots"
+      ])
     ];
 
     ########################################
@@ -77,6 +81,8 @@ in
       # for zsh
       STARSHIP_CONFIG = "${config.xdg.configHome}/starship/config.toml";
       EDITOR = "nvim";
+      # for julia
+      JULIA_NUM_THREADS = "auto"; # by default julia will use all threads
     };
   };
 }
